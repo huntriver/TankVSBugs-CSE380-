@@ -299,6 +299,7 @@ void BugsDataLoader::initCreditsMenu(GameGUI *gui, DirectXTextureManager *guiTex
 	// AND NOW LOAD IT INTO A ScreenGUI
 	creditsMenuGUI->addButton(buttonToAdd);
 
+
 	// AND LET'S ADD A START BUTTON
 	// buttonToAdd = new Button();
 
@@ -394,20 +395,52 @@ void BugsDataLoader::initMainMenu(GameGUI *gui,	DirectXTextureManager *guiTextur
 	Button *buttonToAdd = new Button();
 	buttonToAdd->initButton(normalTextureID,
 							mouseOverTextureID,
-							437,
-							322,
+							450,
+							450,
 							0,
 							255,
 							100,
-							50,
+							30,
 							false,
 							W_CREDITS_COMMAND);
 
 	// AND NOW LOAD IT INTO A ScreenGUI
 	mainMenuGUI->addButton(buttonToAdd);
 
+	normalTextureID = guiTextureManager->loadTexture(W_START_IMAGE_PATH);
+	mouseOverTextureID = guiTextureManager->loadTexture(W_START_IMAGE_PATH);
 	// AND LET'S ADD A START BUTTON
-	// buttonToAdd = new Button();
+	buttonToAdd = new Button();
+
+	buttonToAdd->initButton(normalTextureID,
+							mouseOverTextureID,
+							425,
+							350,
+							0,
+							255,
+							150,
+							30,
+							false,
+							W_START_COMMAND);
+
+	mainMenuGUI->addButton(buttonToAdd);
+
+	normalTextureID = guiTextureManager->loadTexture(W_EXIT_IMAGE_PATH);
+	mouseOverTextureID = guiTextureManager->loadTexture(W_EXIT_IMAGE_PATH);
+
+	buttonToAdd = new Button();
+	buttonToAdd->initButton(normalTextureID,
+							mouseOverTextureID,
+							450,
+							500,
+							0,
+							255,
+							100,
+							30,
+							false,
+							W_EXIT_COMMAND);
+
+	mainMenuGUI->addButton(buttonToAdd);
 
 	// AND LET'S ADD OUR SCREENS
 	gui->addScreenGUI(GS_MAIN_MENU,		mainMenuGUI);
