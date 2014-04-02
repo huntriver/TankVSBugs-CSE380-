@@ -442,6 +442,24 @@ void BugsDataLoader::initMainMenu(GameGUI *gui,	DirectXTextureManager *guiTextur
 
 	mainMenuGUI->addButton(buttonToAdd);
 
+	normalTextureID = guiTextureManager->loadTexture(W_STATS_IMAGE_PATH);
+	mouseOverTextureID = guiTextureManager->loadTexture(W_STATS_IMAGE_PATH);
+
+	buttonToAdd = new Button();
+	buttonToAdd->initButton(normalTextureID,
+							mouseOverTextureID,
+							450,
+							400,
+							0,
+							255,
+							100,
+							30,
+							false,
+							W_STATS_COMMAND);
+
+	mainMenuGUI->addButton(buttonToAdd);
+
+
 	// AND LET'S ADD OUR SCREENS
 	gui->addScreenGUI(GS_MAIN_MENU,		mainMenuGUI);
 }
