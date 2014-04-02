@@ -288,7 +288,7 @@ void BugsDataLoader::initCreditsMenu(GameGUI *gui, DirectXTextureManager *guiTex
 	buttonToAdd->initButton(normalTextureID,
 							mouseOverTextureID,
 							106,
-							556,
+							656,
 							0,
 							255,
 							100,
@@ -395,7 +395,7 @@ void BugsDataLoader::initMainMenu(GameGUI *gui,	DirectXTextureManager *guiTextur
 	Button *buttonToAdd = new Button();
 	buttonToAdd->initButton(normalTextureID,
 							mouseOverTextureID,
-							450,
+							600,
 							450,
 							0,
 							255,
@@ -414,7 +414,7 @@ void BugsDataLoader::initMainMenu(GameGUI *gui,	DirectXTextureManager *guiTextur
 
 	buttonToAdd->initButton(normalTextureID,
 							mouseOverTextureID,
-							425,
+							575,
 							350,
 							0,
 							255,
@@ -431,7 +431,7 @@ void BugsDataLoader::initMainMenu(GameGUI *gui,	DirectXTextureManager *guiTextur
 	buttonToAdd = new Button();
 	buttonToAdd->initButton(normalTextureID,
 							mouseOverTextureID,
-							450,
+							600,
 							500,
 							0,
 							255,
