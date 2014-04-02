@@ -1,70 +1,20 @@
-﻿Build started 4/1/2014 8:25:06 PM.
-     1>Project "C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Bugs\Bugs.vcxproj" on node 2 (Build target(s)).
+﻿Build started 4/2/2014 12:27:51 AM.
+     1>Project "C:\Users\yubo\Desktop\380pj\HW2\HW2\Bugs\Bugs.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Installation Path\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Temp\Bugs\Debug\\" /Fd"C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Temp\Bugs\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\bugs\BugsButtonEventHandler.cpp src\bugs\BugsCollisionListener.cpp src\bugs\BugsDataLoader.cpp src\bugs\BugsGame.cpp src\bugs\BugsKeyEventHandler.cpp src\bugs\BugsMouseEventHandler.cpp src\bugs\BugsTextGenerator.cpp src\bugs_VS\stdafx.cpp
-         stdafx.cpp
-         BugsTextGenerator.cpp
-     1>c:\users\public\documents\cse 380 project\hw2\hw2\bugs\src\bugs\bugstextgenerator.cpp(54): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-         BugsMouseEventHandler.cpp
-         BugsKeyEventHandler.cpp
-         BugsGame.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\Bugs\Debug\\" /Fd"C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\Bugs\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\bugs\BugsDataLoader.cpp
          BugsDataLoader.cpp
-         BugsCollisionListener.cpp
-         BugsButtonEventHandler.cpp
-         Generating Code...
        Link:
-         C:\Installation Path\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\Bugs.exe" /INCREMENTAL /NOLOGO d3d9.lib d3dx9.lib winmm.lib PoseurSpriteTypesImporter.lib SimpleSideScrollerFramework.lib tinyxml.lib TMXMapImporter.lib XMLFileImporter.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\Bugs.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\Bugs.lib" /MACHINE:X86 "C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Temp\Bugs\Debug\BugsButtonEventHandler.obj"
-         "C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Temp\Bugs\Debug\BugsCollisionListener.obj"
-         "C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Temp\Bugs\Debug\BugsDataLoader.obj"
-         "C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Temp\Bugs\Debug\BugsGame.obj"
-         "C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Temp\Bugs\Debug\BugsKeyEventHandler.obj"
-         "C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Temp\Bugs\Debug\BugsMouseEventHandler.obj"
-         "C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Temp\Bugs\Debug\BugsTextGenerator.obj"
-         "C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Temp\Bugs\Debug\stdafx.obj"
-         LINK : C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\Bugs.exe not found or not built by the last incremental link; performing full link
-     1>PoseurSpriteTypesImporter.lib(PoseurSpriteTypesImporter.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'PoseurSpriteTypesImporter.lib(PoseurSpriteTypesImporter.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(GameDataLoader.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(GameDataLoader.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(Game.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(Game.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(WStringTable.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(WStringTable.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(GameGraphics.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(GameGraphics.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(RenderList.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(RenderList.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(TextureManager.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(TextureManager.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(BotRecycler.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(BotRecycler.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(RandomJumpingBot.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(RandomJumpingBot.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(OrthographicGridPathfinder.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(OrthographicGridPathfinder.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(CollidableObject.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(CollidableObject.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(Physics.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(Physics.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(AnimatedSprite.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(AnimatedSprite.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(AnimatedSpriteType.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(AnimatedSpriteType.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(SpriteManager.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(SpriteManager.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(TopDownSprite.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(TopDownSprite.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(GameStateManager.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(GameStateManager.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(SparseLayer.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(SparseLayer.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(TiledLayer.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(TiledLayer.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(World.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(World.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(Button.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(Button.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(Cursor.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(Cursor.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(GameGUI.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(GameGUI.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(ScreenGUI.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(ScreenGUI.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(Viewport.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(Viewport.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(GameInput.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(GameInput.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(DirectXGraphics.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(DirectXGraphics.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(DirectXTextureManager.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(DirectXTextureManager.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(WindowsInput.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(WindowsInput.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(WindowsOS.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(WindowsOS.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(WindowsTimer.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(WindowsTimer.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(BufferedTextFileReader.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(BufferedTextFileReader.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(GameText.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(GameText.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(TextFileWriter.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SimpleSideScrollerFramework.lib(TextFileWriter.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>tinyxml.lib(tinystr.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'tinyxml.lib(tinystr.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>tinyxml.lib(tinyxml.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'tinyxml.lib(tinyxml.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>tinyxml.lib(tinyxmlerror.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'tinyxml.lib(tinyxmlerror.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>tinyxml.lib(tinyxmlparser.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'tinyxml.lib(tinyxmlparser.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>TMXMapImporter.lib(TMXMapImporter.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'TMXMapImporter.lib(TMXMapImporter.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>XMLFileImporter.lib(XMLFileImporter.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'XMLFileImporter.lib(XMLFileImporter.obj)' or at 'C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-         Bugs.vcxproj -> C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Apps\Bugs\Bugs.exe
-     1>Done Building Project "C:\Users\Public\Documents\CSE 380 Project\HW2\HW2\Bugs\Bugs.vcxproj" (Build target(s)).
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\yubo\Desktop\380pj\HW2\HW2\Apps\Bugs\Bugs.exe" /INCREMENTAL /NOLOGO d3d9.lib d3dx9.lib winmm.lib PoseurSpriteTypesImporter.lib SimpleSideScrollerFramework.lib tinyxml.lib TMXMapImporter.lib XMLFileImporter.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\yubo\Desktop\380pj\HW2\HW2\Apps\Bugs\Bugs.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\yubo\Desktop\380pj\HW2\HW2\Apps\Bugs\Bugs.lib" /MACHINE:X86 C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\Bugs\Debug\BugsButtonEventHandler.obj
+         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\Bugs\Debug\BugsCollisionListener.obj
+         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\Bugs\Debug\BugsDataLoader.obj
+         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\Bugs\Debug\BugsGame.obj
+         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\Bugs\Debug\BugsKeyEventHandler.obj
+         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\Bugs\Debug\BugsMouseEventHandler.obj
+         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\Bugs\Debug\BugsTextGenerator.obj
+         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\Bugs\Debug\stdafx.obj
+         Bugs.vcxproj -> C:\Users\yubo\Desktop\380pj\HW2\HW2\Apps\Bugs\Bugs.exe
+     1>Done Building Project "C:\Users\yubo\Desktop\380pj\HW2\HW2\Bugs\Bugs.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:27.76
+Time Elapsed 00:00:15.68
