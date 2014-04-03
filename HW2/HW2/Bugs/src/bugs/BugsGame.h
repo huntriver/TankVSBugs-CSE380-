@@ -39,12 +39,16 @@ static const wstring	W_EXIT_COMMAND			= L"Exit";
 static const wstring    W_CREDITS_COMMAND       = L"Credits";
 static const wstring	W_QUIT_COMMAND			= L"Quit";
 static const wstring	W_STATS_COMMAND         = L"Stats";
+static const wstring    W_FIRE_COMMAND          = L"Fire";
+static const wstring    W_FLASH_COMMAND         = L"Flash";
 static const wstring	W_GREEN_CURSOR_PATH		= L"data/gui/cursor/green_cursor.png";
 static const wstring	W_RED_CURSOR_PATH		= L"data/gui/cursor/red_cursor.png";
 static const wstring    W_RED_CURSOR2_PATH		=L"data/gui/cursor/red_cursor2.png";
+static const wstring    W_HAND_CURSOR_PATH		=L"data/gui/cursor/hand_cursor.png";
 static const wstring	W_SPLASH_SCREEN_PATH	= L"data/gui/overlays/spiked_acid_splash_screen_overlay.png";
 static const wstring	W_MAIN_MENU_PATH		= L"data/gui/overlays/spiked_acid_main_menu_overlay.png";
 static const wstring	W_CREDITS_MENU_PATH     = L"data/gui/overlays/spiked_acid_credits_menu_overlay.png";
+static const wstring    W_INGAME_MENU_PATH		= L"data/gui/overlays/tank_ingame_menu_overlay.png";
 static const wstring	W_START_IMAGE_PATH		= L"data/gui/buttons/new_game_button.png";
 static const wstring	W_EXIT_IMAGE_PATH		= L"data/gui/buttons/exit_button.png";
 static const wstring    W_STATS_IMAGE_PATH      = L"data/gui/buttons/stats_button.png";
@@ -54,6 +58,10 @@ static const wstring	W_EXIT_IMAGE_MO_PATH	= L"data/gui/buttons/exit_game_mo.png"
 static const wstring	W_QUIT_IMAGE_PATH		= L"data/gui/buttons/quit.png";
 static const wstring	W_QUIT_IMAGE_MO_PATH	= L"data/gui/buttons/quit_mo.png";
 static const wstring	W_GRID_CELL_SELECTOR_PATH = L"data/gui/overlays/GridCellSelector.png";
+static const wstring    W_FLASH_IMAGE_PATH        = L"data/gui/buttons/flash.png";
+static const wstring    W_FIRE_IMAGE_PATH        = L"data/gui/buttons/fire.png";
+static const wstring    W_FIRE_DISABLED_PATH     = L"data/gui/buttons/fire_disabled.png";
+static const wstring    W_FLASH_DISABLED_PATH    = L"data/gui/buttons/flash_disabled.png";
 
 // FOR OUR SPRITE
 static const wstring	SPRITE_TYPES_DIR = L"data/sprite_types/";

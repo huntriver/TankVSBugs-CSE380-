@@ -50,8 +50,24 @@ Button::~Button()
 */
 void Button::fireEvent(Game *game)
 {
+	if(command.compare(L"Fire") == 0)
+	{
+		if(!disabled){
+			normalTextureID = mouseDisabledTextureID;
+			mouseOverTextureID = mouseDisabledTextureID;
+			disabled = true;
+		}
+	}else if(command.compare(L"Flash") == 0)
+	{
+		if(!disabled){
+			normalTextureID = mouseDisabledTextureID;
+			mouseOverTextureID = mouseDisabledTextureID;
+			disabled = true;
+		}
+	}else{
 	if (eventHandler != NULL)
 		eventHandler->handleButtonEvents(game, command);
+	}
 }
 
 /*
