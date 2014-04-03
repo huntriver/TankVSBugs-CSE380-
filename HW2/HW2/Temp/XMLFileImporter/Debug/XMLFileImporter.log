@@ -1,11 +1,6 @@
-﻿Build started 4/1/2014 11:34:22 PM.
+﻿Build started 4/2/2014 8:28:26 PM.
      1>Project "C:\Users\yubo\Desktop\380pj\HW2\HW2\XMLFileImporter\XMLFileImporter.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\XMLFileImporter\Debug\\" /Fd"C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\XMLFileImporter\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\xmlfi\XMLFileImporter.cpp src\xmlfi_VS\stdafx.cpp
-         stdafx.cpp
-         XMLFileImporter.cpp
-         Generating Code...
-       Lib:
+     1>Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\yubo\Desktop\380pj\HW2\HW2\Common\XMLFileImporter.lib" /NOLOGO C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\XMLFileImporter\Debug\XMLFileImporter.obj
          C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\XMLFileImporter\Debug\stdafx.obj
          XMLFileImporter.vcxproj -> C:\Users\yubo\Desktop\380pj\HW2\HW2\Common\XMLFileImporter.lib
@@ -13,4 +8,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:07.86
+Time Elapsed 00:00:00.52

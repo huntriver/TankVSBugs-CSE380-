@@ -15,7 +15,8 @@
 #include "sssf\gsm\state\GameStateManager.h"
 
 void BugsButtonEventHandler::handleButtonEvents(	Game *game, 
-													wstring command)
+													wstring command
+											    )
 {
 	// THE USER PRESSED THE Exit BUTTON ON THE MAIN MENU,
 	// SO LET'S SHUTDOWN THE ENTIRE APPLICATION

@@ -33,6 +33,8 @@ private:
 
 	// INDEX IN THE GUI TEXTURE MANAGER OF THE MOUSE-OVER BUTTON IMAGE
 	int mouseOverTextureID;
+	int mouseCancelTextureID;
+	int mouseDisabledTextureID;
 
 	// OTHER RENDERING VARIABLES
 	int x;
@@ -42,6 +44,7 @@ private:
 	int width;
 	int height;
 	bool mouseOver;
+	bool disabled;
 
 	// EACH BUTTON HAS A command, AND WHEN WE DETECT A MOUSE CLICK ON THE
 	// BUTTON, WE SEND THE command TO THE eventHandler, WHICH PROVIDES
@@ -53,6 +56,7 @@ public:
 	// INLINED ACCESSOR METHODS
 	int		getNormalTextureID()	{ return normalTextureID;		}
 	int		getMouseOverTextureID()	{ return mouseOverTextureID;	}
+	int     getMouseDisabledTextureID(){ return mouseDisabledTextureID; }
 	int		getX()					{ return x;						}
 	int		getY()					{ return y;						}
 	int		getZ()					{ return z;						}
@@ -60,6 +64,7 @@ public:
 	int		getHeight()				{ return height;				}
 	int		getWidth()				{ return width;					}
 	bool	isMouseOver()			{ return mouseOver;				}
+	bool    isDisabled()            { return disabled;              }
 	wstring	getCommand()			{ return command;				}
 
 	// INLINED MUTATOR METHODS
@@ -83,6 +88,10 @@ public:
 	{ command = changeCommand;						}
 	void setEventHandler(ButtonEventHandler *initEventHandler)
 	{ eventHandler = initEventHandler;				}
+	void setMouseDisabledTextureID(int initMouseDisabledTextureID)
+	{ mouseDisabledTextureID = initMouseDisabledTextureID; }
+	void setIsDisabled(bool initDisabled)
+	{ disabled = initDisabled; }
 
 
 	// METHODS DEFINED IN Button.cpp
