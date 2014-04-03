@@ -140,9 +140,14 @@ void GameGUI::updateGUIState(long mouseX, long mouseY, GameState gameState)
 		gui->setIsMouseButtonOver(false);
 		gui->updateAllButtons(mouseX, mouseY);
 
-		if(gui->isMouseOverButton())
+		if(gui->isMouseOverButton()&&gameState==GS_GAME_IN_PROGRESS)
+		{
+			customCursor->setAttackCounter(0);
+			customCursor->setActiveCursorID(3);
+			
+		}else if(gui->isMouseOverButton()){
 			customCursor->updateAttackMode();
-		else
+		}else
 		{
 			customCursor->setAttackCounter(0);
 			customCursor->setActiveCursorID(0);

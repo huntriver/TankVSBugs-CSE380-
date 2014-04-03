@@ -291,7 +291,7 @@ void BugsDataLoader::initCreditsMenu(GameGUI *gui, DirectXTextureManager *guiTex
 							656,
 							0,
 							255,
-							100,
+							200,
 							50,
 							false,
 							W_GO_TO_MM_COMMAND);
@@ -324,6 +324,9 @@ void BugsDataLoader::initCursor(GameGUI *gui, DirectXTextureManager *guiTextureM
 	imageIDs->push_back(imageID);
 	
 	imageID = guiTextureManager->loadTexture(W_RED_CURSOR2_PATH);
+	imageIDs->push_back(imageID);
+
+	imageID = guiTextureManager->loadTexture(W_HAND_CURSOR_PATH);
 	imageIDs->push_back(imageID);
 
 	// - NOW BUILD AND LOAD THE CURSOR
@@ -399,7 +402,7 @@ void BugsDataLoader::initMainMenu(GameGUI *gui,	DirectXTextureManager *guiTextur
 							520,
 							0,
 							255,
-							100,
+							200,
 							30,
 							false,
 							W_CREDITS_COMMAND);
@@ -472,6 +475,58 @@ void BugsDataLoader::initInGameGUI(GameGUI *gui, DirectXTextureManager *guiTextu
 	// NOW ADD THE IN-GAME GUI
 	ScreenGUI *inGameGUI = new ScreenGUI();
 
+	unsigned int imageID = guiTextureManager->loadTexture(W_INGAME_MENU_PATH);
+	OverlayImage *imageToAdd = new OverlayImage();
+	imageToAdd->x = 0;
+	imageToAdd->y = 0;
+	imageToAdd->z = 0;
+	imageToAdd->alpha = 200;
+	imageToAdd->width = 768;
+	imageToAdd->height = 120;
+	imageToAdd->imageID = imageID;
+	inGameGUI->addOverlayImage(imageToAdd);
+
+	unsigned int normalTextureID = guiTextureManager->loadTexture(W_FIRE_IMAGE_PATH);
+	unsigned int mouseOverTextureID = guiTextureManager->loadTexture(W_FIRE_IMAGE_PATH);
+	unsigned int mouseDisabledTextureID = guiTextureManager->loadTexture(W_FIRE_DISABLED_PATH);
+
+	Button *buttonToAdd = new Button();
+
+	buttonToAdd->initButton(normalTextureID, 
+							mouseOverTextureID,
+							45,
+							45,
+							0,
+							255,
+							45,
+							45,
+							false,
+							W_FIRE_COMMAND);
+	buttonToAdd->setMouseDisabledTextureID(mouseDisabledTextureID);
+	buttonToAdd->setIsDisabled(false);
+	inGameGUI->addButton(buttonToAdd);
+	
+	
+	normalTextureID = guiTextureManager->loadTexture(W_FLASH_IMAGE_PATH);
+	mouseOverTextureID = guiTextureManager->loadTexture(W_FLASH_IMAGE_PATH);
+	mouseDisabledTextureID = guiTextureManager->loadTexture(W_FLASH_DISABLED_PATH);
+	buttonToAdd = new Button();
+	buttonToAdd->initButton(normalTextureID, 
+							mouseOverTextureID,
+							122,
+							45,
+							0,
+							255,
+							45,
+							45,
+							false,
+							W_FLASH_COMMAND);
+	buttonToAdd->setMouseDisabledTextureID(mouseDisabledTextureID);
+	buttonToAdd->setIsDisabled(false);
+	inGameGUI->addButton(buttonToAdd);
+
+
+	/*
 	unsigned int normalTextureID = guiTextureManager->loadTexture(W_QUIT_IMAGE_PATH);
 	unsigned int mouseOverTextureID = guiTextureManager->loadTexture(W_QUIT_IMAGE_MO_PATH);
 
@@ -488,7 +543,7 @@ void BugsDataLoader::initInGameGUI(GameGUI *gui, DirectXTextureManager *guiTextu
 							false,
 							W_QUIT_COMMAND);
 	inGameGUI->addButton(buttonToAdd);
-
+	*/
 	// AND LET'S ADD OUR SCREENS
 	gui->addScreenGUI(GS_GAME_IN_PROGRESS,	inGameGUI);
 }
