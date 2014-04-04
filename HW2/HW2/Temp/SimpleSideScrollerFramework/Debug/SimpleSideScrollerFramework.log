@@ -1,48 +1,63 @@
-﻿Build started 4/3/2014 1:23:18 AM.
-     1>Project "C:\Users\yubo\Desktop\380pj\HW2\HW2\SimpleSideScrollerFramework\SimpleSideScrollerFramework.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\gui\Button.cpp
-         Button.cpp
+﻿Build started 4/3/2014 8:02:47 PM.
+     1>Project "F:\cse 380 final project\HW2\HW2\SimpleSideScrollerFramework\SimpleSideScrollerFramework.vcxproj" on node 2 (Build target(s)).
+     1>InitializeBuildStatus:
+         Touching "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\SimpleSideScrollerFramework.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\platforms\DirectX\DirectXGraphics.cpp
+         DirectXGraphics.cpp
+     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(529): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(530): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(470): warning C4101: 'translationX' : unreferenced local variable
+     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(471): warning C4101: 'translationY' : unreferenced local variable
+     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(689): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(690): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(721): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(722): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(723): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(724): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
        Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\yubo\Desktop\380pj\HW2\HW2\Common\SimpleSideScrollerFramework.lib" /NOLOGO C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameDataLoader.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Game.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\WStringTable.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameGraphics.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\RenderList.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\TextureManager.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\BotRecycler.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\RandomFloatingBot.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\RandomJumpingBot.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\OrthographicGridPathfinder.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\AABB.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\CollidableObject.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Physics.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\AnimatedSprite.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\AnimatedSpriteType.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\SpriteManager.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\TopDownSprite.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameStateManager.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\SparseLayer.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\TiledLayer.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\World.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Button.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Cursor.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameGUI.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\ScreenGUI.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Viewport.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameInput.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\DirectXGraphics.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\DirectXTextureManager.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\WindowsInput.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\WindowsOS.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\WindowsTimer.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\BufferedTextFileReader.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameText.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\TextFileWriter.obj
-         C:\Users\yubo\Desktop\380pj\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\stdafx.obj
-         SimpleSideScrollerFramework.vcxproj -> C:\Users\yubo\Desktop\380pj\HW2\HW2\Common\SimpleSideScrollerFramework.lib
-     1>Done Building Project "C:\Users\yubo\Desktop\380pj\HW2\HW2\SimpleSideScrollerFramework\SimpleSideScrollerFramework.vcxproj" (Build target(s)).
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"F:\cse 380 final project\HW2\HW2\Common\SimpleSideScrollerFramework.lib" /NOLOGO "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameDataLoader.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Game.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\WStringTable.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameGraphics.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\RenderList.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\TextureManager.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\BotRecycler.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\RandomFloatingBot.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\RandomJumpingBot.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\OrthographicGridPathfinder.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\AABB.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\CollidableObject.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Physics.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\AnimatedSprite.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\AnimatedSpriteType.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\SpriteManager.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\TopDownSprite.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameStateManager.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\SparseLayer.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\TiledLayer.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\World.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Button.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Cursor.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameGUI.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\ScreenGUI.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Viewport.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameInput.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\DirectXGraphics.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\DirectXTextureManager.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\WindowsInput.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\WindowsOS.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\WindowsTimer.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\BufferedTextFileReader.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameText.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\TextFileWriter.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\stdafx.obj"
+         SimpleSideScrollerFramework.vcxproj -> F:\cse 380 final project\HW2\HW2\Common\SimpleSideScrollerFramework.lib
+       FinalizeBuildStatus:
+         Deleting file "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\SimpleSideScrollerFramework.unsuccessfulbuild".
+         Touching "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\SimpleSideScrollerFramework.lastbuildstate".
+     1>Done Building Project "F:\cse 380 final project\HW2\HW2\SimpleSideScrollerFramework\SimpleSideScrollerFramework.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:11.54
+Time Elapsed 00:00:03.12
