@@ -294,10 +294,10 @@ void DirectXGraphics::initGraphics(GameOS *os, bool isFullscreen)
 	vector<D3DDISPLAYMODE*> *displayOptions = getDirectXDisplayModes();
 
 	// THESE WILL MAKE UP OUR DESIRED DISPLAY MODE
-	D3DFORMAT formatToUse;
+	D3DFORMAT formatToUse= DEFAULT_COLOR_FORMAT;
 
 	// DOES THE PLAYER HAVE OUR DESIRED FORMAT?
-	if (containsDisplayMode(displayOptions,
+/**	if (containsDisplayMode(displayOptions,
 							DEFAULT_COLOR_FORMAT,
 							screenWidth,
 							screenHeight))
@@ -311,7 +311,7 @@ void DirectXGraphics::initGraphics(GameOS *os, bool isFullscreen)
 		findAlternativeDisplayMode(	displayOptions,
 									formatToUse);
 	}
-
+**/
 	// WE NEED TO FILL OUT A D3DPRESENT_PARAMETERS STRUCTURE WITH OUR
 	// PREFERENCES FOR CREATING OUR GPU DEVICE
 
