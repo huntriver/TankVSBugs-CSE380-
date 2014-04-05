@@ -66,7 +66,7 @@ static const wstring    W_FLASH_DISABLED_PATH    = L"data/gui/buttons/flash_disa
 // FOR OUR SPRITE
 static const wstring	SPRITE_TYPES_DIR = L"data/sprite_types/";
 static const wstring	SPRITE_TYPES_LIST = SPRITE_TYPES_DIR + L"sprite_type_list.xml";
-static const wstring	JUMPING = L"JUMPING";
+static const wstring	WALKING = L"WALKING";
 
 // FOR THE GAME WORLD
 static const float		MAX_VIEWPORT_AXIS_VELOCITY = 20.0f;
