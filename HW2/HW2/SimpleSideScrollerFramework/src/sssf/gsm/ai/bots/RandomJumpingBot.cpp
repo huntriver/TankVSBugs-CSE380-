@@ -18,7 +18,7 @@ RandomJumpingBot::RandomJumpingBot(	unsigned int initMin,
 	cyclesRemainingBeforeThinking = 30;
 	pp.setVelocity(0.0f, 0.0f);
 
-	pickRandomCyclesInRange();
+//	pickRandomCyclesInRange();
 }
 
 /*
@@ -38,7 +38,7 @@ RandomJumpingBot::RandomJumpingBot(	Physics *physics,
 	this->pp.setVelocity(0, 0);
 	
 	//pickRandomJump(physics);
-	pickRandomCyclesInRange();
+//	pickRandomCyclesInRange();
 
 
 }
