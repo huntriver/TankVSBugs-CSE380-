@@ -53,7 +53,10 @@ public:
 	unsigned int		getFrameIndex()		{ return frameIndex;		}
 	AnimatedSpriteType*	getSpriteType()		{ return spriteType;		}
 	bool hasReachedDestination()
-	{	return currentPathNode == currentPathToFollow.end(); }
+
+	{	if (currentPathToFollow.size()==0)
+	    return true;
+		return currentPathNode == currentPathToFollow.end(); }
 
 	// INLINED MUTATOR METHODS
 	void setAlpha(int initAlpha)

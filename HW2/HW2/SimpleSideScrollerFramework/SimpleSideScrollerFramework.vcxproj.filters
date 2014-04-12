@@ -98,12 +98,6 @@
     <ClCompile Include="src\sssf\gsm\ai\BotRecycler.cpp">
       <Filter>src\sssf\gsm\ai</Filter>
     </ClCompile>
-    <ClCompile Include="src\sssf\gsm\ai\bots\RandomFloatingBot.cpp">
-      <Filter>src\sssf\gsm\ai\bots</Filter>
-    </ClCompile>
-    <ClCompile Include="src\sssf\gsm\ai\bots\RandomJumpingBot.cpp">
-      <Filter>src\sssf\gsm\ai\bots</Filter>
-    </ClCompile>
     <ClCompile Include="src\sssf\gsm\ai\pathfinding\OrthographicGridPathfinder.cpp">
       <Filter>src\sssf\gsm\ai\pathfinding</Filter>
     </ClCompile>
@@ -182,6 +176,9 @@
     <ClCompile Include="src\sssf\platforms\Windows\WindowsTimer.cpp">
       <Filter>src\sssf\platforms\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\sssf\gsm\ai\bots\RandomBot.cpp">
+      <Filter>src\sssf\gsm\ai\bots</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\sssf_VS\stdafx.h">
@@ -219,12 +216,6 @@
     </ClInclude>
     <ClInclude Include="src\sssf\gsm\ai\BotRecycler.h">
       <Filter>src\sssf\gsm\ai</Filter>
-    </ClInclude>
-    <ClInclude Include="src\sssf\gsm\ai\bots\RandomFloatingBot.h">
-      <Filter>src\sssf\gsm\ai\bots</Filter>
-    </ClInclude>
-    <ClInclude Include="src\sssf\gsm\ai\bots\RandomJumpingBot.h">
-      <Filter>src\sssf\gsm\ai\bots</Filter>
     </ClInclude>
     <ClInclude Include="src\sssf\gsm\ai\pathfinding\GridPathfinder.h">
       <Filter>src\sssf\gsm\ai\pathfinding</Filter>
@@ -345,6 +336,9 @@
     </ClInclude>
     <ClInclude Include="src\sssf\platforms\Windows\WindowsTimer.h">
       <Filter>src\sssf\platforms\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sssf\gsm\ai\bots\RandomBot.h">
+      <Filter>src\sssf\gsm\ai\bots</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

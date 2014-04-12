@@ -11,6 +11,6 @@ public:
 	~Bot()	{}
 
 	// TO BE DEFINED BY BOT AI CLASSES
-	virtual void think(Game *game)=0;
+	virtual void pickRandomDestination(Game *game)=0;
 	virtual Bot* clone()=0;
 };

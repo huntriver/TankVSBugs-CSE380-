@@ -1,20 +1,12 @@
-﻿Build started 4/3/2014 8:02:47 PM.
+﻿Build started 4/11/2014 10:21:18 PM.
      1>Project "F:\cse 380 final project\HW2\HW2\SimpleSideScrollerFramework\SimpleSideScrollerFramework.vcxproj" on node 2 (Build target(s)).
      1>InitializeBuildStatus:
-         Touching "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\SimpleSideScrollerFramework.unsuccessfulbuild".
+         Creating "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\SimpleSideScrollerFramework.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\platforms\DirectX\DirectXGraphics.cpp
-         DirectXGraphics.cpp
-     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(529): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(530): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(470): warning C4101: 'translationX' : unreferenced local variable
-     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(471): warning C4101: 'translationY' : unreferenced local variable
-     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(689): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(690): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(721): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
-     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(722): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
-     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(723): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
-     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(724): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\gsm\ai\bots\RandomBot.cpp
+         RandomBot.cpp
+     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(76): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(77): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
        Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"F:\cse 380 final project\HW2\HW2\Common\SimpleSideScrollerFramework.lib" /NOLOGO "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameDataLoader.obj"
          "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Game.obj"
@@ -23,8 +15,7 @@
          "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\RenderList.obj"
          "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\TextureManager.obj"
          "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\BotRecycler.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\RandomFloatingBot.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\RandomJumpingBot.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\RandomBot.obj"
          "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\OrthographicGridPathfinder.obj"
          "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\AABB.obj"
          "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\CollidableObject.obj"
@@ -60,4 +51,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.12
+Time Elapsed 00:00:02.30
