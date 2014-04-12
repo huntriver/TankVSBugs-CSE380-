@@ -10,7 +10,7 @@
 // GAME OBJECT INCLUDES
 #include "sssf\game\Game.h"
 #include "sssf\graphics\GameGraphics.h"
-#include "sssf\gsm\ai\bots\RandomJumpingBot.h"
+#include "sssf\gsm\ai\bots\RandomBot.h"
 #include "sssf\gsm\ai\pathfinding\OrthographicGridPathfinder.h"
 #include "sssf\gsm\sprite\TopDownSprite.h"
 #include "sssf\gsm\state\GameState.h"
@@ -204,7 +204,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	// AND LET'S ADD A BUNCH OF RANDOM JUMPING BOTS, FIRST ALONG
 	// A LINE NEAR THE TOP
 	AnimatedSpriteType *botSpriteType = spriteManager->getSpriteType(1);
-	makeRandomJumpingBot(game, botSpriteType, 200, 300);
+	makeRandomBot(game, botSpriteType, 200, 300);
 // UNCOMMENT THE FOLLOWING CODE BLOCK WHEN YOU ARE READY TO ADD SOME BOTS
 /*	for (int i = 2; i <= 26; i++)
 	{
@@ -233,15 +233,15 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 */		
 }
 
-void BugsDataLoader::makeRandomJumpingBot(Game *game, AnimatedSpriteType *randomJumpingBotType, float initX, float initY)
+void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType, float initX, float initY)
 {
 	SpriteManager *spriteManager = game->getGSM()->getSpriteManager();
 	Physics *physics = game->getGSM()->getPhysics();
-	RandomJumpingBot *bot = new RandomJumpingBot(physics, 30, 120, 40);
+	RandomBot *bot = new RandomBot();
 	physics->addCollidableObject(bot);
 	PhysicalProperties *pp = bot->getPhysicalProperties();
 	pp->setPosition(initX, initY);
-	bot->setSpriteType(randomJumpingBotType);
+	bot->setSpriteType(randomBotType);
 	bot->setCurrentState(WALKING);
 	bot->setAlpha(255);
 	spriteManager->addBot(bot);

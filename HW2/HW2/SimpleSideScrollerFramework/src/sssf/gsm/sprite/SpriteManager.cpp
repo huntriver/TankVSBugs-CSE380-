@@ -182,6 +182,8 @@ void SpriteManager::update(Game *game)
 	while (botIterator != bots.end())
 	{
 		Bot *bot = (*botIterator);
+		if (bot->hasReachedDestination())
+			bot->pickRandomDestination(game);
 		pathfinder->updatePath(bot);
 		botIterator++;
 	}
@@ -194,7 +196,6 @@ void SpriteManager::update(Game *game)
 	while (botIterator != bots.end())
 	{
 		Bot *bot = (*botIterator);
-		bot->think(game);
 		bot->updateSprite();
 		botIterator++;
 	}
