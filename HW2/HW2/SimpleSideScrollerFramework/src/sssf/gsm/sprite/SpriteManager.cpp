@@ -11,6 +11,7 @@
 #pragma once
 #include "sssf_VS\stdafx.h"
 #include "sssf\gsm\ai\Bot.h"
+#include "sssf\gsm\ai\bots\RandomBot.h"
 #include "sssf\gsm\physics\PhysicalProperties.h"
 #include "sssf\graphics\GameGraphics.h"
 #include "sssf\gsm\sprite\AnimatedSprite.h"
@@ -175,6 +176,22 @@ Bot* SpriteManager::removeBot(Bot *botToRemove)
 */
 void SpriteManager::update(Game *game)
 {
+	TT++;
+	if (TT%150==0)
+	{
+	   Physics *physics = game->getGSM()->getPhysics();
+       RandomBot *bot = new RandomBot();
+	   physics->addCollidableObject(bot);
+	   PhysicalProperties *pp = bot->getPhysicalProperties();
+	   pp->setPosition(200, 300);
+	   AnimatedSpriteType *botSpriteType = this->getSpriteType(1);
+	   bot->setSpriteType(botSpriteType);
+	bot->setCurrentState(L"WALKING");
+	bot->setAlpha(255);
+	this->addBot(bot);
+	bot->affixTightAABBBoundingVolume();
+
+	}
 	// FIRST LET'S DO THE NECESSARY PATHFINDING
 	pathfinder->updatePath(&player);
 	list<Bot*>::iterator botIterator;
