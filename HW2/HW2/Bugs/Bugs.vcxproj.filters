@@ -74,4 +74,10 @@
       <Filter>src\bugs_VS</Filter>
     </Text>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="lib\box2d.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib\Box2D.lib" />
+  </ItemGroup>
 </Project>

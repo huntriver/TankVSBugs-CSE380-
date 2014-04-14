@@ -37,6 +37,8 @@
 // ANIMATED SPRITE TYPE LOADING
 #include "psti\PoseurSpriteTypesImporter.h"
 
+#include "Box2D\Box2D.h"
+
 /*
 	loadGame - This method loads the setup game data into the game and
 	constructs all the needed objects for the game to work.
@@ -180,6 +182,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 
 	// LET'S MAKE A PLAYER SPRITE
 	// @TODO - LATER WE'LL LOAD ALL LEVEL DATA FROM A FILE
+
 	Physics *physics = gsm->getPhysics();
 	physics->setGravity(W_GRAVITY);
 	TopDownSprite *player = spriteManager->getPlayer();
