@@ -1,12 +1,36 @@
-﻿Build started 4/11/2014 10:21:18 PM.
+﻿Build started 4/13/2014 11:01:46 PM.
      1>Project "F:\cse 380 final project\HW2\HW2\SimpleSideScrollerFramework\SimpleSideScrollerFramework.vcxproj" on node 2 (Build target(s)).
      1>InitializeBuildStatus:
          Creating "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\SimpleSideScrollerFramework.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\gsm\ai\bots\RandomBot.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\game\Game.cpp src\sssf\graphics\GameGraphics.cpp src\sssf\gsm\ai\bots\RandomBot.cpp src\sssf\gsm\ai\pathfinding\OrthographicGridPathfinder.cpp src\sssf\gsm\physics\Physics.cpp src\sssf\gsm\sprite\SpriteManager.cpp src\sssf\gsm\state\GameStateManager.cpp src\sssf\gsm\world\TiledLayer.cpp src\sssf\gsm\world\World.cpp src\sssf\gui\Button.cpp src\sssf\gui\Cursor.cpp src\sssf\gui\GameGUI.cpp src\sssf\gui\ScreenGUI.cpp src\sssf\input\GameInput.cpp src\sssf\platforms\DirectX\DirectXGraphics.cpp src\sssf\platforms\DirectX\DirectXTextureManager.cpp src\sssf\platforms\Windows\WindowsInput.cpp src\sssf\platforms\Windows\WindowsOS.cpp src\sssf\text\GameText.cpp
+         SpriteManager.cpp
+         OrthographicGridPathfinder.cpp
+     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(25): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(26): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(138): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(139): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         Generating Code...
+         Compiling...
+         GameStateManager.cpp
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         GameText.cpp
+         WindowsOS.cpp
+         WindowsInput.cpp
+         DirectXTextureManager.cpp
+         DirectXGraphics.cpp
+         GameInput.cpp
+         ScreenGUI.cpp
+         GameGUI.cpp
+         Cursor.cpp
+         Button.cpp
+         World.cpp
+         TiledLayer.cpp
+         Physics.cpp
          RandomBot.cpp
-     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(76): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(77): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+         GameGraphics.cpp
+         Game.cpp
        Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"F:\cse 380 final project\HW2\HW2\Common\SimpleSideScrollerFramework.lib" /NOLOGO "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameDataLoader.obj"
          "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Game.obj"
@@ -51,4 +75,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.30
+Time Elapsed 00:00:07.86

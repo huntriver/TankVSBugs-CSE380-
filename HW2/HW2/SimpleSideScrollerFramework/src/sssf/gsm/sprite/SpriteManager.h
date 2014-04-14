@@ -40,10 +40,11 @@ private:
 	// THIS GUY HELPS SPRITES FIND THEIR WAY. NOTE THAT IT IS CUSTOMIZABLE, SINCE
 	// WE MAY BE RENDERING AN ORTHOGRAPHIC MAP OR AN ISOMETRIC ONE
 	GridPathfinder *pathfinder;
+	int TT;
 
 public:
 	// NOTHING TO INIT OR DESTROY
-	SpriteManager()		{}
+	SpriteManager()		{TT=0;}
 	~SpriteManager()	{}
 
 	// INLINED ACCESSOR METHODS
