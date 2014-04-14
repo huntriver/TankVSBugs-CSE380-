@@ -1,66 +1,40 @@
 #include "sssf_VS\stdafx.h"
 #include "sssf\game\Game.h"
-#include "sssf\gsm\ai\bots\RandomJumpingBot.h"
+#include "sssf\gsm\ai\bots\RandomBot.h"
 #include "sssf\gsm\state\GameStateManager.h"
 #include "sssf\gsm\physics\Physics.h"
 
-/*
-	This private constructor is only to be used for cloning bots, note
-	that this does not setup the velocity for this bot.
-*/
-RandomJumpingBot::RandomJumpingBot(	unsigned int initMin, 
-										unsigned int initMax, 
-										unsigned int initMaxVelocity)
-{
-	// INIT THE BASIC STUFF
-	initBot(initMin, initMax, initMaxVelocity);
-
-	cyclesRemainingBeforeThinking = 30;
-	pp.setVelocity(0.0f, 0.0f);
-
-//	pickRandomCyclesInRange();
-}
 
 /*
 	This is the public constructor used by other classes for 
 	creating these types of bots.
 */
-RandomJumpingBot::RandomJumpingBot(	Physics *physics,
-										unsigned int initMin, 
-										unsigned int initMax, 
-										unsigned int initMaxVelocity)
+RandomBot::RandomBot()
 {
 	// INIT THE BASIC STUFF
-	initBot(initMin, initMax, initMaxVelocity);
+//	initBot(initMin, initMax, initMaxVelocity);
+	pp.setVelocity(0.0f, 0.0f);
 
 	// AND START THE BOT OFF IN A RANDOM DIRECTION AND VELOCITY
 	// AND WITH RANDOM INTERVAL UNTIL IT THINKS AGAIN
-	this->pp.setVelocity(0, 0);
 	
-	//pickRandomJump(physics);
 //	pickRandomCyclesInRange();
 
 
 }
 
-/*
-	clone - this method makes another RandomJumpingBot object, but does
-	not completely initialize it with similar data to this. Most of the 
-	object, like velocity and position, are left uninitialized.
-*/
-Bot* RandomJumpingBot::clone()
+Bot* RandomBot::clone()
 {
-	RandomJumpingBot *botClone = new RandomJumpingBot(	minCyclesBeforeThinking, 
-															maxCyclesBeforeThinking, 
-															maxVelocity);
+	RandomBot *botClone = new RandomBot();
 	return botClone;
 }
+
 
 /*
 	initBot - this initialization method sets up the basic bot
 	properties, but does not setup its velocity.
 */
-void RandomJumpingBot::initBot(	unsigned int initMin,
+/**void RandomBot::initBot(	unsigned int initMin,
 									unsigned int initMax,
 									unsigned int initMaxVelocity)
 {
@@ -85,38 +59,27 @@ void RandomJumpingBot::initBot(	unsigned int initMin,
 	// AND WE'LL USE THIS TO ENSURE OUR BOTS ALL LOOK A LITTLE DIFFERENT
 	animationRandomizer = (rand() % 45) + 5;
 }
-
+**/
 /*
 	pickRandomCyclesInRange - a randomized method for determining when this bot
 	will think again. This method sets that value.
 */
-void RandomJumpingBot::pickRandomCyclesInRange()
-{
-	cyclesRemainingBeforeThinking = maxCyclesBeforeThinking - minCyclesBeforeThinking + 1;
-	cyclesRemainingBeforeThinking = rand() % cyclesRemainingBeforeThinking;
-	cyclesRemainingBeforeThinking += minCyclesBeforeThinking;
-}
 
 /*
 	pickRandomVelocity - calculates a random velocity vector for this
 	bot and initializes the appropriate instance variables.
 */
-void RandomJumpingBot::pickRandomJump(Physics *physics)
+void RandomBot::pickRandomDestination(Game *game)
 {
-	// FIRST GET A RANDOM float FROM 0.0 TO 1.0
-	float randMax = RAND_MAX;
-	float randReal = (float)rand();
-	float randomReal = randReal/randMax;
-	
-	// NOW SCALE IT FROM 0 TO PI PI
-	float randomAngleInRadians = (randomReal * PI/6.0f) + (PI*2.5f/6.0f);
 
+	game->getGSM()->getWorld()->getWorldWidth();
+	int worldCoordinateX = ((float)rand()/RAND_MAX)*game->getGSM()->getWorld()->getWorldWidth();
+	int worldCoordinateY = ((float)rand()/RAND_MAX)*game->getGSM()->getWorld()->getWorldHeight();
 	// NOW WE CAN SCALE OUR X AND Y VELOCITIES
-	float jumpVelocity = (float)maxVelocity;
-	float jumpVelocityX = jumpVelocity * cos(randomAngleInRadians);
-	float jumpVelocityY = -jumpVelocity * sin(randomAngleInRadians);
-	pp.setVelocity(jumpVelocityX, jumpVelocityY);
-//	pp.setVelocity(0.0f, jumpVelocity);
+	SpriteManager *spriteManager = game->getGSM()->getSpriteManager();
+	GridPathfinder *pathfinder = spriteManager->getPathfinder();
+	pathfinder->mapPath(this, (float)worldCoordinateX, (float)worldCoordinateY);
+
 }
 
 /*
@@ -124,7 +87,7 @@ void RandomJumpingBot::pickRandomJump(Physics *physics)
 	decision-making. Note that we might not actually do any thinking each
 	frame, depending on the value of cyclesRemainingBeforeThinking.
 */
-void RandomJumpingBot::think(Game *game)
+/*void RandomBot::think(Game *game)
 {
 	// EACH FRAME WE'LL TEST THIS BOT TO SEE IF WE NEED
 	// TO PICK A DIFFERENT DIRECTION TO FLOAT IN
@@ -147,4 +110,4 @@ void RandomJumpingBot::think(Game *game)
 		animationCounter++;
 		animationRandomizer = (rand() % 45) + 5;
 	}
-}
+}*/
