@@ -228,10 +228,15 @@ void GameStateManager::unloadCurrentLevel()
 */
 void GameStateManager::update(Game *game)
 {
+	float32 timeStep = 1.0f/60.f;
+	int32 velocityIterations = 8;
+	int32 positionIteration = 3;
 	spriteManager->update(game);
 	world.update(game);
 	if (physics.isActivated() || physics.isActivatedForSingleUpdate())
 	{
-		physics.update(game);
+		//physics.update(game);
 	}
+	//Box2D update
+	world.boxWorld->Step(timeStep, velocityIterations, positionIteration);
 }

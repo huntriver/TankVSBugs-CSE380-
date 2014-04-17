@@ -66,6 +66,10 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 		{
 			game->getGraphics()->togglePathfindingPathShouldBeRendered();
 		}
+		if (input->isKeyDownForFirstTime(SPACE_KEY))
+		{
+			
+		}
 
 		bool viewportMoved = false;
 		float viewportVx = 0.0f;
