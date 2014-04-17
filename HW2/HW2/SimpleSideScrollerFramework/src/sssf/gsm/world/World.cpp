@@ -66,7 +66,46 @@ void World::addWorldRenderItemsToRenderList(Game *game)
 		for (unsigned int i = 0; i < layers->size(); i++)
 		{
 			layers->at(i)->addRenderItemsToRenderList(	renderList,
-														viewport);
+				viewport);
+		}
+	}
+}
+
+void World::initBox2DTiles()
+{
+	//Don't have any gravity, because we're top-down
+	b2Vec2 gravity(0.0f, 0.0f);
+	boxWorld = new b2World(gravity);
+
+	for(unsigned int i = 0; i < layers->size(); i++)
+	{
+		if(layers->at(i)->hasCollidableTiles() == true)
+		{
+			TiledLayer* layer = (TiledLayer*)layers->at(i);
+			int columns = layer->getColumns();
+			int rows = layer->getRows();
+
+			for(int j = 0; j < rows; j++)
+			{
+				for(int z = 0; z < columns; z++)
+				{
+					Tile* tile = layer->getTile(j,z);
+					if(tile->collidable == true)
+					{
+						b2BodyDef tileBodyDef;
+						float tileWidth = (layer->getTileWidth() * 1.0f)/5.0f;
+						float tileHeight = (layer->getTileHeight() * 1.0f)/5.0f;
+						float pX = (z)*tileWidth + tileWidth/2.0f;
+						float pY = -1.0f*(j)*tileHeight - (tileHeight/2.0f);
+
+						tileBodyDef.position.Set(pX, pY);
+						b2Body* tileBody = boxWorld->CreateBody(&tileBodyDef);
+						b2PolygonShape tileBox;
+						tileBox.SetAsBox(tileWidth/2.0f, tileHeight/2.0f);
+						tileBody->CreateFixture(&tileBox, 0.0f);
+					}
+				}
+			}
 		}
 	}
 }
