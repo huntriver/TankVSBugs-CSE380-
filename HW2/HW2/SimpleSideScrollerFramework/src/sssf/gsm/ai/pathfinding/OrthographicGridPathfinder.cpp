@@ -370,7 +370,8 @@ void OrthographicGridPathfinder::updatePath(AnimatedSprite *sprite)
 			sprite->advanceCurrentPathNode();
 			if (sprite->hasReachedDestination())
 			{
-				sprite->getPhysicalProperties()->setVelocity(0.0f, 0.0f);
+				//sprite->getPhysicalProperties()->setVelocity(0.0f, 0.0f);
+				sprite->getB2Body()->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
 				sprite->clearPath();
 				return;
 			}
@@ -379,14 +380,15 @@ void OrthographicGridPathfinder::updatePath(AnimatedSprite *sprite)
 		selectedPathfindingCell.setCenterY(getRowCenterY(node.row));
 		int gridCellWidth = this->getGridWidth();
 		int gridCellHeight = this->getGridHeight();
-		float diffX = getColumnCenterX(node.column) - sprite->getBoundingVolume()->getCenterX();
-		float diffY = getRowCenterY(node.row) - sprite->getBoundingVolume()->getCenterY();
+		float diffX = getColumnCenterX(node.column) - sprite->getB2Body()->GetPosition().x*5.0f;
+		float diffY = getRowCenterY(node.row) - sprite->getB2Body()->GetPosition().y*-5.0f;
 		float distance = sqrt((diffX * diffX) + (diffY * diffY));
 		float unitX = diffX/distance;
 		float unitY = diffY/distance;
 		float vX = unitX * MAX_WALK_SPEED;
 		float vY = unitY * MAX_WALK_SPEED;
-		sprite->getPhysicalProperties()->setVelocity(vX, vY);
+		//sprite->getPhysicalProperties()->setVelocity(vX, vY);
+		sprite->getB2Body()->SetLinearVelocity(b2Vec2(vX, -1.0f*vY));
 		sprite->setCurrentState(L"WALKING");
 	}
 	else
@@ -398,8 +400,8 @@ void OrthographicGridPathfinder::updatePath(AnimatedSprite *sprite)
 bool OrthographicGridPathfinder::hasReachedNode(AnimatedSprite *sprite, PathNode destination)
 {
 	AABB *spriteAABB = sprite->getBoundingVolume();
-	float xDiff = fabs(spriteAABB->getCenterX() - getColumnCenterX(destination.column));
-	float yDiff = fabs(spriteAABB->getCenterY() - getRowCenterY(destination.row));
+	float xDiff = fabs(sprite->getB2Body()->GetPosition().x*5.0f - getColumnCenterX(destination.column));
+	float yDiff = fabs(-1.0f*sprite->getB2Body()->GetPosition().y*5.0f - getRowCenterY(destination.row));
 	bool xReached = xDiff < GRID_EPSILON;
 	bool yReached = yDiff < GRID_EPSILON;
 	return xReached && yReached;
@@ -422,7 +424,7 @@ float OrthographicGridPathfinder::getRowCenterY(int row)
 void OrthographicGridPathfinder::mapPath(AnimatedSprite *sprite, float worldX, float worldY)
 {
 	list<PathNode> *path = sprite->getCurrentPathToFollow();
-	buildPath(path, sprite->getBoundingVolume()->getCenterX(), sprite->getBoundingVolume()->getCenterY(), worldX, worldY);
+	buildPath(path, sprite->getB2Body()->GetPosition().x*5.0f, sprite->getB2Body()->GetPosition().y * -5.0f , worldX, worldY);
 	sprite->resetCurrentPathNode();
 }
 
