@@ -2,9 +2,9 @@
 
 #include "sssf_VS\stdafx.h"
 #include "sssf\game\Game.h"
-#include "sssf\gsm\sprite\AnimatedSprite.h"
+#include "sssf\gsm\sprite\TopDownSprite.h"
 
-class Bot : public AnimatedSprite
+class Bot : public TopDownSprite
 {
 public:
 	Bot()	{}

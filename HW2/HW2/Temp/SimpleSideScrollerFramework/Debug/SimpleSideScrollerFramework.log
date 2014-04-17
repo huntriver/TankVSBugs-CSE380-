@@ -1,78 +1,101 @@
-﻿Build started 4/13/2014 11:01:46 PM.
-     1>Project "F:\cse 380 final project\HW2\HW2\SimpleSideScrollerFramework\SimpleSideScrollerFramework.vcxproj" on node 2 (Build target(s)).
-     1>InitializeBuildStatus:
-         Creating "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\SimpleSideScrollerFramework.unsuccessfulbuild" because "AlwaysCreate" was specified.
-       ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\game\Game.cpp src\sssf\graphics\GameGraphics.cpp src\sssf\gsm\ai\bots\RandomBot.cpp src\sssf\gsm\ai\pathfinding\OrthographicGridPathfinder.cpp src\sssf\gsm\physics\Physics.cpp src\sssf\gsm\sprite\SpriteManager.cpp src\sssf\gsm\state\GameStateManager.cpp src\sssf\gsm\world\TiledLayer.cpp src\sssf\gsm\world\World.cpp src\sssf\gui\Button.cpp src\sssf\gui\Cursor.cpp src\sssf\gui\GameGUI.cpp src\sssf\gui\ScreenGUI.cpp src\sssf\input\GameInput.cpp src\sssf\platforms\DirectX\DirectXGraphics.cpp src\sssf\platforms\DirectX\DirectXTextureManager.cpp src\sssf\platforms\Windows\WindowsInput.cpp src\sssf\platforms\Windows\WindowsOS.cpp src\sssf\text\GameText.cpp
-         SpriteManager.cpp
-         OrthographicGridPathfinder.cpp
-     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(25): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(26): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(138): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(139): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-         Generating Code...
-         Compiling...
-         GameStateManager.cpp
-         Generating Code...
-         Skipping... (no relevant changes detected)
+﻿Build started 2014/4/16 20:53:05.
+     1>Project "E:\cse 380 project\HW2\HW2\SimpleSideScrollerFramework\SimpleSideScrollerFramework.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\data_loader\GameDataLoader.cpp src\sssf\game\Game.cpp src\sssf\game\WStringTable.cpp src\sssf\graphics\GameGraphics.cpp src\sssf\graphics\RenderList.cpp src\sssf\graphics\TextureManager.cpp src\sssf\gsm\ai\BotRecycler.cpp src\sssf\gsm\ai\bots\RandomBot.cpp src\sssf\gsm\ai\pathfinding\OrthographicGridPathfinder.cpp src\sssf\gsm\physics\AABB.cpp src\sssf\gsm\physics\CollidableObject.cpp src\sssf\gsm\physics\Physics.cpp src\sssf\gsm\sprite\AnimatedSprite.cpp src\sssf\gsm\sprite\AnimatedSpriteType.cpp src\sssf\gsm\sprite\SpriteManager.cpp src\sssf\gsm\sprite\TopDownSprite.cpp src\sssf\gsm\state\GameStateManager.cpp src\sssf\gsm\world\SparseLayer.cpp src\sssf\gsm\world\TiledLayer.cpp src\sssf\gsm\world\World.cpp src\sssf\gui\Button.cpp src\sssf\gui\Cursor.cpp src\sssf\gui\GameGUI.cpp src\sssf\gui\ScreenGUI.cpp src\sssf\gui\Viewport.cpp src\sssf\input\GameInput.cpp src\sssf\platforms\DirectX\DirectXGraphics.cpp src\sssf\platforms\DirectX\DirectXTextureManager.cpp src\sssf\platforms\Windows\WindowsInput.cpp src\sssf\platforms\Windows\WindowsOS.cpp src\sssf\platforms\Windows\WindowsTimer.cpp src\sssf\text\BufferedTextFileReader.cpp src\sssf\text\GameText.cpp src\sssf\text\TextFileWriter.cpp src\sssf_VS\stdafx.cpp
+         stdafx.cpp
+         TextFileWriter.cpp
          GameText.cpp
+         BufferedTextFileReader.cpp
+         WindowsTimer.cpp
          WindowsOS.cpp
          WindowsInput.cpp
          DirectXTextureManager.cpp
          DirectXGraphics.cpp
+     1>e:\cse 380 project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(529): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>e:\cse 380 project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(530): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>e:\cse 380 project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(470): warning C4101: 'translationX' : unreferenced local variable
+     1>e:\cse 380 project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(471): warning C4101: 'translationY' : unreferenced local variable
+     1>e:\cse 380 project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(689): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>e:\cse 380 project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(690): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>e:\cse 380 project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(721): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>e:\cse 380 project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(722): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>e:\cse 380 project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(723): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>e:\cse 380 project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(724): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
          GameInput.cpp
+         Viewport.cpp
          ScreenGUI.cpp
          GameGUI.cpp
          Cursor.cpp
          Button.cpp
          World.cpp
          TiledLayer.cpp
+         SparseLayer.cpp
+         GameStateManager.cpp
+         TopDownSprite.cpp
+         Generating Code...
+         Compiling...
+         SpriteManager.cpp
+         AnimatedSpriteType.cpp
+         AnimatedSprite.cpp
          Physics.cpp
+         CollidableObject.cpp
+         AABB.cpp
+         OrthographicGridPathfinder.cpp
+     1>e:\cse 380 project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(25): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>e:\cse 380 project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(26): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>e:\cse 380 project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(138): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>e:\cse 380 project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(139): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
          RandomBot.cpp
+     1>e:\cse 380 project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(76): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>e:\cse 380 project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(77): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+         BotRecycler.cpp
+         TextureManager.cpp
+         RenderList.cpp
          GameGraphics.cpp
+         WStringTable.cpp
          Game.cpp
+         GameDataLoader.cpp
+         Generating Code...
+     1>e:\cse 380 project\hw2\hw2\simplesidescrollerframework\src\sssf\graphics\renderlist.cpp(104): warning C4715: 'RenderList::next' : not all control paths return a value
        Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"F:\cse 380 final project\HW2\HW2\Common\SimpleSideScrollerFramework.lib" /NOLOGO "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameDataLoader.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Game.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\WStringTable.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameGraphics.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\RenderList.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\TextureManager.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\BotRecycler.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\RandomBot.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\OrthographicGridPathfinder.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\AABB.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\CollidableObject.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Physics.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\AnimatedSprite.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\AnimatedSpriteType.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\SpriteManager.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\TopDownSprite.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameStateManager.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\SparseLayer.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\TiledLayer.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\World.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Button.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Cursor.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameGUI.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\ScreenGUI.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Viewport.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameInput.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\DirectXGraphics.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\DirectXTextureManager.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\WindowsInput.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\WindowsOS.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\WindowsTimer.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\BufferedTextFileReader.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameText.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\TextFileWriter.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\stdafx.obj"
-         SimpleSideScrollerFramework.vcxproj -> F:\cse 380 final project\HW2\HW2\Common\SimpleSideScrollerFramework.lib
-       FinalizeBuildStatus:
-         Deleting file "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\SimpleSideScrollerFramework.unsuccessfulbuild".
-         Touching "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\SimpleSideScrollerFramework.lastbuildstate".
-     1>Done Building Project "F:\cse 380 final project\HW2\HW2\SimpleSideScrollerFramework\SimpleSideScrollerFramework.vcxproj" (Build target(s)).
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"E:\cse 380 project\HW2\HW2\Common\SimpleSideScrollerFramework.lib" /NOLOGO "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameDataLoader.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Game.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\WStringTable.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameGraphics.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\RenderList.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\TextureManager.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\BotRecycler.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\RandomBot.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\OrthographicGridPathfinder.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\AABB.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\CollidableObject.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Physics.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\AnimatedSprite.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\AnimatedSpriteType.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\SpriteManager.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\TopDownSprite.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameStateManager.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\SparseLayer.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\TiledLayer.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\World.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Button.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Cursor.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameGUI.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\ScreenGUI.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Viewport.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameInput.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\DirectXGraphics.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\DirectXTextureManager.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\WindowsInput.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\WindowsOS.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\WindowsTimer.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\BufferedTextFileReader.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameText.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\TextFileWriter.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\stdafx.obj"
+         SimpleSideScrollerFramework.vcxproj -> E:\cse 380 project\HW2\HW2\Common\SimpleSideScrollerFramework.lib
+     1>Done Building Project "E:\cse 380 project\HW2\HW2\SimpleSideScrollerFramework\SimpleSideScrollerFramework.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:07.86
+Time Elapsed 00:02:43.48
