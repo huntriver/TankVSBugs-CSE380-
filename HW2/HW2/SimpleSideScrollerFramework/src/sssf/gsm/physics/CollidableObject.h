@@ -2,6 +2,7 @@
 #include "sssf_VS\stdafx.h"
 #include "sssf\gsm\physics\AABB.h"
 #include "sssf\gsm\physics\PhysicalProperties.h"
+#include "Box2D\Box2D.h"
 
 // THESE ARE THE SWEEP AND PRUNE ORDERINGS
 const unsigned int LEFT_EDGE = 0;
@@ -20,6 +21,7 @@ protected:
 	bool onTileThisFrame;
 	bool onTileLastFrame;
 	unsigned int collisionEdge;
+	b2Body* body;
 
 public:
 	CollidableObject()	{}
@@ -35,6 +37,7 @@ public:
 	AABB*				getBoundingVolume()			{ return &boundingVolume;		}
 	AABB*				getSweptShape()				{ return &sweptShape;			}
 	PhysicalProperties* getPhysicalProperties()		{ return &pp;					}
+	b2Body*				getB2Body()					{ return body;                  }
 	unsigned int		getCollisionEdge()			{ return collisionEdge;			}
 
 	void				setCollisionEdge(unsigned int initCollisionEdge)
@@ -50,7 +53,10 @@ public:
 	{	onTileThisFrame = initOnTileThisFrame; }
 	void setOnTileLastFrame(bool initOnTileLastFrame)
 	{	onTileLastFrame = initOnTileLastFrame; }
-
+	void setB2Body(b2Body* initBody)
+	{
+		body = initBody;
+	}
 	void advanceOnTileStatus()
 	{
 		onTileLastFrame = onTileThisFrame;

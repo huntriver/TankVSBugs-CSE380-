@@ -176,6 +176,8 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	SpriteManager *spriteManager = gsm->getSpriteManager();
 	spriteManager->setPathfinder(pathfinder);
 
+	world->initBox2DTiles();
+
 	// LOAD THE LEVEL'S SPRITE IMAGES
 	PoseurSpriteTypesImporter psti;
 	psti.loadSpriteTypes(game, SPRITE_TYPES_LIST);
@@ -194,12 +196,38 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	player->setSpriteType(playerSpriteType);
 	player->setAlpha(255);
 	player->setCurrentState(IDLE);
+	/*
 	PhysicalProperties *playerProps = player->getPhysicalProperties();
 	playerProps->setX(PLAYER_INIT_X);
 	playerProps->setY(PLAYER_INIT_Y);
 	playerProps->setVelocity(0.0f, 0.0f);
 	playerProps->setAccelerationX(0);
 	playerProps->setAccelerationY(0);
+	*/
+	b2BodyDef bodyDef;
+	bodyDef.type = b2_dynamicBody;
+	bodyDef.position.Set(150.0f/5.0f, -305.0f/5.0f);
+	b2Body* body = (world->boxWorld)->CreateBody(&bodyDef);
+
+	// Define another box shape for our dynamic body.
+	b2PolygonShape dynamicBox;
+	dynamicBox.SetAsBox(32.0f/5.0f, 32.0f/5.0f);
+
+	// Define the dynamic body fixture.
+	b2FixtureDef fixtureDef;
+	fixtureDef.shape = &dynamicBox;
+
+	// Set the box density to be non-zero, so it will be dynamic.
+	 fixtureDef.density = 1.0f;
+
+	// Override the default friction.
+	 fixtureDef.friction = 0.3f;
+
+	// Add the shape to the body.
+	body->SetLinearVelocity(b2Vec2(0.0f,0.0f));
+	body->CreateFixture(&fixtureDef);
+	player->setB2Body(body);
+
 	player->setOnTileThisFrame(false);
 	player->setOnTileLastFrame(false);
 	player->affixTightAABBBoundingVolume();
