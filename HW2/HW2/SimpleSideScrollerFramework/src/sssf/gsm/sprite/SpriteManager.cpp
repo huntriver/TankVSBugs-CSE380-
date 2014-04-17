@@ -30,13 +30,14 @@ void SpriteManager::addSpriteToRenderList(AnimatedSprite *sprite,
 {
 	// GET THE SPRITE TYPE INFO FOR THIS SPRITE
 	AnimatedSpriteType *spriteType = sprite->getSpriteType();
+	b2Body* body = sprite->getB2Body();
 	PhysicalProperties *pp = sprite->getPhysicalProperties();
 	float rotation = sprite->getRotationInRadians();
 
 	// IS THE SPRITE VIEWABLE?
 	if (viewport->areWorldCoordinatesInViewport(	
-									pp->getX(),
-									pp->getY(),
+									body->GetPosition().x * 5.0f,
+									(-1)*(body->GetPosition().y * 5.0f),
 									spriteType->getTextureWidth(),
 									spriteType->getTextureHeight()))
 	{
@@ -44,9 +45,9 @@ void SpriteManager::addSpriteToRenderList(AnimatedSprite *sprite,
 		RenderItem itemToAdd;
 		itemToAdd.id = sprite->getFrameIndex();
 		renderList->addRenderItem(	sprite->getCurrentImageID(),
-									pp->round(pp->getX()-viewport->getViewportX()),
-									pp->round(pp->getY()-viewport->getViewportY()),
-									pp->round(pp->getZ()),
+			pp->round((body->GetPosition().x)*5.0f-spriteType->getTextureWidth()/2-viewport->getViewportX()),
+									pp->round((-1)*(body->GetPosition().y)*5.0f-spriteType->getTextureHeight()/2-viewport->getViewportY()),
+									0,
 									sprite->getAlpha(),
 									spriteType->getTextureWidth(),
 									spriteType->getTextureHeight(),
