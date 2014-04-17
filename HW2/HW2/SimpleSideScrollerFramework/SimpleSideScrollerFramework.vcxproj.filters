@@ -346,5 +346,8 @@
     <ClInclude Include="src\sssf\platforms\Windows\WindowsTimer.h">
       <Filter>src\sssf\platforms\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="src\sssf\gsm\ai\bots\Bullet.h">
+      <Filter>src\sssf\gsm\ai\bots</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

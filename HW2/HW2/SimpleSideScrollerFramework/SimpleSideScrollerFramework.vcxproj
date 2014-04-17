@@ -62,6 +62,7 @@
     <ClInclude Include="src\sssf\graphics\TextureManager.h" />
     <ClInclude Include="src\sssf\gsm\ai\Bot.h" />
     <ClInclude Include="src\sssf\gsm\ai\BotRecycler.h" />
+    <ClInclude Include="src\sssf\gsm\ai\bots\Bullet.h" />
     <ClInclude Include="src\sssf\gsm\ai\bots\RandomFloatingBot.h" />
     <ClInclude Include="src\sssf\gsm\ai\bots\RandomJumpingBot.h" />
     <ClInclude Include="src\sssf\gsm\ai\pathfinding\GridPathfinder.h" />
@@ -149,11 +150,16 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>./</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>./lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Box2D.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
