@@ -23,6 +23,8 @@
 #include "sssf\text\TextGenerator.h"
 #include "sssf\timer\GameTimer.h"
 
+#include "Box2D\Box2D.h"
+
 /*
 	Game  - Constructor, this method begins the 
 	construction and loading of all major game objects. 

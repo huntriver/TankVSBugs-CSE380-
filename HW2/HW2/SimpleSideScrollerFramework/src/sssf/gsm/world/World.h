@@ -21,6 +21,7 @@
 #include "sssf\data_loader\GameDataLoader.h"
 #include "sssf\graphics\RenderList.h"
 #include "sssf\gsm\world\WorldLayer.h"
+#include "Box2D\Box2D.h"
 
 class Game;
 class SpriteManager;
@@ -38,7 +39,9 @@ private:
 	// THESE ARE THE BACKGROUND LAYERS
 	vector<WorldLayer*> *layers;
 
+
 public:
+	b2World* boxWorld;
 	// INLINED ACCESSOR METHODS
 	vector<WorldLayer*>*	getLayers()	{ return layers;				}
 	int						getNumLayers() { return layers->size(); }
@@ -62,4 +65,5 @@ public:
 	bool	isInsideCollidableTile(int centerX, int centerY);
 	void	unloadWorld();
 	void	update(Game *game);
+	void    initBox2DTiles();
 };
