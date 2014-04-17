@@ -234,8 +234,8 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 
 	// AND LET'S ADD A BUNCH OF RANDOM JUMPING BOTS, FIRST ALONG
 	// A LINE NEAR THE TOP
-	AnimatedSpriteType *botSpriteType = spriteManager->getSpriteType(1);
-	makeRandomBot(game, botSpriteType, 200, 300);
+//	AnimatedSpriteType *botSpriteType = spriteManager->getSpriteType(1);
+//	makeRandomBot(game, botSpriteType, 200, 300);
 // UNCOMMENT THE FOLLOWING CODE BLOCK WHEN YOU ARE READY TO ADD SOME BOTS
 /*	for (int i = 2; i <= 26; i++)
 	{

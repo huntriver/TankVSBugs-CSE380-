@@ -32,4 +32,10 @@
       <Filter>src\tmxmi_VS</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib\Box2D.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lib\box2d.pdb" />
+  </ItemGroup>
 </Project>
