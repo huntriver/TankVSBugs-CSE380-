@@ -25,6 +25,7 @@
 */
 GameGraphics::GameGraphics()
 {
+	pathfindingPathShouldBeRendered=false;
 	debugTextShouldBeRendered = false;
 	pathfindingGridShouldBeRendered = false;
 }

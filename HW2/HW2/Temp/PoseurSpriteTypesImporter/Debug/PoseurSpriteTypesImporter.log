@@ -1,6 +1,11 @@
-﻿Build started 2014/4/16 21:49:09.
+﻿Build started 2014/4/16 23:58:17.
      1>Project "E:\cse 380 project\HW2\HW2\PoseurSpriteTypesImporter\PoseurSpriteTypesImporter.vcxproj" on node 2 (Build target(s)).
-     1>Lib:
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I./ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"E:\cse 380 project\HW2\HW2\Temp\PoseurSpriteTypesImporter\Debug\\" /Fd"E:\cse 380 project\HW2\HW2\Temp\PoseurSpriteTypesImporter\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\psti\PoseurSpriteTypesImporter.cpp src\psti_VS\stdafx.cpp
+         stdafx.cpp
+         PoseurSpriteTypesImporter.cpp
+         Generating Code...
+       Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"E:\cse 380 project\HW2\HW2\Common\PoseurSpriteTypesImporter.lib" Box2D.lib /LIBPATH:./lib /NOLOGO "E:\cse 380 project\HW2\HW2\Temp\PoseurSpriteTypesImporter\Debug\PoseurSpriteTypesImporter.obj"
          "E:\cse 380 project\HW2\HW2\Temp\PoseurSpriteTypesImporter\Debug\stdafx.obj"
          lib\Box2D.lib
@@ -460,4 +465,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.82
+Time Elapsed 00:00:04.14

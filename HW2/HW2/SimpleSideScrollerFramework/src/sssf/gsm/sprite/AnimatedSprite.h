@@ -19,6 +19,7 @@
 
 class AnimatedSprite : public CollidableObject
 {
+
 protected:
 	// SPRITE TYPE FOR THIS SPRITE. THE SPRITE TYPE IS THE ID
 	// OF AN AnimatedSpriteType OBJECT AS STORED IN THE SpriteManager
@@ -43,9 +44,10 @@ protected:
 	// CURRENT PATH TO FOLLOW
 	list<PathNode> currentPathToFollow;
 	list<PathNode>::iterator currentPathNode;
-
+	
 public:
 	// INLINED ACCESSOR METHODS
+	bool dead;
 	int					getAlpha()			{ return alpha;				}
 	list<PathNode>*		getCurrentPathToFollow() { return &currentPathToFollow; }
 	list<PathNode>::iterator getCurrentPathNode() { return currentPathNode; }
@@ -75,6 +77,7 @@ public:
 	// METHODS DEFINED IN AnimatedSprite.cpp
 	AnimatedSprite();
 	~AnimatedSprite();
+
 	void changeFrame();
 	unsigned int getCurrentImageID();
 	void setCurrentState(wstring newState);

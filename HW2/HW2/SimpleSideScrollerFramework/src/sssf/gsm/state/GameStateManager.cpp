@@ -239,4 +239,5 @@ void GameStateManager::update(Game *game)
 	}
 	//Box2D update
 	world.boxWorld->Step(timeStep, velocityIterations, positionIteration);
+	
 }

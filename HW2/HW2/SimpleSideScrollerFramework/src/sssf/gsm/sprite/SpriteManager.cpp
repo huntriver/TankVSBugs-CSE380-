@@ -178,7 +178,7 @@ update method such that they may update themselves.
 void SpriteManager::update(Game *game)
 {
 
-	if (TT%150==0)
+	if (bots.size()<0)
 	{
 		//Physics *physics = game->getGSM()->getPhysics();
 		RandomBot *bot = new RandomBot();
@@ -187,13 +187,13 @@ void SpriteManager::update(Game *game)
 		//pp->setPosition(200, 300);
 		AnimatedSpriteType *botSpriteType = this->getSpriteType(1);
 		bot->setSpriteType(botSpriteType);
-		bot->setCurrentState(L"WALKING");
+		bot->setCurrentState(L"IDLE");
 		bot->setAlpha(255);
 		this->addBot(bot);
 
 		b2BodyDef bodyDef;
 		bodyDef.type = b2_dynamicBody;
-		bodyDef.position.Set(200.0f/5.0f, -300.0f/5.0f);
+		bodyDef.position.Set(200.0f/5.0f, -400.0f/5.0f);
 		b2Body* body = (game->getGSM()->getWorld()->boxWorld)->CreateBody(&bodyDef);
 
 		// Define another box shape for our dynamic body.
@@ -214,7 +214,7 @@ void SpriteManager::update(Game *game)
 		body->SetLinearVelocity(b2Vec2(0.0f,0.0f));
 		body->CreateFixture(&fixtureDef);
 		bot->setB2Body(body);
-
+		body->SetUserData(bot);
 
 		//bot->affixTightAABBBoundingVolume();
 	}
@@ -226,8 +226,14 @@ void SpriteManager::update(Game *game)
 	while (botIterator != bots.end())
 	{
 		Bot *bot = (*botIterator);
-		if (bot->hasReachedDestination())
-			bot->pickRandomDestination(game);
+		if (bot->dead){
+			botIterator=bots.erase(botIterator);
+			if (botIterator==bots.end()) break;
+			bot = (*botIterator);
+		}
+		if (botIterator==bots.end()) break;
+		//if (bot->hasReachedDestination())
+			//bot->pickRandomDestination(game);
 		pathfinder->updatePath(bot);
 		botIterator++;
 	}
