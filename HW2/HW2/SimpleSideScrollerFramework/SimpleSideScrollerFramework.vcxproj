@@ -105,6 +105,12 @@
     <ClInclude Include="src\sssf_VS\stdafx.h" />
     <ClInclude Include="src\sssf_VS\targetver.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib\Box2D.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lib\box2d.pdb" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{6A8E84CB-7249-4DD5-AD55-E152664974FD}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -147,11 +153,16 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>./</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>Box2D.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>./lib</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
