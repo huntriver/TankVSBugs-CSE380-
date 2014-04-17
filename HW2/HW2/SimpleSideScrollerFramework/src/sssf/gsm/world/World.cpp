@@ -76,8 +76,7 @@ void World::initBox2DTiles()
 	//Don't have any gravity, because we're top-down
 	b2Vec2 gravity(0.0f, 0.0f);
 	boxWorld = new b2World(gravity);
-
-	for(unsigned int i = 0; i < layers->size(); i++)
+for(unsigned int i = 0; i < layers->size(); i++)
 	{
 		if(layers->at(i)->hasCollidableTiles() == true)
 		{

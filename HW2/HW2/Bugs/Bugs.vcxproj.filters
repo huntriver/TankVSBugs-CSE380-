@@ -68,6 +68,9 @@
     <ClInclude Include="src\bugs_VS\targetver.h">
       <Filter>src\bugs_VS</Filter>
     </ClInclude>
+    <ClInclude Include="src\bugs\box2DContactListener.h">
+      <Filter>src\bugs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\bugs_VS\ReadMe.txt">

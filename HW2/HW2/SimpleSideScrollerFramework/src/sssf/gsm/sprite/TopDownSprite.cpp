@@ -39,4 +39,14 @@ void TopDownSprite::updateSprite()
 				rotationInRadians -= PI;
 		}
 	}
+	//body->set
+}
+void TopDownSprite::beginContact(){
+	if (this->getSpriteType()->getSpriteTypeID()==0)
+		return;
+//	this->clearPath();
+//	body->SetLinearVelocity(b2Vec2(-body->GetLinearVelocity().x,-body->GetLinearVelocity().y));
+//	this->setCurrentState(L"DEAD");
+	dead=true;
+
 }

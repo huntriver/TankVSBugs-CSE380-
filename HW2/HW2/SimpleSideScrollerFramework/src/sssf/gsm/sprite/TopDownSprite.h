@@ -14,4 +14,5 @@ public:
 	void setRotationInRadians(float initRotation)
 	{ rotationInRadians = initRotation; }
 	void updateSprite();
+	void beginContact();
 };

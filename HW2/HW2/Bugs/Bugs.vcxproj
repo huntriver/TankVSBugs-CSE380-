@@ -21,6 +21,7 @@
     <ClCompile Include="src\bugs_VS\stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\bugs\box2DContactListener.h" />
     <ClInclude Include="src\bugs\BugsButtonEventHandler.h" />
     <ClInclude Include="src\bugs\BugsCollisionListener.h" />
     <ClInclude Include="src\bugs\BugsDataLoader.h" />
