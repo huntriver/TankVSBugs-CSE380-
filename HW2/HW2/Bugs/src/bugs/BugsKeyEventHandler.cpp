@@ -24,6 +24,7 @@
 #include "sssf\input\GameInput.h"
 #include "sssf\timer\GameTimer.h"
 #include "sssf\platforms\Windows\WindowsTimer.h"
+#include "Box2D\Box2D.h"
 
 /*
 	handleKeyEvent - this method handles all keyboard interactions. Note that every frame this method
@@ -39,12 +40,16 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 	// LET'S GET THE PLAYER'S PHYSICAL PROPERTIES, IN CASE WE WANT TO CHANGE THEM
 	GameStateManager *gsm = game->getGSM();
 	AnimatedSprite *player = gsm->getSpriteManager()->getPlayer();
-	PhysicalProperties *pp = player->getPhysicalProperties();
+	b2Body* body=player->getB2Body();
+	//PhysicalProperties *pp = player->getPhysicalProperties();
 	Viewport *viewport = game->getGUI()->getViewport();
 	
 	// IF THE GAME IS IN PROGRESS
 	if (gsm->isGameInProgress())
 	{
+		float vX = body->GetLinearVelocity().x;
+		float vY = body->GetLinearVelocity().y;
+
 		if (input->isKeyDownForFirstTime(P_KEY))
 		{
 			gsm->getPhysics()->togglePhysics();
@@ -76,28 +81,51 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 		float viewportVy = 0.0f;
 		if (input->isKeyDown(UP_KEY))
 		{
-			viewportVy -= MAX_VIEWPORT_AXIS_VELOCITY;
-			viewportMoved = true;
+		//	viewportVy -= MAX_VIEWPORT_AXIS_VELOCITY;
+		//	viewportMoved = true;
+			vX=0.0f;
+			vY=60.0f;
 		}
+		else
 		if (input->isKeyDown(DOWN_KEY))
 		{
-			viewportVy += MAX_VIEWPORT_AXIS_VELOCITY;
-			viewportMoved = true;
+			//viewportVy += MAX_VIEWPORT_AXIS_VELOCITY;
+			//viewportMoved = true;
+			vX=0.0f;
+			vY=-60.0f;
 		}
+		else
 		if (input->isKeyDown(LEFT_KEY))
 		{
-			viewportVx -= MAX_VIEWPORT_AXIS_VELOCITY;
-			viewportMoved = true;
+		//	viewportVx -= MAX_VIEWPORT_AXIS_VELOCITY;
+		//	viewportMoved = true;
+			vX=-60.0f;
+			vY=0.0f;
 		}
+		else
 		if (input->isKeyDown(RIGHT_KEY))
 		{
-			viewportVx += MAX_VIEWPORT_AXIS_VELOCITY;
-			viewportMoved = true;
+			//viewportVx += MAX_VIEWPORT_AXIS_VELOCITY;
+			//viewportMoved = true;
+			vX=60.0f;
+			vY=0.0f;
 		}
-		if (viewportMoved)
-			viewport->moveViewport((int)floor(viewportVx+0.5f), (int)floor(viewportVy+0.5f), game->getGSM()->getWorld()->getWorldWidth(), game->getGSM()->getWorld()->getWorldHeight());
+		else
+					
+		{
+			vX=0.0f;
+			vY = 0.0f;
+		//	if (player->getCurrentState()!=L"DEAD")
+		//	  player->setCurrentState(IDLE);
+		}
+	//	if (viewportMoved)
+		viewportVx+=vX/12.0f;
+		viewportVy+=vY/-12.0f;
+		viewport->moveViewport((int)floor(viewportVx+0.5f), (int)floor(viewportVy+0.5f), game->getGSM()->getWorld()->getWorldWidth(), game->getGSM()->getWorld()->getWorldHeight());
+		body->SetLinearVelocity(b2Vec2(vX,vY));
 		
 	}
+	
 
 	// 0X43 is HEX FOR THE 'C' VIRTUAL KEY
 	// THIS CHANGES THE CURSOR IMAGE

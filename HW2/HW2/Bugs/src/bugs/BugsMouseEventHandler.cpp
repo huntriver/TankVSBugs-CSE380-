@@ -8,7 +8,7 @@
 
 void BugsMouseEventHandler::handleMousePressEvent(Game *game, int mouseX, int mouseY)
 {
-	if (game->getGSM()->isGameInProgress())
+	/*if (game->getGSM()->isGameInProgress())
 	{
 		Viewport *viewport = game->getGUI()->getViewport();
 		
@@ -21,7 +21,7 @@ void BugsMouseEventHandler::handleMousePressEvent(Game *game, int mouseX, int mo
 		TopDownSprite *player = spriteManager->getPlayer();
 		GridPathfinder *pathfinder = spriteManager->getPathfinder();
 		pathfinder->mapPath(player, (float)worldCoordinateX, (float)worldCoordinateY);
-	}
+	}*/
 }
 
 void BugsMouseEventHandler::handleMouseMoveEvent(Game *game, int mouseX, int mouseY)
