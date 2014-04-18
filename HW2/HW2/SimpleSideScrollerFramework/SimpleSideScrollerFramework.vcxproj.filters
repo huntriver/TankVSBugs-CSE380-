@@ -341,10 +341,4 @@
       <Filter>src\sssf\gsm\ai\bots</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <Library Include="lib\Box2D.lib" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="lib\box2d.pdb" />
-  </ItemGroup>
 </Project>

@@ -198,7 +198,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	AnimatedSpriteType *playerSpriteType = spriteManager->getSpriteType(0);
 	player->setSpriteType(playerSpriteType);
 	player->setAlpha(255);
-	player->setCurrentState(IDLE);
+	player->setCurrentState(IDLE_RIGHT);
 	/*
 	PhysicalProperties *playerProps = player->getPhysicalProperties();
 	playerProps->setX(PLAYER_INIT_X);
