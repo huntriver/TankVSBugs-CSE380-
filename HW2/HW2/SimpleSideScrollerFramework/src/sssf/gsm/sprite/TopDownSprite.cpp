@@ -3,9 +3,10 @@
 
 void TopDownSprite::updateSprite()
 {
+
 	// CALL THE PARENT METHOD TO UPDATE ANIMATION
 	AnimatedSprite::updateSprite();
-
+	/*
 	// AND NOW CALCULATE THE RADIANS
 	// FOR RENDERING THIS SPRITE
 	float vX = body->GetLinearVelocity().x;
@@ -40,6 +41,7 @@ void TopDownSprite::updateSprite()
 		}
 	}
 	//body->set
+	*/
 }
 void TopDownSprite::beginContact(){
 	if (this->getSpriteType()->getSpriteTypeID()==0)
@@ -47,6 +49,6 @@ void TopDownSprite::beginContact(){
 //	this->clearPath();
 //	body->SetLinearVelocity(b2Vec2(-body->GetLinearVelocity().x,-body->GetLinearVelocity().y));
 //	this->setCurrentState(L"DEAD");
-	dead=true;
+//	dead=true;
 
 }

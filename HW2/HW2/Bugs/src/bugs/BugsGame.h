@@ -70,6 +70,8 @@ static const wstring	WALKING = L"WALKING";
 
 // FOR THE GAME WORLD
 static const float		MAX_VIEWPORT_AXIS_VELOCITY = 20.0f;
+static const float      BOX2D_SCALE_FACTOR = 5.0f;
+static const float      MAX_TANK_SPEED = 60.0f;
 static const float		W_GRAVITY = 0.0f;
 static const float		JUMPING_BOT_MIN_CYCLES = 30;
 static const float		JUMPING_BOT_MAX_CYCLES = 120;
@@ -84,6 +86,15 @@ static const int		FPS_INC = 1;
 static const wstring	ATTACKING_RIGHT(L"ATTACKING_RIGHT");
 static const wstring	ATTACKING_LEFT(L"ATTACKING_LEFT");
 static const wstring	IDLE(L"IDLE");
+static const wstring    MOVE_UP(L"MOVE UP");
+static const wstring	MOVE_DOWN(L"MOVE DOWN");
+static const wstring	MOVE_LEFT(L"MOVE LEFT");
+static const wstring    MOVE_RIGHT(L"MOVE RIGHT");
+static const wstring    IDLE_UP(L"IDLE UP");
+static const wstring    IDLE_DOWN(L"IDLE DOWN");
+static const wstring    IDLE_LEFT(L"IDLE LEFT");
+static const wstring	IDLE_RIGHT(L"IDLE RIGHT");
+
 
 // USED FOR MOVEMENT
 const unsigned int W_KEY = (unsigned int)'W';

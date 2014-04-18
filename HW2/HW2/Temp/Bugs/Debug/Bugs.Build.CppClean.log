@@ -1,107 +1,35 @@
-E:\CSE 380 PROJECT\HW2\HW2\TEMP\BUGS\DEBUG\BUGSBUTTONEVENTHANDLER.OBJ
-E:\CSE 380 PROJECT\HW2\HW2\TEMP\BUGS\DEBUG\BUGSCOLLISIONLISTENER.OBJ
-E:\CSE 380 PROJECT\HW2\HW2\TEMP\BUGS\DEBUG\BUGSGAME.OBJ
-E:\CSE 380 PROJECT\HW2\HW2\TEMP\BUGS\DEBUG\BUGSKEYEVENTHANDLER.OBJ
-E:\CSE 380 PROJECT\HW2\HW2\TEMP\BUGS\DEBUG\BUGSMOUSEEVENTHANDLER.OBJ
-E:\CSE 380 PROJECT\HW2\HW2\TEMP\BUGS\DEBUG\BUGSTEXTGENERATOR.OBJ
-E:\CSE 380 PROJECT\HW2\HW2\TEMP\BUGS\DEBUG\STDAFX.OBJ
-E:\CSE 380 PROJECT\HW2\HW2\TEMP\BUGS\DEBUG\VC110.PDB
-E:\CSE 380 PROJECT\HW2\HW2\TEMP\BUGS\DEBUG\BUGSDATALOADER.OBJ
-E:\CSE 380 PROJECT\HW2\HW2\APPS\BUGS\BUGS.ILK
-E:\CSE 380 PROJECT\HW2\HW2\APPS\BUGS\BUGS.EXE
-E:\CSE 380 PROJECT\HW2\HW2\APPS\BUGS\BUGS.PDB
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\BugsButtonEventHandler.obj
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\BugsCollisionListener.obj
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\BugsDataLoader.obj
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\BugsGame.obj
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\BugsKeyEventHandler.obj
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\BugsMouseEventHandler.obj
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\BugsTextGenerator.obj
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\stdafx.obj
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\cl.command.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\CL.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\CL.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link-cvtres.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link-cvtres.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link-rc.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link-rc.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.1020-cvtres.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.1020-cvtres.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.1020-rc.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.1020-rc.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.1020.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.1020.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.2988-cvtres.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.2988-cvtres.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.2988-rc.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.2988-rc.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.2988.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.2988.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4164-cvtres.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4164-cvtres.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4164-rc.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4164-rc.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4164.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4164.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4196-cvtres.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4196-cvtres.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4196-rc.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4196-rc.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4196.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4196.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4768-cvtres.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4768-cvtres.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4768-rc.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4768-rc.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4768.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4768.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4892-cvtres.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4892-cvtres.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4892-rc.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4892-rc.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4892.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.4892.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.6224-cvtres.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.6224-cvtres.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.6224-rc.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.6224-rc.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.6224.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.6224.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.6228-cvtres.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.6228-cvtres.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.6228-rc.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.6228-rc.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.6228.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.6228.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.8496-cvtres.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.8496-cvtres.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.8496-rc.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.8496-rc.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.8496.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.8496.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.8876-cvtres.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.8876-cvtres.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.8876-rc.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.8876-rc.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.8876.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.8876.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.892-cvtres.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.892-cvtres.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.892-rc.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.892-rc.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.892.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.892.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.9268-cvtres.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.9268-cvtres.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.9268-rc.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.9268-rc.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.9268.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.9268.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.command.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.read.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\link.write.1.tlog
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\vc110.idb
-E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\vc110.pdb
-E:\cse 380 project\HW2\HW2\Apps\Bugs\Bugs.pdb
-E:\cse 380 project\HW2\HW2\Apps\Bugs\Bugs.exe
-E:\cse 380 project\HW2\HW2\Apps\Bugs\Bugs.ilk
+C:\USERS\YUBSHANG\DESKTOP\380 PROJECT\HW2\HW2\TEMP\BUGS\DEBUG\BUGSBUTTONEVENTHANDLER.OBJ
+C:\USERS\YUBSHANG\DESKTOP\380 PROJECT\HW2\HW2\TEMP\BUGS\DEBUG\BUGSCOLLISIONLISTENER.OBJ
+C:\USERS\YUBSHANG\DESKTOP\380 PROJECT\HW2\HW2\TEMP\BUGS\DEBUG\BUGSDATALOADER.OBJ
+C:\USERS\YUBSHANG\DESKTOP\380 PROJECT\HW2\HW2\TEMP\BUGS\DEBUG\BUGSGAME.OBJ
+C:\USERS\YUBSHANG\DESKTOP\380 PROJECT\HW2\HW2\TEMP\BUGS\DEBUG\BUGSKEYEVENTHANDLER.OBJ
+C:\USERS\YUBSHANG\DESKTOP\380 PROJECT\HW2\HW2\TEMP\BUGS\DEBUG\BUGSMOUSEEVENTHANDLER.OBJ
+C:\USERS\YUBSHANG\DESKTOP\380 PROJECT\HW2\HW2\TEMP\BUGS\DEBUG\BUGSTEXTGENERATOR.OBJ
+C:\USERS\YUBSHANG\DESKTOP\380 PROJECT\HW2\HW2\TEMP\BUGS\DEBUG\STDAFX.OBJ
+C:\USERS\YUBSHANG\DESKTOP\380 PROJECT\HW2\HW2\TEMP\BUGS\DEBUG\VC110.PDB
+C:\USERS\YUBSHANG\DESKTOP\380 PROJECT\HW2\HW2\APPS\BUGS\BUGS.ILK
+C:\USERS\YUBSHANG\DESKTOP\380 PROJECT\HW2\HW2\APPS\BUGS\BUGS.EXE
+C:\USERS\YUBSHANG\DESKTOP\380 PROJECT\HW2\HW2\APPS\BUGS\BUGS.PDB
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\Bugs\Debug\BugsButtonEventHandler.obj
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\Bugs\Debug\BugsCollisionListener.obj
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\Bugs\Debug\BugsDataLoader.obj
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\Bugs\Debug\BugsGame.obj
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\Bugs\Debug\BugsKeyEventHandler.obj
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\Bugs\Debug\BugsMouseEventHandler.obj
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\Bugs\Debug\BugsTextGenerator.obj
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\Bugs\Debug\stdafx.obj
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\Bugs\Debug\cl.command.1.tlog
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\Bugs\Debug\CL.read.1.tlog
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\Bugs\Debug\CL.write.1.tlog
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\Bugs\Debug\link-cvtres.read.1.tlog
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\Bugs\Debug\link-cvtres.write.1.tlog
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\Bugs\Debug\link-rc.read.1.tlog
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\Bugs\Debug\link-rc.write.1.tlog
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\Bugs\Debug\link.command.1.tlog
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\Bugs\Debug\link.read.1.tlog
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\Bugs\Debug\link.write.1.tlog
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\Bugs\Debug\vc110.idb
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\Bugs\Debug\vc110.pdb
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Apps\Bugs\Bugs.pdb
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Apps\Bugs\Bugs.exe
+C:\Users\yubshang\Desktop\380 project\HW2\HW2\Apps\Bugs\Bugs.ilk

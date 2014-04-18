@@ -37,10 +37,10 @@
     <Text Include="src\bugs_VS\ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="lib\box2d.pdb" />
+    <Library Include="..\lib\Box2D.lib" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="lib\Box2D.lib" />
+    <None Include="..\lib\box2d.pdb" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{BA25DE62-784B-4A2C-9FC0-115872D53819}</ProjectGuid>
@@ -89,13 +89,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>./</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>Box2D.lib;d3d9.lib;d3dx9.lib;winmm.lib;PoseurSpriteTypesImporter.lib;SimpleSideScrollerFramework.lib;tinyxml.lib;TMXMapImporter.lib;XMLFileImporter.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>./lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

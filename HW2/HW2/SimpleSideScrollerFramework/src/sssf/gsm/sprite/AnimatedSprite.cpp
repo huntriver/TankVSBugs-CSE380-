@@ -62,6 +62,7 @@ void AnimatedSprite::changeFrame()
 */
 unsigned int AnimatedSprite::getCurrentImageID()
 {
+	int j =  spriteType->getAnimationFrameID(currentState, frameIndex);
 	return spriteType->getAnimationFrameID(currentState, frameIndex);
 }
 

@@ -53,11 +53,13 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 		{
 			gsm->getPhysics()->activateForSingleUpdate();
 		}
+		/*
 		if (input->isKeyDownForFirstTime(D_KEY))
 		{
 			viewport->toggleDebugView();
 			game->getGraphics()->toggleDebugTextShouldBeRendered();
 		}
+		*/
 		if (input->isKeyDownForFirstTime(L_KEY))
 		{
 			game->getGraphics()->togglePathfindingGridShouldBeRendered();
@@ -69,6 +71,48 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 		if (input->isKeyDownForFirstTime(SPACE_KEY))
 		{
 			
+		}
+
+		bool tankMoved = false;
+		float tankVx = 0.0f;
+		float tankVy = 0.0f;
+		TopDownSprite* player = game->getGSM()->getSpriteManager()->getPlayer();
+		if(input->isKeyDown(W_KEY))
+		{
+			
+			tankVy = MAX_TANK_SPEED;
+			player->getB2Body()->SetLinearVelocity(b2Vec2(0,tankVy));
+			//if(player->getCurrentState() != MOVE_UP)
+			player->setCurrentState(MOVE_UP);
+		}
+		else if(input->isKeyDown(S_KEY))
+		{
+			tankVy = -1.0f * MAX_TANK_SPEED;
+			player->getB2Body()->SetLinearVelocity(b2Vec2(0,tankVy));
+			//if(player->getCurrentState() != MOVE_DOWN)
+			player->setCurrentState(MOVE_DOWN);
+		}else if(input->isKeyDown(A_KEY))
+		{
+			tankVx = -1.0f * MAX_TANK_SPEED;
+			player->getB2Body()->SetLinearVelocity(b2Vec2(tankVx,0));
+			//if(player->getCurrentState() != MOVE_LEFT)
+			player->setCurrentState(MOVE_LEFT);
+		}else if(input->isKeyDown(D_KEY))
+		{
+			tankVx = MAX_TANK_SPEED;
+			player->getB2Body()->SetLinearVelocity(b2Vec2(tankVx,0));
+			//if(player->getCurrentState() != MOVE_RIGHT)
+			player->setCurrentState(MOVE_RIGHT);
+		}else{
+			player->getB2Body()->SetLinearVelocity(b2Vec2(0,0));
+			if(player->getCurrentState() == MOVE_UP)
+				player->setCurrentState(IDLE_UP);
+			else if(player->getCurrentState() == MOVE_DOWN)
+				player->setCurrentState(IDLE_DOWN);
+			else if(player->getCurrentState() == MOVE_LEFT)
+				player->setCurrentState(IDLE_LEFT);
+			else if(player->getCurrentState() == MOVE_RIGHT)
+				player->setCurrentState(IDLE_RIGHT);
 		}
 
 		bool viewportMoved = false;
