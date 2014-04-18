@@ -1,18 +1,26 @@
-﻿Build started 2014/4/16 23:59:17.
-     1>Project "E:\cse 380 project\HW2\HW2\Bugs\Bugs.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\cse 380 project\HW2\HW2\Apps\Bugs\Bugs.exe" /INCREMENTAL /NOLOGO /LIBPATH:./lib Box2D.lib d3d9.lib d3dx9.lib winmm.lib PoseurSpriteTypesImporter.lib SimpleSideScrollerFramework.lib tinyxml.lib TMXMapImporter.lib XMLFileImporter.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\cse 380 project\HW2\HW2\Apps\Bugs\Bugs.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\cse 380 project\HW2\HW2\Apps\Bugs\Bugs.lib" /MACHINE:X86 "E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\BugsButtonEventHandler.obj"
-         "E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\BugsCollisionListener.obj"
-         "E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\BugsDataLoader.obj"
-         "E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\BugsGame.obj"
-         "E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\BugsKeyEventHandler.obj"
-         "E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\BugsMouseEventHandler.obj"
-         "E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\BugsTextGenerator.obj"
-         "E:\cse 380 project\HW2\HW2\Temp\Bugs\Debug\stdafx.obj"
+﻿Build started 4/18/2014 6:34:16 AM.
+     1>Project "F:\cse 380 final project\HW2\HW2\Bugs\Bugs.vcxproj" on node 2 (Build target(s)).
+     1>InitializeBuildStatus:
+         Touching "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\Bugs.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I./ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\\" /Fd"F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\bugs\BugsKeyEventHandler.cpp
+         BugsKeyEventHandler.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\cse 380 final project\HW2\HW2\Apps\Bugs\Bugs.exe" /INCREMENTAL /NOLOGO /LIBPATH:./lib Box2D.lib d3d9.lib d3dx9.lib winmm.lib PoseurSpriteTypesImporter.lib SimpleSideScrollerFramework.lib tinyxml.lib TMXMapImporter.lib XMLFileImporter.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\cse 380 final project\HW2\HW2\Apps\Bugs\Bugs.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\cse 380 final project\HW2\HW2\Apps\Bugs\Bugs.lib" /MACHINE:X86 "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\BugsButtonEventHandler.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\BugsCollisionListener.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\BugsDataLoader.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\BugsGame.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\BugsKeyEventHandler.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\BugsMouseEventHandler.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\BugsTextGenerator.obj"
+         "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\stdafx.obj"
          lib\Box2D.lib
-         Bugs.vcxproj -> E:\cse 380 project\HW2\HW2\Apps\Bugs\Bugs.exe
-     1>Done Building Project "E:\cse 380 project\HW2\HW2\Bugs\Bugs.vcxproj" (Build target(s)).
+         Bugs.vcxproj -> F:\cse 380 final project\HW2\HW2\Apps\Bugs\Bugs.exe
+       FinalizeBuildStatus:
+         Deleting file "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\Bugs.unsuccessfulbuild".
+         Touching "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\Bugs.lastbuildstate".
+     1>Done Building Project "F:\cse 380 final project\HW2\HW2\Bugs\Bugs.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.88
+Time Elapsed 00:00:02.69
