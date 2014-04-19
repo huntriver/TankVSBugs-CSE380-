@@ -209,7 +209,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	*/
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
-	bodyDef.position.Set(150.0f/5.0f, -305.0f/5.0f);
+	bodyDef.position.Set(150.0f/5.0f, -250.0f/5.0f);
 	b2Body* body = (world->boxWorld)->CreateBody(&bodyDef);
 	body->SetUserData(player);
 	// Define another box shape for our dynamic body.
@@ -224,7 +224,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	 fixtureDef.density = 1.0f;
 
 	// Override the default friction.
-	 fixtureDef.friction = 0.3f;
+	 fixtureDef.friction = 0.0f;
 
 	// Add the shape to the body.
 	body->SetLinearVelocity(b2Vec2(0.0f,0.0f));
@@ -283,7 +283,7 @@ void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType
 
 	b2BodyDef bodyDef;
 		bodyDef.type = b2_dynamicBody;
-		bodyDef.position.Set(200.0f/5.0f, -400.0f/5.0f);
+		bodyDef.position.Set(500.0f/5.0f, -200.0f/5.0f);
 		b2Body* body = (game->getGSM()->getWorld()->boxWorld)->CreateBody(&bodyDef);
 
 		// Define another box shape for our dynamic body.
