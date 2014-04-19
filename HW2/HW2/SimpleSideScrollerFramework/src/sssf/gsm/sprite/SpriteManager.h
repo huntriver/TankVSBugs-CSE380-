@@ -29,6 +29,8 @@ private:
 	// THESE ARE THE BOTS IN THE GAME, LIKE ENEMIES, ROCKETS, OR ANYTHING
 	// THAT MOVES AROUND AND IS NOT THE PLAYER
 	list<Bot*> bots;
+	
+	list<TopDownSprite*> bullets;
 
 	// AND THIS IS THE PLAYER. AS-IS, WE ONLY ALLOW FOR ONE PLAYER AT A TIME
 	TopDownSprite player;
@@ -39,12 +41,14 @@ private:
 
 	// THIS GUY HELPS SPRITES FIND THEIR WAY. NOTE THAT IT IS CUSTOMIZABLE, SINCE
 	// WE MAY BE RENDERING AN ORTHOGRAPHIC MAP OR AN ISOMETRIC ONE
-	GridPathfinder *pathfinder;
+	GridPathfinder *pathfinder;		
 	int TT;
 
 public:
 	// NOTHING TO INIT OR DESTROY
-	SpriteManager()		{TT=0;}
+	SpriteManager()		{TT=0;
+	
+	}
 	~SpriteManager()	{}
 
 	// INLINED ACCESSOR METHODS
@@ -56,6 +60,7 @@ public:
 
 	// METHODS DEFINED IN SpriteManager.cpp
 	void				addBot(Bot *botToAdd);
+	void				addBullet(TopDownSprite *bulletToAdd);
 	void				addSpriteItemsToRenderList(Game *game);
 	unsigned int		addSpriteType(AnimatedSpriteType *spriteTypeToAdd);
 	void				addSpriteToRenderList(AnimatedSprite *sprite, RenderList *renderList, Viewport *viewport);

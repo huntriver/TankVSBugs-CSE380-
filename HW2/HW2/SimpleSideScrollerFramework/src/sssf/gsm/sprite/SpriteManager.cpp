@@ -73,6 +73,15 @@ void SpriteManager::addSpriteItemsToRenderList(	Game *game)
 		// ADD THE PLAYER SPRITE
 		addSpriteToRenderList(&player, renderList, viewport);
 
+		list<TopDownSprite*>::iterator bulletIterator;
+		bulletIterator = bullets.begin();
+		while (bulletIterator != bullets.end())
+		{			
+			TopDownSprite *bullet = (*bulletIterator);
+			addSpriteToRenderList(bullet, renderList, viewport);
+			bulletIterator++;
+		}
+
 		// NOW ADD THE REST OF THE SPRITES
 		list<Bot*>::iterator botIterator;
 		botIterator = bots.begin();
@@ -82,6 +91,8 @@ void SpriteManager::addSpriteItemsToRenderList(	Game *game)
 			addSpriteToRenderList(bot, renderList, viewport);
 			botIterator++;
 		}
+
+		
 	}
 }
 
@@ -94,7 +105,10 @@ void SpriteManager::addBot(Bot *botToAdd)
 {
 	bots.push_back(botToAdd);
 }
-
+void SpriteManager::addBullet(TopDownSprite *bulletToAdd)
+{
+	bullets.push_back(bulletToAdd);
+}
 /*
 addSpriteType - This method is for adding a new sprite
 type. Note that one sprite type can have many sprites. For
@@ -218,6 +232,70 @@ void SpriteManager::update(Game *game)
 
 		//bot->affixTightAABBBoundingVolume();
 	}
+	
+	if (TT %30==0){
+		TopDownSprite *bullet = new TopDownSprite();
+		//physics->addCollidableObject(bot);
+		//PhysicalProperties *pp = bot->getPhysicalProperties();
+		//pp->setPosition(200, 300);
+		AnimatedSpriteType *bulletSpriteType = this->getSpriteType(2);
+		bullet->setSpriteType(bulletSpriteType);
+		bullet->setCurrentState(L"IDLE");
+		bullet->setAlpha(255);
+		this->addBullet(bullet);
+
+		b2BodyDef bodyDef;
+		bodyDef.type = b2_dynamicBody;
+		float x=getPlayer()->getB2Body()->GetPosition().x;
+		float y=getPlayer()->getB2Body()->GetPosition().y;
+		float r=getPlayer()->getRotationInRadians();
+		float vx=0.0f;
+		float vy=0.0f;
+		if (r==0) 
+			{
+				x+=32.0f/5.0f+0.55f;
+				vx=100.0f;
+		}
+		else
+			if(r==PI/2){
+				y-=32.0f/5.0f+0.55f;
+				vy=-100.0f;
+			}
+			else
+				if (r==PI){
+
+					x-=32.0f/5.0f+0.55f;
+					vx=-100.0f;
+				}
+				else
+				{
+					y+=32.0f/5.0f+0.55f;
+					vy=100.0f;
+				}
+		bodyDef.position.Set(x, y);
+		b2Body* body = (game->getGSM()->getWorld()->boxWorld)->CreateBody(&bodyDef);
+
+		// Define another box shape for our dynamic body.
+		b2PolygonShape dynamicBox;
+		dynamicBox.SetAsBox(2.5f/5.0f, 2.5f/5.0f);
+
+		// Define the dynamic body fixture.
+		b2FixtureDef fixtureDef;
+		fixtureDef.shape = &dynamicBox;
+
+		// Set the box density to be non-zero, so it will be dynamic.
+		fixtureDef.density = 1.0f;
+
+		// Override the default friction.
+		fixtureDef.friction = 0.0f;
+
+		// Add the shape to the body.
+		body->SetLinearVelocity(b2Vec2(vx,vy));
+		body->CreateFixture(&fixtureDef);
+		bullet->setB2Body(body);
+		body->SetUserData(bullet);
+		
+	}
 	TT++;
 	// FIRST LET'S DO THE NECESSARY PATHFINDING
 	//pathfinder->updatePath(&player);
@@ -228,6 +306,7 @@ void SpriteManager::update(Game *game)
 		Bot *bot = (*botIterator);
 		if (bot->dead){
 			botIterator=bots.erase(botIterator);
+			game->getGSM()->getWorld()->boxWorld->DestroyBody(bot->getB2Body());
 			if (botIterator==bots.end()) break;
 			bot = (*botIterator);
 		}
@@ -240,7 +319,20 @@ void SpriteManager::update(Game *game)
 
 	// THEN UPDATE THE PLAYER SPRITE ANIMATION FRAME/STATE/ROTATION
 	player.updateSprite();
-
+	list<TopDownSprite*>::iterator bulletIterator;
+    bulletIterator = bullets.begin();
+	while (bulletIterator != bullets.end())
+	{
+		TopDownSprite *bullet = (*bulletIterator);
+		if (bullet->dead){
+			bulletIterator=bullets.erase(bulletIterator);
+			game->getGSM()->getWorld()->boxWorld->DestroyBody(bullet->getB2Body());
+			if (bulletIterator==bullets.end()) break;
+			bullet = (*bulletIterator);
+		}
+		bullet->updateSprite();
+		bulletIterator++;
+	}
 	// NOW UPDATE THE REST OF THE SPRITES ANIMATION FRAMES/STATES/ROTATIONS
 	botIterator = bots.begin();
 	while (botIterator != bots.end())

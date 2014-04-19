@@ -1,7 +1,7 @@
-﻿Build started 4/17/2014 8:41:19 PM.
+﻿Build started 4/18/2014 10:37:36 PM.
      1>Project "F:\cse 380 final project\HW2\HW2\tinyxml\tinyxml.vcxproj" on node 2 (Build target(s)).
      1>InitializeBuildStatus:
-         Touching "F:\cse 380 final project\HW2\HW2\Temp\tinyxml\Debug\tinyxml.unsuccessfulbuild".
+         Creating "F:\cse 380 final project\HW2\HW2\Temp\tinyxml\Debug\tinyxml.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D USE_STANDARD_FILE_FUNCTIONS /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"F:\cse 380 final project\HW2\HW2\Temp\tinyxml\Debug\\" /Fd"F:\cse 380 final project\HW2\HW2\Temp\tinyxml\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\tinyxml\tinystr.cpp src\tinyxml\tinyxml.cpp src\tinyxml\tinyxmlerror.cpp src\tinyxml\tinyxmlparser.cpp src\tinyxml\xmltest.cpp src\tinyxml_VS\stdafx.cpp
          stdafx.cpp
@@ -26,4 +26,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.19
+Time Elapsed 00:00:03.40
