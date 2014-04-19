@@ -119,9 +119,9 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 		//	  player->setCurrentState(IDLE);
 		}
 	//	if (viewportMoved)
-		viewportVx+=vX/12.0f;
-		viewportVy+=vY/-12.0f;
-		viewport->moveViewport((int)floor(viewportVx+0.5f), (int)floor(viewportVy+0.5f), game->getGSM()->getWorld()->getWorldWidth(), game->getGSM()->getWorld()->getWorldHeight());
+		//viewportVx+=vX/12.0f;
+		//viewportVy+=vY/-12.0f;
+		//viewport->moveViewport((int)floor(viewportVx+0.5f), (int)floor(viewportVy+0.5f), game->getGSM()->getWorld()->getWorldWidth(), game->getGSM()->getWorld()->getWorldHeight());
 		body->SetLinearVelocity(b2Vec2(vX,vY));
 		
 	}
