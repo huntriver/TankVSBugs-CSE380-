@@ -220,7 +220,7 @@ void SpriteManager::update(Game *game)
 	}
 	TT++;
 	// FIRST LET'S DO THE NECESSARY PATHFINDING
-	pathfinder->updatePath(&player);
+	//pathfinder->updatePath(&player);
 	list<Bot*>::iterator botIterator;
 	botIterator = bots.begin();
 	while (botIterator != bots.end())
@@ -234,7 +234,7 @@ void SpriteManager::update(Game *game)
 		if (botIterator==bots.end()) break;
 		//if (bot->hasReachedDestination())
 			//bot->pickRandomDestination(game);
-		pathfinder->updatePath(bot);
+	//	pathfinder->updatePath(bot);
 		botIterator++;
 	}
 

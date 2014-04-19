@@ -120,14 +120,14 @@ bool Viewport::areWorldCoordinatesInViewport(	float x,
 	method prevents moving the viewport off the edge
 	of the world by clamping at the world edges.
 */
-void Viewport::moveViewport(int incX, 
-							int incY,
+void Viewport::moveViewport(int X, 
+							int Y,
 							int worldWidth, 
 							int worldHeight)
 {
 	// MOVE THE VIEWPORT IN X AXIS ACCORDING
 	// TO PROVIDED INCREMENT.
-	viewportX += incX;
+	viewportX = X;
 
 	// DON'T LET IT GO OFF THE LEFT-MOST EDGE
 	// OF THE GAME WORLD. CLAMP INSTEAD.
@@ -141,7 +141,7 @@ void Viewport::moveViewport(int incX,
 	
 	// MOVE THE VIEWPORT IN Y AXIS ACCORDING
 	// TO PROVIDED INCREMENT.
-	viewportY += incY;
+	viewportY = Y;
 
 	// DON'T LET IT GO OFF THE TOP-MOST EDGE
 	// OF THE GAME WORLD. CLAMP INSTEAD.
