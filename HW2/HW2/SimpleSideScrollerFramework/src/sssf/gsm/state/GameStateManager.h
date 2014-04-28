@@ -61,7 +61,7 @@ private:
 
 	// FOR DOING ALL COLLISION DETECTION AND RESOLUTION
 	Physics			physics;
-
+	int healthID;
 public:
 	// INLINED ACCESSOR METHODS
 	GameState		getCurrentGameState()	{ return currentGameState;			}
@@ -71,7 +71,9 @@ public:
 	SpriteManager*	getSpriteManager()		{ return spriteManager;				}
 	World*			getWorld()				{ return &world;					}
 	wstring			getCurrentLevelName()	{ return levelNames[currentLevel];	}
-
+	void setHealthID(int a){healthID=a;}
+	int getHealthID(){return healthID;}
+		
 	// METHODS FOR TESTING THE CURRENT GAME STATE
 	bool			isAppActive();
 	bool			isAtSplashScreen();

@@ -63,7 +63,7 @@ public:
 	void				addBullet(TopDownSprite *bulletToAdd);
 	void				addSpriteItemsToRenderList(Game *game);
 	unsigned int		addSpriteType(AnimatedSpriteType *spriteTypeToAdd);
-	void				addSpriteToRenderList(AnimatedSprite *sprite, RenderList *renderList, Viewport *viewport);
+	void				addSpriteToRenderList(AnimatedSprite *sprite, RenderList *renderList, Viewport *viewport,GameStateManager *gsm);
 	void				clearSprites();
 	AnimatedSpriteType* getSpriteType(unsigned int typeIndex);
 	Bot*				removeBot(Bot *botToRemove);
