@@ -26,7 +26,7 @@ for that sprite and it is added to the render list.
 */
 void SpriteManager::addSpriteToRenderList(AnimatedSprite *sprite,
 										  RenderList *renderList,
-										  Viewport *viewport)
+										  Viewport *viewport,GameStateManager *gsm)
 {
 	// GET THE SPRITE TYPE INFO FOR THIS SPRITE
 	AnimatedSpriteType *spriteType = sprite->getSpriteType();
@@ -52,6 +52,16 @@ void SpriteManager::addSpriteToRenderList(AnimatedSprite *sprite,
 			spriteType->getTextureWidth(),
 			spriteType->getTextureHeight(),
 			rotation);
+		int aa=gsm->getSpriteManager()->getSpriteType(3)->getAnimationFrameID(L"IDLE", 0);
+		for (int i=0;i<sprite->getHealth();i++)
+			renderList->addRenderItem(aa	,
+			pp->round((body->GetPosition().x)*5.0f-spriteType->getTextureWidth()/2-viewport->getViewportX())+i*12,
+			pp->round((-1)*(body->GetPosition().y)*5.0f-spriteType->getTextureHeight()/2-viewport->getViewportY())-12,
+			0,
+			sprite->getAlpha(),
+			20,
+			10,
+			0);
 	}
 }
 
@@ -71,14 +81,14 @@ void SpriteManager::addSpriteItemsToRenderList(	Game *game)
 		Viewport *viewport = gui->getViewport();
 
 		// ADD THE PLAYER SPRITE
-		addSpriteToRenderList(&player, renderList, viewport);
+		addSpriteToRenderList(&player, renderList, viewport,gsm);
 
 		list<TopDownSprite*>::iterator bulletIterator;
 		bulletIterator = bullets.begin();
 		while (bulletIterator != bullets.end())
 		{			
 			TopDownSprite *bullet = (*bulletIterator);
-			addSpriteToRenderList(bullet, renderList, viewport);
+			addSpriteToRenderList(bullet, renderList, viewport,gsm);
 			bulletIterator++;
 		}
 
@@ -88,7 +98,7 @@ void SpriteManager::addSpriteItemsToRenderList(	Game *game)
 		while (botIterator != bots.end())
 		{			
 			Bot *bot = (*botIterator);
-			addSpriteToRenderList(bot, renderList, viewport);
+			addSpriteToRenderList(bot, renderList, viewport,gsm);
 			botIterator++;
 		}
 
@@ -242,6 +252,7 @@ void SpriteManager::update(Game *game)
 		bullet->setSpriteType(bulletSpriteType);
 		bullet->setCurrentState(L"IDLE");
 		bullet->setAlpha(255);
+		bullet->setHealth(0);
 		this->addBullet(bullet);
 
 		b2BodyDef bodyDef;

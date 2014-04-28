@@ -62,7 +62,7 @@ static const wstring    W_FLASH_IMAGE_PATH        = L"data/gui/buttons/flash.png
 static const wstring    W_FIRE_IMAGE_PATH        = L"data/gui/buttons/fire.png";
 static const wstring    W_FIRE_DISABLED_PATH     = L"data/gui/buttons/fire_disabled.png";
 static const wstring    W_FLASH_DISABLED_PATH    = L"data/gui/buttons/flash_disabled.png";
-
+static const wstring	W_HEALTH_BAR_PATH		= L"data/gui/buttons/health_bar.png";
 // FOR OUR SPRITE
 static const wstring	SPRITE_TYPES_DIR = L"data/sprite_types/";
 static const wstring	SPRITE_TYPES_LIST = SPRITE_TYPES_DIR + L"sprite_type_list.xml";

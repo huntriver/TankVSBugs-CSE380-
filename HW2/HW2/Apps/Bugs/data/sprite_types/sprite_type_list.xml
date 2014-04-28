@@ -3,4 +3,5 @@
   <sprite_type>tank</sprite_type>
   <sprite_type>ant</sprite_type>
   <sprite_type>bullet</sprite_type>
-</sprite_type_list>
+  <sprite_type>health_bar</sprite_type>
+ </sprite_type_list>

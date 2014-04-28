@@ -27,6 +27,7 @@ protected:
 
 	// TRANSPARENCY/OPACITY
 	int alpha;
+	int health;
 
 	// THE "current" STATE DICTATES WHICH ANIMATION SEQUENCE 
 	// IS CURRENTLY IN USE, BUT IT MAP ALSO BE USED TO HELP
@@ -73,7 +74,14 @@ public:
 	{	currentPathToFollow.clear();
 		currentPathNode = currentPathToFollow.end(); 
 	}
-
+	int getHealth()
+	{
+		return health;
+	}
+	void setHealth(int a)
+	{
+		health=a;
+	}
 	// METHODS DEFINED IN AnimatedSprite.cpp
 	AnimatedSprite();
 	~AnimatedSprite();

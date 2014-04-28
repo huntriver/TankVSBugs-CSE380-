@@ -53,5 +53,5 @@ public:
 	void initSplashScreen(Game *game, GameGUI *gui,	DirectXTextureManager *guiTextureManager);
 	void initMainMenu(GameGUI *gui,	DirectXTextureManager *guiTextureManager);
 	void initCreditsMenu(GameGUI *gui,	DirectXTextureManager *guiTextureManager);
-	void initInGameGUI(GameGUI *gui, DirectXTextureManager *guiTextureManager);
+	void initInGameGUI(GameGUI *gui, DirectXTextureManager *guiTextureManager,GameStateManager *gsm);
 };

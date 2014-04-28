@@ -317,13 +317,13 @@ void BugsDataLoader::hardCodedLoadGUIExample(Game *game)
 	GameGUI *gui = game->getGUI();
 	GameGraphics *graphics = game->getGraphics();
 	DirectXTextureManager *guiTextureManager = (DirectXTextureManager*)graphics->getGUITextureManager();
-
+	GameStateManager *gsm = game->getGSM();
 	// SETUP THE CURSOR VIA OUR HELPER METHOD
 	initCursor(gui, guiTextureManager);
 	initSplashScreen(game, gui, guiTextureManager);
 	initMainMenu(gui, guiTextureManager);
 	initCreditsMenu(gui, guiTextureManager);
-	initInGameGUI(gui, guiTextureManager);
+	initInGameGUI(gui, guiTextureManager,gsm);
 }
 
 void BugsDataLoader::initCreditsMenu(GameGUI *gui, DirectXTextureManager *guiTextureManager)
@@ -530,7 +530,7 @@ void BugsDataLoader::initMainMenu(GameGUI *gui,	DirectXTextureManager *guiTextur
 /*
 	initInGameGUI - initializes the game's in-game gui.
 */
-void BugsDataLoader::initInGameGUI(GameGUI *gui, DirectXTextureManager *guiTextureManager)
+void BugsDataLoader::initInGameGUI(GameGUI *gui, DirectXTextureManager *guiTextureManager,GameStateManager *gsm)
 {
 	// NOW ADD THE IN-GAME GUI
 	ScreenGUI *inGameGUI = new ScreenGUI();
@@ -605,6 +605,11 @@ void BugsDataLoader::initInGameGUI(GameGUI *gui, DirectXTextureManager *guiTextu
 	inGameGUI->addButton(buttonToAdd);
 	*/
 	// AND LET'S ADD OUR SCREENS
+
+	//int imageID;
+	imageID =guiTextureManager->loadTexture(W_HEALTH_BAR_PATH);
+	gsm->setHealthID(imageID);
+
 	gui->addScreenGUI(GS_GAME_IN_PROGRESS,	inGameGUI);
 }
 
