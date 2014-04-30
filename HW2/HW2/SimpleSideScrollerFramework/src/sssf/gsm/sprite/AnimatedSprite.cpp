@@ -12,7 +12,7 @@
 #include "sssf\gsm\physics\PhysicalProperties.h"
 #include "sssf\gsm\sprite\AnimatedSprite.h"
 #include "sssf\gsm\sprite\AnimatedSpriteType.h"
-
+#include "sssf\gsm\sprite\TopDownSprite.h"
 /*
 	AnimatedSprite - Default constructor, just sets everything to 0.
 */

@@ -240,10 +240,14 @@ void GameStateManager::update(Game *game)
 	//Box2D update
 	world.boxWorld->Step(timeStep, velocityIterations, positionIteration);
     Viewport *viewport = game->getGUI()->getViewport();
+	/*
 	float vX = spriteManager->getPlayer()->getB2Body()->GetLinearVelocity().x;
 	float vY = spriteManager->getPlayer()->getB2Body()->GetLinearVelocity().y;
-	if(vX != 0 || vY != 0)
-	{
+	*/
+	if(spriteManager->getPlayer()->getCurrentState() == L"MOVE UP" ||
+	   spriteManager->getPlayer()->getCurrentState() == L"MOVE DOWN" ||
+	   spriteManager->getPlayer()->getCurrentState() == L"MOVE LEFT" ||
+	   spriteManager->getPlayer()->getCurrentState() == L"MOVE RIGHT"){
 		float viewportX=game->getGSM()->getSpriteManager()->getPlayer()->getB2Body()->GetPosition().x*5.0f;
 		float viewportY=game->getGSM()->getSpriteManager()->getPlayer()->getB2Body()->GetPosition().y*-5.0f;
 		viewport->playerMoveViewport((int)floor(viewportX-150.0f), (int)floor(viewportY-250.0f), game->getGSM()->getWorld()->getWorldWidth(), game->getGSM()->getWorld()->getWorldHeight());

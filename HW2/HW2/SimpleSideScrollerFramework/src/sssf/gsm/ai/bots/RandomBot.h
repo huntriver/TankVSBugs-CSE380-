@@ -8,6 +8,9 @@
 
 class RandomBot : public Bot
 {
+private:
+	unsigned int thinkCounter;
+
 public:
 	RandomBot();
 	~RandomBot();
@@ -17,7 +20,7 @@ public:
 //	void	pickRandomCyclesInRange();
 	Bot*	clone();
 	void	pickRandomDestination(Game *game);
-//	void	think(Game *game);
+	void	think(Game *game);
 
 	// INLINED METHODS
 //	unsigned int getCyclesRemainingBeforeThinking()	{ return cyclesRemainingBeforeThinking; }

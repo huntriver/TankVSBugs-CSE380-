@@ -237,6 +237,33 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	player->setOnTileLastFrame(false);
 	player->affixTightAABBBoundingVolume();
 
+	
+	AnimatedSpriteType *eggType =  spriteManager->getSpriteType(4); 
+	RandomBot *bot = new RandomBot();
+	bot->setHealth(10);
+	//physics->addCollidableObject(bot);
+	//PhysicalProperties *pp = bot->getPhysicalProperties();
+	//pp->setPosition(initX, initY);
+	bot->setSpriteType(eggType);
+	bot->setCurrentState(IDLE_UP);
+	bot->setAlpha(255);
+	spriteManager->addBot(bot);
+	//bot->affixTightAABBBoundingVolume();
+
+	b2BodyDef eggBodyDef;
+	eggBodyDef.position.Set(2440/5.0f, -530/5.0f);
+	b2Body* eggBody = (game->getGSM()->getWorld()->boxWorld)->CreateBody(&eggBodyDef);
+
+	b2PolygonShape eggBox;
+	eggBox.SetAsBox(70.0f/5.0f, 70.0f/5.0f);
+
+	// Define the dynamic body fixture.
+	b2FixtureDef eggFixtureDef;
+	eggFixtureDef.shape = &eggBox;
+	eggBody->CreateFixture(&eggBox, 0.0f);
+	bot->setB2Body(eggBody);
+	eggBody->SetUserData(bot);
+	
 	// AND LET'S ADD A BUNCH OF RANDOM JUMPING BOTS, FIRST ALONG
 	// A LINE NEAR THE TOP
 	AnimatedSpriteType *botSpriteType = spriteManager->getSpriteType(1);
