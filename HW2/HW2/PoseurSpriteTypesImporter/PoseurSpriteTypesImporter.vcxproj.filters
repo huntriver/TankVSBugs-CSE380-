@@ -33,9 +33,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="lib\Box2D.lib" />
+    <Library Include="..\lib\Box2D.lib" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="lib\box2d.pdb" />
+    <None Include="..\lib\box2d.pdb" />
   </ItemGroup>
 </Project>

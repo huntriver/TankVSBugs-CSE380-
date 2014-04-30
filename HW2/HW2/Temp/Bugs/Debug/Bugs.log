@@ -1,25 +1,30 @@
-﻿Build started 4/28/2014 5:54:38 AM.
-     1>Project "F:\cse 380 final project\HW2\HW2\Bugs\Bugs.vcxproj" on node 2 (Build target(s)).
-     1>InitializeBuildStatus:
-         Creating "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\Bugs.unsuccessfulbuild" because "AlwaysCreate" was specified.
-       ClCompile:
-         All outputs are up-to-date.
+﻿Build started 4/30/2014 10:57:09 AM.
+     1>Project "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Bugs\Bugs.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\Bugs\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\Bugs\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\bugs\BugsButtonEventHandler.cpp src\bugs\BugsCollisionListener.cpp src\bugs\BugsDataLoader.cpp src\bugs\BugsGame.cpp src\bugs\BugsKeyEventHandler.cpp src\bugs\BugsMouseEventHandler.cpp src\bugs\BugsTextGenerator.cpp src\bugs_VS\stdafx.cpp
+         stdafx.cpp
+         BugsTextGenerator.cpp
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\bugs\src\bugs\bugstextgenerator.cpp(54): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+         BugsMouseEventHandler.cpp
+         BugsKeyEventHandler.cpp
+         BugsGame.cpp
+         BugsDataLoader.cpp
+         BugsCollisionListener.cpp
+         BugsButtonEventHandler.cpp
+         Generating Code...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\cse 380 final project\HW2\HW2\Apps\Bugs\Bugs.exe" /INCREMENTAL /NOLOGO /LIBPATH:./lib Box2D.lib d3d9.lib d3dx9.lib winmm.lib PoseurSpriteTypesImporter.lib SimpleSideScrollerFramework.lib tinyxml.lib TMXMapImporter.lib XMLFileImporter.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\cse 380 final project\HW2\HW2\Apps\Bugs\Bugs.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\cse 380 final project\HW2\HW2\Apps\Bugs\Bugs.lib" /MACHINE:X86 "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\BugsButtonEventHandler.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\BugsCollisionListener.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\BugsDataLoader.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\BugsGame.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\BugsKeyEventHandler.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\BugsMouseEventHandler.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\BugsTextGenerator.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\stdafx.obj"
-         lib\Box2D.lib
-         Bugs.vcxproj -> F:\cse 380 final project\HW2\HW2\Apps\Bugs\Bugs.exe
-       FinalizeBuildStatus:
-         Deleting file "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\Bugs.unsuccessfulbuild".
-         Touching "F:\cse 380 final project\HW2\HW2\Temp\Bugs\Debug\Bugs.lastbuildstate".
-     1>Done Building Project "F:\cse 380 final project\HW2\HW2\Bugs\Bugs.vcxproj" (Build target(s)).
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\Bugs.exe" /INCREMENTAL /NOLOGO /LIBPATH:../lib Box2D.lib d3d9.lib d3dx9.lib winmm.lib PoseurSpriteTypesImporter.lib SimpleSideScrollerFramework.lib tinyxml.lib TMXMapImporter.lib XMLFileImporter.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\Bugs.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\Bugs.lib" /MACHINE:X86 "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\Bugs\Debug\BugsButtonEventHandler.obj"
+         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\Bugs\Debug\BugsCollisionListener.obj"
+         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\Bugs\Debug\BugsDataLoader.obj"
+         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\Bugs\Debug\BugsGame.obj"
+         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\Bugs\Debug\BugsKeyEventHandler.obj"
+         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\Bugs\Debug\BugsMouseEventHandler.obj"
+         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\Bugs\Debug\BugsTextGenerator.obj"
+         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\Bugs\Debug\stdafx.obj"
+         ..\lib\Box2D.lib
+         Bugs.vcxproj -> C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\Bugs.exe
+     1>Done Building Project "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Bugs\Bugs.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.94
+Time Elapsed 00:00:15.26

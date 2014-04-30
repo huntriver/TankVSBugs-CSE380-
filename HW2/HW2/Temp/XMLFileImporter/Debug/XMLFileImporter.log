@@ -1,21 +1,16 @@
-﻿Build started 4/18/2014 10:37:26 PM.
-     1>Project "F:\cse 380 final project\HW2\HW2\XMLFileImporter\XMLFileImporter.vcxproj" on node 2 (Build target(s)).
-     1>InitializeBuildStatus:
-         Creating "F:\cse 380 final project\HW2\HW2\Temp\XMLFileImporter\Debug\XMLFileImporter.unsuccessfulbuild" because "AlwaysCreate" was specified.
-       ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"F:\cse 380 final project\HW2\HW2\Temp\XMLFileImporter\Debug\\" /Fd"F:\cse 380 final project\HW2\HW2\Temp\XMLFileImporter\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\xmlfi\XMLFileImporter.cpp src\xmlfi_VS\stdafx.cpp
+﻿Build started 4/30/2014 10:56:06 AM.
+     1>Project "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\XMLFileImporter\XMLFileImporter.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\XMLFileImporter\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\XMLFileImporter\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\xmlfi\XMLFileImporter.cpp src\xmlfi_VS\stdafx.cpp
          stdafx.cpp
          XMLFileImporter.cpp
          Generating Code...
        Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"F:\cse 380 final project\HW2\HW2\Common\XMLFileImporter.lib" /NOLOGO "F:\cse 380 final project\HW2\HW2\Temp\XMLFileImporter\Debug\XMLFileImporter.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\XMLFileImporter\Debug\stdafx.obj"
-         XMLFileImporter.vcxproj -> F:\cse 380 final project\HW2\HW2\Common\XMLFileImporter.lib
-       FinalizeBuildStatus:
-         Deleting file "F:\cse 380 final project\HW2\HW2\Temp\XMLFileImporter\Debug\XMLFileImporter.unsuccessfulbuild".
-         Touching "F:\cse 380 final project\HW2\HW2\Temp\XMLFileImporter\Debug\XMLFileImporter.lastbuildstate".
-     1>Done Building Project "F:\cse 380 final project\HW2\HW2\XMLFileImporter\XMLFileImporter.vcxproj" (Build target(s)).
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Common\XMLFileImporter.lib" /NOLOGO "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\XMLFileImporter\Debug\XMLFileImporter.obj"
+         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\XMLFileImporter\Debug\stdafx.obj"
+         XMLFileImporter.vcxproj -> C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Common\XMLFileImporter.lib
+     1>Done Building Project "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\XMLFileImporter\XMLFileImporter.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.44
+Time Elapsed 00:00:01.55

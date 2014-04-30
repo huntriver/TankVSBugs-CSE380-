@@ -78,9 +78,9 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <None Include="lib\box2d.pdb" />
+    <Library Include="..\lib\Box2D.lib" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="lib\Box2D.lib" />
+    <None Include="..\lib\box2d.pdb" />
   </ItemGroup>
 </Project>

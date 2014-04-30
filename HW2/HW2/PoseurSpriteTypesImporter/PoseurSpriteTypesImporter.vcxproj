@@ -22,10 +22,10 @@
     <ClInclude Include="src\psti_VS\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="lib\Box2D.lib" />
+    <Library Include="..\lib\Box2D.lib" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="lib\box2d.pdb" />
+    <None Include="..\lib\box2d.pdb" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{776F7C61-3F11-4273-8C3D-3A01A71E8173}</ProjectGuid>
@@ -69,7 +69,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>./</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -79,7 +79,7 @@
       <AdditionalDependencies>Box2D.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>./lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../lib</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
