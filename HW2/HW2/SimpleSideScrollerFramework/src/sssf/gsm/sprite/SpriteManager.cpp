@@ -243,6 +243,7 @@ void SpriteManager::update(Game *game)
 		//bot->affixTightAABBBoundingVolume();
 	}
 	
+	/*
 	if (TT %30==0){
 		TopDownSprite *bullet = new TopDownSprite();
 		//physics->addCollidableObject(bot);
@@ -308,6 +309,7 @@ void SpriteManager::update(Game *game)
 		
 	}
 	TT++;
+	*/
 	// FIRST LET'S DO THE NECESSARY PATHFINDING
 	//pathfinder->updatePath(&player);
 	list<Bot*>::iterator botIterator;
@@ -322,9 +324,15 @@ void SpriteManager::update(Game *game)
 			bot = (*botIterator);
 		}
 		if (botIterator==bots.end()) break;
-		//if (bot->hasReachedDestination())
-			//bot->pickRandomDestination(game);
-	//	pathfinder->updatePath(bot);
+		if(bot->getCurrentState() != L"ATTACK UP" &&
+		bot->getCurrentState() != L"ATTACK DOWN" &&
+		bot->getCurrentState() != L"ATTACK LEFT" &&
+		bot->getCurrentState() != L"ATTACK RIGHT")
+		{
+			if (bot->hasReachedDestination())
+				pathfinder->mapPath(bot, player.getB2Body()->GetPosition().x * 5.0f, player.getB2Body()->GetPosition().y * -5.0f);
+		}
+		pathfinder->updatePath(bot);
 		botIterator++;
 	}
 
@@ -349,6 +357,17 @@ void SpriteManager::update(Game *game)
 	while (botIterator != bots.end())
 	{
 		Bot *bot = (*botIterator);
+		if(bot->getCurrentState() == L"ATTACK UP" ||
+		   bot->getCurrentState() == L"ATTACK DOWN" ||
+		   bot->getCurrentState() == L"ATTACK LEFT" ||
+		   bot->getCurrentState() == L"ATTACK RIGHT" ||
+		   bot->getCurrentState() == L"IDLE UP" ||
+		   bot->getCurrentState() == L"IDLE DOWN" ||
+		   bot->getCurrentState() == L"IDLE LEFT" ||
+		   bot->getCurrentState() == L"IDLE RIGHT")
+		{
+			bot->getB2Body()->SetLinearVelocity(b2Vec2(0,0));
+		}
 		bot->updateSprite();
 		botIterator++;
 	}

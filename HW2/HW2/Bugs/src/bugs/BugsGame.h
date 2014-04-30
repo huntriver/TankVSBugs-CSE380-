@@ -9,8 +9,8 @@
 */
 
 // HERE IS THE Bugs GAME SETUP/INIT FILE. EVERYTHING WOULD START FROM HERE
-static const wstring	W_LEVEL_1_DIR			= L"data/levels/TopDownDesert/";
-static const wstring	W_LEVEL_1_NAME			= L"TopDownDesert.tmx";
+static const wstring	W_LEVEL_1_DIR			= L"data/levels/level1/";
+static const wstring	W_LEVEL_1_NAME			= L"level1.tmx";
 static const wstring	W_LEVEL_1_PATH			= W_LEVEL_1_DIR + W_LEVEL_1_NAME;
 static const wstring	W_INIT_FILE				= L"data/BugsInit.txt";
 static const wstring	W_GUI_INIT_FILE			= L"data/BugsGUI.txt";
@@ -78,12 +78,21 @@ static const float		PLAYER_INIT_X = 80.0f;
 static const float		PLAYER_INIT_Y = 105.0f;
 static const float		JUMP_SPEED = -24.0f;
 static const float		PLAYER_SPEED = 6.0f;
+static const float      MAX_TANK_SPEED = 60.0f;
 static const int		MIN_FPS = 5;
 static const int		MAX_FPS = 100;
 static const int		FPS_INC = 1;
 static const wstring	ATTACKING_RIGHT(L"ATTACKING_RIGHT");
 static const wstring	ATTACKING_LEFT(L"ATTACKING_LEFT");
 static const wstring	IDLE(L"IDLE");
+static const wstring    IDLE_UP(L"IDLE UP");
+static const wstring    IDLE_DOWN(L"IDLE DOWN");
+static const wstring    IDLE_LEFT(L"IDLE LEFT");
+static const wstring    IDLE_RIGHT(L"IDLE RIGHT");
+static const wstring    MOVE_UP(L"MOVE UP");
+static const wstring    MOVE_DOWN(L"MOVE DOWN");
+static const wstring    MOVE_LEFT(L"MOVE LEFT");
+static const wstring    MOVE_RIGHT(L"MOVE RIGHT");
 
 // USED FOR MOVEMENT
 const unsigned int W_KEY = (unsigned int)'W';
@@ -102,3 +111,5 @@ const unsigned int SPACE_KEY = VK_SPACE;
 
 // THIS IS JUST FOR SHOWING HOW THE CURSOR CAN BE CHANGED
 const unsigned int C_KEY = (unsigned int)'C';
+
+const int RADII = 10;

@@ -26,7 +26,12 @@ AnimatedSprite::AnimatedSprite()
 	pp.setAccelerationY(0.0f);
 	pp.setPosition(0.0f, 0.0f);
 	dead=false;
+	hitObject[0] = false; 
+	hitObject[1] = false;
+	hitObject[2] = false;
+	hitObject[3] = false;
 	health=5;
+	isPlayer = false;
 }
 
 /*

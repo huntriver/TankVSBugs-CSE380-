@@ -50,6 +50,10 @@ protected:
 	MouseEventHandler *mouseHandler;
 
 public:
+	bool wKeyDisabled;
+	bool sKeyDisabled;
+	bool aKeyDisabled;
+	bool dKeyDisabled;
 	// INLINED METHODS
 	int getMouseX() { return mouseX; }
 	int getMouseY() { return mouseY; }

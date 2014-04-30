@@ -36,6 +36,9 @@
     <ClCompile Include="src\bugs_VS\stdafx.cpp">
       <Filter>src\bugs_VS</Filter>
     </ClCompile>
+    <ClCompile Include="src\bugs\BugsContactListener.cpp">
+      <Filter>src\bugs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\bugs\BugsButtonEventHandler.h">
@@ -68,7 +71,7 @@
     <ClInclude Include="src\bugs_VS\targetver.h">
       <Filter>src\bugs_VS</Filter>
     </ClInclude>
-    <ClInclude Include="src\bugs\box2DContactListener.h">
+    <ClInclude Include="src\bugs\BugsContactListener.h">
       <Filter>src\bugs</Filter>
     </ClInclude>
   </ItemGroup>

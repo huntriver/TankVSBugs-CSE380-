@@ -6,7 +6,7 @@
 #include "bugs\BugsGame.h"
 #include "bugs\BugsKeyEventHandler.h"
 #include "bugs\BugsTextGenerator.h"
-#include "bugs\box2DContactListener.h"
+#include "bugs\BugsContactListener.h"
 
 // GAME OBJECT INCLUDES
 #include "sssf\game\Game.h"
@@ -178,8 +178,10 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	spriteManager->setPathfinder(pathfinder);
 
 	world->initBox2DTiles();
+	BugsContactListener* contactListener = new BugsContactListener();
+	world->boxWorld->SetContactListener(contactListener);
+	contactListener->setGame(game);
 	
-	world->boxWorld->SetContactListener(new box2DContactListener());
 	
 	// LOAD THE LEVEL'S SPRITE IMAGES
 	PoseurSpriteTypesImporter psti;
@@ -198,7 +200,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	AnimatedSpriteType *playerSpriteType = spriteManager->getSpriteType(0);
 	player->setSpriteType(playerSpriteType);
 	player->setAlpha(255);
-	player->setCurrentState(IDLE);
+	player->setCurrentState(IDLE_RIGHT);
 	/*
 	PhysicalProperties *playerProps = player->getPhysicalProperties();
 	playerProps->setX(PLAYER_INIT_X);
@@ -230,7 +232,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	body->SetLinearVelocity(b2Vec2(0.0f,0.0f));
 	body->CreateFixture(&fixtureDef);
 	player->setB2Body(body);
-
+	player->setIsPlayer(true);
 	player->setOnTileThisFrame(false);
 	player->setOnTileLastFrame(false);
 	player->affixTightAABBBoundingVolume();
@@ -238,7 +240,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	// AND LET'S ADD A BUNCH OF RANDOM JUMPING BOTS, FIRST ALONG
 	// A LINE NEAR THE TOP
 	AnimatedSpriteType *botSpriteType = spriteManager->getSpriteType(1);
-	makeRandomBot(game, botSpriteType, 200, 300);
+	makeRandomBot(game, botSpriteType, 2300, -400);
 // UNCOMMENT THE FOLLOWING CODE BLOCK WHEN YOU ARE READY TO ADD SOME BOTS
 /*	for (int i = 2; i <= 26; i++)
 	{
@@ -276,14 +278,14 @@ void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType
 	//PhysicalProperties *pp = bot->getPhysicalProperties();
 	//pp->setPosition(initX, initY);
 	bot->setSpriteType(randomBotType);
-	bot->setCurrentState(WALKING);
+	bot->setCurrentState(IDLE_UP);
 	bot->setAlpha(255);
 	spriteManager->addBot(bot);
 	//bot->affixTightAABBBoundingVolume();
 
 	b2BodyDef bodyDef;
 		bodyDef.type = b2_dynamicBody;
-		bodyDef.position.Set(500.0f/5.0f, -200.0f/5.0f);
+		bodyDef.position.Set(initX/5.0f, initY/5.0f);
 		b2Body* body = (game->getGSM()->getWorld()->boxWorld)->CreateBody(&bodyDef);
 
 		// Define another box shape for our dynamic body.

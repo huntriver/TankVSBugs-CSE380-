@@ -33,7 +33,7 @@ private:
 	bool viewportToggled;
 	int toggleOffsetY;
 	int normalOffsetY;
-
+	bool moveWithPlayer;
 public:
 	// INLINED ACCESSOR METHODS
 	int getScrollSpeedX()		{ return scrollSpeedX;			}
@@ -44,6 +44,7 @@ public:
 	int getViewportHeight()		{ return viewportHeight;		}
 	int getViewportOffsetX()	{ return viewportOffsetX;		}
 	int getViewportOffsetY()	{ return viewportOffsetY;		}
+	bool isMoveWithPlayer()       { return moveWithPlayer;        }
 
 	// INLINED MUTATOR METHODS
 	void setScrollSpeedX(int initScrollSpeedX)
@@ -66,6 +67,8 @@ public:
 	}
 	void setToggleOffsetY(int initToggleOffsetY)
 	{ toggleOffsetY = initToggleOffsetY; }
+	void setMoveWithPlayer(bool flag)
+	{ moveWithPlayer = flag;}
 
 	// METHODS DEFINED IN Viewport.cpp
 	Viewport();
@@ -74,5 +77,6 @@ public:
 	bool areViewportCoordinatesInViewport(int x, int y, int width, int height);
 	bool areScreenCoordinatesInViewport(int x, int y);
 	void moveViewport(int incX, int incY,	int worldWidth, int worldHeight);
+	void playerMoveViewport(int x, int y, int worldWidth, int worldHeight);
 	void toggleDebugView();
 };

@@ -6,8 +6,10 @@ void TopDownSprite::updateSprite()
 	// CALL THE PARENT METHOD TO UPDATE ANIMATION
 	AnimatedSprite::updateSprite();
 
+	rotationInRadians = 0.0f;
 	// AND NOW CALCULATE THE RADIANS
 	// FOR RENDERING THIS SPRITE
+	/*
 	float vX = body->GetLinearVelocity().x;
 	float vY = -1.0f * body->GetLinearVelocity().y;
 	float epsilon = 0.00001f;
@@ -40,6 +42,7 @@ void TopDownSprite::updateSprite()
 		}
 	}
 	//body->set
+	*/
 }
 void TopDownSprite::beginContact(){
 	if (this->getSpriteType()->getSpriteTypeID()==0)
