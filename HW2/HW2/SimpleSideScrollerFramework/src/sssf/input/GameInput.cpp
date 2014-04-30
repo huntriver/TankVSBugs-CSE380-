@@ -46,4 +46,8 @@ void GameInput::initInputState()
 		inputState[i].isPressed		= false;
 		inputState[i].wasHeldDown	= false;
 	}
+	wKeyDisabled = false;
+	sKeyDisabled = false;
+	dKeyDisabled = false;
+	aKeyDisabled = false;
 }

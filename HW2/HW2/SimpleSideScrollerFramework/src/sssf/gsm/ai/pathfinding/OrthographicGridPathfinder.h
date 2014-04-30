@@ -43,5 +43,6 @@ private:
 	void addNeighbors(bool *nodesToAdd, PathNode *centerNode, PathNode *destination, map<int, PathNode> *openNodes, map<int, PathNode> *closedNodes);
 	PathNode* findCheapestNode(map<int, PathNode> *openNodes);
 	void removeNodeFromList(PathNode *nodeToRemove, list<PathNode> *nodeList);
-
+	bool hasReachedNodeX(AnimatedSprite *sprite, PathNode destination);
+	bool hasReachedNodeY(AnimatedSprite *sprite, PathNode destination);
 };

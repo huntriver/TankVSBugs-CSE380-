@@ -45,6 +45,9 @@ protected:
 	// CURRENT PATH TO FOLLOW
 	list<PathNode> currentPathToFollow;
 	list<PathNode>::iterator currentPathNode;
+
+	bool isPlayer;
+	bool hitObject[4];
 	
 public:
 	// INLINED ACCESSOR METHODS
@@ -55,6 +58,8 @@ public:
 	wstring				getCurrentState()	{ return currentState;		}
 	unsigned int		getFrameIndex()		{ return frameIndex;		}
 	AnimatedSpriteType*	getSpriteType()		{ return spriteType;		}
+	bool getIsPlayer() { return isPlayer; }
+	bool* getHitObject() { return hitObject; }
 	bool hasReachedDestination()
 
 	{	if (currentPathToFollow.size()==0)
@@ -73,6 +78,10 @@ public:
 	void clearPath()
 	{	currentPathToFollow.clear();
 		currentPathNode = currentPathToFollow.end(); 
+	}
+	void setIsPlayer(bool flag)
+	{
+		isPlayer = flag;
 	}
 	int getHealth()
 	{
