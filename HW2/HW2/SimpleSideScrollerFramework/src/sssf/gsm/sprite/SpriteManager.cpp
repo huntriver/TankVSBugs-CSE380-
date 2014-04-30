@@ -51,7 +51,7 @@ void SpriteManager::addSpriteToRenderList(AnimatedSprite *sprite,
 			sprite->getAlpha(),
 			spriteType->getTextureWidth(),
 			spriteType->getTextureHeight(),
-			rotation);
+			0);
 		int aa=gsm->getSpriteManager()->getSpriteType(3)->getAnimationFrameID(L"IDLE", 0);
 		for (int i=0;i<sprite->getHealth();i++)
 			renderList->addRenderItem(aa	,
@@ -101,8 +101,6 @@ void SpriteManager::addSpriteItemsToRenderList(	Game *game)
 			addSpriteToRenderList(bot, renderList, viewport,gsm);
 			botIterator++;
 		}
-
-		
 	}
 }
 
@@ -201,8 +199,8 @@ update method such that they may update themselves.
 */
 void SpriteManager::update(Game *game)
 {
-
-	if (bots.size()<0)
+	/*
+	if (TT % 120 == 0 && bots.size() <= 8)
 	{
 		//Physics *physics = game->getGSM()->getPhysics();
 		RandomBot *bot = new RandomBot();
@@ -211,13 +209,13 @@ void SpriteManager::update(Game *game)
 		//pp->setPosition(200, 300);
 		AnimatedSpriteType *botSpriteType = this->getSpriteType(1);
 		bot->setSpriteType(botSpriteType);
-		bot->setCurrentState(L"IDLE");
+		bot->setCurrentState(L"IDLE LEFT");
 		bot->setAlpha(255);
 		this->addBot(bot);
 
 		b2BodyDef bodyDef;
 		bodyDef.type = b2_dynamicBody;
-		bodyDef.position.Set(200.0f/5.0f, -400.0f/5.0f);
+		bodyDef.position.Set(2300.0f/5.0f, -520.0f/5.0f);
 		b2Body* body = (game->getGSM()->getWorld()->boxWorld)->CreateBody(&bodyDef);
 
 		// Define another box shape for our dynamic body.
@@ -241,7 +239,9 @@ void SpriteManager::update(Game *game)
 		body->SetUserData(bot);
 
 		//bot->affixTightAABBBoundingVolume();
+		TT = 0;
 	}
+	*/
 	
 	/*
 	if (TT %30==0){
@@ -308,8 +308,8 @@ void SpriteManager::update(Game *game)
 		body->SetUserData(bullet);
 		
 	}
-	TT++;
 	*/
+	TT++;
 	// FIRST LET'S DO THE NECESSARY PATHFINDING
 	//pathfinder->updatePath(&player);
 	list<Bot*>::iterator botIterator;
@@ -317,11 +317,10 @@ void SpriteManager::update(Game *game)
 	while (botIterator != bots.end())
 	{
 		Bot *bot = (*botIterator);
-		if (bot->dead){
-			botIterator=bots.erase(botIterator);
-			game->getGSM()->getWorld()->boxWorld->DestroyBody(bot->getB2Body());
-			if (botIterator==bots.end()) break;
-			bot = (*botIterator);
+		if(bot->getSpriteType()->getSpriteTypeID() == 4)
+		{
+			botIterator++;
+			continue;
 		}
 		if (botIterator==bots.end()) break;
 		if(bot->getCurrentState() != L"ATTACK UP" &&
@@ -330,7 +329,11 @@ void SpriteManager::update(Game *game)
 		bot->getCurrentState() != L"ATTACK RIGHT")
 		{
 			if (bot->hasReachedDestination())
+			{
 				pathfinder->mapPath(bot, player.getB2Body()->GetPosition().x * 5.0f, player.getB2Body()->GetPosition().y * -5.0f);
+			}else{
+				static_cast<RandomBot*>(bot)->think(game);
+			}
 		}
 		pathfinder->updatePath(bot);
 		botIterator++;
@@ -357,18 +360,34 @@ void SpriteManager::update(Game *game)
 	while (botIterator != bots.end())
 	{
 		Bot *bot = (*botIterator);
-		if(bot->getCurrentState() == L"ATTACK UP" ||
-		   bot->getCurrentState() == L"ATTACK DOWN" ||
-		   bot->getCurrentState() == L"ATTACK LEFT" ||
-		   bot->getCurrentState() == L"ATTACK RIGHT" ||
-		   bot->getCurrentState() == L"IDLE UP" ||
-		   bot->getCurrentState() == L"IDLE DOWN" ||
-		   bot->getCurrentState() == L"IDLE LEFT" ||
-		   bot->getCurrentState() == L"IDLE RIGHT")
+		if(bot->getSpriteType()->getSpriteTypeID() == 4)
 		{
-			bot->getB2Body()->SetLinearVelocity(b2Vec2(0,0));
+			if(bot->getHealth() == 0){
+				botIterator=bots.erase(botIterator);
+				game->getGSM()->getWorld()->boxWorld->DestroyBody(bot->getB2Body());
+				if (botIterator==bots.end()) break;
+			}
+			botIterator++;
+		}else{
+			if(bot->getCurrentState() == L"ATTACK UP" ||
+			   bot->getCurrentState() == L"ATTACK DOWN" ||
+			   bot->getCurrentState() == L"ATTACK LEFT" ||
+		       bot->getCurrentState() == L"ATTACK RIGHT" ||
+		       bot->getCurrentState() == L"IDLE UP" ||
+		       bot->getCurrentState() == L"IDLE DOWN" ||
+		       bot->getCurrentState() == L"IDLE LEFT" ||
+		       bot->getCurrentState() == L"IDLE RIGHT")
+		      {
+				bot->getB2Body()->SetLinearVelocity(b2Vec2(0,0));
+			  }
+			bot->updateSprite();
+			if (bot->getHealth() == 0){
+				botIterator=bots.erase(botIterator);
+				game->getGSM()->getWorld()->boxWorld->DestroyBody(bot->getB2Body());
+				if (botIterator==bots.end()) break;
+				// bot = (*botIterator);
+			}
+			botIterator++;
 		}
-		bot->updateSprite();
-		botIterator++;
 	}
 }

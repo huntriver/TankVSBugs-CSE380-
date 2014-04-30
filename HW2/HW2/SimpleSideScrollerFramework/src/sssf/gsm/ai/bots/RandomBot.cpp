@@ -14,7 +14,7 @@ RandomBot::RandomBot()
 	// INIT THE BASIC STUFF
 //	initBot(initMin, initMax, initMaxVelocity);
 	pp.setVelocity(0.0f, 0.0f);
-
+	thinkCounter = 0;
 	// AND START THE BOT OFF IN A RANDOM DIRECTION AND VELOCITY
 	// AND WITH RANDOM INTERVAL UNTIL IT THINKS AGAIN
 	
@@ -87,27 +87,23 @@ void RandomBot::pickRandomDestination(Game *game)
 	decision-making. Note that we might not actually do any thinking each
 	frame, depending on the value of cyclesRemainingBeforeThinking.
 */
-/*void RandomBot::think(Game *game)
+void RandomBot::think(Game *game)
 {
 	// EACH FRAME WE'LL TEST THIS BOT TO SEE IF WE NEED
 	// TO PICK A DIFFERENT DIRECTION TO FLOAT IN
-
-	if (cyclesRemainingBeforeThinking == 0)
+	thinkCounter++;
+	if(thinkCounter % 120 == 0)
 	{
-		if (this->wasOnTileLastFrame())
+		float pX = game->getGSM()->getSpriteManager()->getPlayer()->getB2Body()->GetPosition().x * 5.0f;
+		float pY = game->getGSM()->getSpriteManager()->getPlayer()->getB2Body()->GetPosition().y * -5.0f;
+		float bX = this->getB2Body()->GetPosition().x * 5.0f;
+		float bY = this->getB2Body()->GetPosition().y * -5.0f;
+
+		if(fabsl(bX-pX) <= 200.0f && fabsl(bY-pY) <= 200.0f)
 		{
-			GameStateManager *gsm = game->getGSM();
-			pickRandomJump(gsm->getPhysics());
-			pickRandomCyclesInRange();
+			game->getGSM()->getSpriteManager()->getPathfinder()->mapPath(this, pX, pY);
 		}
-	}
-	else
-		cyclesRemainingBeforeThinking--;
 
-	animationRandomizer--;
-	if (animationRandomizer == 0)
-	{
-		animationCounter++;
-		animationRandomizer = (rand() % 45) + 5;
+		thinkCounter = 0;
 	}
-}*/
+}

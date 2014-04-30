@@ -91,6 +91,7 @@ public:
 	{
 		health=a;
 	}
+	void shoot();
 	// METHODS DEFINED IN AnimatedSprite.cpp
 	AnimatedSprite();
 	~AnimatedSprite();

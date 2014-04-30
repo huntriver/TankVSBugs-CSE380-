@@ -1,14 +1,8 @@
-﻿Build started 4/30/2014 1:40:20 PM.
+﻿Build started 4/30/2014 5:12:14 PM.
      1>Project "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\SimpleSideScrollerFramework\SimpleSideScrollerFramework.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\gsm\ai\pathfinding\OrthographicGridPathfinder.cpp src\sssf\gsm\sprite\SpriteManager.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\gsm\sprite\SpriteManager.cpp
          SpriteManager.cpp
-         OrthographicGridPathfinder.cpp
-     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(25): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(26): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(138): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(139): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-         Generating Code...
        Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Common\SimpleSideScrollerFramework.lib" Box2D.lib /LIBPATH:../lib /NOLOGO "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameDataLoader.obj"
          "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Game.obj"
@@ -502,4 +496,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.99
+Time Elapsed 00:00:03.37

@@ -4,4 +4,5 @@
   <sprite_type>ant</sprite_type>
   <sprite_type>bullet</sprite_type>
   <sprite_type>health_bar</sprite_type>
+  <sprite_type>egg</sprite_type>
  </sprite_type_list>
