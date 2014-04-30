@@ -149,11 +149,8 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 			else if(player->getCurrentState() == MOVE_RIGHT)
 				player->setCurrentState(IDLE_RIGHT);
 		}
+	
 
-
-		
-
-		/*
 		bool viewportMoved = false;
 		float viewportVx = 0.0f;
 		float viewportVy = 0.0f;
@@ -179,7 +176,6 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 		}
 		if (viewportMoved)
 			viewport->moveViewport((int)floor(viewportVx+0.5f), (int)floor(viewportVy+0.5f), game->getGSM()->getWorld()->getWorldWidth(), game->getGSM()->getWorld()->getWorldHeight());
-		*/
 	}
 
 	// 0X43 is HEX FOR THE 'C' VIRTUAL KEY

@@ -28,7 +28,7 @@
 #include "sssf\text\TextFileWriter.h"
 
 const static unsigned int DEFAULT_INIT_GUI_RENDER_LIST_SIZE = 100;
-const static unsigned int DEFAULT_INIT_LEVEL_RENDER_LIST_SIZE = 1000;
+const static unsigned int DEFAULT_INIT_LEVEL_RENDER_LIST_SIZE = 3000;
 
 class TextureManager;
 
