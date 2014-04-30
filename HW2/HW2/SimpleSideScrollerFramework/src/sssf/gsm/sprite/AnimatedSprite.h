@@ -45,17 +45,24 @@ protected:
 	list<PathNode> currentPathToFollow;
 	list<PathNode>::iterator currentPathNode;
 	
+	bool isPlayer;
+
+	// UP is 0, Down is 1, Left is 2, Right is 3
+	bool hitObject[4];
+
 public:
 	// INLINED ACCESSOR METHODS
 	bool dead;
+	bool changeType;
 	int					getAlpha()			{ return alpha;				}
 	list<PathNode>*		getCurrentPathToFollow() { return &currentPathToFollow; }
 	list<PathNode>::iterator getCurrentPathNode() { return currentPathNode; }
 	wstring				getCurrentState()	{ return currentState;		}
 	unsigned int		getFrameIndex()		{ return frameIndex;		}
 	AnimatedSpriteType*	getSpriteType()		{ return spriteType;		}
+	bool getIsPlayer() { return isPlayer; }
+	bool* getHitObject() { return hitObject; }
 	bool hasReachedDestination()
-
 	{	if (currentPathToFollow.size()==0)
 	    return true;
 		return currentPathNode == currentPathToFollow.end(); }
@@ -72,6 +79,10 @@ public:
 	void clearPath()
 	{	currentPathToFollow.clear();
 		currentPathNode = currentPathToFollow.end(); 
+	}
+	void setIsPlayer(bool flag)
+	{
+		isPlayer = flag;
 	}
 
 	// METHODS DEFINED IN AnimatedSprite.cpp

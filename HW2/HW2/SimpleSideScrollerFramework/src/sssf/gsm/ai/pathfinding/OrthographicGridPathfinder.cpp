@@ -354,6 +354,14 @@ void OrthographicGridPathfinder::updatePath(AnimatedSprite *sprite)
 	list<PathNode>::iterator currentNode = sprite->getCurrentPathNode();
 
 	// IF THERE IS A PATH WE SHOULD BE FOLLOWING, FOLLOW IT
+	if (sprite->getCurrentState() == L"ATTACK UP" ||
+		sprite->getCurrentState() == L"ATTACK DOWN" ||
+		sprite->getCurrentState() == L"ATTACK LEFT" ||
+		sprite->getCurrentState() == L"ATTACK RIGHT")
+	{
+		sprite->clearPath();
+		return;
+	}
 	if ((currentPath->size() > 0) && (currentNode != currentPath->end()))
 	{
 		// WE MIGHT ALSO DO A LITTLE COLLISION AVOIDANCE FOR
@@ -365,31 +373,77 @@ void OrthographicGridPathfinder::updatePath(AnimatedSprite *sprite)
 		// NEXT NODE. IF NOT, WE SHOULD ADJUST OUR VELOCITY TO 
 		// HEAD IN THAT DIRECTION
 		PathNode node = *currentNode;
-		if (hasReachedNode(sprite, node))
-		{	
-			sprite->advanceCurrentPathNode();
-			if (sprite->hasReachedDestination())
+		if (hasReachedNodeX(sprite, node))
+		{
+			if(hasReachedNodeY(sprite, node))
 			{
-				//sprite->getPhysicalProperties()->setVelocity(0.0f, 0.0f);
-				sprite->getB2Body()->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
-				sprite->clearPath();
-				return;
+				sprite->advanceCurrentPathNode();
+				if (sprite->hasReachedDestination())
+				{
+					sprite->getB2Body()->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
+					sprite->clearPath();
+					return;
+				}
+			}else{
+				selectedPathfindingCell.setCenterX(getColumnCenterX(node.column));
+				selectedPathfindingCell.setCenterY(getRowCenterY(node.row));
+				int gridCellWidth = this->getGridWidth();
+				int gridCellHeight = this->getGridHeight();
+				float diffY = getRowCenterY(node.row) - sprite->getB2Body()->GetPosition().y*-5.0f;
+				float vY = 0.0f;
+				if(diffY > 0)
+				{
+				vY = - MAX_WALK_SPEED;
+				sprite->getB2Body()->SetLinearVelocity(b2Vec2(0.0f, vY));
+				sprite->setCurrentState(L"MOVE DOWN");
+			}else{
+				vY = MAX_WALK_SPEED;
+				sprite->getB2Body()->SetLinearVelocity(b2Vec2(0.0f, vY));
+				sprite->setCurrentState(L"MOVE UP");
+			}
+			}
+		}else {
+			selectedPathfindingCell.setCenterX(getColumnCenterX(node.column));
+			selectedPathfindingCell.setCenterY(getRowCenterY(node.row));
+			int gridCellWidth = this->getGridWidth();
+			int gridCellHeight = this->getGridHeight();
+			float diffX = getColumnCenterX(node.column) - sprite->getB2Body()->GetPosition().x*5.0f;
+			float vX = 0.0f;
+			if(diffX > 0)
+			{
+				vX = MAX_WALK_SPEED;
+				sprite->getB2Body()->SetLinearVelocity(b2Vec2(vX, 0.0f));
+				sprite->setCurrentState(L"MOVE RIGHT");
+			}else{
+				vX = - MAX_WALK_SPEED;
+				sprite->getB2Body()->SetLinearVelocity(b2Vec2(vX, 0.0f));
+				sprite->setCurrentState(L"MOVE LEFT");
 			}
 		}
+		/*
 		selectedPathfindingCell.setCenterX(getColumnCenterX(node.column));
 		selectedPathfindingCell.setCenterY(getRowCenterY(node.row));
 		int gridCellWidth = this->getGridWidth();
 		int gridCellHeight = this->getGridHeight();
 		float diffX = getColumnCenterX(node.column) - sprite->getB2Body()->GetPosition().x*5.0f;
 		float diffY = getRowCenterY(node.row) - sprite->getB2Body()->GetPosition().y*-5.0f;
-		float distance = sqrt((diffX * diffX) + (diffY * diffY));
+		// float distance = sqrt((diffX * diffX) + (diffY * diffY));
+		*/
+		/*
 		float unitX = diffX/distance;
 		float unitY = diffY/distance;
-		float vX = unitX * MAX_WALK_SPEED;
-		float vY = unitY * MAX_WALK_SPEED;
+		*/
+
+		// float vX = 0.0f; /*unitX * MAX_WALK_SPEED;*/
+		// float vY = 0.0f; /*unitY * MAX_WALK_SPEED;*/
+	    // if(abs(diffX) < abs(diffY))
+		// {
+		//	 vX = 
+		// }
+		
 		//sprite->getPhysicalProperties()->setVelocity(vX, vY);
-		sprite->getB2Body()->SetLinearVelocity(b2Vec2(vX, -1.0f*vY));
-		sprite->setCurrentState(L"WALKING");
+		// sprite->getB2Body()->SetLinearVelocity(b2Vec2(vX, -1.0f*vY));
+		// sprite->setCurrentState(L"WALKING");
 	}
 	else
 	{
@@ -397,14 +451,27 @@ void OrthographicGridPathfinder::updatePath(AnimatedSprite *sprite)
 	}	
 }
 
+
 bool OrthographicGridPathfinder::hasReachedNode(AnimatedSprite *sprite, PathNode destination)
 {
 	AABB *spriteAABB = sprite->getBoundingVolume();
-	float xDiff = fabs(sprite->getB2Body()->GetPosition().x*5.0f - getColumnCenterX(destination.column));
-	float yDiff = fabs(-1.0f*sprite->getB2Body()->GetPosition().y*5.0f - getRowCenterY(destination.row));
+	float xDiff = fabs(sprite->getB2Body()->GetPosition().x * 5.0f - getColumnCenterX(destination.column));
+	float yDiff = fabs(-1.0f*sprite->getB2Body()->GetPosition().y * 5.0f - getRowCenterY(destination.row));
 	bool xReached = xDiff < GRID_EPSILON;
 	bool yReached = yDiff < GRID_EPSILON;
 	return xReached && yReached;
+}
+
+bool OrthographicGridPathfinder::hasReachedNodeX(AnimatedSprite *sprite, PathNode destination)
+{
+	float xDiff = fabs(sprite->getB2Body()->GetPosition().x * 5.0f - getColumnCenterX(destination.column));
+	return xDiff < GRID_EPSILON;
+}
+
+bool OrthographicGridPathfinder::hasReachedNodeY(AnimatedSprite *sprite, PathNode destination)
+{
+	float yDiff = fabs(-1.0f*sprite->getB2Body()->GetPosition().y * 5.0f - getRowCenterY(destination.row));
+	return yDiff < GRID_EPSILON;
 }
 
 float OrthographicGridPathfinder::getColumnCenterX(int column)
@@ -424,7 +491,7 @@ float OrthographicGridPathfinder::getRowCenterY(int row)
 void OrthographicGridPathfinder::mapPath(AnimatedSprite *sprite, float worldX, float worldY)
 {
 	list<PathNode> *path = sprite->getCurrentPathToFollow();
-	buildPath(path, sprite->getB2Body()->GetPosition().x*5.0f, sprite->getB2Body()->GetPosition().y * -5.0f , worldX, worldY);
+	buildPath(path, sprite->getB2Body()->GetPosition().x * 5.0f, sprite->getB2Body()->GetPosition().y * -5.0f , worldX, worldY);
 	sprite->resetCurrentPathNode();
 }
 

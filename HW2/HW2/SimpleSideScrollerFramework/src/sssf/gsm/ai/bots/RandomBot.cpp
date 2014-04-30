@@ -79,7 +79,6 @@ void RandomBot::pickRandomDestination(Game *game)
 	SpriteManager *spriteManager = game->getGSM()->getSpriteManager();
 	GridPathfinder *pathfinder = spriteManager->getPathfinder();
 	pathfinder->mapPath(this, (float)worldCoordinateX, (float)worldCoordinateY);
-
 }
 
 /*

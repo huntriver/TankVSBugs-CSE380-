@@ -77,30 +77,65 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 		float tankVx = 0.0f;
 		float tankVy = 0.0f;
 		TopDownSprite* player = game->getGSM()->getSpriteManager()->getPlayer();
+
 		if(input->isKeyDown(W_KEY))
 		{
-			
+			if(player->getCurrentState() != IDLE_UP && player->getCurrentState() != MOVE_UP)
+			{
+				input->wKeyDisabled = false;
+			}
 			tankVy = MAX_TANK_SPEED;
-			player->getB2Body()->SetLinearVelocity(b2Vec2(0,tankVy));
-			//if(player->getCurrentState() != MOVE_UP)
+			if(!input->wKeyDisabled){
+				player->getB2Body()->SetLinearVelocity(b2Vec2(0,tankVy));
+			}else{
+				player->getB2Body()->SetLinearVelocity(b2Vec2(0,0));
+			}
 			player->setCurrentState(MOVE_UP);
 		}
 		else if(input->isKeyDown(S_KEY))
 		{
-			tankVy = -1.0f * MAX_TANK_SPEED;
-			player->getB2Body()->SetLinearVelocity(b2Vec2(0,tankVy));
-			//if(player->getCurrentState() != MOVE_DOWN)
-			player->setCurrentState(MOVE_DOWN);
+			    if(player->getCurrentState() != IDLE_DOWN && player->getCurrentState() != MOVE_DOWN)
+			    {
+				   input->sKeyDisabled = false;
+			    }
+				tankVy = -1.0f * MAX_TANK_SPEED;
+				if(!input->sKeyDisabled)
+				{
+					player->getB2Body()->SetLinearVelocity(b2Vec2(0,tankVy));
+				}
+				else
+				{
+					player->getB2Body()->SetLinearVelocity(b2Vec2(0,0));
+				}
+				//if(player->getCurrentState() != MOVE_DOWN)
+				player->setCurrentState(MOVE_DOWN);
+			
 		}else if(input->isKeyDown(A_KEY))
 		{
+			if(player->getCurrentState() != IDLE_LEFT && player->getCurrentState() != MOVE_LEFT)
+			{
+				input->aKeyDisabled = false;
+			}
 			tankVx = -1.0f * MAX_TANK_SPEED;
-			player->getB2Body()->SetLinearVelocity(b2Vec2(tankVx,0));
+			if(!input->aKeyDisabled){
+				player->getB2Body()->SetLinearVelocity(b2Vec2(tankVx,0));
+			}else{
+				player->getB2Body()->SetLinearVelocity(b2Vec2(0,0));
+			}
 			//if(player->getCurrentState() != MOVE_LEFT)
 			player->setCurrentState(MOVE_LEFT);
 		}else if(input->isKeyDown(D_KEY))
 		{
+			if(player->getCurrentState() != IDLE_RIGHT && player->getCurrentState() != MOVE_RIGHT)
+			{
+				input->dKeyDisabled = false;
+			}
 			tankVx = MAX_TANK_SPEED;
-			player->getB2Body()->SetLinearVelocity(b2Vec2(tankVx,0));
+			if(!input->dKeyDisabled){
+				player->getB2Body()->SetLinearVelocity(b2Vec2(tankVx,0));
+			}else{
+				player->getB2Body()->SetLinearVelocity(b2Vec2(0,0));
+			}
 			//if(player->getCurrentState() != MOVE_RIGHT)
 			player->setCurrentState(MOVE_RIGHT);
 		}else{
@@ -115,6 +150,10 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 				player->setCurrentState(IDLE_RIGHT);
 		}
 
+
+		
+
+		/*
 		bool viewportMoved = false;
 		float viewportVx = 0.0f;
 		float viewportVy = 0.0f;
@@ -140,7 +179,7 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 		}
 		if (viewportMoved)
 			viewport->moveViewport((int)floor(viewportVx+0.5f), (int)floor(viewportVy+0.5f), game->getGSM()->getWorld()->getWorldWidth(), game->getGSM()->getWorld()->getWorldHeight());
-		
+		*/
 	}
 
 	// 0X43 is HEX FOR THE 'C' VIRTUAL KEY

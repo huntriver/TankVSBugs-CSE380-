@@ -26,6 +26,12 @@ AnimatedSprite::AnimatedSprite()
 	pp.setAccelerationY(0.0f);
 	pp.setPosition(0.0f, 0.0f);
 	dead=false;
+	isPlayer=false;
+	hitObject[0] = false; 
+	hitObject[1] = false;
+	hitObject[2] = false;
+	hitObject[3] = false;
+	changeType = false;
 }
 
 /*
@@ -100,6 +106,18 @@ void AnimatedSprite::updateSprite()
 	// ANIMATION COUNTER HAS REACHED THE DURATION
 	if (animationCounter >= duration)
 		changeFrame();
+
+	if(changeType)
+	{
+		if(body->GetType() == b2_dynamicBody)
+		{
+			body->SetType(b2_staticBody);
+		}else{
+			body->SetType(b2_dynamicBody);	
+		}
+	}
+
+	changeType = false;
 }
 
 void AnimatedSprite::affixTightAABBBoundingVolume()

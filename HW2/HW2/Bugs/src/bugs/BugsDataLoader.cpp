@@ -179,7 +179,9 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 
 	world->initBox2DTiles();
 	
-	world->boxWorld->SetContactListener(new box2DContactListener());
+	box2DContactListener* contact = new box2DContactListener();
+	world->boxWorld->SetContactListener(contact);
+	contact->game = game;
 	
 	// LOAD THE LEVEL'S SPRITE IMAGES
 	PoseurSpriteTypesImporter psti;
@@ -198,6 +200,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	AnimatedSpriteType *playerSpriteType = spriteManager->getSpriteType(0);
 	player->setSpriteType(playerSpriteType);
 	player->setAlpha(255);
+	player->setIsPlayer(true);
 	player->setCurrentState(IDLE_RIGHT);
 	/*
 	PhysicalProperties *playerProps = player->getPhysicalProperties();
@@ -212,24 +215,26 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	bodyDef.position.Set(150.0f/5.0f, -305.0f/5.0f);
 	b2Body* body = (world->boxWorld)->CreateBody(&bodyDef);
 	body->SetUserData(player);
+
 	// Define another box shape for our dynamic body.
 	b2PolygonShape dynamicBox;
 	dynamicBox.SetAsBox(32.0f/5.0f, 32.0f/5.0f);
 
 	// Define the dynamic body fixture.
-	b2FixtureDef fixtureDef;
-	fixtureDef.shape = &dynamicBox;
+	b2FixtureDef dFixtureDef;
+	dFixtureDef.shape = &dynamicBox;
 
 	// Set the box density to be non-zero, so it will be dynamic.
-	 fixtureDef.density = 1.0f;
+	 dFixtureDef.density = 1.0f;
 
 	// Override the default friction.
-	 fixtureDef.friction = 0.3f;
+	 dFixtureDef.friction = 0.3f;
 
 	// Add the shape to the body.
 	body->SetLinearVelocity(b2Vec2(0.0f,0.0f));
-	body->CreateFixture(&fixtureDef);
+	body->CreateFixture(&dFixtureDef);
 	player->setB2Body(body);
+	player->setShadowBody(body);
 
 	player->setOnTileThisFrame(false);
 	player->setOnTileLastFrame(false);
@@ -238,7 +243,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	// AND LET'S ADD A BUNCH OF RANDOM JUMPING BOTS, FIRST ALONG
 	// A LINE NEAR THE TOP
 	AnimatedSpriteType *botSpriteType = spriteManager->getSpriteType(1);
-	makeRandomBot(game, botSpriteType, 200, 300);
+	makeRandomBot(game, botSpriteType, 450, 100);
 // UNCOMMENT THE FOLLOWING CODE BLOCK WHEN YOU ARE READY TO ADD SOME BOTS
 /*	for (int i = 2; i <= 26; i++)
 	{
@@ -276,35 +281,37 @@ void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType
 	//PhysicalProperties *pp = bot->getPhysicalProperties();
 	//pp->setPosition(initX, initY);
 	bot->setSpriteType(randomBotType);
-	bot->setCurrentState(WALKING);
+	bot->setCurrentState(IDLE_UP);
 	bot->setAlpha(255);
 	spriteManager->addBot(bot);
 	//bot->affixTightAABBBoundingVolume();
 
 	b2BodyDef bodyDef;
-		bodyDef.type = b2_dynamicBody;
-		bodyDef.position.Set(200.0f/5.0f, -400.0f/5.0f);
-		b2Body* body = (game->getGSM()->getWorld()->boxWorld)->CreateBody(&bodyDef);
+	bodyDef.type = b2_dynamicBody;
+	bodyDef.position.Set(initX/5.0f, initY/-5.0f);
+	b2Body* body = (game->getGSM()->getWorld()->boxWorld)->CreateBody(&bodyDef);
 
-		// Define another box shape for our dynamic body.
-		b2PolygonShape dynamicBox;
-		dynamicBox.SetAsBox(32.0f/5.0f, 32.0f/5.0f);
+	// Define another box shape for our dynamic body.
+	b2PolygonShape dynamicBox;
+	dynamicBox.SetAsBox(32.0f/5.0f, 32.0f/5.0f);
 
-		// Define the dynamic body fixture.
-		b2FixtureDef fixtureDef;
-		fixtureDef.shape = &dynamicBox;
+	// Define the dynamic body fixture.
+	b2FixtureDef dFixtureDef;
+	dFixtureDef.shape = &dynamicBox;
 
-		// Set the box density to be non-zero, so it will be dynamic.
-		fixtureDef.density = 1.0f;
+	// Set the box density to be non-zero, so it will be dynamic.
+	dFixtureDef.density = 1.0f;
 
-		// Override the default friction.
-		fixtureDef.friction = 0.3f;
+	// Override the default friction.
+	dFixtureDef.friction = 0.3f;
 
-		// Add the shape to the body.
-		body->SetLinearVelocity(b2Vec2(0.0f,0.0f));
-		body->CreateFixture(&fixtureDef);
-		bot->setB2Body(body);
-		body->SetUserData(bot);
+	dFixtureDef.filter.groupIndex = -2;
+	// Add the shape to the body.
+	body->SetLinearVelocity(b2Vec2(0.0f,0.0f));
+	body->CreateFixture(&dFixtureDef);
+	bot->setB2Body(body);
+
+	body->SetUserData(bot);
 }
 
 /*

@@ -22,6 +22,7 @@ protected:
 	bool onTileLastFrame;
 	unsigned int collisionEdge;
 	b2Body* body;
+	b2Body* shadow;
 
 public:
 	CollidableObject()	{}
@@ -38,6 +39,7 @@ public:
 	AABB*				getSweptShape()				{ return &sweptShape;			}
 	PhysicalProperties* getPhysicalProperties()		{ return &pp;					}
 	b2Body*				getB2Body()					{ return body;                  }
+	b2Body*             getShadowBody()             { return shadow;				}
 	unsigned int		getCollisionEdge()			{ return collisionEdge;			}
 
 	void				setCollisionEdge(unsigned int initCollisionEdge)
@@ -57,6 +59,11 @@ public:
 	{
 		body = initBody;
 	}
+	void setShadowBody(b2Body* initBody)
+	{
+		shadow = initBody;
+	}
+
 	void advanceOnTileStatus()
 	{
 		onTileLastFrame = onTileThisFrame;

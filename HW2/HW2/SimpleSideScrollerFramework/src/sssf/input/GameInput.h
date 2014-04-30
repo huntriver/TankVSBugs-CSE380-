@@ -40,6 +40,7 @@ protected:
 		bool wasHeldDown;
 	} inputState[256]; // stores the state for all keys
 
+
 	int mouseX;
 	int mouseY;
 
@@ -50,6 +51,10 @@ protected:
 	MouseEventHandler *mouseHandler;
 
 public:
+	bool wKeyDisabled;
+	bool sKeyDisabled;
+	bool aKeyDisabled;
+	bool dKeyDisabled;
 	// INLINED METHODS
 	int getMouseX() { return mouseX; }
 	int getMouseY() { return mouseY; }

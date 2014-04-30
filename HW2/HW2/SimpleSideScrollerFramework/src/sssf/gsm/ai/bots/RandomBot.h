@@ -18,6 +18,8 @@ public:
 	Bot*	clone();
 	void	pickRandomDestination(Game *game);
 //	void	think(Game *game);
+	// This method is to find the player 
+
 
 	// INLINED METHODS
 //	unsigned int getCyclesRemainingBeforeThinking()	{ return cyclesRemainingBeforeThinking; }

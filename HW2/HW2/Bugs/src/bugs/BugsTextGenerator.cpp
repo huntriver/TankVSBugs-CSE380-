@@ -40,6 +40,7 @@ void BugsTextGenerator::appendPathfindingText(Game *game)
 	wstringstream wss;
 	if (game->getGSM()->isGameInProgress())
 	{
+		/*
 		GridPathfinder *pathfinder = game->getGSM()->getSpriteManager()->getPathfinder();
 		TopDownSprite *ant = game->getGSM()->getSpriteManager()->getPlayer();
 		pathfindingText.append(W_ANT_CENTER_TEXT);
@@ -65,6 +66,7 @@ void BugsTextGenerator::appendPathfindingText(Game *game)
 		wss << ant->getPhysicalProperties()->getY() + ant->getSpriteType()->getTextureHeight();
 		wss << ")\n";
 		pathfindingText.append(wss.str());
+		*/
 	}
 }
 

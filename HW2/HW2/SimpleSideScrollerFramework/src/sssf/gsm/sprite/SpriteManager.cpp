@@ -51,7 +51,7 @@ void SpriteManager::addSpriteToRenderList(AnimatedSprite *sprite,
 			sprite->getAlpha(),
 			spriteType->getTextureWidth(),
 			spriteType->getTextureHeight(),
-			rotation);
+			0);
 	}
 }
 
@@ -232,9 +232,15 @@ void SpriteManager::update(Game *game)
 			bot = (*botIterator);
 		}
 		if (botIterator==bots.end()) break;
-		//if (bot->hasReachedDestination())
-			//bot->pickRandomDestination(game);
-		// pathfinder->updatePath(bot);
+		if(bot->getCurrentState() != L"ATTACK UP" &&
+		bot->getCurrentState() != L"ATTACK DOWN" &&
+		bot->getCurrentState() != L"ATTACK LEFT" &&
+		bot->getCurrentState() != L"ATTACK RIGHT")
+		{
+			if (bot->hasReachedDestination())
+				pathfinder->mapPath(bot, player.getB2Body()->GetPosition().x * 5.0f, player.getB2Body()->GetPosition().y * -5.0f);
+		}
+		pathfinder->updatePath(bot);
 		botIterator++;
 	}
 
@@ -246,6 +252,13 @@ void SpriteManager::update(Game *game)
 	while (botIterator != bots.end())
 	{
 		Bot *bot = (*botIterator);
+		if(bot->getCurrentState() == L"ATTACK UP" ||
+		   bot->getCurrentState() == L"ATTACK DOWN" ||
+		   bot->getCurrentState() == L"ATTACK LEFT" ||
+		   bot->getCurrentState() == L"ATTACK RIGHT")
+		{
+			bot->getB2Body()->SetLinearVelocity(b2Vec2(0,0));
+		}
 		bot->updateSprite();
 		botIterator++;
 	}

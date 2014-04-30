@@ -8,7 +8,7 @@
 const int DIAGONAL_COST = 14;
 const int COLUMN_COST = 10;
 const int ROW_COST = 10;
-const float GRID_EPSILON = 15.0f;
+const float GRID_EPSILON = 3.0f;
 const float MAX_WALK_SPEED = 60.0f;
 
 class OrthographicGridPathfinder : public GridPathfinder
@@ -29,6 +29,8 @@ private:
 	int calculateG(PathNode node);
 	int calculateH(PathNode start, PathNode *end);
 	bool hasReachedNode(AnimatedSprite *sprite, PathNode destination);
+	bool hasReachedNodeX(AnimatedSprite *sprite, PathNode destination);
+	bool hasReachedNodeY(AnimatedSprite *sprite, PathNode destination);
 	void buildPath(	list<PathNode> *pathToFill,
 					float startX, float startY,
 					float endX, float endY);
@@ -43,5 +45,4 @@ private:
 	void addNeighbors(bool *nodesToAdd, PathNode *centerNode, PathNode *destination, map<int, PathNode> *openNodes, map<int, PathNode> *closedNodes);
 	PathNode* findCheapestNode(map<int, PathNode> *openNodes);
 	void removeNodeFromList(PathNode *nodeToRemove, list<PathNode> *nodeList);
-
 };
