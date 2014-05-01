@@ -216,7 +216,7 @@ update method such that they may update themselves.
 void SpriteManager::update(Game *game)
 {
 	TT++;
-	if (TT % 120 == 0 && bots.size() <= 8)
+	if (TT % 120 == 0 && bots.size() <= 1)
 	{
 		//Physics *physics = game->getGSM()->getPhysics();
 		RandomBot *bot = new RandomBot();
@@ -283,6 +283,12 @@ void SpriteManager::update(Game *game)
 			{
 	//			pathfinder->mapPath(bot, player.getB2Body()->GetPosition().x * 5.0f, player.getB2Body()->GetPosition().y * -5.0f);
 	//		}else{
+				if(bot->collide)
+				{
+					bot->getB2Body()->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
+					bot->changeToIdleState(bot->getCurrentState());
+				}
+
 				static_cast<RandomBot*>(bot)->think(game);
 			}
 		}

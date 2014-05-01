@@ -54,6 +54,7 @@ public:
 	// INLINED ACCESSOR METHODS
 	bool dead;
 	bool undead;
+	bool collide;
 	int					getAlpha()			{ return alpha;				}
 	list<PathNode>*		getCurrentPathToFollow() { return &currentPathToFollow; }
 	list<PathNode>::iterator getCurrentPathNode() { return currentPathNode; }
@@ -73,6 +74,7 @@ public:
 	    return true;
 		return currentPathNode == currentPathToFollow.end(); */}
 
+	void changeToIdleState(wstring state);
 	// INLINED MUTATOR METHODS
 	void setAlpha(int initAlpha)
 	{	alpha = initAlpha;						}

@@ -1,16 +1,14 @@
-﻿Build started 5/1/2014 10:31:58 AM.
-     1>Project "F:\cse 380 final project\HW2\HW2\PoseurSpriteTypesImporter\PoseurSpriteTypesImporter.vcxproj" on node 2 (Build target(s)).
-     1>InitializeBuildStatus:
-         Creating "F:\cse 380 final project\HW2\HW2\Temp\PoseurSpriteTypesImporter\Debug\PoseurSpriteTypesImporter.unsuccessfulbuild" because "AlwaysCreate" was specified.
-       ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"F:\cse 380 final project\HW2\HW2\Temp\PoseurSpriteTypesImporter\Debug\\" /Fd"F:\cse 380 final project\HW2\HW2\Temp\PoseurSpriteTypesImporter\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\psti\PoseurSpriteTypesImporter.cpp src\psti_VS\stdafx.cpp
+﻿Build started 5/1/2014 3:35:19 PM.
+     1>Project "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\PoseurSpriteTypesImporter\PoseurSpriteTypesImporter.vcxproj" on node 4 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\PoseurSpriteTypesImporter\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\PoseurSpriteTypesImporter\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\psti\PoseurSpriteTypesImporter.cpp src\psti_VS\stdafx.cpp
          stdafx.cpp
          PoseurSpriteTypesImporter.cpp
-     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
          Generating Code...
        Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"F:\cse 380 final project\HW2\HW2\Common\PoseurSpriteTypesImporter.lib" Box2D.lib /LIBPATH:../lib /NOLOGO "F:\cse 380 final project\HW2\HW2\Temp\PoseurSpriteTypesImporter\Debug\PoseurSpriteTypesImporter.obj"
-         "F:\cse 380 final project\HW2\HW2\Temp\PoseurSpriteTypesImporter\Debug\stdafx.obj"
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Common\PoseurSpriteTypesImporter.lib" Box2D.lib /LIBPATH:../lib /NOLOGO "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\PoseurSpriteTypesImporter\Debug\PoseurSpriteTypesImporter.obj"
+         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\PoseurSpriteTypesImporter\Debug\stdafx.obj"
          ..\lib\Box2D.lib
      1>Box2D.lib(b2BroadPhase.obj) : warning LNK4006: "public: __thiscall b2BroadPhase::b2BroadPhase(void)" (??0b2BroadPhase@@QAE@XZ) already defined in Box2D.lib(b2BroadPhase.obj); second definition ignored
      1>Box2D.lib(b2BroadPhase.obj) : warning LNK4006: "public: __thiscall b2BroadPhase::~b2BroadPhase(void)" (??1b2BroadPhase@@QAE@XZ) already defined in Box2D.lib(b2BroadPhase.obj); second definition ignored
@@ -463,12 +461,9 @@
      1>Box2D.lib(b2WheelJoint.obj) : warning LNK4006: "protected: virtual bool __thiscall b2WheelJoint::SolvePositionConstraints(struct b2SolverData const &)" (?SolvePositionConstraints@b2WheelJoint@@MAE_NABUb2SolverData@@@Z) already defined in Box2D.lib(b2WheelJoint.obj); second definition ignored
      1>Box2D.lib(b2WheelJoint.obj) : warning LNK4006: "protected: virtual void __thiscall b2WheelJoint::SolveVelocityConstraints(struct b2SolverData const &)" (?SolveVelocityConstraints@b2WheelJoint@@MAEXABUb2SolverData@@@Z) already defined in Box2D.lib(b2WheelJoint.obj); second definition ignored
      1>Box2D.lib(b2WheelJoint.obj) : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
-         PoseurSpriteTypesImporter.vcxproj -> F:\cse 380 final project\HW2\HW2\Common\PoseurSpriteTypesImporter.lib
-       FinalizeBuildStatus:
-         Deleting file "F:\cse 380 final project\HW2\HW2\Temp\PoseurSpriteTypesImporter\Debug\PoseurSpriteTypesImporter.unsuccessfulbuild".
-         Touching "F:\cse 380 final project\HW2\HW2\Temp\PoseurSpriteTypesImporter\Debug\PoseurSpriteTypesImporter.lastbuildstate".
-     1>Done Building Project "F:\cse 380 final project\HW2\HW2\PoseurSpriteTypesImporter\PoseurSpriteTypesImporter.vcxproj" (Build target(s)).
+         PoseurSpriteTypesImporter.vcxproj -> C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Common\PoseurSpriteTypesImporter.lib
+     1>Done Building Project "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\PoseurSpriteTypesImporter\PoseurSpriteTypesImporter.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:03.61
+Time Elapsed 00:00:07.95
