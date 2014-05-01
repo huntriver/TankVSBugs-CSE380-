@@ -165,8 +165,8 @@ has been allocated for game sprites.
 */
 void SpriteManager::unloadSprites()
 {
-	// @TODO - WE'LL DO THIS LATER WHEN WE LEARN MORE ABOUT MEMORY MANAGEMENT
-	/*list<Bot*>::iterator botsIt = bots.begin();
+	 //@TODO - WE'LL DO THIS LATER WHEN WE LEARN MORE ABOUT MEMORY MANAGEMENT
+	list<Bot*>::iterator botsIt = bots.begin();
 	while (botsIt != bots.end())
 	{
 	list<Bot*>::iterator tempIt = botsIt;
@@ -176,7 +176,17 @@ void SpriteManager::unloadSprites()
 	}
 	bots.clear();
 
-	vector<AnimatedSpriteType*>::iterator spriteTypesIt = spriteTypes.begin();
+	list<TopDownSprite*>::iterator bulletsIt = bullets.begin();
+	while (bulletsIt != bullets.end())
+	{
+	list<TopDownSprite*>::iterator tempIt = bulletsIt;
+	bulletsIt++;
+	TopDownSprite *bulletToDelete = (*tempIt);
+	delete bulletToDelete;
+	}
+	bullets.clear();
+
+/*	vector<AnimatedSpriteType*>::iterator spriteTypesIt = spriteTypes.begin();
 	while (spriteTypesIt != spriteTypes.end())
 	{
 	vector<AnimatedSpriteType*>::iterator tempIt = spriteTypesIt;
@@ -184,12 +194,12 @@ void SpriteManager::unloadSprites()
 	AnimatedSpriteType *astToDelete = (*tempIt);
 	delete astToDelete;
 	}
-	spriteTypes.clear();
+	spriteTypes.clear();*/
 
 	// DELETE THE PATHFINDER IF THERE IS ONE
 	if (pathfinder != NULL)
 	delete pathfinder;
-	*/
+	
 }
 
 Bot* SpriteManager::removeBot(Bot *botToRemove)
@@ -205,6 +215,8 @@ update method such that they may update themselves.
 */
 void SpriteManager::update(Game *game)
 {
+	//TT++;
+	TT=1;
 	if (TT % 120 == 0 && bots.size() <= 8)
 	{
 		//Physics *physics = game->getGSM()->getPhysics();
@@ -247,73 +259,9 @@ void SpriteManager::update(Game *game)
 		TT = 0;
 	}
 	
-	/*
-	if (TT %30==0){
-		TopDownSprite *bullet = new TopDownSprite();
-		//physics->addCollidableObject(bot);
-		//PhysicalProperties *pp = bot->getPhysicalProperties();
-		//pp->setPosition(200, 300);
-		AnimatedSpriteType *bulletSpriteType = this->getSpriteType(2);
-		bullet->setSpriteType(bulletSpriteType);
-		bullet->setCurrentState(L"IDLE");
-		bullet->setAlpha(255);
-		bullet->setHealth(0);
-		this->addBullet(bullet);
 
-		b2BodyDef bodyDef;
-		bodyDef.type = b2_dynamicBody;
-		float x=getPlayer()->getB2Body()->GetPosition().x;
-		float y=getPlayer()->getB2Body()->GetPosition().y;
-		float r=getPlayer()->getRotationInRadians();
-		float vx=0.0f;
-		float vy=0.0f;
-		if (r==0) 
-			{
-				x+=32.0f/5.0f+0.55f;
-				vx=100.0f;
-		}
-		else
-			if(r==PI/2){
-				y-=32.0f/5.0f+0.55f;
-				vy=-100.0f;
-			}
-			else
-				if (r==PI){
-
-					x-=32.0f/5.0f+0.55f;
-					vx=-100.0f;
-				}
-				else
-				{
-					y+=32.0f/5.0f+0.55f;
-					vy=100.0f;
-				}
-		bodyDef.position.Set(x, y);
-		b2Body* body = (game->getGSM()->getWorld()->boxWorld)->CreateBody(&bodyDef);
-
-		// Define another box shape for our dynamic body.
-		b2PolygonShape dynamicBox;
-		dynamicBox.SetAsBox(2.5f/5.0f, 2.5f/5.0f);
-
-		// Define the dynamic body fixture.
-		b2FixtureDef fixtureDef;
-		fixtureDef.shape = &dynamicBox;
-
-		// Set the box density to be non-zero, so it will be dynamic.
-		fixtureDef.density = 1.0f;
-
-		// Override the default friction.
-		fixtureDef.friction = 0.0f;
-
-		// Add the shape to the body.
-		body->SetLinearVelocity(b2Vec2(vx,vy));
-		body->CreateFixture(&fixtureDef);
-		bullet->setB2Body(body);
-		body->SetUserData(bullet);
-		
-	}
-	*/
-	TT++;
+	
+	
 	// FIRST LET'S DO THE NECESSARY PATHFINDING
 	//pathfinder->updatePath(&player);
 	list<Bot*>::iterator botIterator;
@@ -332,10 +280,10 @@ void SpriteManager::update(Game *game)
 		bot->getCurrentState() != L"ATTACK LEFT" &&
 		bot->getCurrentState() != L"ATTACK RIGHT")
 		{
-			if (bot->hasReachedDestination())
+			//if (bot->hasReachedDestination())
 			{
-				pathfinder->mapPath(bot, player.getB2Body()->GetPosition().x * 5.0f, player.getB2Body()->GetPosition().y * -5.0f);
-			}else{
+	//			pathfinder->mapPath(bot, player.getB2Body()->GetPosition().x * 5.0f, player.getB2Body()->GetPosition().y * -5.0f);
+	//		}else{
 				static_cast<RandomBot*>(bot)->think(game);
 			}
 		}
