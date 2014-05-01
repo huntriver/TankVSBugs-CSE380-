@@ -67,7 +67,7 @@ private:
 	GameInput			*input;
 	GameOS				*os;
 	GameTimer			*timer;
-
+	map<wstring,wstring> *properties;
 	// THIS WILL KEEP TRACK OF THE NAME OF THE LEVEL FILE
 	// THAT IS CURRENTLY BEING USED
 	wstring				currentLevelFileName,currentLevelDir;
@@ -84,7 +84,7 @@ public:
 	GameInput*			getInput()				{ return input;								}
 	GameOS*				getOS()					{ return os;								}
 	GameTimer*			getTimer()				{ return timer;								}
-
+	map<wstring,wstring>* getProperties() {return properties;}
 	// AND FOR GETTING THE NAME OF THE FILE USED FOR LOADING THIS LEVEL
 	wstring				getCurrentLevelFileName()	{ return currentLevelFileName;			}
 
@@ -92,7 +92,7 @@ public:
 	void	setDataLoader(GameDataLoader *initDL) { dataLoader = initDL; }
 	void	setCurrentLevelFileName(wstring initCurrentLevelFileName) { currentLevelFileName = initCurrentLevelFileName; }
 	void	setCurrentLevelDir(wstring initCurrentLevelDir) { currentLevelDir = initCurrentLevelDir; }
-
+	
 	// METHODS DEFINED IN Game.cpp
 	Game();
 	~Game();

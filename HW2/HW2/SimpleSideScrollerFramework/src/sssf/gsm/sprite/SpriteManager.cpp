@@ -215,8 +215,7 @@ update method such that they may update themselves.
 */
 void SpriteManager::update(Game *game)
 {
-	//TT++;
-	TT=1;
+	TT++;
 	if (TT % 120 == 0 && bots.size() <= 8)
 	{
 		//Physics *physics = game->getGSM()->getPhysics();
@@ -287,7 +286,7 @@ void SpriteManager::update(Game *game)
 				static_cast<RandomBot*>(bot)->think(game);
 			}
 		}
-		pathfinder->updatePath(bot);
+	//	pathfinder->updatePath(bot);
 		botIterator++;
 	}
 

@@ -15,6 +15,7 @@ RandomBot::RandomBot()
 //	initBot(initMin, initMax, initMaxVelocity);
 	pp.setVelocity(0.0f, 0.0f);
 	thinkCounter = 0;
+	currentDirection=-1;
 	// AND START THE BOT OFF IN A RANDOM DIRECTION AND VELOCITY
 	// AND WITH RANDOM INTERVAL UNTIL IT THINKS AGAIN
 	
@@ -98,16 +99,62 @@ void RandomBot::think(Game *game)
 		float pY = game->getGSM()->getSpriteManager()->getPlayer()->getB2Body()->GetPosition().y * -5.0f;
 		float bX = this->getB2Body()->GetPosition().x * 5.0f;
 		float bY = this->getB2Body()->GetPosition().y * -5.0f;
-
+		float vX,vY;
 		if(fabsl(bX-pX) <= 200.0f && fabsl(bY-pY) <= 200.0f)
 		{
-			game->getGSM()->getSpriteManager()->getPathfinder()->mapPath(this, pX, pY);
+			//game->getGSM()->getSpriteManager()->getPathfinder()->mapPath(this, pX, pY);
+			if (bX-pX>0) vX=-MAX_BUG_SPEED;
+			else if (bX-pX<0) vX=MAX_BUG_SPEED;
+			else vX=0;
+
+			if (bY-pY>0) vY=MAX_BUG_SPEED;
+			else if (bX-pX<0) vY=-MAX_BUG_SPEED;
+			else vY=0;
+
+			if (!(vX==0 || vY==0)){
+               int a= (float)rand()/RAND_MAX*1;
+			   if (a==0)
+				   vX=0;
+			   else
+				   vY=0;
+			}
+			if (vX<0) this->setCurrentState(L"MOVE LEFT");
+			if (vY<0) this->setCurrentState(L"MOVE DOWN");
+			if (vX>0) this->setCurrentState(L"MOVE RIGHT");
+			if (vY>0)  this->setCurrentState(L"MOVE UP");
+			this->getB2Body()->SetLinearVelocity(b2Vec2(vX, vY));
 		}
 		else{
 		if (this->hasReachedDestination() || thinkCounter==120){
-			int worldCoordinateX = ((float)rand()/RAND_MAX)*game->getGSM()->getWorld()->getWorldWidth();
-	        int worldCoordinateY = ((float)rand()/RAND_MAX)*game->getGSM()->getWorld()->getWorldHeight();
-			game->getGSM()->getSpriteManager()->getPathfinder()->mapPath(this,(float)worldCoordinateX, (float)worldCoordinateY);
+			//int worldCoordinateX = ((float)rand()/RAND_MAX)*game->getGSM()->getWorld()->getWorldWidth();
+	      //  int worldCoordinateY = ((float)rand()/RAND_MAX)*game->getGSM()->getWorld()->getWorldHeight();
+		//	game->getGSM()->getSpriteManager()->getPathfinder()->mapPath(this,(float)worldCoordinateX, (float)worldCoordinateY);
+			int a= (float)rand()/RAND_MAX*4;
+            while (currentDirection==a){
+				a= (float)rand()/RAND_MAX*4;
+			}
+			currentDirection=a;
+			if (a==0){
+			    vY = - MAX_BUG_SPEED;
+				this->getB2Body()->SetLinearVelocity(b2Vec2(0.0f, vY));
+				this->setCurrentState(L"MOVE DOWN");
+			}
+			if (a==1){
+			   vX =  MAX_BUG_SPEED;
+				this->getB2Body()->SetLinearVelocity(b2Vec2(vX, 0.0f));
+				this->setCurrentState(L"MOVE RIGHT");
+			}
+			if (a==2){
+			     vY =  MAX_BUG_SPEED;
+				this->getB2Body()->SetLinearVelocity(b2Vec2(0.0f, vY));
+				this->setCurrentState(L"MOVE UP");
+			}
+			if (a==3){
+			    vX = - MAX_BUG_SPEED;
+				this->getB2Body()->SetLinearVelocity(b2Vec2(vX, 0.0f));
+				this->setCurrentState(L"MOVE LEFT");
+			}
+
 			thinkCounter = 0;
 		}
 	    thinkCounter++;

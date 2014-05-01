@@ -10,7 +10,7 @@ class RandomBot : public Bot
 {
 private:
 	unsigned int thinkCounter;
-
+	int currentDirection;
 public:
 	RandomBot();
 	~RandomBot();
