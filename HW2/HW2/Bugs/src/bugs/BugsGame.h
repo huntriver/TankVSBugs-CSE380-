@@ -8,6 +8,11 @@
 	all of this data would better serve us if loaded from files.
 */
 
+//sounds
+static const LPCWSTR TANK_ATTACK		=	L"data/sounds/attack.wav";
+static const LPCWSTR BACKGROUND_MUSIC	=	L"data/sounds/background.wav";
+static const LPCWSTR HITTED	=	L"data/sounds/hitted.wav";
+
 // HERE IS THE Bugs GAME SETUP/INIT FILE. EVERYTHING WOULD START FROM HERE
 static const wstring	W_LEVEL_1_DIR			= L"data/levels/level1/";
 static const wstring	W_LEVEL_1_NAME			= L"level1.tmx";

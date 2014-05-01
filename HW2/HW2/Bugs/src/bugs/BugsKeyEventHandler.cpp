@@ -63,6 +63,10 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 		    game->setCurrentLevelDir(W_LEVEL_2_DIR);
 			game->startGame();
 		}
+		if (input->isKeyDown(VK_CONTROL) && input->isKeyDownForFirstTime((unsigned int)'I'))
+		{
+			game->getGSM()->getSpriteManager()->getPlayer()->undead = true;
+		}
 		if (input->isKeyDownForFirstTime(P_KEY))
 		{
 			gsm->getPhysics()->togglePhysics();
@@ -88,6 +92,8 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 		}
 		if (input->isKeyDownForFirstTime(SPACE_KEY))
 		{
+			PlaySound(TANK_ATTACK, NULL, SND_ASYNC);
+
 			// player->shoot();
 			TopDownSprite *bullet = new TopDownSprite();
 			//physics->addCollidableObject(bot);

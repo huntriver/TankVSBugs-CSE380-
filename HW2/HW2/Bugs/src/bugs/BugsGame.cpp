@@ -64,6 +64,8 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	// CREATE THE GAME
 	Game *bugsGame = new Game();
 
+	PlaySound(BACKGROUND_MUSIC, NULL, SND_ASYNC);
+
 	// FIRST WE'LL SETUP THE DATA LOADER, SINCE IT MAY NEED TO READ
 	// IN DATA TO SETUP OTHER STUFF
 	BugsDataLoader *bugsDataLoader = new BugsDataLoader();
