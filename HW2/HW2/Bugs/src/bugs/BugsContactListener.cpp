@@ -21,15 +21,20 @@ void BugsContactListener::BeginContact(b2Contact* contact)
 	}else
 	{
 		if((t1->getSpriteType()->getSpriteTypeID() == 0 && t2->getSpriteType()->getSpriteTypeID() == 1) ||
-		(t1->getSpriteType()->getSpriteTypeID() == 1 && t2->getSpriteType()->getSpriteTypeID() == 0)){
-			respondPlayerBugContact(t1,t2);
-		}else if(t1->getSpriteType()->getSpriteTypeID() == 2){
-			t1->dead = true;
-			t2->setHealth(t2->getHealth() - 1);
-		}else if(t2->getSpriteType()->getSpriteTypeID() == 2){
-		    t2->dead = true;
-			t1->setHealth(t1->getHealth() - 1);
-		}
+(t1->getSpriteType()->getSpriteTypeID() == 1 && t2->getSpriteType()->getSpriteTypeID() == 0)){
+respondPlayerBugContact(t1,t2);
+}else if(t1->getSpriteType()->getSpriteTypeID() == 2){
+if(t2->getSpriteType()->getSpriteTypeID() != 0){
+t1->dead = true;
+t2->setHealth(t2->getHealth() - 1);
+}
+}else if(t2->getSpriteType()->getSpriteTypeID() == 2){
+if(t1->getSpriteType()->getSpriteTypeID() != 0){
+t2->dead = true;
+t1->setHealth(t1->getHealth() - 1);
+PlaySound(HITTED, NULL, SND_ASYNC);
+}
+}
 	}
 	/*
 		if((t1->getSpriteType()->getSpriteTypeID() == 0 && t2->getSpriteType()->getSpriteTypeID() == 1) ||

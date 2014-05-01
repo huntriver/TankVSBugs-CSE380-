@@ -32,6 +32,7 @@ AnimatedSprite::AnimatedSprite()
 	hitObject[3] = false;
 	health=5;
 	isPlayer = false;
+	undead = false;
 }
 
 /*

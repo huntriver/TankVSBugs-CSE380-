@@ -37,6 +37,7 @@ void BugsButtonEventHandler::handleButtonEvents(	Game *game,
 	{
 		game->setCurrentLevelFileName(W_LEVEL_1_NAME);
 		game->setCurrentLevelDir(W_LEVEL_1_DIR);
+		PlaySound(TANK_ATTACK, NULL, SND_ASYNC);
 		game->startGame();
 	}
 	// THE USER PRESSED THE Quit BUTTON ON THE IN-GAME MENU,

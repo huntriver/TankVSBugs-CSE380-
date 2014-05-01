@@ -52,6 +52,7 @@ protected:
 public:
 	// INLINED ACCESSOR METHODS
 	bool dead;
+	bool undead;
 	int					getAlpha()			{ return alpha;				}
 	list<PathNode>*		getCurrentPathToFollow() { return &currentPathToFollow; }
 	list<PathNode>::iterator getCurrentPathNode() { return currentPathNode; }

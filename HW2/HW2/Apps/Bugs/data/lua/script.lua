@@ -1,4 +1,4 @@
-health = 120
+health = 60
 
 function sq(val)
 	return val * val
@@ -19,7 +19,7 @@ end
 function healthDec()
 	health = health - 1
 	if health <= 0 then
-		health = 120
+		health = 60
 		return 1
 	end
 	return 0

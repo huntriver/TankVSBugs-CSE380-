@@ -205,7 +205,6 @@ update method such that they may update themselves.
 */
 void SpriteManager::update(Game *game)
 {
-	/*
 	if (TT % 120 == 0 && bots.size() <= 8)
 	{
 		//Physics *physics = game->getGSM()->getPhysics();
@@ -247,7 +246,6 @@ void SpriteManager::update(Game *game)
 		//bot->affixTightAABBBoundingVolume();
 		TT = 0;
 	}
-	*/
 	
 	/*
 	if (TT %30==0){
@@ -391,6 +389,13 @@ void SpriteManager::update(Game *game)
 			   bot->getCurrentState() == L"ATTACK LEFT" ||
 		       bot->getCurrentState() == L"ATTACK RIGHT")
 			{
+					LuaFunction<int> healthDec = luaPState->GetGlobal("healthDec");
+					int decFlag = healthDec();
+
+					if(decFlag == 1 && player.undead == false)
+					{
+						player.setHealth(player.getHealth() - 1);
+					}
 			}
 			bot->updateSprite();
 			if (bot->getHealth() == 0){
@@ -401,13 +406,5 @@ void SpriteManager::update(Game *game)
 			}
 			botIterator++;
 		}
-	}
-
-	LuaFunction<int> healthDec = luaPState->GetGlobal("healthDec");
-	int decFlag = healthDec();
-
-	if(decFlag == 1)
-	{
-		player.setHealth(player.getHealth() - 1);
 	}
 }

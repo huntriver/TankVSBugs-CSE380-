@@ -195,6 +195,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring level_dir, wstring level_name
 	TopDownSprite *player = spriteManager->getPlayer();
 	physics->addCollidableObject(player);
 	player->setRotationInRadians(0.0f);
+	player->setHealth(5);
 
 	// NOTE THAT RED BOX MAN IS SPRITE ID 1
 	AnimatedSpriteType *playerSpriteType = spriteManager->getSpriteType(0);
@@ -237,7 +238,6 @@ void BugsDataLoader::loadWorld(Game *game, wstring level_dir, wstring level_name
 	player->setOnTileLastFrame(false);
 	player->affixTightAABBBoundingVolume();
 
-	/*
 	AnimatedSpriteType *eggType =  spriteManager->getSpriteType(4); 
 	RandomBot *bot = new RandomBot();
 	bot->setHealth(10);
@@ -267,7 +267,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring level_dir, wstring level_name
 	// AND LET'S ADD A BUNCH OF RANDOM JUMPING BOTS, FIRST ALONG
 	// A LINE NEAR THE TOP
 	AnimatedSpriteType *botSpriteType = spriteManager->getSpriteType(1);
-	makeRandomBot(game, botSpriteType, 2300, -400);*/
+	makeRandomBot(game, botSpriteType, 2300, -400);
 // UNCOMMENT THE FOLLOWING CODE BLOCK WHEN YOU ARE READY TO ADD SOME BOTS
 /*	for (int i = 2; i <= 26; i++)
 	{
