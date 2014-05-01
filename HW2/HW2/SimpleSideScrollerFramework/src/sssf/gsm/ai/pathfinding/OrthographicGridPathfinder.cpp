@@ -46,10 +46,8 @@ void OrthographicGridPathfinder::buildPath(	list<PathNode> *pathToFill,
 	int endColumn = (int)(endX/gridWidth);
 	int endRow = (int)(endY/gridHeight);
 
-	// IF THE DESTINATION IS A COLLIDABLE TILE LOCATION
-	// THEN EXIT
-	int endIndex = getGridIndex(endColumn, endRow);
-	bool endIndexIsWalkable = pathGrid[getGridIndex(endColumn, endRow)];
+//	int endIndex = getGridIndex(endColumn, endRow);
+	bool endIndexIsWalkable = pathGrid[getGridIndex((int)((endX-32)/gridWidth), (int)((endY-32)/gridHeight))] && pathGrid[getGridIndex((int)((endX+32)/gridWidth), (int)((endY-32)/gridHeight))] &&pathGrid[getGridIndex((int)((endX-32)/gridWidth), (int)((endY+32)/gridHeight))] &&pathGrid[getGridIndex((int)((endX+32)/gridWidth), (int)((endY+32)/gridHeight))];
 	if (!endIndexIsWalkable)
 		return;
 
@@ -447,7 +445,7 @@ void OrthographicGridPathfinder::updatePath(AnimatedSprite *sprite)
 	}
 	else
 	{
-		sprite->setCurrentState(L"IDLE");
+		//sprite->setCurrentState(L"IDLE");
 	}
 }
 

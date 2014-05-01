@@ -91,8 +91,8 @@ void RandomBot::think(Game *game)
 {
 	// EACH FRAME WE'LL TEST THIS BOT TO SEE IF WE NEED
 	// TO PICK A DIFFERENT DIRECTION TO FLOAT IN
-	thinkCounter++;
-	if(thinkCounter % 120 == 0)
+	//thinkCounter++;
+//	if(thinkCounter % 120 == 0)
 	{
 		float pX = game->getGSM()->getSpriteManager()->getPlayer()->getB2Body()->GetPosition().x * 5.0f;
 		float pY = game->getGSM()->getSpriteManager()->getPlayer()->getB2Body()->GetPosition().y * -5.0f;
@@ -103,7 +103,14 @@ void RandomBot::think(Game *game)
 		{
 			game->getGSM()->getSpriteManager()->getPathfinder()->mapPath(this, pX, pY);
 		}
-
-		thinkCounter = 0;
+		else{
+		if (this->hasReachedDestination() || thinkCounter==120){
+			int worldCoordinateX = ((float)rand()/RAND_MAX)*game->getGSM()->getWorld()->getWorldWidth();
+	        int worldCoordinateY = ((float)rand()/RAND_MAX)*game->getGSM()->getWorld()->getWorldHeight();
+			game->getGSM()->getSpriteManager()->getPathfinder()->mapPath(this,(float)worldCoordinateX, (float)worldCoordinateY);
+			thinkCounter = 0;
+		}
+	    thinkCounter++;
+		}
 	}
 }
