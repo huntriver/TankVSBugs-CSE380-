@@ -27,6 +27,7 @@ respondPlayerBugContact(t1,t2);
 if(t2->getSpriteType()->getSpriteTypeID() != 0){
 t1->dead = true;
 t2->setHealth(t2->getHealth() - 1);
+PlaySound(HITTED, NULL, SND_ASYNC);
 }
 }else if(t2->getSpriteType()->getSpriteTypeID() == 2){
 if(t1->getSpriteType()->getSpriteTypeID() != 0){

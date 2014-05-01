@@ -52,13 +52,21 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 		if(input->isKeyDown(VK_CONTROL) && input->isKeyDownForFirstTime((unsigned int)'1'))
 		{
 			game->getGSM()->unloadCurrentLevel();
+		
+   
 			game->setCurrentLevelFileName(W_LEVEL_1_NAME);
 		    game->setCurrentLevelDir(W_LEVEL_1_DIR);
 			game->startGame();
+
+
 		}
 		if (input->isKeyDown(VK_CONTROL) && input->isKeyDownForFirstTime((unsigned int)'2'))
 		{
 			game->getGSM()->unloadCurrentLevel();
+
+	
+
+
 			game->setCurrentLevelFileName(W_LEVEL_2_NAME);
 		    game->setCurrentLevelDir(W_LEVEL_2_DIR);
 			game->startGame();
@@ -241,6 +249,7 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 		{
 			viewportVy += MAX_VIEWPORT_AXIS_VELOCITY;
 			viewportMoved = true;
+
 		}
 		if (input->isKeyDown(LEFT_KEY))
 		{

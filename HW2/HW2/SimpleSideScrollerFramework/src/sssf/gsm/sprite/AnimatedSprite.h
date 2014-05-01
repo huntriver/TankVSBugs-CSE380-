@@ -17,6 +17,7 @@
 #include "sssf\gsm\sprite\AnimatedSpriteType.h"
 #include "sssf\gui\Viewport.h"
 
+const float MAX_BUG_SPEED = 60.0f;
 class AnimatedSprite : public CollidableObject
 {
 
@@ -63,9 +64,14 @@ public:
 	bool* getHitObject() { return hitObject; }
 	bool hasReachedDestination()
 
-	{	if (currentPathToFollow.size()==0)
+	 {
+		 if (this->getB2Body()->GetLinearVelocity().x==0 && this->getB2Body()->GetLinearVelocity().y==0) 
+			 return true;
+		 else
+			 return false;
+		/*if (currentPathToFollow.size()==0)
 	    return true;
-		return currentPathNode == currentPathToFollow.end(); }
+		return currentPathNode == currentPathToFollow.end(); */}
 
 	// INLINED MUTATOR METHODS
 	void setAlpha(int initAlpha)

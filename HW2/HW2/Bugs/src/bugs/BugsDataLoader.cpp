@@ -268,6 +268,13 @@ void BugsDataLoader::loadWorld(Game *game, wstring level_dir, wstring level_name
 	// A LINE NEAR THE TOP
 	AnimatedSpriteType *botSpriteType = spriteManager->getSpriteType(1);
 	makeRandomBot(game, botSpriteType, 2300, -400);
+
+//	initViewport(game->getGUI(), properties);	
+	Viewport *viewport = game->getGUI()->getViewport();
+	float viewportX=game->getGSM()->getSpriteManager()->getPlayer()->getB2Body()->GetPosition().x*5.0f;
+	        float viewportY=game->getGSM()->getSpriteManager()->getPlayer()->getB2Body()->GetPosition().y*-5.0f;
+	        viewport->playerMoveViewport((int)floor(viewportX-150.0f), (int)floor(viewportY-250.0f), game->getGSM()->getWorld()->getWorldWidth(), game->getGSM()->getWorld()->getWorldHeight());
+
 // UNCOMMENT THE FOLLOWING CODE BLOCK WHEN YOU ARE READY TO ADD SOME BOTS
 /*	for (int i = 2; i <= 26; i++)
 	{

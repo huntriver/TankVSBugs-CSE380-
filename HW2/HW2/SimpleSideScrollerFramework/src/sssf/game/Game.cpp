@@ -159,6 +159,7 @@ void Game::processGameData()
 		if(gsm->getSpriteManager()->getPlayer()->getHealth() == 0)
 		{
 			getGSM()->unloadCurrentLevel();
+			
 			startGame();
 			return;
 		}

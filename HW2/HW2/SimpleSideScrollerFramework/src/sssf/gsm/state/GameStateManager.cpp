@@ -217,6 +217,7 @@ void GameStateManager::unloadCurrentLevel()
 {
 	spriteManager->unloadSprites();
 	world.unloadWorld();
+	
 }
 
 /*

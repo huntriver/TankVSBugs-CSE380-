@@ -391,11 +391,11 @@ void OrthographicGridPathfinder::updatePath(AnimatedSprite *sprite)
 				float vY = 0.0f;
 				if(diffY > 0)
 				{
-				vY = - MAX_WALK_SPEED;
+			//	vY = - MAX_WALK_SPEED;
 				sprite->getB2Body()->SetLinearVelocity(b2Vec2(0.0f, vY));
 				sprite->setCurrentState(L"MOVE DOWN");
 			}else{
-				vY = MAX_WALK_SPEED;
+			//	vY = MAX_WALK_SPEED;
 				sprite->getB2Body()->SetLinearVelocity(b2Vec2(0.0f, vY));
 				sprite->setCurrentState(L"MOVE UP");
 			}
@@ -409,11 +409,11 @@ void OrthographicGridPathfinder::updatePath(AnimatedSprite *sprite)
 			float vX = 0.0f;
 			if(diffX > 0)
 			{
-				vX = MAX_WALK_SPEED;
+			//	vX = MAX_WALK_SPEED;
 				sprite->getB2Body()->SetLinearVelocity(b2Vec2(vX, 0.0f));
 				sprite->setCurrentState(L"MOVE RIGHT");
 			}else{
-				vX = - MAX_WALK_SPEED;
+			//	vX = - MAX_WALK_SPEED;
 				sprite->getB2Body()->SetLinearVelocity(b2Vec2(vX, 0.0f));
 				sprite->setCurrentState(L"MOVE LEFT");
 			}

@@ -1,15 +1,11 @@
-﻿Build started 5/1/2014 12:35:03 PM.
+﻿Build started 5/1/2014 2:27:58 PM.
      1>Project "F:\cse 380 final project\HW2\HW2\SimpleSideScrollerFramework\SimpleSideScrollerFramework.vcxproj" on node 2 (Build target(s)).
      1>InitializeBuildStatus:
          Creating "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\SimpleSideScrollerFramework.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\gsm\ai\bots\RandomBot.cpp
-         RandomBot.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\gsm\sprite\SpriteManager.cpp
+         SpriteManager.cpp
      1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(76): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(77): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(108): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>f:\cse 380 final project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(109): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
        Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"F:\cse 380 final project\HW2\HW2\Common\SimpleSideScrollerFramework.lib" Box2D.lib LuaPlus.lib LuaPlusFramework.lib /LIBPATH:../lib /NOLOGO "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameDataLoader.obj"
          "F:\cse 380 final project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Game.obj"
@@ -2942,4 +2938,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.62
+Time Elapsed 00:00:02.63
