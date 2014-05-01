@@ -18,7 +18,9 @@
 #include "sssf\gsm\sprite\AnimatedSpriteType.h"
 #include "sssf\gsm\sprite\TopDownSprite.h"
 #include "sssf\gsm\ai\pathfinding\GridPathfinder.h"
+#include "LuaPlusFramework\LuaPlus.h";
 
+using namespace LuaPlus;
 class SpriteManager
 {
 private:
@@ -43,12 +45,11 @@ private:
 	// WE MAY BE RENDERING AN ORTHOGRAPHIC MAP OR AN ISOMETRIC ONE
 	GridPathfinder *pathfinder;		
 	int TT;
+	LuaState* luaPState;
 
 public:
 	// NOTHING TO INIT OR DESTROY
-	SpriteManager()		{TT=0;
-	
-	}
+	SpriteManager();	
 	~SpriteManager()	{}
 
 	// INLINED ACCESSOR METHODS

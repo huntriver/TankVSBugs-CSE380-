@@ -164,11 +164,11 @@ void BugsDataLoader::loadGUI(Game *game, wstring guiInitFile)
 	loadLevel - This method should load the data the level described by the
 	levelInitFile argument in to the Game's game state manager.
 */
-void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)	
+void BugsDataLoader::loadWorld(Game *game, wstring level_dir, wstring level_name)
 {
 	// LOAD THE LEVEL'S BACKGROUND TILES
 	TMXMapImporter tmxMapImporter;
-	tmxMapImporter.loadWorld(game, W_LEVEL_1_DIR, W_LEVEL_1_NAME);
+	tmxMapImporter.loadWorld(game, level_dir, level_name);
 
 	// SPECIFY WHO WILL DO THE PATHFINDING
 	GameStateManager *gsm = game->getGSM();
@@ -237,7 +237,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	player->setOnTileLastFrame(false);
 	player->affixTightAABBBoundingVolume();
 
-	
+	/*
 	AnimatedSpriteType *eggType =  spriteManager->getSpriteType(4); 
 	RandomBot *bot = new RandomBot();
 	bot->setHealth(10);
@@ -267,7 +267,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	// AND LET'S ADD A BUNCH OF RANDOM JUMPING BOTS, FIRST ALONG
 	// A LINE NEAR THE TOP
 	AnimatedSpriteType *botSpriteType = spriteManager->getSpriteType(1);
-	makeRandomBot(game, botSpriteType, 2300, -400);
+	makeRandomBot(game, botSpriteType, 2300, -400);*/
 // UNCOMMENT THE FOLLOWING CODE BLOCK WHEN YOU ARE READY TO ADD SOME BOTS
 /*	for (int i = 2; i <= 26; i++)
 	{
@@ -488,7 +488,7 @@ void BugsDataLoader::initMainMenu(GameGUI *gui,	DirectXTextureManager *guiTextur
 	buttonToAdd->initButton(normalTextureID,
 							mouseOverTextureID,
 							555,
-							520,
+							580,
 							0,
 							255,
 							200,
@@ -498,6 +498,25 @@ void BugsDataLoader::initMainMenu(GameGUI *gui,	DirectXTextureManager *guiTextur
 
 	// AND NOW LOAD IT INTO A ScreenGUI
 	mainMenuGUI->addButton(buttonToAdd);
+
+	normalTextureID = guiTextureManager->loadTexture(W_CONTROL_IMAGE_PATH);
+	mouseOverTextureID = guiTextureManager->loadTexture(W_CONTROL_IMAGE_PATH);
+
+	buttonToAdd = new Button();
+	buttonToAdd->initButton(normalTextureID,
+							mouseOverTextureID,
+							555,
+							460,
+							0,
+							255,
+							200,
+							30,
+							false,
+							W_CONTROL_COMMAND);
+
+	// AND NOW LOAD IT INTO A ScreenGUI
+	mainMenuGUI->addButton(buttonToAdd);
+	
 
 	normalTextureID = guiTextureManager->loadTexture(W_START_IMAGE_PATH);
 	mouseOverTextureID = guiTextureManager->loadTexture(W_START_IMAGE_PATH);
@@ -524,7 +543,7 @@ void BugsDataLoader::initMainMenu(GameGUI *gui,	DirectXTextureManager *guiTextur
 	buttonToAdd->initButton(normalTextureID,
 							mouseOverTextureID,
 							555,
-							580,
+							640,
 							0,
 							255,
 							200,
@@ -541,7 +560,7 @@ void BugsDataLoader::initMainMenu(GameGUI *gui,	DirectXTextureManager *guiTextur
 	buttonToAdd->initButton(normalTextureID,
 							mouseOverTextureID,
 							555,
-							460,
+							520,
 							0,
 							255,
 							200,
@@ -555,7 +574,6 @@ void BugsDataLoader::initMainMenu(GameGUI *gui,	DirectXTextureManager *guiTextur
 	// AND LET'S ADD OUR SCREENS
 	gui->addScreenGUI(GS_MAIN_MENU,		mainMenuGUI);
 }
-
 /*
 	initInGameGUI - initializes the game's in-game gui.
 */

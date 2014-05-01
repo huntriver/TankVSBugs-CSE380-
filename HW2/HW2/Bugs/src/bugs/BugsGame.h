@@ -12,6 +12,11 @@
 static const wstring	W_LEVEL_1_DIR			= L"data/levels/level1/";
 static const wstring	W_LEVEL_1_NAME			= L"level1.tmx";
 static const wstring	W_LEVEL_1_PATH			= W_LEVEL_1_DIR + W_LEVEL_1_NAME;
+
+static const wstring	W_LEVEL_2_DIR			= L"data/levels/level2/";
+static const wstring	W_LEVEL_2_NAME			= L"level2.tmx";
+static const wstring	W_LEVEL_2_PATH			= W_LEVEL_2_DIR + W_LEVEL_2_NAME;
+
 static const wstring	W_INIT_FILE				= L"data/BugsInit.txt";
 static const wstring	W_GUI_INIT_FILE			= L"data/BugsGUI.txt";
 static const string		W_DEBUG_FILE			= "DebugOutput.txt";
@@ -63,6 +68,9 @@ static const wstring    W_FIRE_IMAGE_PATH        = L"data/gui/buttons/fire.png";
 static const wstring    W_FIRE_DISABLED_PATH     = L"data/gui/buttons/fire_disabled.png";
 static const wstring    W_FLASH_DISABLED_PATH    = L"data/gui/buttons/flash_disabled.png";
 static const wstring	W_HEALTH_BAR_PATH		= L"data/gui/buttons/health_bar.png";
+static const wstring    W_CONTROL_IMAGE_PATH    = L"data/gui/buttons/control_button.png";
+static const wstring    W_CONTROL_MENU_PATH     = L"data/gui/overlays/spiked_acid_control_menu_overlay.png";
+static const wstring    W_CONTROL_COMMAND       = L"Control";
 // FOR OUR SPRITE
 static const wstring	SPRITE_TYPES_DIR = L"data/sprite_types/";
 static const wstring	SPRITE_TYPES_LIST = SPRITE_TYPES_DIR + L"sprite_type_list.xml";
@@ -103,6 +111,7 @@ const unsigned int P_KEY = (unsigned int)'P';
 const unsigned int T_KEY = (unsigned int)'T';
 const unsigned int L_KEY = (unsigned int)'L';
 const unsigned int F_KEY = (unsigned int)'F';
+
 const unsigned int UP_KEY = VK_UP;
 const unsigned int DOWN_KEY = VK_DOWN;
 const unsigned int LEFT_KEY = VK_LEFT;

@@ -49,7 +49,20 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 	{
 		float vX = body->GetLinearVelocity().x;
 		float vY = body->GetLinearVelocity().y;
-
+		if(input->isKeyDown(VK_CONTROL) && input->isKeyDownForFirstTime((unsigned int)'1'))
+		{
+			game->getGSM()->unloadCurrentLevel();
+			game->setCurrentLevelFileName(W_LEVEL_1_NAME);
+		    game->setCurrentLevelDir(W_LEVEL_1_DIR);
+			game->startGame();
+		}
+		if (input->isKeyDown(VK_CONTROL) && input->isKeyDownForFirstTime((unsigned int)'2'))
+		{
+			game->getGSM()->unloadCurrentLevel();
+			game->setCurrentLevelFileName(W_LEVEL_2_NAME);
+		    game->setCurrentLevelDir(W_LEVEL_2_DIR);
+			game->startGame();
+		}
 		if (input->isKeyDownForFirstTime(P_KEY))
 		{
 			gsm->getPhysics()->togglePhysics();

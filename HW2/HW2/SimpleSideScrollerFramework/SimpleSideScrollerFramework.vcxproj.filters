@@ -67,6 +67,9 @@
     <Filter Include="src\sssf\timer">
       <UniqueIdentifier>{dd6f163b-d409-4610-a7de-a84e723083a9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\script">
+      <UniqueIdentifier>{facbd893-b456-4d2f-88f3-855ca8339a19}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\sssf_VS\ReadMe.txt">
@@ -343,8 +346,13 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\lib\Box2D.lib" />
+    <Library Include="..\lib\LuaPlus.lib" />
+    <Library Include="..\lib\LuaPlusFramework.lib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\lib\box2d.pdb" />
+    <None Include="..\Apps\Bugs\data\lua\script.lua">
+      <Filter>src\script</Filter>
+    </None>
   </ItemGroup>
 </Project>

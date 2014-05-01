@@ -141,12 +141,12 @@ bool GameStateManager::isWorldRenderable()
 	of all the level file names. Storing these file names allows us to
 	easily load a desired level at any time.
 */
-void GameStateManager::addLevel(wstring levelToAddName, wstring levelToAddFileNameAndPath)
+/*void GameStateManager::addLevel(wstring levelToAddName, wstring levelToAddFileNameAndPath)
 {
 	levelNames.push_back(levelToAddName);
 	levelFileNamesWithRelativePath.push_back(levelToAddFileNameAndPath);
 }
-
+*/
 /*
 	getLevelNum - Note that when our game app starts, we load all the level
 	file names and this should never change. This method looks through those
@@ -172,7 +172,7 @@ void GameStateManager::loadLevel(Game *game, unsigned int initLevel)
 		currentLevel = initLevel;
 		wstring fileToLoad = levelFileNamesWithRelativePath[currentLevel];
 		GameDataLoader *dataLoader = game->getDataLoader();
-		dataLoader->loadWorld(game, fileToLoad);
+	//	dataLoader->loadWorld(game, fileToLoad);
 	}
 }
 

@@ -1,15 +1,13 @@
-﻿Build started 4/30/2014 10:55:37 AM.
-     1>Project "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\TMXMapImporter\TMXMapImporter.vcxproj" on node 2 (Build target(s)).
+﻿Build started 2014/4/30 21:08:17.
+     1>Project "E:\cse 380 project\HW2\HW2\TMXMapImporter\TMXMapImporter.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\TMXMapImporter\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\TMXMapImporter\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\tmxmi\TMXMapImporter.cpp src\tmxmi_VS\stdafx.cpp
-         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"E:\cse 380 project\HW2\HW2\Temp\TMXMapImporter\Debug\\" /Fd"E:\cse 380 project\HW2\HW2\Temp\TMXMapImporter\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\tmxmi\TMXMapImporter.cpp
          TMXMapImporter.cpp
-     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\tmxmapimporter\src\tmxmi\tmxmapimporter.cpp(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\tmxmapimporter\src\tmxmi\tmxmapimporter.cpp(4): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-         Generating Code...
+     1>e:\cse 380 project\hw2\hw2\tmxmapimporter\src\tmxmi\tmxmapimporter.cpp(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>e:\cse 380 project\hw2\hw2\tmxmapimporter\src\tmxmi\tmxmapimporter.cpp(4): warning C4067: unexpected tokens following preprocessor directive - expected a newline
        Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Common\TMXMapImporter.lib" Box2D.lib /LIBPATH:../lib /NOLOGO "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\TMXMapImporter\Debug\TMXMapImporter.obj"
-         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\TMXMapImporter\Debug\stdafx.obj"
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"E:\cse 380 project\HW2\HW2\Common\TMXMapImporter.lib" Box2D.lib /LIBPATH:../lib /NOLOGO "E:\cse 380 project\HW2\HW2\Temp\TMXMapImporter\Debug\TMXMapImporter.obj"
+         "E:\cse 380 project\HW2\HW2\Temp\TMXMapImporter\Debug\stdafx.obj"
          ..\lib\Box2D.lib
      1>Box2D.lib(b2BroadPhase.obj) : warning LNK4006: "public: __thiscall b2BroadPhase::b2BroadPhase(void)" (??0b2BroadPhase@@QAE@XZ) already defined in Box2D.lib(b2BroadPhase.obj); second definition ignored
      1>Box2D.lib(b2BroadPhase.obj) : warning LNK4006: "public: __thiscall b2BroadPhase::~b2BroadPhase(void)" (??1b2BroadPhase@@QAE@XZ) already defined in Box2D.lib(b2BroadPhase.obj); second definition ignored
@@ -462,9 +460,9 @@
      1>Box2D.lib(b2WheelJoint.obj) : warning LNK4006: "protected: virtual bool __thiscall b2WheelJoint::SolvePositionConstraints(struct b2SolverData const &)" (?SolvePositionConstraints@b2WheelJoint@@MAE_NABUb2SolverData@@@Z) already defined in Box2D.lib(b2WheelJoint.obj); second definition ignored
      1>Box2D.lib(b2WheelJoint.obj) : warning LNK4006: "protected: virtual void __thiscall b2WheelJoint::SolveVelocityConstraints(struct b2SolverData const &)" (?SolveVelocityConstraints@b2WheelJoint@@MAEXABUb2SolverData@@@Z) already defined in Box2D.lib(b2WheelJoint.obj); second definition ignored
      1>Box2D.lib(b2WheelJoint.obj) : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
-         TMXMapImporter.vcxproj -> C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Common\TMXMapImporter.lib
-     1>Done Building Project "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\TMXMapImporter\TMXMapImporter.vcxproj" (Build target(s)).
+         TMXMapImporter.vcxproj -> E:\cse 380 project\HW2\HW2\Common\TMXMapImporter.lib
+     1>Done Building Project "E:\cse 380 project\HW2\HW2\TMXMapImporter\TMXMapImporter.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:05.19
+Time Elapsed 00:00:02.53
