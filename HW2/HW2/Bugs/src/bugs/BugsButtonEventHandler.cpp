@@ -36,6 +36,7 @@ void BugsButtonEventHandler::handleButtonEvents(	Game *game,
 	else if (command.compare(W_START_COMMAND) == 0)
 	{
 		game->setCurrentLevelFileName(W_LEVEL_1_NAME);
+		game->setCurrentLevelDir(W_LEVEL_1_DIR);
 		game->startGame();
 	}
 	// THE USER PRESSED THE Quit BUTTON ON THE IN-GAME MENU,

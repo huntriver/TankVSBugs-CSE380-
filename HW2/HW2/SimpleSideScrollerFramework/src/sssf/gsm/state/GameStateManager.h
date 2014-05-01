@@ -91,7 +91,7 @@ public:
 	GameStateManager();
 	~GameStateManager();
 	void			addGameRenderItemsToRenderList(Game *game);
-	void			addLevel(wstring levelToAddName, wstring levelToAddFileNameAndPath);
+	//void			addLevel(wstring levelToAddName, wstring levelToAddFileNameAndPath);
 	unsigned int	getLevelNum(wstring levelName);
 	void			shutdown();
 	void			loadLevel(Game *game, unsigned int levelNum);

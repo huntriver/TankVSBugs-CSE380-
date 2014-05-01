@@ -38,7 +38,7 @@ public:
 	// ARE ALL DEFINED IN BugsDataLoader.cpp
 	void loadGame(Game *game, wstring gameInitFile);
 	void loadGUI(Game *game, wstring guiInitFile);
-	void loadWorld(Game *game, wstring levelInitFile);
+	void loadWorld(Game *game, wstring level_dir,wstring level_name);
 
 	// THESE ARE HARD-CODED EXAMPLES OF GUI DATA LOADING
 	void hardCodedLoadGUIExample(Game *game);

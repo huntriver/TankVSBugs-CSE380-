@@ -24,6 +24,12 @@ addSpriteToRenderList - This method checks to see if the sprite
 parameter is inside the viewport. If it is, a RenderItem is generated
 for that sprite and it is added to the render list.
 */
+SpriteManager::SpriteManager()
+{
+	TT = 0;
+	luaPState = LuaState::Create();
+	int result = luaPState->DoFile("data/lua/script.lua");
+}
 void SpriteManager::addSpriteToRenderList(AnimatedSprite *sprite,
 										  RenderList *renderList,
 										  Viewport *viewport,GameStateManager *gsm)
@@ -380,6 +386,12 @@ void SpriteManager::update(Game *game)
 		      {
 				bot->getB2Body()->SetLinearVelocity(b2Vec2(0,0));
 			  }
+			if(bot->getCurrentState() == L"ATTACK UP" ||
+				bot->getCurrentState() == L"ATTACK DOWN" ||
+			   bot->getCurrentState() == L"ATTACK LEFT" ||
+		       bot->getCurrentState() == L"ATTACK RIGHT")
+			{
+			}
 			bot->updateSprite();
 			if (bot->getHealth() == 0){
 				botIterator=bots.erase(botIterator);
@@ -389,5 +401,13 @@ void SpriteManager::update(Game *game)
 			}
 			botIterator++;
 		}
+	}
+
+	LuaFunction<int> healthDec = luaPState->GetGlobal("healthDec");
+	int decFlag = healthDec();
+
+	if(decFlag == 1)
+	{
+		player.setHealth(player.getHealth() - 1);
 	}
 }

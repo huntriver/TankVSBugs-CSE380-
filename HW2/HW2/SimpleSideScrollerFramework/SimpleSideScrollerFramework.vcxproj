@@ -107,8 +107,11 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\lib\Box2D.lib" />
+    <Library Include="..\lib\LuaPlus.lib" />
+    <Library Include="..\lib\LuaPlusFramework.lib" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Apps\Bugs\data\lua\script.lua" />
     <None Include="..\lib\box2d.pdb" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -160,7 +163,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>Box2D.lib</AdditionalDependencies>
+      <AdditionalDependencies>Box2D.lib;LuaPlus.lib;LuaPlusFramework.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>../lib</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>

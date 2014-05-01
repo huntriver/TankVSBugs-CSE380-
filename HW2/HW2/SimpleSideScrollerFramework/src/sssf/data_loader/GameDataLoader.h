@@ -31,7 +31,7 @@ public:
 	GameDataLoader()			{} 
 	~GameDataLoader()			{}
 
-	// ACCESSOR AND MUTATOR
+	// ACCESSOR AND MUTATOR 
 	wstring getGameDataPathName()	{ return gameDataPathName; }
 	void setGameDataPathName(wstring initGameDataPathName)
 	{
@@ -48,5 +48,5 @@ public:
 	// METHODS TO BE DEFINED INSIDE CHILD CLASSES
 	virtual void loadGame(Game *game, wstring gameInitFile)=0;
 	virtual void loadGUI(Game *game, wstring guiInitFile)=0;
-	virtual void loadWorld(Game *game, wstring levelInitFile)=0;
+	virtual void loadWorld(Game *game, wstring level_dir, wstring level_name)=0;
 };
