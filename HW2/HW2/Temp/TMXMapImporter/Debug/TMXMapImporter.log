@@ -1,14 +1,6 @@
-﻿Build started 5/1/2014 3:35:25 PM.
+﻿Build started 5/1/2014 5:03:39 PM.
      1>Project "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\TMXMapImporter\TMXMapImporter.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\TMXMapImporter\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\TMXMapImporter\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\tmxmi\TMXMapImporter.cpp src\tmxmi_VS\stdafx.cpp
-         stdafx.cpp
-         TMXMapImporter.cpp
-     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\tmxmapimporter\src\tmxmi\tmxmapimporter.cpp(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\tmxmapimporter\src\tmxmi\tmxmapimporter.cpp(4): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-         Generating Code...
-       Lib:
+     1>Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Common\TMXMapImporter.lib" Box2D.lib /LIBPATH:../lib /NOLOGO "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\TMXMapImporter\Debug\TMXMapImporter.obj"
          "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\TMXMapImporter\Debug\stdafx.obj"
          ..\lib\Box2D.lib
@@ -468,4 +460,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:06.55
+Time Elapsed 00:00:00.21
