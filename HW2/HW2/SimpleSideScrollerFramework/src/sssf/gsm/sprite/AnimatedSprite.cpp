@@ -33,6 +33,7 @@ AnimatedSprite::AnimatedSprite()
 	health=5;
 	isPlayer = false;
 	undead = false;
+	collide = false;
 }
 
 /*
@@ -121,4 +122,20 @@ void AnimatedSprite::correctToTightBoundingVolume()
 {
 	pp.setX(boundingVolume.getLeft());
 	pp.setY(boundingVolume.getTop());
+}
+
+void AnimatedSprite::changeToIdleState(wstring state)
+{
+	if(state == L"MOVE UP")
+	{
+		currentState =  L"IDLE UP";
+	}else if(state == L"MOVE DOWN")
+	{
+		currentState = L"IDLE DOWN";
+	}else if(state == L"MOVE RIGHT")
+	{
+		currentState = L"IDLE RIGHT";
+	}else{
+		currentState = L"IDLE LEFT";
+	}
 }

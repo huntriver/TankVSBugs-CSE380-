@@ -21,21 +21,28 @@ void BugsContactListener::BeginContact(b2Contact* contact)
 	}else
 	{
 		if((t1->getSpriteType()->getSpriteTypeID() == 0 && t2->getSpriteType()->getSpriteTypeID() == 1) ||
-(t1->getSpriteType()->getSpriteTypeID() == 1 && t2->getSpriteType()->getSpriteTypeID() == 0)){
-respondPlayerBugContact(t1,t2);
-}else if(t1->getSpriteType()->getSpriteTypeID() == 2){
-if(t2->getSpriteType()->getSpriteTypeID() != 0){
-t1->dead = true;
-t2->setHealth(t2->getHealth() - 1);
-PlaySound(HITTED, NULL, SND_ASYNC);
-}
-}else if(t2->getSpriteType()->getSpriteTypeID() == 2){
-if(t1->getSpriteType()->getSpriteTypeID() != 0){
-t2->dead = true;
-t1->setHealth(t1->getHealth() - 1);
-PlaySound(HITTED, NULL, SND_ASYNC);
-}
-}
+		(t1->getSpriteType()->getSpriteTypeID() == 1 && t2->getSpriteType()->getSpriteTypeID() == 0)){
+			respondPlayerBugContact(t1,t2);
+		}else if(t1->getSpriteType()->getSpriteTypeID() == 1 && t2->getSpriteType()->getSpriteTypeID() == 1){
+			t1->collide = true;
+			t2->collide = true;
+		}else if(t1->getSpriteType()->getSpriteTypeID() == 2)
+		{
+			if(t2->getSpriteType()->getSpriteTypeID() != 0)
+			{
+				t1->dead = true;
+				t2->setHealth(t2->getHealth() - 1);
+				PlaySound(HITTED, NULL, SND_ASYNC);
+			}
+		}else if(t2->getSpriteType()->getSpriteTypeID() == 2)
+		{
+			if(t1->getSpriteType()->getSpriteTypeID() != 0)
+			{
+				t2->dead = true;
+				t1->setHealth(t1->getHealth() - 1);
+				PlaySound(HITTED, NULL, SND_ASYNC);
+			}
+		}
 	}
 	/*
 		if((t1->getSpriteType()->getSpriteTypeID() == 0 && t2->getSpriteType()->getSpriteTypeID() == 1) ||
@@ -162,6 +169,10 @@ void BugsContactListener::EndContact(b2Contact* contact)
 				}
 				(t1->getHitObject())[e1] = false;
 				(t2->getHitObject())[e2] = false;
+			}else if(t1->getSpriteType()->getSpriteTypeID() == 1 && t2->getSpriteType()->getSpriteTypeID() == 1)
+			{
+				t1->collide = false;
+				t2->collide = false;
 			}
 		}
 }

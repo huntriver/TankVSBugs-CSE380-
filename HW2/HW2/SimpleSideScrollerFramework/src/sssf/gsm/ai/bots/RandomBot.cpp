@@ -102,6 +102,8 @@ void RandomBot::think(Game *game)
 		float vX,vY;
 		if(fabsl(bX-pX) <= 200.0f && fabsl(bY-pY) <= 200.0f)
 		{
+			if(collide)
+				return;
 			//game->getGSM()->getSpriteManager()->getPathfinder()->mapPath(this, pX, pY);
 			if (bX-pX>0) vX=-MAX_BUG_SPEED;
 			else if (bX-pX<0) vX=MAX_BUG_SPEED;

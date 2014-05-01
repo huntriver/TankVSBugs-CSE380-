@@ -21,6 +21,7 @@ public:
 	Bot*	clone();
 	void	pickRandomDestination(Game *game);
 	void	think(Game *game);
+	void    setCollide(bool initCollide);
 
 	// INLINED METHODS
 //	unsigned int getCyclesRemainingBeforeThinking()	{ return cyclesRemainingBeforeThinking; }
