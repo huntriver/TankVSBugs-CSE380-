@@ -34,6 +34,7 @@ AnimatedSprite::AnimatedSprite()
 	isPlayer = false;
 	undead = false;
 	collide = false;
+	dyingCounter = 0;
 }
 
 /*
@@ -128,14 +129,33 @@ void AnimatedSprite::changeToIdleState(wstring state)
 {
 	if(state == L"MOVE UP")
 	{
-		currentState =  L"IDLE UP";
+		setCurrentState(L"IDLE UP");
 	}else if(state == L"MOVE DOWN")
 	{
-		currentState = L"IDLE DOWN";
+		setCurrentState(L"IDLE DOWN");
 	}else if(state == L"MOVE RIGHT")
 	{
-		currentState = L"IDLE RIGHT";
+		setCurrentState(L"IDLE RIGHT");
 	}else{
-		currentState = L"IDLE LEFT";
+		setCurrentState(L"IDLE LEFT");
 	}
+}
+
+void AnimatedSprite::changeToDyingState(wstring state)
+{
+//	if(currentState == L"DYING UP" || currentState == 
+	if(state == L"MOVE UP" || state == L"IDLE UP" || state == L"ATTACK UP")
+	{
+		setCurrentState(L"DYING UP");
+	}else if(state == L"MOVE DOWN" || state == L"IDLE DOWN" || state == L"ATTACK DOWN")
+	{
+		setCurrentState(L"DYING DOWN");
+	}else if(state == L"MOVE RIGHT" || state == L"IDLE RIGHT" || state == L"ATTACK RIGHT")
+	{
+		setCurrentState(L"DYING RIGHT");
+	}else if(state == L"MOVE LEFT" || state == L"IDLE LEFT" || state == L"ATTACK LEFT")
+	{
+		setCurrentState(L"DYING LEFT");
+	}
+	dyingCounter++;
 }

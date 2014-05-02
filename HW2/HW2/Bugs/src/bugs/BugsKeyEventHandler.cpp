@@ -111,7 +111,7 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 			bullet->setSpriteType(bulletSpriteType);
 			bullet->setCurrentState(L"IDLE");
 			bullet->setAlpha(255);
-			bullet->setHealth(0);
+			bullet->setHealth(-1);
 			gsm->getSpriteManager()->addBullet(bullet);
 
 			b2BodyDef bodyDef;

@@ -267,7 +267,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring level_dir, wstring level_name
 	// AND LET'S ADD A BUNCH OF RANDOM JUMPING BOTS, FIRST ALONG
 	// A LINE NEAR THE TOP
 	AnimatedSpriteType *botSpriteType = spriteManager->getSpriteType(1);
-	makeRandomBot(game, botSpriteType, 2300, -400);
+	// makeRandomBot(game, botSpriteType, 130, -400);
 
 //	initViewport(game->getGUI(), properties);	
 	Viewport *viewport = game->getGUI()->getViewport();

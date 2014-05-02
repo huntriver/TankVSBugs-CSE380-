@@ -43,6 +43,7 @@ protected:
 	// USED TO ITERATE THROUGH THE CURRENT ANIMATION SEQUENCE
 	unsigned int animationCounter;
 
+	unsigned int dyingCounter;
 	// CURRENT PATH TO FOLLOW
 	list<PathNode> currentPathToFollow;
 	list<PathNode>::iterator currentPathNode;
@@ -55,12 +56,14 @@ public:
 	bool dead;
 	bool undead;
 	bool collide;
+	unsigned int getDyingCounter() {return dyingCounter;}
 	int					getAlpha()			{ return alpha;				}
 	list<PathNode>*		getCurrentPathToFollow() { return &currentPathToFollow; }
 	list<PathNode>::iterator getCurrentPathNode() { return currentPathNode; }
 	wstring				getCurrentState()	{ return currentState;		}
 	unsigned int		getFrameIndex()		{ return frameIndex;		}
 	AnimatedSpriteType*	getSpriteType()		{ return spriteType;		}
+	void changeToDyingState(wstring state);
 	bool getIsPlayer() { return isPlayer; }
 	bool* getHitObject() { return hitObject; }
 	bool hasReachedDestination()

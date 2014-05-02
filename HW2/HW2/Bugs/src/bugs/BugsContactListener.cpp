@@ -24,8 +24,8 @@ void BugsContactListener::BeginContact(b2Contact* contact)
 		(t1->getSpriteType()->getSpriteTypeID() == 1 && t2->getSpriteType()->getSpriteTypeID() == 0)){
 			respondPlayerBugContact(t1,t2);
 		}else if(t1->getSpriteType()->getSpriteTypeID() == 1 && t2->getSpriteType()->getSpriteTypeID() == 1){
-			t1->collide = true;
-			t2->collide = true;
+			// t1->collide = true;
+			// t2->collide = true;
 		}else if(t1->getSpriteType()->getSpriteTypeID() == 2)
 		{
 			if(t2->getSpriteType()->getSpriteTypeID() != 0)
