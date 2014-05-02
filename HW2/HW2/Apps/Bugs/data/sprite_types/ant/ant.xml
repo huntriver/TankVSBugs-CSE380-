@@ -27,8 +27,36 @@
   <image_file id="22"  file_name="black_ant_WALKING_RIGHT_1.png"/>
   <image_file id="23"  file_name="black_ant_WALKING_RIGHT_2.png"/>
   <image_file id="24"  file_name="black_ant_WALKING_RIGHT_3.png"/>
+  <image_file id="25"  file_name="black_ant_DYING_UP_1.png"/>
+  <image_file id="26"  file_name="black_ant_DYING_DOWN_1.png"/>
+  <image_file id="27"  file_name="black_ant_DYING_LEFT_1.png"/>
+   <image_file id="28"  file_name="black_ant_DYING_RIGHT_1.png"/>
  </images_list>
  <animations_list>
+  <animation_state>
+   <state>DYING UP</state>
+   <animation_sequence>
+    <pose image_id="25" duration="12"/>
+   </animation_sequence>
+  </animation_state>
+  <animation_state>
+   <state>DYING DOWN</state>
+   <animation_sequence>
+    <pose image_id="26" duration="12"/>
+   </animation_sequence>
+  </animation_state>
+  <animation_state>
+   <state>DYING LEFT</state>
+   <animation_sequence>
+    <pose image_id="27" duration="12"/>
+   </animation_sequence>
+  </animation_state>
+   <animation_state>
+   <state>DYING RIGHT</state>
+   <animation_sequence>
+    <pose image_id="28" duration="12"/>
+   </animation_sequence>
+  </animation_state>
   <animation_state>
    <state>IDLE UP</state>
    <animation_sequence>

@@ -11,6 +11,7 @@ class RandomBot : public Bot
 private:
 	unsigned int thinkCounter;
 	int currentDirection;
+	float pvx,pvy;
 public:
 	RandomBot();
 	~RandomBot();

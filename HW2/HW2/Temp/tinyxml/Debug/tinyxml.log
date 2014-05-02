@@ -1,15 +1,9 @@
-﻿Build started 5/1/2014 5:03:36 PM.
-     1>Project "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\tinyxml\tinyxml.vcxproj" on node 5 (Build target(s)).
+﻿Build started 5/1/2014 8:10:29 PM.
+     1>Project "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\tinyxml\tinyxml.vcxproj" on node 2 (Build target(s)).
      1>Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Common\tinyxml.lib" /NOLOGO "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\tinyxml\Debug\tinystr.obj"
-         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\tinyxml\Debug\tinyxml.obj"
-         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\tinyxml\Debug\tinyxmlerror.obj"
-         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\tinyxml\Debug\tinyxmlparser.obj"
-         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\tinyxml\Debug\xmltest.obj"
-         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\tinyxml\Debug\stdafx.obj"
          tinyxml.vcxproj -> C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Common\tinyxml.lib
      1>Done Building Project "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\tinyxml\tinyxml.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.21
+Time Elapsed 00:00:00.13

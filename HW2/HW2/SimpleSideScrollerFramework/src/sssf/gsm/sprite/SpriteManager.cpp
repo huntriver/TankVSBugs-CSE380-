@@ -39,20 +39,42 @@ void SpriteManager::addSpriteToRenderList(AnimatedSprite *sprite,
 	b2Body* body = sprite->getB2Body();
 	PhysicalProperties *pp = sprite->getPhysicalProperties();
 	float rotation = sprite->getRotationInRadians();
-
+	float xx,yy;
+	if (sprite->getHealth()==0)
+		{
+			xx=sprite->getPhysicalProperties()->getX();
+			yy=sprite->getPhysicalProperties()->getY();
+		}
+	else
+	{
+		xx=body->GetPosition().x * 5.0f;
+		yy=(-1)*(body->GetPosition().y * 5.0f);
+	}
 	// IS THE SPRITE VIEWABLE?
 	if (viewport->areWorldCoordinatesInViewport(	
-		body->GetPosition().x * 5.0f,
-		(-1)*(body->GetPosition().y * 5.0f),
+		xx,
+		yy,
 		spriteType->getTextureWidth(),
 		spriteType->getTextureHeight()))
 	{
 		// SINCE IT'S VIEWABLE, ADD IT TO THE RENDER LIST
 		RenderItem itemToAdd;
 		itemToAdd.id = sprite->getFrameIndex();
-		renderList->addRenderItem(	sprite->getCurrentImageID(),
-			pp->round((body->GetPosition().x)*5.0f-spriteType->getTextureWidth()/2-viewport->getViewportX()),
-			pp->round((-1)*(body->GetPosition().y)*5.0f-spriteType->getTextureHeight()/2-viewport->getViewportY()),
+		/*float xx,yy;
+		if (sprite->getHealth()==0)
+		{
+			xx=sprite->getPhysicalProperties()->getX();
+			yy=sprite->getPhysicalProperties()->getY();
+		}
+		else
+{
+			xx=(body->GetPosition().x)*5.0f);
+			 yy=(-1)*(body->GetPosition().y)*5.0f;
+		}*/
+		renderList->addRenderItem(	sprite->getCurrentImageID(),pp->round(xx-spriteType->getTextureWidth()/2-viewport->getViewportX()),
+			pp->round(yy-spriteType->getTextureHeight()/2-viewport->getViewportY()),
+			
+			
 			0,
 			sprite->getAlpha(),
 			spriteType->getTextureWidth(),
@@ -87,16 +109,7 @@ void SpriteManager::addSpriteItemsToRenderList(	Game *game)
 		Viewport *viewport = gui->getViewport();
 
 		// ADD THE PLAYER SPRITE
-		addSpriteToRenderList(&player, renderList, viewport,gsm);
 
-		list<TopDownSprite*>::iterator bulletIterator;
-		bulletIterator = bullets.begin();
-		while (bulletIterator != bullets.end())
-		{			
-			TopDownSprite *bullet = (*bulletIterator);
-			addSpriteToRenderList(bullet, renderList, viewport,gsm);
-			bulletIterator++;
-		}
 
 		// NOW ADD THE REST OF THE SPRITES
 		list<Bot*>::iterator botIterator;
@@ -106,6 +119,15 @@ void SpriteManager::addSpriteItemsToRenderList(	Game *game)
 			Bot *bot = (*botIterator);
 			addSpriteToRenderList(bot, renderList, viewport,gsm);
 			botIterator++;
+		}
+		addSpriteToRenderList(&player, renderList, viewport,gsm);
+		list<TopDownSprite*>::iterator bulletIterator;
+		bulletIterator = bullets.begin();
+		while (bulletIterator != bullets.end())
+		{			
+			TopDownSprite *bullet = (*bulletIterator);
+			addSpriteToRenderList(bullet, renderList, viewport,gsm);
+			bulletIterator++;
 		}
 	}
 }
@@ -216,7 +238,7 @@ update method such that they may update themselves.
 void SpriteManager::update(Game *game)
 {
 	TT++;
-	if (TT % 120 == 0 && bots.size() <= 1)
+	if (TT % 120 == 0 && bots.size() <= 6)
 	{
 		//Physics *physics = game->getGSM()->getPhysics();
 		RandomBot *bot = new RandomBot();
@@ -274,6 +296,7 @@ void SpriteManager::update(Game *game)
 			continue;
 		}
 		if (botIterator==bots.end()) break;
+		if(bot->getHealth() != 0){
 		if(bot->getCurrentState() != L"ATTACK UP" &&
 		bot->getCurrentState() != L"ATTACK DOWN" &&
 		bot->getCurrentState() != L"ATTACK LEFT" &&
@@ -291,6 +314,7 @@ void SpriteManager::update(Game *game)
 
 				static_cast<RandomBot*>(bot)->think(game);
 			}
+		}
 		}
 	//	pathfinder->updatePath(bot);
 		botIterator++;
@@ -326,6 +350,8 @@ void SpriteManager::update(Game *game)
 			}
 			botIterator++;
 		}else{
+			if(bot->getHealth() != 0)
+			{
 			if(bot->getCurrentState() == L"ATTACK UP" ||
 			   bot->getCurrentState() == L"ATTACK DOWN" ||
 			   bot->getCurrentState() == L"ATTACK LEFT" ||
@@ -350,12 +376,25 @@ void SpriteManager::update(Game *game)
 						player.setHealth(player.getHealth() - 1);
 					}
 			}
+			}
 			bot->updateSprite();
 			if (bot->getHealth() == 0){
-				botIterator=bots.erase(botIterator);
-				game->getGSM()->getWorld()->boxWorld->DestroyBody(bot->getB2Body());
-				if (botIterator==bots.end()) break;
-				// bot = (*botIterator);
+			   bot->changeToDyingState(bot->getCurrentState());
+			   // bot->getB2Body()->SetType(b2_kinematicBody);
+			   if(bot->getB2Body() != NULL)
+			   {
+				 bot->getPhysicalProperties()->setX(bot->getB2Body()->GetPosition().x * 5.0f);
+				 bot->getPhysicalProperties()->setY(bot->getB2Body()->GetPosition().y * -5.0f);
+				 game->getGSM()->getWorld()->boxWorld->DestroyBody(bot->getB2Body());
+				  bot->setB2Body(NULL);
+			   }
+				if(bot->getDyingCounter() == 60)
+				{
+					// game->getGSM()->getWorld()->boxWorld->DestroyBody(bot->getB2Body());
+					botIterator=bots.erase(botIterator);
+					if (botIterator==bots.end()) break;
+				}
+				 //bot = (*botIterator);
 			}
 			botIterator++;
 		}

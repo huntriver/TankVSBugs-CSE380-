@@ -16,6 +16,8 @@ RandomBot::RandomBot()
 	pp.setVelocity(0.0f, 0.0f);
 	thinkCounter = 0;
 	currentDirection=-1;
+	pvx=0.0f;
+	pvy=0.0f;
 	// AND START THE BOT OFF IN A RANDOM DIRECTION AND VELOCITY
 	// AND WITH RANDOM INTERVAL UNTIL IT THINKS AGAIN
 	
@@ -113,8 +115,12 @@ void RandomBot::think(Game *game)
 			else if (bX-pX<0) vY=-MAX_BUG_SPEED;
 			else vY=0;
 
+			if (pvx==vX && pvy==vY) 
+				return;
+			pvx=vX;
+			pvy=vY;
 			if (!(vX==0 || vY==0)){
-               int a= (float)rand()/RAND_MAX*1;
+               int a= (float)rand()/RAND_MAX*2;
 			   if (a==0)
 				   vX=0;
 			   else
@@ -132,8 +138,8 @@ void RandomBot::think(Game *game)
 	      //  int worldCoordinateY = ((float)rand()/RAND_MAX)*game->getGSM()->getWorld()->getWorldHeight();
 		//	game->getGSM()->getSpriteManager()->getPathfinder()->mapPath(this,(float)worldCoordinateX, (float)worldCoordinateY);
 			int a= (float)rand()/RAND_MAX*4;
-            while (currentDirection==a){
-				a= (float)rand()/RAND_MAX*4;
+            if (currentDirection==a){
+				a= (a+1)%4;
 			}
 			currentDirection=a;
 			if (a==0){
