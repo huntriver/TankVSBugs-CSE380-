@@ -1,48 +1,9 @@
-﻿Build started 5/1/2014 11:34:07 PM.
+﻿Build started 5/2/2014 1:23:30 AM.
      1>Project "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Bugs\Bugs.vcxproj" on node 2 (Build target(s)).
      1>Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\Bugs.exe" /INCREMENTAL /NOLOGO /LIBPATH:../lib Box2D.lib d3d9.lib d3dx9.lib winmm.lib PoseurSpriteTypesImporter.lib SimpleSideScrollerFramework.lib tinyxml.lib TMXMapImporter.lib XMLFileImporter.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\Bugs.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\Bugs.lib" /MACHINE:X86 "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\Bugs\Debug\BugsContactListener.obj"
-         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\Bugs\Debug\BugsButtonEventHandler.obj"
-         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\Bugs\Debug\BugsCollisionListener.obj"
-         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\Bugs\Debug\BugsDataLoader.obj"
-         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\Bugs\Debug\BugsGame.obj"
-         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\Bugs\Debug\BugsKeyEventHandler.obj"
-         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\Bugs\Debug\BugsMouseEventHandler.obj"
-         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\Bugs\Debug\BugsTextGenerator.obj"
-         "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\Bugs\Debug\stdafx.obj"
-         ..\lib\Box2D.lib
-            Creating library C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\Bugs.lib and object C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\Bugs.exp
-     1>SimpleSideScrollerFramework.lib(lzio.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(lzio.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(lvm.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(lvm.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(lundump.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(lundump.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(ltm.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(ltm.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(ltable.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(ltable.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(lstring.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(lstring.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(lstate.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(lstate.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(lparser.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(lparser.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(lopcodes.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(lopcodes.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(lobject.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(lobject.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(lmem.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(lmem.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(llex.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(llex.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(lgc.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(lgc.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(lfunc.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(lfunc.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(ldump.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(ldump.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(ldo.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(ldo.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(ldebug.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(ldebug.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(lcode.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(lcode.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(lauxlib.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(lauxlib.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(lapi.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(lapi.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(LuaTableIterator.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(LuaTableIterator.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(LuaStateOutFile.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(LuaStateOutFile.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(LuaState.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(LuaState.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(LuaStackObject.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(LuaStackObject.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(LuaPlusAddons.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(LuaPlusAddons.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(LuaPlus.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(LuaPlus.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(LuaObject.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(LuaObject.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
-     1>SimpleSideScrollerFramework.lib(LuaCall.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SimpleSideScrollerFramework.lib(LuaCall.obj)' or at 'C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\vc100.pdb'; linking object as if no debug info
          Bugs.vcxproj -> C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Apps\Bugs\Bugs.exe
      1>Done Building Project "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Bugs\Bugs.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.76
+Time Elapsed 00:00:00.17

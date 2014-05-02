@@ -67,7 +67,6 @@ public:
 	bool getIsPlayer() { return isPlayer; }
 	bool* getHitObject() { return hitObject; }
 	bool hasReachedDestination()
-
 	 {
 		 if (this->getB2Body()->GetLinearVelocity().x==0 && this->getB2Body()->GetLinearVelocity().y==0) 
 			 return true;

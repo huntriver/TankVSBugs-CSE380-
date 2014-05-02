@@ -202,6 +202,10 @@ void BugsDataLoader::loadWorld(Game *game, wstring level_dir, wstring level_name
 	player->setSpriteType(playerSpriteType);
 	player->setAlpha(255);
 	player->setCurrentState(IDLE_RIGHT);
+	player->getHitObject()[0] = false;
+	player->getHitObject()[1] = false;
+	player->getHitObject()[2] = false;
+	player->getHitObject()[3] = false;
 	/*
 	PhysicalProperties *playerProps = player->getPhysicalProperties();
 	playerProps->setX(PLAYER_INIT_X);
@@ -360,6 +364,48 @@ void BugsDataLoader::hardCodedLoadGUIExample(Game *game)
 	initMainMenu(gui, guiTextureManager);
 	initCreditsMenu(gui, guiTextureManager);
 	initInGameGUI(gui, guiTextureManager,gsm);
+	initControlMenu(gui, guiTextureManager);
+}
+
+void BugsDataLoader::initControlMenu(GameGUI *gui, DirectXTextureManager *guiTextureManager)
+{
+	ScreenGUI *controlMenuGUI = new ScreenGUI();
+	unsigned int imageID = guiTextureManager->loadTexture(W_CONTROL_MENU_PATH);
+	OverlayImage *imageToAdd = new OverlayImage();
+	imageToAdd->x = 0;
+	imageToAdd->y = 0;
+	imageToAdd->z = 0;
+	imageToAdd->alpha = 200;
+	imageToAdd->width = 512;
+	imageToAdd->height = 512;
+	imageToAdd->imageID = imageID;
+	controlMenuGUI->addOverlayImage(imageToAdd);
+
+	// AND GO BACK BUTTON
+	int normalTextureID = guiTextureManager->loadTexture(W_GO_BACK_PATH);
+	int mouseOverTextureID = guiTextureManager->loadTexture(W_GO_BACK_PATH);
+
+	Button *buttonToAdd = new Button();
+	buttonToAdd->initButton(normalTextureID,
+							mouseOverTextureID,
+							106,
+							656,
+							0,
+							255,
+							200,
+							50,
+							false,
+							W_GO_TO_MM_COMMAND);
+
+	// AND NOW LOAD IT INTO A ScreenGUI
+	controlMenuGUI->addButton(buttonToAdd);
+
+
+	// AND LET'S ADD A START BUTTON
+	// buttonToAdd = new Button();
+
+	// AND LET'S ADD OUR SCREENS
+	gui->addScreenGUI(GS_CONTROL_MENU, controlMenuGUI);
 }
 
 void BugsDataLoader::initCreditsMenu(GameGUI *gui, DirectXTextureManager *guiTextureManager)

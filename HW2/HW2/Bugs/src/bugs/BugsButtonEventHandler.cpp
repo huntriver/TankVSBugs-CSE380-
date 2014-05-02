@@ -49,5 +49,9 @@ void BugsButtonEventHandler::handleButtonEvents(	Game *game,
 	{
 		GameStateManager *gsm = game->getGSM();
 		gsm->goToCreditMenu();
+	}else if(command.compare(W_CONTROL_COMMAND) == 0)
+	{
+		GameStateManager *gsm = game->getGSM();
+		gsm->goToControlMenu();
 	}
 }
