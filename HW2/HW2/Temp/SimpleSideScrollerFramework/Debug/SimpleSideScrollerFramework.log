@@ -1,9 +1,73 @@
-﻿Build started 5/1/2014 11:33:59 PM.
+﻿Build started 5/2/2014 1:21:11 AM.
      1>Project "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\SimpleSideScrollerFramework\SimpleSideScrollerFramework.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\gsm\sprite\SpriteManager.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\data_loader\GameDataLoader.cpp src\sssf\game\Game.cpp src\sssf\graphics\GameGraphics.cpp src\sssf\graphics\TextureManager.cpp src\sssf\gsm\ai\BotRecycler.cpp src\sssf\gsm\ai\bots\RandomBot.cpp src\sssf\gsm\ai\pathfinding\OrthographicGridPathfinder.cpp src\sssf\gsm\physics\Physics.cpp src\sssf\gsm\sprite\AnimatedSprite.cpp src\sssf\gsm\sprite\SpriteManager.cpp src\sssf\gsm\sprite\TopDownSprite.cpp src\sssf\gsm\state\GameStateManager.cpp src\sssf\gsm\world\SparseLayer.cpp src\sssf\gsm\world\TiledLayer.cpp src\sssf\gsm\world\World.cpp src\sssf\gui\Button.cpp src\sssf\gui\Cursor.cpp src\sssf\gui\GameGUI.cpp src\sssf\gui\ScreenGUI.cpp src\sssf\input\GameInput.cpp src\sssf\platforms\DirectX\DirectXGraphics.cpp src\sssf\platforms\DirectX\DirectXTextureManager.cpp src\sssf\platforms\Windows\WindowsInput.cpp src\sssf\platforms\Windows\WindowsOS.cpp src\sssf\platforms\Windows\WindowsTimer.cpp src\sssf\text\GameText.cpp
+         WindowsTimer.cpp
+         SparseLayer.cpp
+         GameStateManager.cpp
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
          SpriteManager.cpp
      1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+         TextureManager.cpp
+         GameDataLoader.cpp
+         Generating Code...
+         Compiling...
+         GameText.cpp
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+         WindowsOS.cpp
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+         WindowsInput.cpp
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+         DirectXTextureManager.cpp
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+         DirectXGraphics.cpp
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(529): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(530): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(470): warning C4101: 'translationX' : unreferenced local variable
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(471): warning C4101: 'translationY' : unreferenced local variable
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(689): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(690): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(721): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(722): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(723): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(724): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+         GameInput.cpp
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+         ScreenGUI.cpp
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+         GameGUI.cpp
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+         Cursor.cpp
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+         Button.cpp
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+         World.cpp
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+         TiledLayer.cpp
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+         TopDownSprite.cpp
+         AnimatedSprite.cpp
+         Physics.cpp
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+         OrthographicGridPathfinder.cpp
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(25): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(26): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(136): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(137): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         RandomBot.cpp
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(79): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(80): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(123): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(140): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+         BotRecycler.cpp
+         GameGraphics.cpp
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+         Game.cpp
+     1>c:\users\yubshang\desktop\380 project default\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.h(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+         Generating Code...
        Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Common\SimpleSideScrollerFramework.lib" Box2D.lib LuaPlus.lib LuaPlusFramework.lib /LIBPATH:../lib /NOLOGO "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameDataLoader.obj"
          "C:\Users\yubshang\Desktop\380 project default\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Game.obj"
@@ -2933,4 +2997,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.44
+Time Elapsed 00:00:51.55

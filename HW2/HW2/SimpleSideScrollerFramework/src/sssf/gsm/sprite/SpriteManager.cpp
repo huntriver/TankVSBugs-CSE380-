@@ -322,6 +322,22 @@ void SpriteManager::update(Game *game)
 
 	// THEN UPDATE THE PLAYER SPRITE ANIMATION FRAME/STATE/ROTATION
 	player.updateSprite();
+	if(!(player.getHitObject())[0])
+	{
+		game->getInput()->wKeyDisabled = false;
+	}
+	if(!(player.getHitObject())[1])
+	{
+		game->getInput()->sKeyDisabled = false;
+	}
+	if(!(player.getHitObject())[2])
+	{
+		game->getInput()->aKeyDisabled = false;
+	}
+	if(!(player.getHitObject())[3])
+	{
+		game->getInput()->dKeyDisabled = false;
+	}
 	list<TopDownSprite*>::iterator bulletIterator;
     bulletIterator = bullets.begin();
 	while (bulletIterator != bullets.end())

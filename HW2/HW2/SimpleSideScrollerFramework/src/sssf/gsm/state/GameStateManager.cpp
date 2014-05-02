@@ -85,6 +85,11 @@ void GameStateManager::goToCreditMenu()
 	currentGameState = GS_CREDITS_MENU;
 }
 
+void GameStateManager::goToControlMenu()
+{
+	currentGameState = GS_CONTROL_MENU;
+}
+
 /*
 	isAtSplashScreen - Used to test if this application is currently
 	at the splash screen. This will dictate what to render, but also
