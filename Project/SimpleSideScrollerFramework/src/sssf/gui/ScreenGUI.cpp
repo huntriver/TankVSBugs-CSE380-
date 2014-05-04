@@ -239,13 +239,8 @@ void ScreenGUI::updateAllButtons(long mouseX, long mouseY)
 			// UPDATE ALL BUTTONS IN THIS SCREEN SO THEY
 			// KNOW IF THE CURSOR IS CURRENTLY OVER THEM
 			// OR NOT
-			bool flag = buttonToUpdate->updateMouseOver(mouseX, mouseY);
+			buttonToUpdate->updateMouseOver(mouseX, mouseY);
 			
-			if(flag)
-			{
-				mouseOverButton = true;
-			}
-
 			// ADVANCE THE ITERATOR
 			buttonIterator++;
 		}

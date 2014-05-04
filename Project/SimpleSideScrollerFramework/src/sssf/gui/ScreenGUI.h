@@ -27,7 +27,6 @@ class ScreenGUI
 private:
 	// THE BUTTONS FOR THIS SCREEN
 	list<Button*>		*buttons;
-	bool mouseOverButton;
 
 	// ADDITIONAL IMAGES FOR THIS SCREEN, LIKE BORDERS OR 
 	list<OverlayImage*> *overlayImages;
@@ -39,7 +38,6 @@ public:
 	// INLINED ACCESSOR METHODS
 	int getNumButtons()			{ return buttons->size();		}
 	int getNumOverlayImages()	{ return overlayImages->size(); }
-	bool isMouseOverButton()			{ return mouseOverButton;         }
 	wstring getScreenName()			{ return screenName;			}
 
 	// INLINED MUTATOR METHODS
@@ -48,10 +46,6 @@ public:
 		screenName = initScreenName;
 	}
 
-	void setIsMouseButtonOver(bool initMouseOverButton)
-	{
-		mouseOverButton = initMouseOverButton;
-	}
 
 	// METHODS DEFINED IN ScreenGUI.cpp
 	ScreenGUI();

@@ -25,7 +25,7 @@
 GameStateManager::GameStateManager()	
 {
 	spriteManager = new SpriteManager();
-	currentGameState = GS_SPLASH_SCREEN;
+	currentGameState = GS_MAIN_MENU;
 	currentLevel = NO_LEVEL_LOADED;
 }
 
@@ -60,6 +60,12 @@ void GameStateManager::goToGame()
 {
 	currentGameState = GS_GAME_IN_PROGRESS;
 }
+
+void GameStateManager::pauseGame()
+{
+	currentGameState = GS_PAUSED;
+}
+
 
 /*
 	goToLoadLevel - This method transitions the game application from main menu

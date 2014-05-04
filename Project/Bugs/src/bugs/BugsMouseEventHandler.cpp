@@ -10,6 +10,7 @@ void BugsMouseEventHandler::handleMousePressEvent(Game *game, int mouseX, int mo
 {
 	if (game->getGSM()->isGameInProgress())
 	{
+		/*
 		Viewport *viewport = game->getGUI()->getViewport();
 		
 		// DETERMINE WHERE ON THE MAP WE HAVE CLICKED
@@ -21,6 +22,7 @@ void BugsMouseEventHandler::handleMousePressEvent(Game *game, int mouseX, int mo
 		TopDownSprite *player = spriteManager->getPlayer();
 		GridPathfinder *pathfinder = spriteManager->getPathfinder();
 		pathfinder->mapPath(player, (float)worldCoordinateX, (float)worldCoordinateY);
+		*/
 	}
 }
 

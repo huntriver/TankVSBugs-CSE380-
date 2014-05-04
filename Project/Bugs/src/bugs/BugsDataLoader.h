@@ -54,4 +54,5 @@ public:
 	void initMainMenu(GameGUI *gui,	DirectXTextureManager *guiTextureManager);
 	void initCreditsMenu(GameGUI *gui,	DirectXTextureManager *guiTextureManager);
 	void initInGameGUI(GameGUI *gui, DirectXTextureManager *guiTextureManager);
+	void initPauseMenu(GameGUI *gui, DirectXTextureManager *guiTextureManager);
 };
