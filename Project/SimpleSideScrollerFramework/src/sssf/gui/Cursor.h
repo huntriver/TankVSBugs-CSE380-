@@ -38,7 +38,6 @@ private:
 	int alpha;
 	int width;
 	int height;
-	int attackCounter;
 
 public:
 	// INLINED ACCESSOR METHODS
@@ -64,8 +63,6 @@ public:
 	{ z = initZ;							}
 	void setAlpha(int initAlpha)
 	{ alpha = initAlpha;					}
-	void setAttackCounter(int initAttackCounter)
-	{ attackCounter = initAttackCounter; }
 
 	// METHODS DEFINED IN Cursor.cpp
 	Cursor();
@@ -76,5 +73,4 @@ public:
 						int initX, int initY, int initZ, 
 						int initAlpha, 
 						int initWidth, int initHeight);
-	void updateAttackMode();
 };

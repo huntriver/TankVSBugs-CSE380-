@@ -84,6 +84,7 @@ public:
 	void			goToLoadLevel();
 	void			goToMainMenu();
 	void            goToCreditMenu();
+	void            pauseGame();
 
 	// METHODS DEFINED in GameStateManager.cpp
 	GameStateManager();

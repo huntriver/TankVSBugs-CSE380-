@@ -84,19 +84,3 @@ void Cursor::initCursor(vector<unsigned int> *initImageIDs,
 	height = initHeight;
 }
 
-void Cursor::updateAttackMode()
-{
-	attackCounter++;
-
-	if(attackCounter >= 0 && attackCounter <= 10)
-	{
-		activeCursorID = 1;
-	}else{
-		activeCursorID = 2;
-	}
-
-	if(attackCounter > 20)
-	{
-		attackCounter = 0;
-	}
-}

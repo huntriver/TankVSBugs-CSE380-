@@ -45,6 +45,10 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 	// IF THE GAME IS IN PROGRESS
 	if (gsm->isGameInProgress())
 	{
+		if(input->isKeyDownForFirstTime(VK_ESCAPE))
+		{
+			gsm->pauseGame();
+		}
 		if (input->isKeyDownForFirstTime(P_KEY))
 		{
 			gsm->getPhysics()->togglePhysics();

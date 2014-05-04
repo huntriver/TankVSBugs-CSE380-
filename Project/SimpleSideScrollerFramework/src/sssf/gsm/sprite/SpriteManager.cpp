@@ -176,7 +176,7 @@ has been allocated for game sprites.
 void SpriteManager::unloadSprites()
 {
 	// @TODO - WE'LL DO THIS LATER WHEN WE LEARN MORE ABOUT MEMORY MANAGEMENT
-	/*list<Bot*>::iterator botsIt = bots.begin();
+	list<Bot*>::iterator botsIt = bots.begin();
 	while (botsIt != bots.end())
 	{
 	list<Bot*>::iterator tempIt = botsIt;
@@ -186,6 +186,26 @@ void SpriteManager::unloadSprites()
 	}
 	bots.clear();
 
+	list<TopDownSprite*>::iterator bulletsIt = bullets.begin();
+	while (bulletsIt != bullets.end())
+	{
+	list<TopDownSprite*>::iterator tempIt = bulletsIt;
+	bulletsIt++;
+	TopDownSprite *bulletToDelete = (*tempIt);
+	delete bulletToDelete;
+	}
+	bullets.clear();
+
+	list<Effect*>::iterator effectsIt = effects.begin();
+	while(effectsIt != effects.end())
+	{
+		list<Effect*>::iterator tempIt = effectsIt;
+		effectsIt++;
+		Effect *effectToDelete = (*tempIt);
+		delete effectToDelete;
+	}
+	effects.clear();
+
 	vector<AnimatedSpriteType*>::iterator spriteTypesIt = spriteTypes.begin();
 	while (spriteTypesIt != spriteTypes.end())
 	{
@@ -194,12 +214,13 @@ void SpriteManager::unloadSprites()
 	AnimatedSpriteType *astToDelete = (*tempIt);
 	delete astToDelete;
 	}
+
 	spriteTypes.clear();
 
 	// DELETE THE PATHFINDER IF THERE IS ONE
 	if (pathfinder != NULL)
 	delete pathfinder;
-	*/
+	
 }
 
 Bot* SpriteManager::removeBot(Bot *botToRemove)
