@@ -34,24 +34,42 @@ void SpriteManager::addSpriteToRenderList(AnimatedSprite *sprite,
 	PhysicalProperties *pp = sprite->getPhysicalProperties();
 	float rotation = sprite->getRotationInRadians();
 
-	// IS THE SPRITE VIEWABLE?
-	if (viewport->areWorldCoordinatesInViewport(	
-		body->GetPosition().x * 5.0f,
-		(-1)*(body->GetPosition().y * 5.0f),
-		spriteType->getTextureWidth(),
-		spriteType->getTextureHeight()))
+	if(sprite->getSpriteType()->getSpriteTypeID() == 3)
 	{
-		// SINCE IT'S VIEWABLE, ADD IT TO THE RENDER LIST
-		RenderItem itemToAdd;
-		itemToAdd.id = sprite->getFrameIndex();
-		renderList->addRenderItem(	sprite->getCurrentImageID(),
-			pp->round((body->GetPosition().x)*5.0f-spriteType->getTextureWidth()/2-viewport->getViewportX()),
-			pp->round((-1)*(body->GetPosition().y)*5.0f-spriteType->getTextureHeight()/2-viewport->getViewportY()),
+		if(viewport->areWorldCoordinatesInViewport(
+			pp->getX(),pp->getY(),spriteType->getTextureWidth(),
+			spriteType->getTextureHeight()))
+		{
+			RenderItem itemToAdd;
+			itemToAdd.id = sprite->getFrameIndex();
+			renderList->addRenderItem(sprite->getCurrentImageID(),
+				pp->round(pp->getX()-spriteType->getTextureWidth()/2.0f-viewport->getViewportX()),
+				pp->round(pp->getY() - spriteType->getTextureWidth()/2.0f-viewport->getViewportY()),0,
+				sprite->getAlpha(),spriteType->getTextureWidth(),
+				spriteType->getTextureHeight(), rotation);
+		}
+	}else
+	{
+
+		// IS THE SPRITE VIEWABLE?
+		if (viewport->areWorldCoordinatesInViewport(	
+			body->GetPosition().x * 5.0f,
+			(-1)*(body->GetPosition().y * 5.0f),
+			spriteType->getTextureWidth(),
+			spriteType->getTextureHeight()))
+		{
+			// SINCE IT'S VIEWABLE, ADD IT TO THE RENDER LIST
+			RenderItem itemToAdd;
+			itemToAdd.id = sprite->getFrameIndex();
+			renderList->addRenderItem(sprite->getCurrentImageID(),
+			pp->round((body->GetPosition().x)*5.0f-spriteType->getTextureWidth()/2.0f-viewport->getViewportX()),
+			pp->round((-1)*(body->GetPosition().y)*5.0f-spriteType->getTextureHeight()/2.0f-viewport->getViewportY()),
 			0,
 			sprite->getAlpha(),
 			spriteType->getTextureWidth(),
 			spriteType->getTextureHeight(),
 			rotation);
+		}
 	}
 }
 
@@ -82,6 +100,22 @@ void SpriteManager::addSpriteItemsToRenderList(	Game *game)
 			addSpriteToRenderList(bot, renderList, viewport);
 			botIterator++;
 		}
+		list<TopDownSprite*>::iterator bulletIterator;
+		bulletIterator = bullets.begin();
+		while (bulletIterator != bullets.end())
+		{			
+			TopDownSprite *bullet = (*bulletIterator);
+			addSpriteToRenderList(bullet, renderList, viewport);
+			bulletIterator++;
+		}
+		list<Effect*>::iterator effectIterator;
+		effectIterator = effects.begin();
+		while(effectIterator != effects.end())
+		{
+			Effect* effect = (*effectIterator);
+			addSpriteToRenderList(effect, renderList, viewport);
+			effectIterator++;
+		}
 	}
 }
 
@@ -95,6 +129,10 @@ void SpriteManager::addBot(Bot *botToAdd)
 	bots.push_back(botToAdd);
 }
 
+void SpriteManager::addBullet(TopDownSprite *bulletToAdd)
+{
+	bullets.push_back(bulletToAdd);
+}
 /*
 addSpriteType - This method is for adding a new sprite
 type. Note that one sprite type can have many sprites. For
@@ -177,7 +215,7 @@ update method such that they may update themselves.
 */
 void SpriteManager::update(Game *game)
 {
-
+	/*
 	if (bots.size()<0)
 	{
 		//Physics *physics = game->getGSM()->getPhysics();
@@ -218,10 +256,12 @@ void SpriteManager::update(Game *game)
 
 		//bot->affixTightAABBBoundingVolume();
 	}
+	*/
 	TT++;
 	// FIRST LET'S DO THE NECESSARY PATHFINDING
 	// pathfinder->updatePath(&player);
 	list<Bot*>::iterator botIterator;
+	/*
 	botIterator = bots.begin();
 	while (botIterator != bots.end())
 	{
@@ -237,6 +277,7 @@ void SpriteManager::update(Game *game)
 		// pathfinder->updatePath(bot);
 		botIterator++;
 	}
+	*/
 
 	// THEN UPDATE THE PLAYER SPRITE ANIMATION FRAME/STATE/ROTATION
 	player.updateSprite();
@@ -249,4 +290,52 @@ void SpriteManager::update(Game *game)
 		bot->updateSprite();
 		botIterator++;
 	}
+	
+	list<TopDownSprite*>::iterator bulletIterator;
+	bulletIterator = bullets.begin();
+	
+	while(bulletIterator != bullets.end())
+	{
+		TopDownSprite *bullet = (*bulletIterator);
+		bullet->setHealth(bullet->getHealth() - 1);
+		bullet->updateSprite();
+
+		if(bullet->getMarkForRemoval())
+		{
+			addBulletEffect(bullet);
+			game->getGSM()->getWorld()->boxWorld->DestroyBody(bullet->getB2Body());
+			bulletIterator = bullets.erase(bulletIterator);
+		}else
+			bulletIterator++;
+	}
+
+	list<Effect*>::iterator effectIterator;
+	effectIterator = effects.begin();
+	while(effectIterator != effects.end())
+	{
+		Effect* effect = (*effectIterator);
+		effect->updateSprite();
+
+		if(effect->getMarkForRemoval())
+		{
+			effectIterator = effects.erase(effectIterator);
+		}else
+			effectIterator++;
+	}
+}
+
+void SpriteManager::addBulletEffect(TopDownSprite* bullet)
+{
+	AnimatedSpriteType *effectSpriteType = getSpriteType(3);
+	Effect* effect = new Effect();
+	float x = bullet->getB2Body()->GetPosition().x * BOX2D_SCALE;
+	float y = bullet->getB2Body()->GetPosition().y * -BOX2D_SCALE;
+	effect->setSpriteType(effectSpriteType);
+	effect->setCurrentState(L"IDLE");
+	effect->setHealth(1000);
+	effect->setAlpha(255);
+	effect->setEffectTimes(1);
+	effect->getPhysicalProperties()->setX(x);
+	effect->getPhysicalProperties()->setY(y);
+	effects.push_back(effect);
 }

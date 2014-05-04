@@ -18,6 +18,7 @@
 #include "sssf\gsm\sprite\AnimatedSpriteType.h"
 #include "sssf\gsm\sprite\TopDownSprite.h"
 #include "sssf\gsm\ai\pathfinding\GridPathfinder.h"
+#include "sssf\gsm\sprite\Effect.h"
 
 class SpriteManager
 {
@@ -29,6 +30,8 @@ private:
 	// THESE ARE THE BOTS IN THE GAME, LIKE ENEMIES, ROCKETS, OR ANYTHING
 	// THAT MOVES AROUND AND IS NOT THE PLAYER
 	list<Bot*> bots;
+	list<TopDownSprite*> bullets;
+	list<Effect*>  effects;
 
 	// AND THIS IS THE PLAYER. AS-IS, WE ONLY ALLOW FOR ONE PLAYER AT A TIME
 	TopDownSprite player;
@@ -55,7 +58,9 @@ public:
 	GridPathfinder*			getPathfinder()			{ return pathfinder;		}
 
 	// METHODS DEFINED IN SpriteManager.cpp
+	void                addBulletEffect(TopDownSprite* bullet);
 	void				addBot(Bot *botToAdd);
+	void                addBullet(TopDownSprite *bullet);
 	void				addSpriteItemsToRenderList(Game *game);
 	unsigned int		addSpriteType(AnimatedSpriteType *spriteTypeToAdd);
 	void				addSpriteToRenderList(AnimatedSprite *sprite, RenderList *renderList, Viewport *viewport);

@@ -41,9 +41,11 @@ protected:
 	// USED TO ITERATE THROUGH THE CURRENT ANIMATION SEQUENCE
 	unsigned int animationCounter;
 
+	int health;
 	// CURRENT PATH TO FOLLOW
 	list<PathNode> currentPathToFollow;
 	list<PathNode>::iterator currentPathNode;
+	bool markForRemoval;
 	
 public:
 	// INLINED ACCESSOR METHODS
@@ -54,8 +56,9 @@ public:
 	wstring				getCurrentState()	{ return currentState;		}
 	unsigned int		getFrameIndex()		{ return frameIndex;		}
 	AnimatedSpriteType*	getSpriteType()		{ return spriteType;		}
+	int                 getHealth()         { return health; }
+	bool                getMarkForRemoval()   { return markForRemoval;}
 	bool hasReachedDestination()
-
 	{	if (currentPathToFollow.size()==0)
 	    return true;
 		return currentPathNode == currentPathToFollow.end(); }
@@ -73,16 +76,20 @@ public:
 	{	currentPathToFollow.clear();
 		currentPathNode = currentPathToFollow.end(); 
 	}
+	void setHealth(int initHealth)
+	{
+		health = initHealth;
+	}
 
 	// METHODS DEFINED IN AnimatedSprite.cpp
 	AnimatedSprite();
 	~AnimatedSprite();
 
-	void changeFrame();
+	virtual void changeFrame();
 	unsigned int getCurrentImageID();
 	void setCurrentState(wstring newState);
 	virtual void updateSprite();
 	void affixTightAABBBoundingVolume();
 	void correctToTightBoundingVolume();
-	virtual float getRotationInRadians() { return 0.0f; }
+	virtual float getRotationInRadians(){return 0;};
 };

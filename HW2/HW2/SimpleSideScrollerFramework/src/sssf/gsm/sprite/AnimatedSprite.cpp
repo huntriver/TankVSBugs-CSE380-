@@ -26,6 +26,7 @@ AnimatedSprite::AnimatedSprite()
 	pp.setAccelerationY(0.0f);
 	pp.setPosition(0.0f, 0.0f);
 	dead=false;
+	markForRemoval = false;
 }
 
 /*
@@ -100,6 +101,9 @@ void AnimatedSprite::updateSprite()
 	// ANIMATION COUNTER HAS REACHED THE DURATION
 	if (animationCounter >= duration)
 		changeFrame();
+
+	if(health <= 0)
+		markForRemoval = true;
 }
 
 void AnimatedSprite::affixTightAABBBoundingVolume()

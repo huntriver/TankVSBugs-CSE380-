@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\bugs\Box2DContactListener.cpp" />
     <ClCompile Include="src\bugs\BugsButtonEventHandler.cpp" />
     <ClCompile Include="src\bugs\BugsCollisionListener.cpp" />
     <ClCompile Include="src\bugs\BugsDataLoader.cpp" />
@@ -21,13 +22,14 @@
     <ClCompile Include="src\bugs_VS\stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\bugs\box2DContactListener.h" />
+    <ClInclude Include="src\bugs\Box2DContactListener.h" />
     <ClInclude Include="src\bugs\BugsButtonEventHandler.h" />
     <ClInclude Include="src\bugs\BugsCollisionListener.h" />
     <ClInclude Include="src\bugs\BugsDataLoader.h" />
     <ClInclude Include="src\bugs\BugsGame.h" />
     <ClInclude Include="src\bugs\BugsKeyEventHandler.h" />
     <ClInclude Include="src\bugs\BugsMouseEventHandler.h" />
+    <ClInclude Include="src\bugs\BugsSpriteType.h" />
     <ClInclude Include="src\bugs\BugsTextGenerator.h" />
     <ClInclude Include="src\bugs_VS\Resource.h" />
     <ClInclude Include="src\bugs_VS\stdafx.h" />

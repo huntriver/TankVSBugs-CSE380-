@@ -9,8 +9,8 @@
 */
 
 // HERE IS THE Bugs GAME SETUP/INIT FILE. EVERYTHING WOULD START FROM HERE
-static const wstring	W_LEVEL_1_DIR			= L"data/levels/TopDownDesert/";
-static const wstring	W_LEVEL_1_NAME			= L"TopDownDesert.tmx";
+static const wstring	W_LEVEL_1_DIR			= L"data/levels/level2/";
+static const wstring	W_LEVEL_1_NAME			= L"level.tmx";
 static const wstring	W_LEVEL_1_PATH			= W_LEVEL_1_DIR + W_LEVEL_1_NAME;
 static const wstring	W_INIT_FILE				= L"data/BugsInit.txt";
 static const wstring	W_GUI_INIT_FILE			= L"data/BugsGUI.txt";
@@ -86,6 +86,7 @@ static const int		FPS_INC = 1;
 static const wstring	ATTACKING_RIGHT(L"ATTACKING_RIGHT");
 static const wstring	ATTACKING_LEFT(L"ATTACKING_LEFT");
 static const wstring	IDLE(L"IDLE");
+static const wstring    MOVE(L"MOVE");
 static const wstring    MOVE_UP(L"MOVE UP");
 static const wstring	MOVE_DOWN(L"MOVE DOWN");
 static const wstring	MOVE_LEFT(L"MOVE LEFT");

@@ -240,4 +240,16 @@ void GameStateManager::update(Game *game)
 	//Box2D update
 	world.boxWorld->Step(timeStep, velocityIterations, positionIteration);
 
+	Viewport *viewport = game->getGUI()->getViewport();
+	/*
+	float vX = spriteManager->getPlayer()->getB2Body()->GetLinearVelocity().x;
+	float vY = spriteManager->getPlayer()->getB2Body()->GetLinearVelocity().y;
+	*/
+	if(spriteManager->getPlayer()->getCurrentState() == L"MOVE"){
+		float viewportX=game->getGSM()->getSpriteManager()->getPlayer()->getB2Body()->GetPosition().x*5.0f;
+		float viewportY=game->getGSM()->getSpriteManager()->getPlayer()->getB2Body()->GetPosition().y*-5.0f;
+		float screenX = viewport->getViewportWidth()/2.0f;
+		float screenY = viewport->getViewportHeight()/2.0f;
+		viewport->moveViewport((int)floor(viewportX-screenX), (int)floor(viewportY-screenY), game->getGSM()->getWorld()->getWorldWidth(), game->getGSM()->getWorld()->getWorldHeight());
+	}
 }
