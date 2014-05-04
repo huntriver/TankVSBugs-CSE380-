@@ -1,0 +1,82 @@
+﻿Build started 5/4/2014 12:59:02 AM.
+     1>Project "C:\Users\yubshang\Desktop\380 project\HW2\HW2\SimpleSideScrollerFramework\SimpleSideScrollerFramework.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\game\Game.cpp src\sssf\graphics\GameGraphics.cpp src\sssf\gsm\ai\bots\RandomBot.cpp src\sssf\gsm\ai\pathfinding\OrthographicGridPathfinder.cpp src\sssf\gsm\physics\Physics.cpp src\sssf\gsm\sprite\SpriteManager.cpp src\sssf\gsm\state\GameStateManager.cpp src\sssf\gsm\world\TiledLayer.cpp src\sssf\gsm\world\World.cpp src\sssf\gui\Button.cpp src\sssf\gui\Cursor.cpp src\sssf\gui\GameGUI.cpp src\sssf\gui\ScreenGUI.cpp src\sssf\input\GameInput.cpp src\sssf\platforms\DirectX\DirectXGraphics.cpp src\sssf\platforms\DirectX\DirectXTextureManager.cpp src\sssf\platforms\Windows\WindowsInput.cpp src\sssf\platforms\Windows\WindowsOS.cpp src\sssf\text\GameText.cpp
+         Game.cpp
+         Generating Code...
+         Compiling...
+         DirectXGraphics.cpp
+     1>c:\users\yubshang\desktop\380 project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(529): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(530): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(470): warning C4101: 'translationX' : unreferenced local variable
+     1>c:\users\yubshang\desktop\380 project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(471): warning C4101: 'translationY' : unreferenced local variable
+     1>c:\users\yubshang\desktop\380 project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(689): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(690): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(721): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(722): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(723): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\hw2\hw2\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(724): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+         GameStateManager.cpp
+         RandomBot.cpp
+     1>c:\users\yubshang\desktop\380 project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(76): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\hw2\hw2\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(77): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         GameText.cpp
+         WindowsOS.cpp
+         WindowsInput.cpp
+         DirectXTextureManager.cpp
+         GameInput.cpp
+         ScreenGUI.cpp
+         GameGUI.cpp
+         Cursor.cpp
+         Button.cpp
+         World.cpp
+         TiledLayer.cpp
+         SpriteManager.cpp
+         Physics.cpp
+         OrthographicGridPathfinder.cpp
+         GameGraphics.cpp
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\yubshang\Desktop\380 project\HW2\HW2\Common\SimpleSideScrollerFramework.lib" Box2D.lib /LIBPATH:../lib /NOLOGO "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameDataLoader.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Game.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\WStringTable.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameGraphics.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\RenderList.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\TextureManager.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\BotRecycler.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\RandomBot.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\OrthographicGridPathfinder.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\AABB.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\CollidableObject.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Physics.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\AnimatedSprite.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\AnimatedSpriteType.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Effect.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\SpriteManager.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\TopDownSprite.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameStateManager.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\SparseLayer.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\TiledLayer.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\World.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Button.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Cursor.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameGUI.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\ScreenGUI.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\Viewport.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameInput.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\DirectXGraphics.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\DirectXTextureManager.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\WindowsInput.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\WindowsOS.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\WindowsTimer.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\BufferedTextFileReader.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\GameText.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\TextFileWriter.obj"
+         "C:\Users\yubshang\Desktop\380 project\HW2\HW2\Temp\SimpleSideScrollerFramework\Debug\stdafx.obj"
+         SimpleSideScrollerFramework.vcxproj -> C:\Users\yubshang\Desktop\380 project\HW2\HW2\Common\SimpleSideScrollerFramework.lib
+     1>Done Building Project "C:\Users\yubshang\Desktop\380 project\HW2\HW2\SimpleSideScrollerFramework\SimpleSideScrollerFramework.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:08.81
