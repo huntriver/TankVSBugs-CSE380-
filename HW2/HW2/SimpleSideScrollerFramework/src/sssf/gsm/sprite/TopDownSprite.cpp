@@ -52,3 +52,19 @@ void TopDownSprite::beginContact(){
 //	dead=true;
 
 }
+
+void TopDownSprite::setDirection(wstring initDirection)
+{
+	if(initDirection == L"DOWN")
+	{
+		rotationInRadians = PI;
+	}else if(initDirection == L"LEFT"){
+		rotationInRadians = -PI/2.0f;
+	}
+	else if(initDirection == L"RIGHT"){
+		rotationInRadians = PI/2.0f;
+	}else
+		rotationInRadians = 0;
+
+	direction = initDirection;
+}

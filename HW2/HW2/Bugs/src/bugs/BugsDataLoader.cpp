@@ -6,7 +6,7 @@
 #include "bugs\BugsGame.h"
 #include "bugs\BugsKeyEventHandler.h"
 #include "bugs\BugsTextGenerator.h"
-#include "bugs\box2DContactListener.h"
+#include "bugs\Box2DContactListener.h"
 
 // GAME OBJECT INCLUDES
 #include "sssf\game\Game.h"
@@ -179,7 +179,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 
 	world->initBox2DTiles();
 	
-	world->boxWorld->SetContactListener(new box2DContactListener());
+	world->boxWorld->SetContactListener(new Box2DContactListener());
 	
 	// LOAD THE LEVEL'S SPRITE IMAGES
 	PoseurSpriteTypesImporter psti;
@@ -198,7 +198,8 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	AnimatedSpriteType *playerSpriteType = spriteManager->getSpriteType(0);
 	player->setSpriteType(playerSpriteType);
 	player->setAlpha(255);
-	player->setCurrentState(IDLE_RIGHT);
+	player->setCurrentState(IDLE);
+	player->setDirection(L"RIGHT");
 	/*
 	PhysicalProperties *playerProps = player->getPhysicalProperties();
 	playerProps->setX(PLAYER_INIT_X);
@@ -207,14 +208,15 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	playerProps->setAccelerationX(0);
 	playerProps->setAccelerationY(0);
 	*/
+	
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
-	bodyDef.position.Set(150.0f/5.0f, -305.0f/5.0f);
+	bodyDef.position.Set(135.0f/5.0f, -150.0f/5.0f);
 	b2Body* body = (world->boxWorld)->CreateBody(&bodyDef);
 	body->SetUserData(player);
 	// Define another box shape for our dynamic body.
 	b2PolygonShape dynamicBox;
-	dynamicBox.SetAsBox(32.0f/5.0f, 32.0f/5.0f);
+	dynamicBox.SetAsBox(player->getSpriteType()->getTextureWidth()/10.0f, player->getSpriteType()->getTextureHeight()/10.0f);
 
 	// Define the dynamic body fixture.
 	b2FixtureDef fixtureDef;
@@ -276,7 +278,8 @@ void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType
 	//PhysicalProperties *pp = bot->getPhysicalProperties();
 	//pp->setPosition(initX, initY);
 	bot->setSpriteType(randomBotType);
-	bot->setCurrentState(WALKING);
+	bot->setCurrentState(L"IDLE");
+	bot->setDirection(L"UP");
 	bot->setAlpha(255);
 	spriteManager->addBot(bot);
 	//bot->affixTightAABBBoundingVolume();

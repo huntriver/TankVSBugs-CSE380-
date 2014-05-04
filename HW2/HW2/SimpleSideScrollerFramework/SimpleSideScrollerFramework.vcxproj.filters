@@ -179,6 +179,9 @@
     <ClCompile Include="src\sssf\gsm\ai\bots\RandomBot.cpp">
       <Filter>src\sssf\gsm\ai\bots</Filter>
     </ClCompile>
+    <ClCompile Include="src\sssf\gsm\sprite\Effect.cpp">
+      <Filter>src\sssf\gsm\sprite</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\sssf_VS\stdafx.h">
@@ -339,6 +342,9 @@
     </ClInclude>
     <ClInclude Include="src\sssf\gsm\ai\bots\RandomBot.h">
       <Filter>src\sssf\gsm\ai\bots</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sssf\gsm\sprite\Effect.h">
+      <Filter>src\sssf\gsm\sprite</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

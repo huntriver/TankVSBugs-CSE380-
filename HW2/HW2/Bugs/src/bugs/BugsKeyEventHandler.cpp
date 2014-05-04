@@ -70,7 +70,54 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 		}
 		if (input->isKeyDownForFirstTime(SPACE_KEY))
 		{
-			
+			TopDownSprite *bullet = new TopDownSprite();
+			//physics->addCollidableObject(bot);
+			//PhysicalProperties *pp = bot->getPhysicalProperties();
+			//pp->setPosition(200, 300);
+			AnimatedSpriteType *bulletSpriteType = gsm->getSpriteManager()->getSpriteType(2);
+			bullet->setSpriteType(bulletSpriteType);
+			bullet->setCurrentState(L"MOVE");
+			bullet->setAlpha(255);
+			bullet->setHealth(30);
+			gsm->getSpriteManager()->addBullet(bullet);
+			b2BodyDef bodyDef;
+			bodyDef.type = b2_dynamicBody;
+			float x=player->getB2Body()->GetPosition().x;
+			float y=player->getB2Body()->GetPosition().y;
+			// float r=getPlayer()->getRotationInRadians();
+			float vx=0.0f;
+			float vy=0.0f;
+			if (player->getRotationInRadians() == PI/2.0f) 
+			{
+				x += (player->getSpriteType()->getTextureHeight()/2.0f)/5.0f + ((bullet->getSpriteType()->getTextureWidth() + 1)/2.0f)/5.0f;
+				vx = 120.0f;
+			}else if(player->getRotationInRadians() == PI){
+				y -= (player->getSpriteType()->getTextureWidth()/2.0f)/5.0f + ((bullet->getSpriteType()->getTextureHeight() + 1)/2.0f)/5.0f;
+				vy =- 120.0f;
+			}else if (player->getRotationInRadians() == -PI/2.0f){
+				x -=  (player->getSpriteType()->getTextureHeight()/2.0f)/5.0f + ((bullet->getSpriteType()->getTextureWidth() + 1)/2.0f)/5.0f;
+				vx = -120.0f;
+			}else{
+				y += (player->getSpriteType()->getTextureWidth()/2.0f)/5.0f + ((bullet->getSpriteType()->getTextureHeight() + 1/2.0f))/5.0f;
+				vy = 120.0f;
+			}
+			bodyDef.position.Set(x, y);
+			b2Body* body = (game->getGSM()->getWorld()->boxWorld)->CreateBody(&bodyDef);
+			// Define another box shape for our dynamic body.
+			b2PolygonShape dynamicBox;
+			dynamicBox.SetAsBox((bullet->getSpriteType()->getTextureWidth()/2.0f)/5.0f,(bullet->getSpriteType()->getTextureHeight()/2.0f)/5.0f);
+			// Define the dynamic body fixture.
+			b2FixtureDef fixtureDef;
+			fixtureDef.shape = &dynamicBox;
+			// Set the box density to be non-zero, so it will be dynamic.
+			fixtureDef.density = 1.0f;
+			// Override the default friction.
+			fixtureDef.friction = 0.0f;
+			// Add the shape to the body.
+			body->SetLinearVelocity(b2Vec2(vx,vy));
+			body->CreateFixture(&fixtureDef);
+			bullet->setB2Body(body);
+			body->SetUserData(bullet);
 		}
 
 		bool tankMoved = false;
@@ -82,37 +129,30 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 			
 			tankVy = MAX_TANK_SPEED;
 			player->getB2Body()->SetLinearVelocity(b2Vec2(0,tankVy));
-			//if(player->getCurrentState() != MOVE_UP)
-			player->setCurrentState(MOVE_UP);
+			player->setCurrentState(MOVE);
+			player->setDirection(L"UP");
 		}
 		else if(input->isKeyDown(S_KEY))
 		{
 			tankVy = -1.0f * MAX_TANK_SPEED;
 			player->getB2Body()->SetLinearVelocity(b2Vec2(0,tankVy));
-			//if(player->getCurrentState() != MOVE_DOWN)
-			player->setCurrentState(MOVE_DOWN);
+			player->setCurrentState(MOVE);
+			player->setDirection(L"DOWN");
 		}else if(input->isKeyDown(A_KEY))
 		{
 			tankVx = -1.0f * MAX_TANK_SPEED;
 			player->getB2Body()->SetLinearVelocity(b2Vec2(tankVx,0));
-			//if(player->getCurrentState() != MOVE_LEFT)
-			player->setCurrentState(MOVE_LEFT);
+			player->setCurrentState(MOVE);
+			player->setDirection(L"LEFT");
 		}else if(input->isKeyDown(D_KEY))
 		{
 			tankVx = MAX_TANK_SPEED;
 			player->getB2Body()->SetLinearVelocity(b2Vec2(tankVx,0));
-			//if(player->getCurrentState() != MOVE_RIGHT)
-			player->setCurrentState(MOVE_RIGHT);
+			player->setCurrentState(MOVE);
+			player->setDirection(L"RIGHT");
 		}else{
 			player->getB2Body()->SetLinearVelocity(b2Vec2(0,0));
-			if(player->getCurrentState() == MOVE_UP)
-				player->setCurrentState(IDLE_UP);
-			else if(player->getCurrentState() == MOVE_DOWN)
-				player->setCurrentState(IDLE_DOWN);
-			else if(player->getCurrentState() == MOVE_LEFT)
-				player->setCurrentState(IDLE_LEFT);
-			else if(player->getCurrentState() == MOVE_RIGHT)
-				player->setCurrentState(IDLE_RIGHT);
+			player->setCurrentState(IDLE);
 		}
 
 		bool viewportMoved = false;
