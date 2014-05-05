@@ -179,7 +179,10 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 
 	world->initBox2DTiles();
 	
-	world->boxWorld->SetContactListener(new Box2DContactListener());
+	Box2DContactListener* contactListener = new Box2DContactListener();
+	world->boxWorld->SetContactListener(contactListener);
+	contactListener->setGame(game);
+
 	
 	// LOAD THE LEVEL'S SPRITE IMAGES
 	PoseurSpriteTypesImporter psti;
@@ -246,7 +249,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	// AND LET'S ADD A BUNCH OF RANDOM JUMPING BOTS, FIRST ALONG
 	// A LINE NEAR THE TOP
 	AnimatedSpriteType *botSpriteType = spriteManager->getSpriteType(1);
-	makeRandomBot(game, botSpriteType, 200, 300);
+	makeRandomBot(game, botSpriteType, 550, 300);
 // UNCOMMENT THE FOLLOWING CODE BLOCK WHEN YOU ARE READY TO ADD SOME BOTS
 /*	for (int i = 2; i <= 26; i++)
 	{
@@ -272,7 +275,11 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	// AND THEN A BUNCH LINED UP NEAR THE LEVEL EXIT
 	for (int i = 0; i < 14; i++)
 		makeRandomJumpingBot(game, botSpriteType, 1700.0f + (i*100.0f), 1300.0f);
-*/		
+*/	
+	game->getInput()->wKeyDisabled = false;
+	game->getInput()->sKeyDisabled = false;
+	game->getInput()->dKeyDisabled = false;
+	game->getInput()->aKeyDisabled = false;
 	game->getGSM()->goToGame();
 }
 
@@ -293,12 +300,12 @@ void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType
 
 	b2BodyDef bodyDef;
 		bodyDef.type = b2_dynamicBody;
-		bodyDef.position.Set(200.0f/5.0f, -400.0f/5.0f);
+		bodyDef.position.Set(initX/5.0f, -initY/5.0f);
 		b2Body* body = (game->getGSM()->getWorld()->boxWorld)->CreateBody(&bodyDef);
 
 		// Define another box shape for our dynamic body.
 		b2PolygonShape dynamicBox;
-		dynamicBox.SetAsBox(32.0f/5.0f, 32.0f/5.0f);
+		dynamicBox.SetAsBox(randomBotType->getTextureWidth()/10.0f, randomBotType->getTextureHeight()/10.0f);
 
 		// Define the dynamic body fixture.
 		b2FixtureDef fixtureDef;

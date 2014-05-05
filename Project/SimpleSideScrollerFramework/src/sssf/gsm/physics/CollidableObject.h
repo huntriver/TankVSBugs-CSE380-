@@ -22,15 +22,30 @@ protected:
 	bool onTileLastFrame;
 	unsigned int collisionEdge;
 	b2Body* body;
+	// Collision Counter
+	int leftEdgeCC;
+	int rightEdgeCC;
+	int upEdgeCC;
+	int downEdgeCC;
 
 public:
-	CollidableObject()	{}
+	CollidableObject()	
+	{
+		leftEdgeCC = 0;
+		rightEdgeCC = 0;
+		upEdgeCC = 0;
+		downEdgeCC = 0;
+	}
 	~CollidableObject()	{}
 
 	// CollidableObject.cpp METHODS
 	void updateSweptShape(float percentageOfFrameTimeRemaining);
 
 	// INLINED METHODS
+	int getLeftEdgeCC() { return leftEdgeCC;}
+	int getRightEdgeCC() { return rightEdgeCC;}
+	int getUpEdgeCC() { return upEdgeCC;}
+	int getDownEdgeCC() { return downEdgeCC;}
 	bool				isCurrentlyCollidable()		{ return currentlyCollidable;	}
 	bool				isOnTileThisFrame()			{ return onTileThisFrame;		}
 	bool				wasOnTileLastFrame()		{ return onTileLastFrame;		}
@@ -57,10 +72,30 @@ public:
 	{
 		body = initBody;
 	}
+
 	void advanceOnTileStatus()
 	{
 		onTileLastFrame = onTileThisFrame;
 		onTileThisFrame = false;
 	}
 
+	void setLeftEdgeCC(int initLeftEdgeCC)
+	{
+		leftEdgeCC = initLeftEdgeCC;
+	}
+
+	void setRightEdgeCC(int initRightEdgeCC)
+	{
+		rightEdgeCC = initRightEdgeCC;
+	}
+
+	void setUpEdgeCC(bool initUpEdgeCC)
+	{
+		upEdgeCC = initUpEdgeCC;
+	}
+
+	void setDownEdgeCollide(bool initDownEdgeCC)
+	{
+		downEdgeCC = initDownEdgeCC;
+	}
 };
