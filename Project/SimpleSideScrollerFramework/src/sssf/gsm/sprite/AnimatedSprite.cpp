@@ -27,6 +27,7 @@ AnimatedSprite::AnimatedSprite()
 	pp.setPosition(0.0f, 0.0f);
 	dead=false;
 	markForRemoval = false;
+	hp = 100.0f;
 }
 
 /*
@@ -101,6 +102,12 @@ void AnimatedSprite::updateSprite()
 	// ANIMATION COUNTER HAS REACHED THE DURATION
 	if (animationCounter >= duration)
 		changeFrame();
+
+	if(hp <= 0.0f)
+	{
+		health = health - 1;
+		hp = 100.0f;
+	}
 
 	if(health <= 0)
 		markForRemoval = true;

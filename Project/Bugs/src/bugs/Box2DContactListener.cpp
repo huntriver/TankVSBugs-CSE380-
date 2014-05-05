@@ -25,6 +25,16 @@ void Box2DContactListener::BeginContact(b2Contact* contact)
 			   t2->getSpriteType()->getSpriteTypeID() == TYPE_TANK)
 		   {
 			   beginTankBugContact(t2, t1);
+		   }else if(t1->getSpriteType()->getSpriteTypeID() == TYPE_BULLET &&
+			   t2->getSpriteType()->getSpriteTypeID() == TYPE_ANT)
+		   {
+			   t1->setHealth(0);
+			   t2->decHP(t1->getAttack());
+		   }else if(t1->getSpriteType()->getSpriteTypeID() == TYPE_ANT &&
+			   t2->getSpriteType()->getSpriteTypeID() == TYPE_BULLET)
+		   {
+			   t1->decHP(t2->getAttack());
+			   t2->setHealth(0);
 		   }
 	   }
 }

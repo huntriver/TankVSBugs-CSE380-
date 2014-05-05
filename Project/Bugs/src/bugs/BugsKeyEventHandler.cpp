@@ -45,6 +45,13 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 	// IF THE GAME IS IN PROGRESS
 	if (gsm->isGameInProgress())
 	{
+		if(input->isKeyDownForFirstTime((unsigned int)'H'))
+		{
+			if(!gsm->getSpriteManager()->healthDisplay)
+				gsm->getSpriteManager()->healthDisplay = true;
+			else
+				gsm->getSpriteManager()->healthDisplay = false;
+		}
 		if(input->isKeyDownForFirstTime(VK_ESCAPE))
 		{
 			gsm->pauseGame();
@@ -83,6 +90,7 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 			bullet->setCurrentState(L"MOVE");
 			bullet->setAlpha(255);
 			bullet->setHealth(30);
+			bullet->setAttack(player->getAttack());
 			gsm->getSpriteManager()->addBullet(bullet);
 			b2BodyDef bodyDef;
 			bodyDef.type = b2_dynamicBody;

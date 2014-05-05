@@ -179,9 +179,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 
 	world->initBox2DTiles();
 	
-	Box2DContactListener* contactListener = new Box2DContactListener();
-	world->boxWorld->SetContactListener(contactListener);
-	contactListener->setGame(game);
+	world->boxWorld->SetContactListener(new Box2DContactListener());
 
 	
 	// LOAD THE LEVEL'S SPRITE IMAGES
@@ -203,6 +201,8 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	player->setAlpha(255);
 	player->setCurrentState(IDLE);
 	player->setDirection(L"RIGHT");
+	player->setHealth(playerSpriteType->getTextureWidth()/spriteManager->getSpriteType(4)->getTextureWidth());
+	player->setAttack(50.0f);
 	/*
 	PhysicalProperties *playerProps = player->getPhysicalProperties();
 	playerProps->setX(PLAYER_INIT_X);
@@ -295,6 +295,8 @@ void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType
 	bot->setCurrentState(L"IDLE");
 	bot->setDirection(L"UP");
 	bot->setAlpha(255);
+	bot->setHealth((int)(randomBotType->getTextureWidth()/game->getGSM()->getSpriteManager()->getSpriteType(4)->getTextureWidth()));
+	bot->setAttack(0.2);
 	spriteManager->addBot(bot);
 	//bot->affixTightAABBBoundingVolume();
 
