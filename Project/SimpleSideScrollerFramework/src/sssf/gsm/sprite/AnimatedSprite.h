@@ -42,6 +42,8 @@ protected:
 	unsigned int animationCounter;
 
 	int health;
+	float hp;
+	float attack;
 	// CURRENT PATH TO FOLLOW
 	list<PathNode> currentPathToFollow;
 	list<PathNode>::iterator currentPathNode;
@@ -57,6 +59,8 @@ public:
 	unsigned int		getFrameIndex()		{ return frameIndex;		}
 	AnimatedSpriteType*	getSpriteType()		{ return spriteType;		}
 	int                 getHealth()         { return health; }
+	float               getHP()             { return hp;}
+	float               getAttack()          { return attack;}
 	bool                getMarkForRemoval()   { return markForRemoval;}
 	bool hasReachedDestination()
 	{	if (currentPathToFollow.size()==0)
@@ -79,6 +83,12 @@ public:
 	void setHealth(int initHealth)
 	{
 		health = initHealth;
+	}
+	void decHP(float amount){
+		hp -= amount;
+	}
+	void setAttack(float initAttack){
+		attack = initAttack;
 	}
 
 	// METHODS DEFINED IN AnimatedSprite.cpp

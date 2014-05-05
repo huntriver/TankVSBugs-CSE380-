@@ -1,7 +1,19 @@
+<!--  
+ tank  0
+ ant   1
+ bullet 2
+ explosion 3
+ health 4
+ ant_dying 5 
+ -->
+
+
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <sprite_type_list>
   <sprite_type>tank</sprite_type>
   <sprite_type>ant</sprite_type>
   <sprite_type>bullet</sprite_type>
   <sprite_type>explosion</sprite_type>
+  <sprite_type>health</sprite_type>
+  <sprite_type>ant_dying</sprite_type>
 </sprite_type_list>

@@ -32,6 +32,7 @@ private:
 	list<Bot*> bots;
 	list<TopDownSprite*> bullets;
 	list<Effect*>  effects;
+	list<Effect*>  dyingEffects;
 
 	// AND THIS IS THE PLAYER. AS-IS, WE ONLY ALLOW FOR ONE PLAYER AT A TIME
 	TopDownSprite player;
@@ -47,7 +48,8 @@ private:
 
 public:
 	// NOTHING TO INIT OR DESTROY
-	SpriteManager()		{TT=0;}
+	bool healthDisplay;
+	SpriteManager()		{TT=0;healthDisplay=true;}
 	~SpriteManager()	{}
 
 	// INLINED ACCESSOR METHODS
@@ -59,6 +61,7 @@ public:
 	GridPathfinder*			getPathfinder()			{ return pathfinder;		}
 
 	// METHODS DEFINED IN SpriteManager.cpp
+	void                addDyingEffect(TopDownSprite* sprite);
 	void                addBulletEffect(TopDownSprite* bullet);
 	void				addBot(Bot *botToAdd);
 	void                addBullet(TopDownSprite *bullet);

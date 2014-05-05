@@ -512,8 +512,14 @@ void DirectXGraphics::renderWorldRenderList()
 					rect->top = yDiff;
 					position.y += yDiff;
 				}	
-			}			
-
+			}else{
+				rect = rect = new RECT();
+				rect->left = 0;
+				rect->top = 0;
+				rect->right = itemToRender.width;
+				rect->bottom = itemToRender.height;
+			}
+			
 			// LET'S PUT THE STANDARD ROTATION MATRIX ASIDE
 			// FOR A SECOND. IT WILL BE USED FOR RENDERING THE
 			// GUI, BUT WE'LL WANT A CUSTOM ONE FOR WORLD OBJECTS
