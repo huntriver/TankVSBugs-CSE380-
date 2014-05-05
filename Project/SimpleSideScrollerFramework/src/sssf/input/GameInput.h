@@ -53,6 +53,10 @@ public:
 	// INLINED METHODS
 	int getMouseX() { return mouseX; }
 	int getMouseY() { return mouseY; }
+	bool wKeyDisabled;
+	bool sKeyDisabled;
+	bool aKeyDisabled;
+	bool dKeyDisabled;
 
 	// CHECKS TO SEE IF A KEY IS CURRENTLY PRESSED
 	bool	isKeyDown(int key)					

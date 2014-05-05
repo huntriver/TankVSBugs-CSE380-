@@ -130,28 +130,43 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 		TopDownSprite* player = game->getGSM()->getSpriteManager()->getPlayer();
 		if(input->isKeyDown(W_KEY))
 		{
-			
-			tankVy = MAX_TANK_SPEED;
-			player->getB2Body()->SetLinearVelocity(b2Vec2(0,tankVy));
+			if(!input->wKeyDisabled)
+			{
+				tankVy = MAX_TANK_SPEED;
+				player->getB2Body()->SetLinearVelocity(b2Vec2(0,tankVy));
+			}else
+				player->getB2Body()->SetLinearVelocity(b2Vec2(0,0));
 			player->setCurrentState(MOVE);
 			player->setDirection(L"UP");
 		}
 		else if(input->isKeyDown(S_KEY))
 		{
-			tankVy = -1.0f * MAX_TANK_SPEED;
-			player->getB2Body()->SetLinearVelocity(b2Vec2(0,tankVy));
+			if(!input->sKeyDisabled)
+			{
+				tankVy = -1.0f * MAX_TANK_SPEED;
+				player->getB2Body()->SetLinearVelocity(b2Vec2(0,tankVy));
+			}else
+				player->getB2Body()->SetLinearVelocity(b2Vec2(0,0));
 			player->setCurrentState(MOVE);
 			player->setDirection(L"DOWN");
 		}else if(input->isKeyDown(A_KEY))
 		{
-			tankVx = -1.0f * MAX_TANK_SPEED;
-			player->getB2Body()->SetLinearVelocity(b2Vec2(tankVx,0));
+			if(!input->aKeyDisabled)
+			{
+				tankVx = -1.0f * MAX_TANK_SPEED;
+				player->getB2Body()->SetLinearVelocity(b2Vec2(tankVx,0));
+			}else
+				player->getB2Body()->SetLinearVelocity(b2Vec2(0,0));
 			player->setCurrentState(MOVE);
 			player->setDirection(L"LEFT");
 		}else if(input->isKeyDown(D_KEY))
 		{
-			tankVx = MAX_TANK_SPEED;
-			player->getB2Body()->SetLinearVelocity(b2Vec2(tankVx,0));
+			if(!input->dKeyDisabled)
+			{
+				tankVx = MAX_TANK_SPEED;
+				player->getB2Body()->SetLinearVelocity(b2Vec2(tankVx,0));
+			}else
+				player->getB2Body()->SetLinearVelocity(b2Vec2(0,0));
 			player->setCurrentState(MOVE);
 			player->setDirection(L"RIGHT");
 		}else{

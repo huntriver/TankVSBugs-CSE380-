@@ -277,8 +277,8 @@ void SpriteManager::update(Game *game)
 
 		//bot->affixTightAABBBoundingVolume();
 	}
-	*/
 	TT++;
+	*/
 	// FIRST LET'S DO THE NECESSARY PATHFINDING
 	// pathfinder->updatePath(&player);
 	list<Bot*>::iterator botIterator;
@@ -304,11 +304,28 @@ void SpriteManager::update(Game *game)
 	player.updateSprite();
 
 	// NOW UPDATE THE REST OF THE SPRITES ANIMATION FRAMES/STATES/ROTATIONS
+	game->getInput()->wKeyDisabled = false;
+	game->getInput()->sKeyDisabled = false;
+	game->getInput()->dKeyDisabled = false;
+	game->getInput()->aKeyDisabled = false;
 	botIterator = bots.begin();
 	while (botIterator != bots.end())
 	{
 		Bot *bot = (*botIterator);
 		bot->updateSprite();
+		if(bot->getCurrentState() == L"ATTACK")
+		{
+			bot->getB2Body()->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
+			float rotate = bot->getRotationInRadians();
+			if(rotate == 0)
+				game->getInput()->sKeyDisabled = true;
+			else if(rotate == PI)
+				game->getInput()->wKeyDisabled = true;
+			else if(rotate == PI/2.0f)
+				game->getInput()->aKeyDisabled = true;
+			else
+				game->getInput()->dKeyDisabled = true;
+		}
 		botIterator++;
 	}
 	
