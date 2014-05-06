@@ -31,6 +31,7 @@
     <ClInclude Include="src\bugs\BugsMouseEventHandler.h" />
     <ClInclude Include="src\bugs\BugsSpriteType.h" />
     <ClInclude Include="src\bugs\BugsTextGenerator.h" />
+    <ClInclude Include="src\bugs\_entityCategory.h" />
     <ClInclude Include="src\bugs_VS\Resource.h" />
     <ClInclude Include="src\bugs_VS\stdafx.h" />
     <ClInclude Include="src\bugs_VS\targetver.h" />

@@ -7,6 +7,7 @@
 #include "bugs\BugsKeyEventHandler.h"
 #include "bugs\BugsTextGenerator.h"
 #include "bugs\Box2DContactListener.h"
+#include "bugs\_entityCategory.h"
 
 // GAME OBJECT INCLUDES
 #include "sssf\game\Game.h"
@@ -230,6 +231,8 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 
 	// Override the default friction.
 	 fixtureDef.friction = 0.3f;
+	 fixtureDef.filter.categoryBits = TANK;
+	 fixtureDef.filter.maskBits = WALL|BUG;
 
 	// Add the shape to the body.
 	body->SetLinearVelocity(b2Vec2(0.0f,0.0f));
@@ -249,7 +252,21 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	// AND LET'S ADD A BUNCH OF RANDOM JUMPING BOTS, FIRST ALONG
 	// A LINE NEAR THE TOP
 	AnimatedSpriteType *botSpriteType = spriteManager->getSpriteType(1);
-	makeRandomBot(game, botSpriteType, 550, 300);
+	makeRandomBot(game, botSpriteType, 550, 300, true);
+	makeRandomBot(game, botSpriteType, 550, 300, false);
+	makeRandomBot(game, botSpriteType, 600, 170, false);
+	makeRandomBot(game, botSpriteType, 650, 260, false);
+	makeRandomBot(game, botSpriteType, 700, 340, false);
+	makeRandomBot(game, botSpriteType, 700, 340, true);
+	makeRandomBot(game, botSpriteType, 400, 320, false);
+	makeRandomBot(game, botSpriteType, 500, 440, true);
+	makeRandomBot(game, botSpriteType, 500, 440, false);
+	makeRandomBot(game, botSpriteType, 500, 440, true);
+	makeRandomBot(game, botSpriteType, 500, 440, true);
+	makeRandomBot(game, botSpriteType, 500, 440, false);
+	makeRandomBot(game, botSpriteType, 500, 440, false);
+	makeRandomBot(game, botSpriteType, 500, 440, false);
+	makeRandomBot(game, botSpriteType, 500, 440, false);
 // UNCOMMENT THE FOLLOWING CODE BLOCK WHEN YOU ARE READY TO ADD SOME BOTS
 /*	for (int i = 2; i <= 26; i++)
 	{
@@ -283,7 +300,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	game->getGSM()->goToGame();
 }
 
-void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType, float initX, float initY)
+void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType, float initX, float initY, bool initXTerm)
 {
 	SpriteManager *spriteManager = game->getGSM()->getSpriteManager();
 //	Physics *physics = game->getGSM()->getPhysics();
@@ -297,6 +314,7 @@ void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType
 	bot->setAlpha(255);
 	bot->setHealth((int)(randomBotType->getTextureWidth()/game->getGSM()->getSpriteManager()->getSpriteType(4)->getTextureWidth()));
 	bot->setAttack(0.2);
+	bot->initBot(30, 180, MAX_TANK_SPEED/1.4f, initXTerm);
 	spriteManager->addBot(bot);
 	//bot->affixTightAABBBoundingVolume();
 
@@ -318,7 +336,8 @@ void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType
 
 		// Override the default friction.
 		fixtureDef.friction = 0.3f;
-
+		fixtureDef.filter.categoryBits = BUG;
+		fixtureDef.filter.maskBits = WALL|BULLET|TANK;
 		// Add the shape to the body.
 		body->SetLinearVelocity(b2Vec2(0.0f,0.0f));
 		body->CreateFixture(&fixtureDef);

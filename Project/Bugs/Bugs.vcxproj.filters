@@ -77,6 +77,9 @@
     <ClInclude Include="src\bugs\BugsSpriteType.h">
       <Filter>src\bugs</Filter>
     </ClInclude>
+    <ClInclude Include="src\bugs\_entityCategory.h">
+      <Filter>src\bugs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\bugs_VS\ReadMe.txt">
