@@ -1,6 +1,11 @@
-﻿Build started 5/5/2014 3:07:52 AM.
+﻿Build started 5/6/2014 4:11:55 AM.
      1>Project "C:\Users\yubshang\Desktop\380 project\Project\Bugs\Bugs.vcxproj" on node 2 (Build target(s)).
-     1>Link:
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project\Project\Temp\Bugs\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project\Project\Temp\Bugs\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\bugs\BugsDataLoader.cpp
+         BugsDataLoader.cpp
+     1>c:\users\yubshang\desktop\380 project\project\bugs\src\bugs\bugsdataloader.cpp(316): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\yubshang\desktop\380 project\project\bugs\src\bugs\bugsdataloader.cpp(317): warning C4244: 'argument' : conversion from 'const float' to 'unsigned int', possible loss of data
+       Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\yubshang\Desktop\380 project\Project\Apps\Bugs\Bugs.exe" /INCREMENTAL /NOLOGO /LIBPATH:../lib Box2D.lib d3d9.lib d3dx9.lib winmm.lib PoseurSpriteTypesImporter.lib SimpleSideScrollerFramework.lib tinyxml.lib TMXMapImporter.lib XMLFileImporter.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\yubshang\Desktop\380 project\Project\Apps\Bugs\Bugs.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\yubshang\Desktop\380 project\Project\Apps\Bugs\Bugs.lib" /MACHINE:X86 "C:\Users\yubshang\Desktop\380 project\Project\Temp\Bugs\Debug\Box2DContactListener.obj"
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\Bugs\Debug\BugsButtonEventHandler.obj"
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\Bugs\Debug\BugsCollisionListener.obj"
@@ -11,16 +16,9 @@
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\Bugs\Debug\BugsTextGenerator.obj"
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\Bugs\Debug\stdafx.obj"
          ..\lib\Box2D.lib
-     1>PoseurSpriteTypesImporter.lib(PoseurSpriteTypesImporter.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'PoseurSpriteTypesImporter.lib(PoseurSpriteTypesImporter.obj)' or at 'C:\Users\yubshang\Desktop\380 project\Project\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>tinyxml.lib(tinystr.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'tinyxml.lib(tinystr.obj)' or at 'C:\Users\yubshang\Desktop\380 project\Project\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>tinyxml.lib(tinyxml.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'tinyxml.lib(tinyxml.obj)' or at 'C:\Users\yubshang\Desktop\380 project\Project\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>tinyxml.lib(tinyxmlerror.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'tinyxml.lib(tinyxmlerror.obj)' or at 'C:\Users\yubshang\Desktop\380 project\Project\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>tinyxml.lib(tinyxmlparser.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'tinyxml.lib(tinyxmlparser.obj)' or at 'C:\Users\yubshang\Desktop\380 project\Project\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>TMXMapImporter.lib(TMXMapImporter.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'TMXMapImporter.lib(TMXMapImporter.obj)' or at 'C:\Users\yubshang\Desktop\380 project\Project\Apps\Bugs\vc110.pdb'; linking object as if no debug info
-     1>XMLFileImporter.lib(XMLFileImporter.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'XMLFileImporter.lib(XMLFileImporter.obj)' or at 'C:\Users\yubshang\Desktop\380 project\Project\Apps\Bugs\vc110.pdb'; linking object as if no debug info
          Bugs.vcxproj -> C:\Users\yubshang\Desktop\380 project\Project\Apps\Bugs\Bugs.exe
      1>Done Building Project "C:\Users\yubshang\Desktop\380 project\Project\Bugs\Bugs.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.11
+Time Elapsed 00:00:05.16

@@ -243,6 +243,16 @@ void SpriteManager::unloadSprites()
 	}
 	effects.clear();
 
+	effectsIt = dyingEffects.begin();
+	while(effectsIt != dyingEffects.end())
+	{
+		list<Effect*>::iterator tempIt = effectsIt;
+		effectsIt++;
+		Effect *effectToDelete = (*tempIt);
+		delete effectToDelete;
+	}
+	dyingEffects.clear();
+
 	vector<AnimatedSpriteType*>::iterator spriteTypesIt = spriteTypes.begin();
 	while (spriteTypesIt != spriteTypes.end())
 	{
@@ -338,7 +348,6 @@ void SpriteManager::update(Game *game)
 	*/
 
 	// THEN UPDATE THE PLAYER SPRITE ANIMATION FRAME/STATE/ROTATION
-	player.updateSprite();
 
 	// NOW UPDATE THE REST OF THE SPRITES ANIMATION FRAMES/STATES/ROTATIONS
 	game->getInput()->wKeyDisabled = false;
@@ -368,13 +377,15 @@ void SpriteManager::update(Game *game)
 				else
 					game->getInput()->dKeyDisabled = true;
 				player.decHP(bot->getAttack());
-			}else if(bot->getCurrentState() == L"IDLE"){
-				bot->getB2Body()->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
+			}else{
+				((RandomBot*)bot)->think(game);
 			}
 			botIterator++;
 		}
 	}
-	
+
+	player.updateSprite();
+
 	list<TopDownSprite*>::iterator bulletIterator;
 	bulletIterator = bullets.begin();
 	

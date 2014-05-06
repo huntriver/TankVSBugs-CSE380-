@@ -24,6 +24,7 @@
 #include "sssf\input\GameInput.h"
 #include "sssf\timer\GameTimer.h"
 #include "sssf\platforms\Windows\WindowsTimer.h"
+#include "bugs\_entityCategory.h"
 
 /*
 	handleKeyEvent - this method handles all keyboard interactions. Note that every frame this method
@@ -125,6 +126,8 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 			fixtureDef.density = 1.0f;
 			// Override the default friction.
 			fixtureDef.friction = 0.0f;
+			fixtureDef.filter.categoryBits = BULLET;
+			fixtureDef.filter.maskBits = WALL|BUG;
 			// Add the shape to the body.
 			body->SetLinearVelocity(b2Vec2(vx,vy));
 			body->CreateFixture(&fixtureDef);

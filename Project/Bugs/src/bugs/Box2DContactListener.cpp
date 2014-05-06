@@ -1,6 +1,7 @@
 #include "bugs\Box2DContactListener.h"
 #include "bugs\BugsSpriteType.h"
 #include "sssf\gsm\state\GameStateManager.h"
+#include "sssf\gsm\ai\bots\RandomBot.h"
 
 void Box2DContactListener::BeginContact(b2Contact* contact)
 {
@@ -10,7 +11,7 @@ void Box2DContactListener::BeginContact(b2Contact* contact)
 	   if(t1 == NULL && t2 != NULL)
 	   {
 		   if(t2->getSpriteType()->getSpriteTypeID() == TYPE_BULLET)
-			   t2->setHealth(0);
+				t2->setHealth(0);
 	   }else if(t2 == NULL && t1 != NULL)
 	   {
 		   if(t1->getSpriteType()->getSpriteTypeID() == TYPE_BULLET)
@@ -30,10 +31,12 @@ void Box2DContactListener::BeginContact(b2Contact* contact)
 		   {
 			   t1->setHealth(0);
 			   t2->decHP(t1->getAttack());
+			   ((RandomBot*)t2)->setFightBack(true);
 		   }else if(t1->getSpriteType()->getSpriteTypeID() == TYPE_ANT &&
 			   t2->getSpriteType()->getSpriteTypeID() == TYPE_BULLET)
 		   {
 			   t1->decHP(t2->getAttack());
+			    ((RandomBot*)t1)->setFightBack(true);
 			   t2->setHealth(0);
 		   }
 	   }
