@@ -182,6 +182,9 @@
     <ClCompile Include="src\sssf\gsm\sprite\Effect.cpp">
       <Filter>src\sssf\gsm\sprite</Filter>
     </ClCompile>
+    <ClCompile Include="src\sssf\gsm\sprite\FireEffect.cpp">
+      <Filter>src\sssf\gsm\sprite</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\sssf_VS\stdafx.h">
@@ -344,6 +347,9 @@
       <Filter>src\sssf\gsm\ai\bots</Filter>
     </ClInclude>
     <ClInclude Include="src\sssf\gsm\sprite\Effect.h">
+      <Filter>src\sssf\gsm\sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sssf\gsm\sprite\FireEffect.h">
       <Filter>src\sssf\gsm\sprite</Filter>
     </ClInclude>
   </ItemGroup>

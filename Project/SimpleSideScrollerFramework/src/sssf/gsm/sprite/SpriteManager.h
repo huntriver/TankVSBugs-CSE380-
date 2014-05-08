@@ -19,6 +19,7 @@
 #include "sssf\gsm\sprite\TopDownSprite.h"
 #include "sssf\gsm\ai\pathfinding\GridPathfinder.h"
 #include "sssf\gsm\sprite\Effect.h"
+#include "sssf\gsm\sprite\FireEffect.h"
 
 class SpriteManager
 {
@@ -33,7 +34,7 @@ private:
 	list<TopDownSprite*> bullets;
 	list<Effect*>  effects;
 	list<Effect*>  dyingEffects;
-
+	FireEffect fEffect;
 	// AND THIS IS THE PLAYER. AS-IS, WE ONLY ALLOW FOR ONE PLAYER AT A TIME
 	TopDownSprite player;
 
@@ -44,18 +45,19 @@ private:
 	// THIS GUY HELPS SPRITES FIND THEIR WAY. NOTE THAT IT IS CUSTOMIZABLE, SINCE
 	// WE MAY BE RENDERING AN ORTHOGRAPHIC MAP OR AN ISOMETRIC ONE
 	GridPathfinder *pathfinder;
-	int TT;
 
 public:
 	// NOTHING TO INIT OR DESTROY
 	bool healthDisplay;
-	SpriteManager()		{TT=0;healthDisplay=true;}
+	SpriteManager()		{healthDisplay=true;}
 	~SpriteManager()	{}
 
-	// INLINED ACCESSOR METHODS
+	// INLINED ACCESSOR 
+	int                     getBotSize() {return bots.size();}
 	int						getBulletsSize()        { return bullets.size();    }
 	int						getNumberOfSprites()	{ return bots.size();		}
 	TopDownSprite*			getPlayer()				{ return &player;			}
+	FireEffect*            getFireEffect()         { return &fEffect;           }
 	list<Bot*>::iterator	getBotsIterator()		{ return bots.begin();		}
 	list<Bot*>::iterator	getEndOfBotsIterator()	{ return bots.end();		}
 	GridPathfinder*			getPathfinder()			{ return pathfinder;		}
@@ -63,11 +65,13 @@ public:
 	// METHODS DEFINED IN SpriteManager.cpp
 	void                addDyingEffect(TopDownSprite* sprite);
 	void                addBulletEffect(TopDownSprite* bullet);
+	void                addFireEffect(FireEffect* initFireEffect){effects.push_back(initFireEffect);}
 	void				addBot(Bot *botToAdd);
 	void                addBullet(TopDownSprite *bullet);
 	void				addSpriteItemsToRenderList(Game *game);
 	unsigned int		addSpriteType(AnimatedSpriteType *spriteTypeToAdd);
 	void				addSpriteToRenderList(AnimatedSprite *sprite, RenderList *renderList, Viewport *viewport);
+	void				addSpriteHealthToRenderList(AnimatedSprite *sprite, RenderList *renderList, Viewport *viewport);
 	void				clearSprites();
 	AnimatedSpriteType* getSpriteType(unsigned int typeIndex);
 	Bot*				removeBot(Bot *botToRemove);

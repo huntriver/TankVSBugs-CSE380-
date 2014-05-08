@@ -1,8 +1,11 @@
-﻿Build started 5/6/2014 4:11:21 AM.
+﻿Build started 5/8/2014 12:20:22 AM.
      1>Project "C:\Users\yubshang\Desktop\380 project\Project\SimpleSideScrollerFramework\SimpleSideScrollerFramework.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\gsm\sprite\SpriteManager.cpp
          SpriteManager.cpp
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(65): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(417): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(424): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
        Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\yubshang\Desktop\380 project\Project\Common\SimpleSideScrollerFramework.lib" Box2D.lib /LIBPATH:../lib /NOLOGO "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\GameDataLoader.obj"
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\Game.obj"
@@ -19,6 +22,7 @@
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\AnimatedSprite.obj"
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\AnimatedSpriteType.obj"
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\Effect.obj"
+         "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\FireEffect.obj"
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\SpriteManager.obj"
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\TopDownSprite.obj"
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\GameStateManager.obj"
@@ -45,4 +49,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.62
+Time Elapsed 00:00:02.85

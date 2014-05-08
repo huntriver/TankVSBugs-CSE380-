@@ -48,10 +48,11 @@ protected:
 	list<PathNode> currentPathToFollow;
 	list<PathNode>::iterator currentPathNode;
 	bool markForRemoval;
-	
+	// FireEffect* fireAttack;
 public:
 	// INLINED ACCESSOR METHODS
 	bool dead;
+	// FireEffect*         getFireAttack()       { return fireAttack;         }
 	int					getAlpha()			{ return alpha;				}
 	list<PathNode>*		getCurrentPathToFollow() { return &currentPathToFollow; }
 	list<PathNode>::iterator getCurrentPathNode() { return currentPathNode; }
@@ -90,6 +91,13 @@ public:
 	void setAttack(float initAttack){
 		attack = initAttack;
 	}
+	void setHP(float initHP){
+		hp = initHP;
+	}
+	//void setFireAttack(FireEffect* effect)
+	//{
+		//fireAttack = effect;
+	//}
 
 	// METHODS DEFINED IN AnimatedSprite.cpp
 	AnimatedSprite();

@@ -9,7 +9,7 @@
 */
 
 // HERE IS THE Bugs GAME SETUP/INIT FILE. EVERYTHING WOULD START FROM HERE
-static const wstring	W_LEVEL_1_DIR			= L"data/levels/level2/";
+static const wstring	W_LEVEL_1_DIR			= L"data/levels/level1/";
 static const wstring	W_LEVEL_1_NAME			= L"level.tmx";
 static const wstring	W_LEVEL_1_PATH			= W_LEVEL_1_DIR + W_LEVEL_1_NAME;
 static const wstring	W_INIT_FILE				= L"data/BugsInit.txt";

@@ -80,8 +80,15 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 		{
 			game->getGraphics()->togglePathfindingPathShouldBeRendered();
 		}
-		if (input->isKeyDownForFirstTime(SPACE_KEY) && game->getGSM()->getSpriteManager()->getBulletsSize() <= 5)
+
+		if(input->isKeyDownForFirstTime((unsigned int)'M')){
+			game->getGSM()->getSpriteManager()->getFireEffect()->setStart(true);
+		}else if(input->isKeyDown((unsigned int)'M')){
+
+		}else if (input->isKeyDownForFirstTime(SPACE_KEY) && game->getGSM()->getSpriteManager()->getBulletsSize() <= 5)
 		{
+			if(game->getGSM()->getSpriteManager()->getFireEffect()->isStart())
+				game->getGSM()->getSpriteManager()->getFireEffect()->setStop(true);
 			TopDownSprite *bullet = new TopDownSprite();
 			//physics->addCollidableObject(bot);
 			//PhysicalProperties *pp = bot->getPhysicalProperties();
@@ -133,6 +140,9 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 			body->CreateFixture(&fixtureDef);
 			bullet->setB2Body(body);
 			body->SetUserData(bullet);
+		}else{
+			if(game->getGSM()->getSpriteManager()->getFireEffect()->isStart())
+				game->getGSM()->getSpriteManager()->getFireEffect()->setStop(true);
 		}
 
 		bool tankMoved = false;

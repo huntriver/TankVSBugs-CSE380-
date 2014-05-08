@@ -487,9 +487,11 @@ void DirectXGraphics::renderWorldRenderList()
 			position.y += viewport->getViewportOffsetY();
 
 			// ADJUST FOR THE GUI OFFSET
+			
 			if ((position.x < viewport->getViewportOffsetX())
 				||  (position.y < viewport->getViewportOffsetY()))
 			{
+				/*
 				IDirect3DSurface9 *surface;
 				UINT level = 0;
 				HRESULT result = texture->GetSurfaceLevel(level, &surface);
@@ -511,7 +513,7 @@ void DirectXGraphics::renderWorldRenderList()
 					int yDiff = viewport->getViewportOffsetY() - (int)position.y;
 					rect->top = yDiff;
 					position.y += yDiff;
-				}	
+				}*/	
 			}else{
 				rect = rect = new RECT();
 				rect->left = 0;

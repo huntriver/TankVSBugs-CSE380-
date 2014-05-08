@@ -256,6 +256,6 @@ void GameStateManager::update(Game *game)
 		float viewportY=game->getGSM()->getSpriteManager()->getPlayer()->getB2Body()->GetPosition().y*-5.0f;
 		float screenX = viewport->getViewportWidth()/2.0f;
 		float screenY = viewport->getViewportHeight()/2.0f;
-		viewport->moveViewport((int)floor(viewportX-screenX), (int)floor(viewportY-screenY), game->getGSM()->getWorld()->getWorldWidth(), game->getGSM()->getWorld()->getWorldHeight());
+		viewport->movePlayerViewport((int)floor(viewportX-screenX), (int)floor(viewportY-screenY), game->getGSM()->getWorld()->getWorldWidth(), game->getGSM()->getWorld()->getWorldHeight());
 	}
 }

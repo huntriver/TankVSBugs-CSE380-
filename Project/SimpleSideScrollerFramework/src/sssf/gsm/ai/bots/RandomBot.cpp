@@ -39,7 +39,8 @@ Bot* RandomBot::clone()
 void RandomBot::initBot(	unsigned int initMin,
 							unsigned int initMax,
 							unsigned int initMaxV,
-							bool initXTerm)
+							bool initXTerm,
+							float proxy)
 {
 	// IF THE MAX IS SMALLER THAN THE MIN, SWITCH THEM
 	if (initMax < initMin)
@@ -56,15 +57,25 @@ void RandomBot::initBot(	unsigned int initMin,
 	minCyclesBeforeThinking = initMin;
 	maxCyclesBeforeThinking = initMax;
 	maxVelocity = initMaxV;
+	cyclesRemainingBeforeThinking = 0;
 
 	// AND WE'LL USE THIS TO ENSURE OUR BOTS ALL LOOK A LITTLE DIFFERENT
 	animationRandomizer = (rand() % 45) + 5;
 
 	xTerm = initXTerm;
 	if(xTerm)
+	{
 		yTerm = false;
-	else
+		proxX = proxy;
+		proxY = 0;
+	}else
+	{
 		yTerm = true;
+		proxX = 0;
+		proxY = proxy;
+	}
+	prevbX = -1000.0f;
+	prevbY = -1000.0f;
 }
 
 /*
@@ -103,6 +114,35 @@ void RandomBot::pickRandomCyclesInRange2()
 	cyclesRemainingBeforeThinking += minCyclesBeforeThinking;
 }
 
+void RandomBot::pickRandomDirection()
+{
+	bool setComplete = false;
+	while(!setComplete)
+	{
+		int randNum = rand() % 4;
+		if(randNum == 0 && upEdgeCC == 0)
+		{
+			rotationInRadians = 0;
+			body->SetLinearVelocity(b2Vec2(0, maxVelocity));
+			setComplete = true;
+		}else if(randNum == 1 && downEdgeCC == 0)
+		{
+			rotationInRadians = PI;
+			body->SetLinearVelocity(b2Vec2(0, -1.0 * maxVelocity));
+			setComplete = true;
+		}else if(randNum == 2 && leftEdgeCC == 0)
+		{
+			rotationInRadians = -PI/2.0f;
+			body->SetLinearVelocity(b2Vec2(-1.0 * maxVelocity, 0));
+			setComplete = true;
+		}else if(randNum == 3 && rightEdgeCC == 0){
+			rotationInRadians = PI/2.0f;
+			body->SetLinearVelocity(b2Vec2(maxVelocity, 0));
+			setComplete = true;
+		}
+	}
+	setCurrentState(L"MOVE");
+}
 
 bool RandomBot::isPlayerCloseBy(Game *game)
 {
@@ -130,27 +170,33 @@ void RandomBot::approachPlayer(Game *game)
 	float bX = getB2Body()->GetPosition().x * BOX2D_SCALE;
 	float bY = getB2Body()->GetPosition().y * -BOX2D_SCALE;
 
+	// Bot gets stuck behind the wall
+	if(abs(bX-prevbX) <= 0.3f && abs(bY-prevbY) <= 0.3f && attempApproach){
+		approachFailed = true;
+		return;
+	}
+	
 	// Final Approach
-	if(abs(pX - bX) <= (abs((pWidth+bWidth)/2.0f) + 20.0f)&& abs(pY - bY) <= (abs((pHeight+bHeight)/2.0f) + 20.0f))
+	if(abs(pX + proxX - bX) <= (abs((pWidth+bWidth)/2.0f) + 20.0f)&& abs(pY + proxY- bY) <= (abs((pHeight+bHeight)/2.0f) + 20.0f))
 	{
-	if(abs(pX - bX) > abs(pY - bY))
+	if(abs(pX + proxX - bX) > abs(pY + proxY - bY))
 	{
-		if(pX > bX){
+		if(pX + proxX > bX){
 			rotationInRadians = PI/2.0f;
 			body->SetLinearVelocity(b2Vec2(maxVelocity, 0));
 			setCurrentState(L"MOVE");
-		}else if(pX < bX){
+		}else if(pX + proxX < bX){
 			rotationInRadians = -PI/2.0f;
 			body->SetLinearVelocity(b2Vec2(-1.0f*maxVelocity, 0));
 			setCurrentState(L"MOVE");
 		}		
 	}else
 	{
-		if(pY > bY){
+		if(pY + proxY > bY){
 			rotationInRadians = -PI;
 			body->SetLinearVelocity(b2Vec2(0, -1.0f*maxVelocity));
 			setCurrentState(L"MOVE");
-		}else if(pY < bY){
+		}else if(pY + proxY < bY){
 			rotationInRadians = 0;
 			body->SetLinearVelocity(b2Vec2(0, maxVelocity));
 			setCurrentState(L"MOVE");
@@ -173,6 +219,8 @@ void RandomBot::approachPlayer(Game *game)
 			if(abs(pX - bX) <= maxVelocity)
 			{
 				cyclesRemainingBeforeThinking = 0;
+				prevbX = getB2Body()->GetPosition().x * BOX2D_SCALE;
+				prevbY = getB2Body()->GetPosition().y * -BOX2D_SCALE;
 				return;
 			}else if(pX > bX){
 			rotationInRadians = PI/2.0f;
@@ -188,6 +236,8 @@ void RandomBot::approachPlayer(Game *game)
 			if(abs(pY - bY) <= maxVelocity)
 			{
 				cyclesRemainingBeforeThinking = 0;
+				prevbX = getB2Body()->GetPosition().x * BOX2D_SCALE;
+				prevbY = getB2Body()->GetPosition().y * -BOX2D_SCALE;
 				return;
 			}else if(pY > bY){
 			rotationInRadians = -PI;
@@ -202,6 +252,8 @@ void RandomBot::approachPlayer(Game *game)
 		}
 	}
 	attempApproach = true;
+	prevbX = getB2Body()->GetPosition().x * BOX2D_SCALE;
+	prevbY = getB2Body()->GetPosition().y * -BOX2D_SCALE;
 }
 /*
 	think - called once per frame, this is where the bot performs its
@@ -210,14 +262,48 @@ void RandomBot::approachPlayer(Game *game)
 */
 void RandomBot::think(Game *game)
 {
-	if(isPlayerCloseBy(game) && !approachFailed)
+	if(currentState == L"ATTACK")
 	{
-		approachPlayer(game);
-	}else{
+		attempApproach = false;
 		approachFailed = false;
-		fightBack = false;
-		setCurrentState(L"IDLE");
 		body->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
+		if(rotationInRadians == 0)
+			game->getInput()->sKeyDisabled = true;
+		else if(rotationInRadians == PI)
+			game->getInput()->wKeyDisabled = true;
+		else if(rotationInRadians == PI/2.0f)
+			game->getInput()->aKeyDisabled = true;
+		else
+			game->getInput()->dKeyDisabled = true;
+	}else
+	{
+		if(isPlayerCloseBy(game) && !approachFailed)
+		{
+			approachPlayer(game);
+		}else{
+			if(approachFailed && attempApproach)
+			{	
+				attempApproach = false;
+				pickRandomDirection();
+				pickRandomCyclesInRange();
+			}else{
+				if (cyclesRemainingBeforeThinking == 0)
+				{
+					approachFailed = false;
+					pickRandomDirection();
+					pickRandomCyclesInRange();
+				}
+			}
+			if((rotationInRadians == -PI/2.0f && leftEdgeCC > 0) ||
+				(rotationInRadians == PI/2.0f && rightEdgeCC > 0) ||
+				(rotationInRadians == 0 && upEdgeCC > 0) ||
+				(rotationInRadians == PI && downEdgeCC > 0))
+				{
+					setCurrentState(L"IDLE");
+					body->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
+				}
+				cyclesRemainingBeforeThinking--;
+		}
 	}
 	// EACH FRAME WE'LL TEST THIS BOT TO SEE IF WE NEED
 	// TO PICK A DIFFERENT DIRECTION TO FLOAT IN
