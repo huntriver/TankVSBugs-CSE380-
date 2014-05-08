@@ -74,5 +74,6 @@ public:
 	bool areViewportCoordinatesInViewport(int x, int y, int width, int height);
 	bool areScreenCoordinatesInViewport(int x, int y);
 	void moveViewport(int incX, int incY,	int worldWidth, int worldHeight);
+	void movePlayerViewport(int X, int Y, int worldWidth, int worldHeight);
 	void toggleDebugView();
 };

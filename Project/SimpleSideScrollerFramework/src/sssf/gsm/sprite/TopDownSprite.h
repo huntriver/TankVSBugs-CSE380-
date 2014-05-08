@@ -16,6 +16,6 @@ public:
 	{ rotationInRadians = initRotation; }
 	wstring getDirection(){return direction;}
 	void setDirection(wstring initDirection);
-	void updateSprite();
+	virtual void updateSprite();
 	void beginContact();
 };

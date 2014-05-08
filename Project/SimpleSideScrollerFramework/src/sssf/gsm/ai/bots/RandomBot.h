@@ -21,6 +21,10 @@ private:
 	bool yTerm;
 	bool fightBack;
 	int termCounter;
+	float proxX;
+	float prevbX;
+	float proxY;
+	float prevbY;
 
 public:
 	RandomBot();
@@ -28,16 +32,19 @@ public:
 	void initBot(	unsigned int initMin,
 					unsigned int initMax,
 					unsigned int initMaxV,
-					bool initXTerm);
+					bool initXTerm,
+					float proxy);
 	void	pickRandomCyclesInRange();
 	Bot*	clone();
 	void	pickRandomDestination(Game *game);
+	void    pickRandomDirection();
 	void	think(Game *game);
 	void    approachPlayer(Game *game);
 	bool    isPlayerCloseBy(Game *game);
 	bool	isAttempApproach(){return attempApproach;}
 	void    setApproachFailed(bool flag){approachFailed = flag;}
 	void    setFightBack(bool flag) {fightBack = flag;}
+
 
 	// INLINED METHODS
 	unsigned int getCyclesRemainingBeforeThinking()	{ return cyclesRemainingBeforeThinking; }

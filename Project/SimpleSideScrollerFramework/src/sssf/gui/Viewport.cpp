@@ -111,7 +111,39 @@ bool Viewport::areWorldCoordinatesInViewport(	float x,
 	else
 		return true;
 }
+void Viewport::moveViewport(int incX, 
+							int incY,
+							int worldWidth, 
+							int worldHeight)
+{
+	// MOVE THE VIEWPORT IN X AXIS ACCORDING
+	// TO PROVIDED INCREMENT.
+	viewportX += incX;
 
+	// DON'T LET IT GO OFF THE LEFT-MOST EDGE
+	// OF THE GAME WORLD. CLAMP INSTEAD.
+	if (viewportX < 0)				
+		viewportX = 0;
+
+	// DON'T LET IT GO OFF THE RIGHT-MOST EDGE
+	// OF THE GAME WORLD. CLAMP INSTEAD.
+	else if (viewportX >= (worldWidth - viewportWidth))
+		viewportX = worldWidth - viewportWidth - 1;
+	
+	// MOVE THE VIEWPORT IN Y AXIS ACCORDING
+	// TO PROVIDED INCREMENT.
+	viewportY += incY;
+
+	// DON'T LET IT GO OFF THE TOP-MOST EDGE
+	// OF THE GAME WORLD. CLAMP INSTEAD.
+	if (viewportY < 0)				
+		viewportY = 0;
+
+	// DON'T LET IT GO OFF THE BOTTOM-MOST EDGE
+	// OF THE GAME WORLD. CLAMP INSTEAD.
+	else if (viewportY >= worldHeight - viewportHeight)
+		viewportY = worldHeight - viewportHeight - 1;
+}
 /*
 	moveViewport - This method is for moving the
 	viewport, which is the region of the world seen
@@ -120,7 +152,7 @@ bool Viewport::areWorldCoordinatesInViewport(	float x,
 	method prevents moving the viewport off the edge
 	of the world by clamping at the world edges.
 */
-void Viewport::moveViewport(int X, 
+void Viewport::movePlayerViewport(int X, 
 							int Y,
 							int worldWidth, 
 							int worldHeight)

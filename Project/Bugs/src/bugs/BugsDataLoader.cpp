@@ -10,6 +10,7 @@
 #include "bugs\_entityCategory.h"
 
 // GAME OBJECT INCLUDES
+#include "sssf\gsm\sprite\FireEffect.h"
 #include "sssf\game\Game.h"
 #include "sssf\graphics\GameGraphics.h"
 #include "sssf\gsm\ai\bots\RandomBot.h"
@@ -203,7 +204,9 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	player->setCurrentState(IDLE);
 	player->setDirection(L"RIGHT");
 	player->setHealth(playerSpriteType->getTextureWidth()/spriteManager->getSpriteType(4)->getTextureWidth());
+	player->setHP(100.0f);
 	player->setAttack(50.0f);
+
 	/*
 	PhysicalProperties *playerProps = player->getPhysicalProperties();
 	playerProps->setX(PLAYER_INIT_X);
@@ -216,6 +219,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
 	bodyDef.position.Set(135.0f/5.0f, -150.0f/5.0f);
+	// bodyDef.position.Set(135.0f/5.0f, -750.0f/5.0f);
 	b2Body* body = (world->boxWorld)->CreateBody(&bodyDef);
 	body->SetUserData(player);
 	// Define another box shape for our dynamic body.
@@ -251,7 +255,10 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 
 	// AND LET'S ADD A BUNCH OF RANDOM JUMPING BOTS, FIRST ALONG
 	// A LINE NEAR THE TOP
+	/*
 	AnimatedSpriteType *botSpriteType = spriteManager->getSpriteType(1);
+
+	
 	makeRandomBot(game, botSpriteType, 550, 300, true);
 	makeRandomBot(game, botSpriteType, 550, 300, false);
 	makeRandomBot(game, botSpriteType, 600, 170, false);
@@ -267,6 +274,32 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	makeRandomBot(game, botSpriteType, 500, 440, false);
 	makeRandomBot(game, botSpriteType, 500, 440, false);
 	makeRandomBot(game, botSpriteType, 500, 440, false);
+	makeRandomBot(game, botSpriteType, 550, 300, true);
+	makeRandomBot(game, botSpriteType, 550, 300, false);
+	makeRandomBot(game, botSpriteType, 600, 170, false);
+	makeRandomBot(game, botSpriteType, 650, 260, false);
+	makeRandomBot(game, botSpriteType, 700, 340, false);
+	makeRandomBot(game, botSpriteType, 700, 340, true);
+	makeRandomBot(game, botSpriteType, 400, 320, false);
+	makeRandomBot(game, botSpriteType, 500, 440, true);
+	makeRandomBot(game, botSpriteType, 500, 440, false);
+	makeRandomBot(game, botSpriteType, 500, 440, true);
+	makeRandomBot(game, botSpriteType, 500, 440, true);
+	makeRandomBot(game, botSpriteType, 500, 440, false);
+	makeRandomBot(game, botSpriteType, 500, 440, false);
+	makeRandomBot(game, botSpriteType, 500, 440, false);
+	makeRandomBot(game, botSpriteType, 500, 440, false);
+	*/
+	FireEffect* effect = spriteManager->getFireEffect();
+	AnimatedSpriteType *fireSpriteType = spriteManager->getSpriteType(6);
+	effect->setSpriteType(fireSpriteType);
+	effect->setAlpha(255);
+	effect->setHealth(1000);
+	effect->setCurrentState(IDLE);
+	effect->setAttack(5.0f);
+	effect->setPlayer(player);
+	game->getGSM()->getSpriteManager()->addFireEffect(effect);
+	
 // UNCOMMENT THE FOLLOWING CODE BLOCK WHEN YOU ARE READY TO ADD SOME BOTS
 /*	for (int i = 2; i <= 26; i++)
 	{
@@ -298,6 +331,8 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	game->getInput()->dKeyDisabled = false;
 	game->getInput()->aKeyDisabled = false;
 	game->getGSM()->goToGame();
+	game->getGUI()->getViewport()->setViewportX(0.0f);
+	game->getGUI()->getViewport()->setViewportY(0.0f);
 }
 
 void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType, float initX, float initY, bool initXTerm)
@@ -314,7 +349,12 @@ void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType
 	bot->setAlpha(255);
 	bot->setHealth((int)(randomBotType->getTextureWidth()/game->getGSM()->getSpriteManager()->getSpriteType(4)->getTextureWidth()));
 	bot->setAttack(0.2);
-	bot->initBot(30, 180, MAX_TANK_SPEED/1.4f, initXTerm);
+	int playerW = game->getGSM()->getSpriteManager()->getPlayer()->getSpriteType()->getTextureWidth()/2;
+	float randNum = rand()% playerW;
+	if(game->getGSM()->getSpriteManager()->getBotSize() % 2 == 0)
+		bot->initBot(30, 300, MAX_TANK_SPEED/1.4f, initXTerm,randNum);
+	else
+		bot->initBot(30, 300, MAX_TANK_SPEED/1.4f, initXTerm,-randNum);
 	spriteManager->addBot(bot);
 	//bot->affixTightAABBBoundingVolume();
 

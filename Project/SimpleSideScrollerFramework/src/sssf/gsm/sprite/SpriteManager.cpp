@@ -18,6 +18,7 @@ See SpriteManager.h for a class description.
 #include "sssf\gsm\sprite\AnimatedSpriteType.h"
 #include "sssf\gsm\sprite\SpriteManager.h"
 #include "sssf\gsm\state\GameStateManager.h"
+#include "sssf\gsm\sprite\FireEffect.h"
 
 /*
 addSpriteToRenderList - This method checks to see if the sprite
@@ -34,7 +35,9 @@ void SpriteManager::addSpriteToRenderList(AnimatedSprite *sprite,
 	PhysicalProperties *pp = sprite->getPhysicalProperties();
 	float rotation = sprite->getRotationInRadians();
 
-	if(sprite->getSpriteType()->getSpriteTypeID() == 3 || sprite->getSpriteType()->getSpriteTypeID() == 5)
+	if(sprite->getSpriteType()->getSpriteTypeID() == 3 || 
+		sprite->getSpriteType()->getSpriteTypeID() == 5 ||
+		sprite->getSpriteType()->getSpriteTypeID() == 6)
 	{
 		if(viewport->areWorldCoordinatesInViewport(
 			pp->getX(),pp->getY(),spriteType->getTextureWidth(),
@@ -44,31 +47,33 @@ void SpriteManager::addSpriteToRenderList(AnimatedSprite *sprite,
 			itemToAdd.id = sprite->getFrameIndex();
 			renderList->addRenderItem(sprite->getCurrentImageID(),
 				pp->round(pp->getX()-spriteType->getTextureWidth()/2.0f-viewport->getViewportX()),
-				pp->round(pp->getY() - spriteType->getTextureWidth()/2.0f-viewport->getViewportY()),0,
+				pp->round(pp->getY() - spriteType->getTextureHeight()/2.0f-viewport->getViewportY()),0,
 				sprite->getAlpha(),spriteType->getTextureWidth(),
 				spriteType->getTextureHeight(), rotation);
 		}
 	}else
 	{
-
+		int leftX = pp->round((body->GetPosition().x)*5.0f-spriteType->getTextureWidth()/2.0f);
+		int topY = pp->round((-1)*(body->GetPosition().y)*5.0f-spriteType->getTextureHeight()/2.0f);
+		int rightX = pp->round((body->GetPosition().x)*5.0f+spriteType->getTextureWidth()/2.0f);
+		int downY = pp->round((-1)*(body->GetPosition().y)*5.0f+spriteType->getTextureHeight()/2.0f);
 		// IS THE SPRITE VIEWABLE?
 		if (viewport->areWorldCoordinatesInViewport(	
-			body->GetPosition().x * 5.0f,
-			(-1)*(body->GetPosition().y * 5.0f),
+			leftX,
+			topY,
 			spriteType->getTextureWidth(),
 			spriteType->getTextureHeight()))
 		{
 			// SINCE IT'S VIEWABLE, ADD IT TO THE RENDER LIST
+			int width =spriteType->getTextureWidth();
+			int height = spriteType->getTextureHeight();
+			int x = pp->round((body->GetPosition().x)*5.0f-spriteType->getTextureWidth()/2.0f-viewport->getViewportX());
+			int y = pp->round((-1)*(body->GetPosition().y)*5.0f-spriteType->getTextureHeight()/2.0f-viewport->getViewportY());
 			RenderItem itemToAdd;
 			itemToAdd.id = sprite->getFrameIndex();
-			renderList->addRenderItem(sprite->getCurrentImageID(),
-			pp->round((body->GetPosition().x)*5.0f-spriteType->getTextureWidth()/2.0f-viewport->getViewportX()),
-			pp->round((-1)*(body->GetPosition().y)*5.0f-spriteType->getTextureHeight()/2.0f-viewport->getViewportY()),
-			0,
-			sprite->getAlpha(),
-			spriteType->getTextureWidth(),
-			spriteType->getTextureHeight(),
-			rotation);
+
+			renderList->addRenderItem(sprite->getCurrentImageID(), x, y,0, sprite->getAlpha(), width, height,rotation);
+			/*
 			if(healthDisplay && (spriteType->getSpriteTypeID() == 0 || spriteType->getSpriteTypeID() == 1))
 			{
 				int imageId;
@@ -95,7 +100,41 @@ void SpriteManager::addSpriteToRenderList(AnimatedSprite *sprite,
 						255,(int)(factor*getSpriteType(4)->getTextureWidth()),getSpriteType(4)->getTextureHeight(),0);
 					}
 				}
-			}
+			}*/
+		}
+	}
+}
+
+void SpriteManager::addSpriteHealthToRenderList(AnimatedSprite *sprite,
+										  RenderList *renderList,
+										  Viewport *viewport)
+{
+	// GET THE SPRITE TYPE INFO FOR THIS SPRITE
+	AnimatedSpriteType *spriteType = sprite->getSpriteType();
+	b2Body* body = sprite->getB2Body();
+	PhysicalProperties *pp = sprite->getPhysicalProperties();
+	float rotation = sprite->getRotationInRadians();
+
+	int imageId;
+	if(sprite->getSpriteType()->getSpriteTypeID() == 0)
+		imageId = getSpriteType(4)->getAnimationFrameID(L"IDLE", 0);
+	else
+		imageId = getSpriteType(4)->getAnimationFrameID(L"MOVE", 0);
+	for(int i = 0; i < sprite->getHealth(); ++i)
+	{
+		if(i != sprite->getHealth() - 1)
+		{
+			renderList->addRenderItem(imageId,
+			pp->round((body->GetPosition().x)*5.0f-spriteType->getTextureWidth()/2-viewport->getViewportX())+i*getSpriteType(4)->getTextureWidth(),
+			pp->round((-1)*(body->GetPosition().y)*5.0f-spriteType->getTextureHeight()/2-viewport->getViewportY())-getSpriteType(4)->getTextureHeight(),
+			0,255,getSpriteType(4)->getTextureWidth(),getSpriteType(4)->getTextureHeight(),0);
+		}else
+		{
+			float factor = sprite->getHP()/100.0f;
+			renderList->addRenderItem(imageId,
+			pp->round((body->GetPosition().x)*5.0f-spriteType->getTextureWidth()/2-viewport->getViewportX())+i*getSpriteType(4)->getTextureWidth(),
+			pp->round((-1)*(body->GetPosition().y)*5.0f-spriteType->getTextureHeight()/2-viewport->getViewportY())-getSpriteType(4)->getTextureHeight(),
+			0,255,(int)(factor*getSpriteType(4)->getTextureWidth()),getSpriteType(4)->getTextureHeight(),0);
 		}
 	}
 }
@@ -152,6 +191,18 @@ void SpriteManager::addSpriteItemsToRenderList(	Game *game)
 			Effect* effect = (*effectIterator);
 			addSpriteToRenderList(effect, renderList, viewport);
 			effectIterator++;
+		}
+
+		if(healthDisplay)
+		{
+			addSpriteHealthToRenderList(&player, renderList, viewport);
+			botIterator = bots.begin();
+			while (botIterator != bots.end())
+			{			
+				Bot *bot = (*botIterator);
+				addSpriteHealthToRenderList(bot, renderList, viewport);
+				botIterator++;
+			}
 		}
 	}
 }
@@ -239,7 +290,8 @@ void SpriteManager::unloadSprites()
 		list<Effect*>::iterator tempIt = effectsIt;
 		effectsIt++;
 		Effect *effectToDelete = (*tempIt);
-		delete effectToDelete;
+		if(effectToDelete != &fEffect)
+			delete effectToDelete;
 	}
 	effects.clear();
 
@@ -328,8 +380,9 @@ void SpriteManager::update(Game *game)
 	*/
 	// FIRST LET'S DO THE NECESSARY PATHFINDING
 	// pathfinder->updatePath(&player);
+
 	list<Bot*>::iterator botIterator;
-	/*
+    /*
 	botIterator = bots.begin();
 	while (botIterator != bots.end())
 	{
@@ -348,6 +401,7 @@ void SpriteManager::update(Game *game)
 	*/
 
 	// THEN UPDATE THE PLAYER SPRITE ANIMATION FRAME/STATE/ROTATION
+	player.updateSprite();
 
 	// NOW UPDATE THE REST OF THE SPRITES ANIMATION FRAMES/STATES/ROTATIONS
 	game->getInput()->wKeyDisabled = false;
@@ -358,33 +412,34 @@ void SpriteManager::update(Game *game)
 	while (botIterator != bots.end())
 	{
 		Bot *bot = (*botIterator);
+		if(fEffect.getCurrentState() != L"IDLE")
+		{
+			int attackDistance = player.getSpriteType()->getTextureWidth()/2.0f + fEffect.getSpriteType()->getTextureHeight()/2.0f + bot->getSpriteType()->getTextureHeight()/2.0f;
+			if(((((player.getRotationInRadians() == 0 && bot->getRotationInRadians() == PI) ||
+			(player.getRotationInRadians() == PI && bot->getRotationInRadians() == 0))&&
+			abs(player.getB2Body()->GetPosition().y*-5.0f- bot->getB2Body()->GetPosition().y*-5.0f) <= attackDistance))||
+			((((player.getRotationInRadians() == PI/2.0f && bot->getRotationInRadians() == -PI/2.0f) ||
+			(player.getRotationInRadians() == -PI/2.0f && bot->getRotationInRadians() == PI/2.0f))&&
+			abs(player.getB2Body()->GetPosition().x*5.0f- bot->getB2Body()->GetPosition().x*5.0f) <= attackDistance))){
+					bot->decHP(fEffect.getAttack());
+			}
+		}
 		bot->updateSprite();
 		if(bot->getMarkForRemoval()){
 			addDyingEffect(bot);
 			game->getGSM()->getWorld()->boxWorld->DestroyBody(bot->getB2Body());
+			delete bot;
 			botIterator = bots.erase(botIterator);
-		}else{
+		}else
+		{
 			if(bot->getCurrentState() == L"ATTACK")
 			{
-				bot->getB2Body()->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
-				float rotate = bot->getRotationInRadians();
-				if(rotate == 0)
-					game->getInput()->sKeyDisabled = true;
-				else if(rotate == PI)
-					game->getInput()->wKeyDisabled = true;
-				else if(rotate == PI/2.0f)
-					game->getInput()->aKeyDisabled = true;
-				else
-					game->getInput()->dKeyDisabled = true;
 				player.decHP(bot->getAttack());
-			}else{
-				((RandomBot*)bot)->think(game);
 			}
+			((RandomBot*)bot)->think(game);
 			botIterator++;
 		}
 	}
-
-	player.updateSprite();
 
 	list<TopDownSprite*>::iterator bulletIterator;
 	bulletIterator = bullets.begin();
@@ -397,8 +452,15 @@ void SpriteManager::update(Game *game)
 
 		if(bullet->getMarkForRemoval())
 		{
+			/*
+			if(effects.size() >= 5)
+			{
+				list<Effect*>::iterator it = effects.begin();
+				effects.erase(it);
+			}*/
 			addBulletEffect(bullet);
 			game->getGSM()->getWorld()->boxWorld->DestroyBody(bullet->getB2Body());
+			delete bullet;
 			bulletIterator = bullets.erase(bulletIterator);
 		}else
 			bulletIterator++;
@@ -410,9 +472,10 @@ void SpriteManager::update(Game *game)
 	{
 		Effect* effect = (*effectIterator);
 		effect->updateSprite();
-
+		
 		if(effect->getMarkForRemoval())
 		{
+			delete effect;
 			effectIterator = effects.erase(effectIterator);
 		}else
 			effectIterator++;
@@ -426,6 +489,7 @@ void SpriteManager::update(Game *game)
 
 		if(effect->getMarkForRemoval())
 		{
+			delete effect;
 			effectIterator = dyingEffects.erase(effectIterator);
 		}else
 			effectIterator++;

@@ -27,7 +27,7 @@ AnimatedSprite::AnimatedSprite()
 	pp.setPosition(0.0f, 0.0f);
 	dead=false;
 	markForRemoval = false;
-	hp = 100.0f;
+	hp = 100.0f; 
 }
 
 /*

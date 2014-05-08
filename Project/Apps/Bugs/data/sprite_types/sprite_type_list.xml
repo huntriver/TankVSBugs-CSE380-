@@ -16,4 +16,5 @@
   <sprite_type>explosion</sprite_type>
   <sprite_type>health</sprite_type>
   <sprite_type>ant_dying</sprite_type>
+  <sprite_type>fire</sprite_type>
 </sprite_type_list>

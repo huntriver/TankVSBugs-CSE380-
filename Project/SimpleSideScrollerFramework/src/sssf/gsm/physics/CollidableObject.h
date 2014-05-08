@@ -94,7 +94,7 @@ public:
 		upEdgeCC = initUpEdgeCC;
 	}
 
-	void setDownEdgeCollide(bool initDownEdgeCC)
+	void setDownEdgeCC(bool initDownEdgeCC)
 	{
 		downEdgeCC = initDownEdgeCC;
 	}
