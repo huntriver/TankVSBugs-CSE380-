@@ -1,4 +1,4 @@
-﻿Build started 5/5/2014 3:36:51 AM.
+﻿Build started 5/10/2014 3:08:58 AM.
      1>Project "C:\Users\yubshang\Desktop\380 project\Project\tinyxml\tinyxml.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D USE_STANDARD_FILE_FUNCTIONS /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project\Project\Temp\tinyxml\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project\Project\Temp\tinyxml\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\tinyxml\tinystr.cpp src\tinyxml\tinyxml.cpp src\tinyxml\tinyxmlerror.cpp src\tinyxml\tinyxmlparser.cpp src\tinyxml\xmltest.cpp src\tinyxml_VS\stdafx.cpp
@@ -21,4 +21,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.42
+Time Elapsed 00:00:08.43

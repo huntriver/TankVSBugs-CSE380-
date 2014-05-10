@@ -321,6 +321,7 @@ void SpriteManager::unloadSprites()
 	}
 	dyingEffects.clear();
 
+	
 	list<Tree*>::iterator treeIt = trees.begin();
 	while (treeIt != trees.end())
 	{
@@ -329,8 +330,8 @@ void SpriteManager::unloadSprites()
 		Tree *treeToDelete = (*tempIt);
 		delete treeToDelete;
 	}
-
 	trees.clear();
+	
 	vector<AnimatedSpriteType*>::iterator spriteTypesIt = spriteTypes.begin();
 	while (spriteTypesIt != spriteTypes.end())
 	{
