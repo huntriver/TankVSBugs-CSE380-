@@ -72,6 +72,7 @@ private:
 	// THIS WILL KEEP TRACK OF THE NAME OF THE LEVEL FILE
 	// THAT IS CURRENTLY BEING USED
 	wstring				currentLevelFileName;
+	int currentLevel;
 
 public:
 	// INLINED ACCESSOR METHODS - THE REAL THINGS
@@ -92,6 +93,7 @@ public:
 	// INLINED MUTATOR METHODS
 	void	setDataLoader(GameDataLoader *initDL) { dataLoader = initDL; }
 	void	setCurrentLevelFileName(wstring initCurrentLevelFileName) { currentLevelFileName = initCurrentLevelFileName; }
+	void    setCurrentLevel(int initCurrentLevel) { currentLevel = initCurrentLevel; }
 
 	// METHODS DEFINED IN Game.cpp
 	Game();

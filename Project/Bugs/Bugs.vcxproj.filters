@@ -10,6 +10,9 @@
     <Filter Include="src\bugs_VS">
       <UniqueIdentifier>{78e59404-09f1-49cd-909c-54625f0f12b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\script">
+      <UniqueIdentifier>{4a1643c2-4cbb-4ba5-b99e-c87ee6c1dacf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\bugs\BugsButtonEventHandler.cpp">
@@ -88,8 +91,13 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\lib\Box2D.lib" />
+    <Library Include="..\lib\LuaPlus.lib" />
+    <Library Include="..\lib\LuaPlusFramework.lib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\lib\box2d.pdb" />
+    <None Include="..\Apps\Bugs\data\lua\script.lua">
+      <Filter>src\script</Filter>
+    </None>
   </ItemGroup>
 </Project>

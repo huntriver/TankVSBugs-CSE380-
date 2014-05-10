@@ -41,8 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\lib\Box2D.lib" />
+    <Library Include="..\lib\LuaPlus.lib" />
+    <Library Include="..\lib\LuaPlusFramework.lib" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Apps\Bugs\data\lua\script.lua" />
     <None Include="..\lib\box2d.pdb" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -97,7 +100,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Box2D.lib;d3d9.lib;d3dx9.lib;winmm.lib;PoseurSpriteTypesImporter.lib;SimpleSideScrollerFramework.lib;tinyxml.lib;TMXMapImporter.lib;XMLFileImporter.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>LuaPlus.lib;LuaPlusFramework.lib;Box2D.lib;d3d9.lib;d3dx9.lib;winmm.lib;PoseurSpriteTypesImporter.lib;SimpleSideScrollerFramework.lib;tinyxml.lib;TMXMapImporter.lib;XMLFileImporter.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>../lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>

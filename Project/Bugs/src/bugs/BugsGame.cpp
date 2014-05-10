@@ -70,7 +70,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	bugsDataLoader->initWinHandle(hInstance, nCmdShow);
 	bugsGame->setDataLoader(bugsDataLoader);
 	bugsDataLoader->loadGame(bugsGame, W_INIT_FILE);
-	
+	bugsGame->getGSM()->addLevel(L"Level1", L"data/levels/level1/");
 	// WHAT WE SHOULD BE DOING HERE IS LOADING THE GAME DATA FROM FILES. THIS
 	// MEANS THE GUIS THEMSELVES AS WELL AS THE LEVELS. THAT WILL BE LEFT
 	// FOR BECHMARK HWS. FOR NOW WE WILL JUST HARD CODE THE LOADING OF THE GUI

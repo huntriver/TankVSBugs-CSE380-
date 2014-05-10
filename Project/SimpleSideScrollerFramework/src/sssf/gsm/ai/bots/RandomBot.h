@@ -9,7 +9,7 @@
 class RandomBot : public Bot
 {
 private:
-	void    pickRandomCyclesInRange2();
+	void pickRandomCyclesInRange2();
 	unsigned int cyclesRemainingBeforeThinking;
 	unsigned int minCyclesBeforeThinking;
 	unsigned int maxCyclesBeforeThinking;
