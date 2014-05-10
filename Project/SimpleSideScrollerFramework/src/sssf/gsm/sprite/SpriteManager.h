@@ -20,6 +20,7 @@
 #include "sssf\gsm\ai\pathfinding\GridPathfinder.h"
 #include "sssf\gsm\sprite\Effect.h"
 #include "sssf\gsm\sprite\FireEffect.h"
+#include "sssf\gsm\sprite\Tree.h"
 
 class SpriteManager
 {
@@ -30,6 +31,7 @@ private:
 
 	// THESE ARE THE BOTS IN THE GAME, LIKE ENEMIES, ROCKETS, OR ANYTHING
 	// THAT MOVES AROUND AND IS NOT THE PLAYER
+	list<Tree*> trees;
 	list<Bot*> bots;
 	list<Bot*> dummyBots;
 	list<Bot*>::iterator dummyBotsIterator;
@@ -69,6 +71,7 @@ public:
 	void                addBulletEffect(TopDownSprite* bullet);
 	void                addFireEffect(FireEffect* initFireEffect){effects.push_back(initFireEffect);}
 	void				addBot(Bot *botToAdd);
+	void                addTree(Tree *treeToAdd) {trees.push_back(treeToAdd);};
 	void                addBullet(TopDownSprite *bullet);
 	void				addSpriteItemsToRenderList(Game *game);
 	unsigned int		addSpriteType(AnimatedSpriteType *spriteTypeToAdd);

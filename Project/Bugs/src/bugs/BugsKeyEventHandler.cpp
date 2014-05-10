@@ -83,8 +83,10 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 
 		if(input->isKeyDownForFirstTime((unsigned int)'M')){
 			game->getGSM()->getSpriteManager()->getFireEffect()->setStart(true);
+			game->getGSM()->getSpriteManager()->getFireEffect()->setStop(false);
 		}else if(input->isKeyDown((unsigned int)'M')){
-
+			game->getGSM()->getSpriteManager()->getFireEffect()->setStart(true);
+			game->getGSM()->getSpriteManager()->getFireEffect()->setStop(false);
 		}else if (input->isKeyDownForFirstTime(SPACE_KEY) && game->getGSM()->getSpriteManager()->getBulletsSize() <= 5)
 		{
 			if(game->getGSM()->getSpriteManager()->getFireEffect()->isStart())

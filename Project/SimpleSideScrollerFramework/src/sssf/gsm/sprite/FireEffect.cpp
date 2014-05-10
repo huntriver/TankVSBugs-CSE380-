@@ -24,7 +24,7 @@ void FireEffect::changeFrame()
 	if(effectCounter == 6)
 	{
 		setCurrentState(L"IDLE");
-		inProgress = false;
+		// inProgress = false;
 		stop = false;
 		start = false;
 	}
@@ -45,6 +45,7 @@ void FireEffect::updateSprite()
 	if(stop && currentState != L"DYING")
 	{
 		effectCounter = 5;
+		inProgress = false;
 		setCurrentState(L"DYING");
 	}
 	if(start && !stop && !inProgress)

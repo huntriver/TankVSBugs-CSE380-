@@ -24,6 +24,7 @@
 #include "sssf\input\GameInput.h"
 #include "sssf\os\GameOS.h"
 #include "sssf\text\GameText.h"
+#include "sssf\gsm\sprite\Tree.h"
 
 // WINDOWS PLATFORM INCLUDES
 #include "sssf\platforms\Windows\WindowsOS.h"
@@ -242,7 +243,6 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 	body->SetLinearVelocity(b2Vec2(0.0f,0.0f));
 	body->CreateFixture(&fixtureDef);
 	player->setB2Body(body);
-
 	player->setOnTileThisFrame(false);
 	player->setOnTileLastFrame(false);
 	player->affixTightAABBBoundingVolume();
@@ -256,11 +256,11 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 	// AND LET'S ADD A BUNCH OF RANDOM JUMPING BOTS, FIRST ALONG
 	// A LINE NEAR THE TOP
 	
-	AnimatedSpriteType *botSpriteType = spriteManager->getSpriteType(1);
-
-
+	AnimatedSpriteType *botSpriteType = spriteManager->getSpriteType(1);	
+	
 	for(int i = 0; i <= 350; i++)
 		makeRandomBot(game, botSpriteType, 550, 1300, true);
+
 
 	game->getGSM()->getSpriteManager()->initDummyBotIterator();
 	
@@ -274,6 +274,32 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 	effect->setPlayer(player);
 	game->getGSM()->getSpriteManager()->addFireEffect(effect);
 	
+	LuaFunction<int> getNumOfTree = luaPstate->GetGlobal("getNumOfTree");
+	int numOfTree = getNumOfTree(gsm->getCurrentLevel());
+	int offset = 1 + (gsm->getCurrentLevel() - 1) * 5;
+	for(int i = 0; i < numOfTree; i++)
+	{
+		Tree* tree = new Tree();
+		tree->setSpriteType(spriteManager->getSpriteType(7));
+		tree->setAlpha(255);
+		tree->setHealth(spriteManager->getSpriteType(7)->getTextureWidth()/spriteManager->getSpriteType(4)->getTextureWidth());
+		tree->setCurrentState(IDLE);
+		tree->setRotationInRadians(0.0f);
+		tree->setAttack(0.0f);
+		spriteManager->addTree(tree);
+		b2BodyDef treeBodyDef;
+		LuaFunction<int> getTreeX = luaPstate->GetGlobal("getTreeX");
+		LuaFunction<int> getTreeY = luaPstate->GetGlobal("getTreeY");
+		treeBodyDef.position.Set(getTreeX(i + offset)/5.0f, getTreeY(i + offset)/-5.0f);
+		b2Body* treeBody = (world->boxWorld)->CreateBody(&treeBodyDef);
+		b2PolygonShape treeBox;
+		treeBox.SetAsBox(spriteManager->getSpriteType(7)->getTextureWidth()/10.0f, spriteManager->getSpriteType(7)->getTextureHeight()/10.0f);
+		treeBody->CreateFixture(&treeBox, 0.0f);
+		tree->setB2Body(treeBody);
+	}
+	
+	
+
 // UNCOMMENT THE FOLLOWING CODE BLOCK WHEN YOU ARE READY TO ADD SOME BOTS
 /*	for (int i = 2; i <= 26; i++)
 	{
