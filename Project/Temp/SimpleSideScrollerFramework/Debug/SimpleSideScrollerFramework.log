@@ -1,8 +1,8 @@
-﻿Build started 5/10/2014 2:30:01 AM.
+﻿Build started 5/10/2014 3:19:31 AM.
      1>Project "C:\Users\yubshang\Desktop\380 project\Project\SimpleSideScrollerFramework\SimpleSideScrollerFramework.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\gsm\sprite\FireEffect.cpp
-         FireEffect.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\gsm\state\GameStateManager.cpp
+         GameStateManager.cpp
        Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\yubshang\Desktop\380 project\Project\Common\SimpleSideScrollerFramework.lib" Box2D.lib /LIBPATH:../lib /NOLOGO "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\GameDataLoader.obj"
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\Game.obj"
@@ -47,4 +47,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.34
+Time Elapsed 00:00:03.26
