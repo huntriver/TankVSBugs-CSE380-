@@ -301,26 +301,9 @@ void RandomBot::think(Game *game)
 				{
 					setCurrentState(L"IDLE");
 					body->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
+					cyclesRemainingBeforeThinking = 1;
 				}
-				cyclesRemainingBeforeThinking--;
+			cyclesRemainingBeforeThinking--;
 		}
 	}
-	// EACH FRAME WE'LL TEST THIS BOT TO SEE IF WE NEED
-	// TO PICK A DIFFERENT DIRECTION TO FLOAT IN
-	/*
-	if (cyclesRemainingBeforeThinking == 0)
-	{
-		pickRandomDirection();
-		pickRandomCyclesInRange();
-	}
-	else
-		cyclesRemainingBeforeThinking--;
-
-	animationRandomizer--;
-	if (animationRandomizer == 0)
-	{
-		animationCounter++;
-		animationRandomizer = (rand() % 45) + 5;
-	}
-	*/
 }

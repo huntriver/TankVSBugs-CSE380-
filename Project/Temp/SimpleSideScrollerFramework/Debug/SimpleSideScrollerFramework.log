@@ -1,11 +1,8 @@
-﻿Build started 5/8/2014 12:20:22 AM.
+﻿Build started 5/9/2014 9:49:04 PM.
      1>Project "C:\Users\yubshang\Desktop\380 project\Project\SimpleSideScrollerFramework\SimpleSideScrollerFramework.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\gsm\sprite\SpriteManager.cpp
-         SpriteManager.cpp
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(65): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(417): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(424): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\gsm\state\GameStateManager.cpp
+         GameStateManager.cpp
        Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\yubshang\Desktop\380 project\Project\Common\SimpleSideScrollerFramework.lib" Box2D.lib /LIBPATH:../lib /NOLOGO "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\GameDataLoader.obj"
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\Game.obj"
@@ -49,4 +46,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.85
+Time Elapsed 00:00:03.18

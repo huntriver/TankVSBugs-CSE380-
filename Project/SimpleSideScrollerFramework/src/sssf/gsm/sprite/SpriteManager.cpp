@@ -214,7 +214,7 @@ scheduled for rendering.
 */
 void SpriteManager::addBot(Bot *botToAdd)
 {
-	bots.push_back(botToAdd);
+	dummyBots.push_back(botToAdd);
 }
 
 void SpriteManager::addBullet(TopDownSprite *bulletToAdd)
@@ -335,6 +335,20 @@ update method such that they may update themselves.
 */
 void SpriteManager::update(Game *game)
 {
+	
+	// list<Bot*>::iterator dummyBotIterator;
+	 timeLeft--;
+	if(timeLeft <= 0)
+	{
+		if(dummyBotsIterator != dummyBots.end())
+		{
+			Bot* botToAdd = *dummyBotsIterator;
+			bots.push_back(botToAdd);
+			dummyBotsIterator++;
+		}
+		timeLeft = 100;
+	}
+	
 	/*
 	if (bots.size()<0)
 	{
@@ -381,7 +395,6 @@ void SpriteManager::update(Game *game)
 	// FIRST LET'S DO THE NECESSARY PATHFINDING
 	// pathfinder->updatePath(&player);
 
-	list<Bot*>::iterator botIterator;
     /*
 	botIterator = bots.begin();
 	while (botIterator != bots.end())
@@ -408,6 +421,7 @@ void SpriteManager::update(Game *game)
 	game->getInput()->sKeyDisabled = false;
 	game->getInput()->dKeyDisabled = false;
 	game->getInput()->aKeyDisabled = false;
+	list<Bot*>::iterator botIterator;
 	botIterator = bots.begin();
 	while (botIterator != bots.end())
 	{
@@ -417,10 +431,12 @@ void SpriteManager::update(Game *game)
 			int attackDistance = player.getSpriteType()->getTextureWidth()/2.0f + fEffect.getSpriteType()->getTextureHeight()/2.0f + bot->getSpriteType()->getTextureHeight()/2.0f;
 			if(((((player.getRotationInRadians() == 0 && bot->getRotationInRadians() == PI) ||
 			(player.getRotationInRadians() == PI && bot->getRotationInRadians() == 0))&&
-			abs(player.getB2Body()->GetPosition().y*-5.0f- bot->getB2Body()->GetPosition().y*-5.0f) <= attackDistance))||
+			abs(player.getB2Body()->GetPosition().y*-5.0f- bot->getB2Body()->GetPosition().y*-5.0f) <= attackDistance&&
+			abs(player.getB2Body()->GetPosition().x*5.0f- bot->getB2Body()->GetPosition().x*5.0f) <= attackDistance))||
 			((((player.getRotationInRadians() == PI/2.0f && bot->getRotationInRadians() == -PI/2.0f) ||
 			(player.getRotationInRadians() == -PI/2.0f && bot->getRotationInRadians() == PI/2.0f))&&
-			abs(player.getB2Body()->GetPosition().x*5.0f- bot->getB2Body()->GetPosition().x*5.0f) <= attackDistance))){
+			abs(player.getB2Body()->GetPosition().x*5.0f- bot->getB2Body()->GetPosition().x*5.0f) <= attackDistance &&
+			abs(player.getB2Body()->GetPosition().y*-5.0f- bot->getB2Body()->GetPosition().y*-5.0f) <= attackDistance))){
 					bot->decHP(fEffect.getAttack());
 			}
 		}
@@ -526,4 +542,54 @@ void SpriteManager::addDyingEffect(TopDownSprite* sprite)
 	dyingEffect->getPhysicalProperties()->setX(x);
 	dyingEffect->getPhysicalProperties()->setY(y);
 	dyingEffects.push_back(dyingEffect);
+}
+
+void SpriteManager::makeRandomBot(Game *game, float initX, float initY)
+{
+//	SpriteManager *spriteManager = game->getGSM()->getSpriteManager();
+//	Physics *physics = game->getGSM()->getPhysics();
+	RandomBot *bot = new RandomBot();
+	//physics->addCollidableObject(bot);
+	//PhysicalProperties *pp = bot->getPhysicalProperties();
+	//pp->setPosition(initX, initY);
+	bot->setSpriteType(getSpriteType(1));
+	bot->setCurrentState(L"IDLE");
+	bot->setDirection(L"UP");
+	bot->setAlpha(255);
+	bot->setHealth((int)(getSpriteType(1)->getTextureWidth()/getSpriteType(4)->getTextureWidth()));
+	bot->setAttack(0.2);
+	int playerW = player.getSpriteType()->getTextureWidth()/2;
+	float randNum = rand()% playerW;
+	if(getBotSize() % 2 == 0)
+		bot->initBot(30, 300, 50/1.4f, true,randNum);
+	else
+		bot->initBot(30, 300, 50/1.4f, false,-randNum);
+	addBot(bot);
+	//bot->affixTightAABBBoundingVolume();
+
+	b2BodyDef bodyDef;
+	bodyDef.type = b2_dynamicBody;
+	bodyDef.position.Set(initX/5.0f, -initY/5.0f);
+	b2Body* body = (game->getGSM()->getWorld()->boxWorld)->CreateBody(&bodyDef);
+
+	// Define another box shape for our dynamic body.
+	b2PolygonShape dynamicBox;
+	dynamicBox.SetAsBox(getSpriteType(1)->getTextureWidth()/10.0f, getSpriteType(1)->getTextureHeight()/10.0f);
+
+	// Define the dynamic body fixture.
+	b2FixtureDef fixtureDef;
+	fixtureDef.shape = &dynamicBox;
+
+	// Set the box density to be non-zero, so it will be dynamic.
+	fixtureDef.density = 1.0f;
+
+	// Override the default friction.
+	fixtureDef.friction = 0.3f;
+	fixtureDef.filter.categoryBits = 0x0004;
+	fixtureDef.filter.maskBits = 0x0001|0x0008|0x0002;
+	// Add the shape to the body.
+	body->SetLinearVelocity(b2Vec2(0.0f,0.0f));
+	body->CreateFixture(&fixtureDef);
+	bot->setB2Body(body);
+	body->SetUserData(bot);
 }

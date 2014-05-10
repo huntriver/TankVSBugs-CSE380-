@@ -39,8 +39,10 @@
 
 // ANIMATED SPRITE TYPE LOADING
 #include "psti\PoseurSpriteTypesImporter.h"
-
+#include "LuaPlusFramework\LuaPlus.h"
 #include "Box2D\Box2D.h"
+
+using namespace LuaPlus;
 
 /*
 	loadGame - This method loads the setup game data into the game and
@@ -166,11 +168,16 @@ void BugsDataLoader::loadGUI(Game *game, wstring guiInitFile)
 	loadLevel - This method should load the data the level described by the
 	levelInitFile argument in to the Game's game state manager.
 */
-void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)	
+void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)	
 {
+	LuaState* luaPstate = LuaState::Create();
+	int result = luaPstate->DoFile("data/lua/script.lua");
+	
 	// LOAD THE LEVEL'S BACKGROUND TILES
 	TMXMapImporter tmxMapImporter;
-	tmxMapImporter.loadWorld(game, W_LEVEL_1_DIR, W_LEVEL_1_NAME);
+	tmxMapImporter.loadWorld(game, currentLevel, L"level.tmx");
+
+
 
 	// SPECIFY WHO WILL DO THE PATHFINDING
 	GameStateManager *gsm = game->getGSM();
@@ -206,19 +213,12 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 	player->setHealth(playerSpriteType->getTextureWidth()/spriteManager->getSpriteType(4)->getTextureWidth());
 	player->setHP(100.0f);
 	player->setAttack(50.0f);
-
-	/*
-	PhysicalProperties *playerProps = player->getPhysicalProperties();
-	playerProps->setX(PLAYER_INIT_X);
-	playerProps->setY(PLAYER_INIT_Y);
-	playerProps->setVelocity(0.0f, 0.0f);
-	playerProps->setAccelerationX(0);
-	playerProps->setAccelerationY(0);
-	*/
 	
+	LuaFunction<int> loadPlayerX = luaPstate->GetGlobal("loadPlayerX");
+	LuaFunction<int> loadPlayerY = luaPstate->GetGlobal("loadPlayerY");
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
-	bodyDef.position.Set(135.0f/5.0f, -150.0f/5.0f);
+	bodyDef.position.Set(loadPlayerX(gsm->getCurrentLevel())/5.0f, loadPlayerY(gsm->getCurrentLevel())/-5.0f);
 	// bodyDef.position.Set(135.0f/5.0f, -750.0f/5.0f);
 	b2Body* body = (world->boxWorld)->CreateBody(&bodyDef);
 	body->SetUserData(player);
@@ -255,41 +255,15 @@ void BugsDataLoader::loadWorld(Game *game, wstring levelInitFile)
 
 	// AND LET'S ADD A BUNCH OF RANDOM JUMPING BOTS, FIRST ALONG
 	// A LINE NEAR THE TOP
-	/*
+	
 	AnimatedSpriteType *botSpriteType = spriteManager->getSpriteType(1);
 
+
+	for(int i = 0; i <= 350; i++)
+		makeRandomBot(game, botSpriteType, 550, 1300, true);
+
+	game->getGSM()->getSpriteManager()->initDummyBotIterator();
 	
-	makeRandomBot(game, botSpriteType, 550, 300, true);
-	makeRandomBot(game, botSpriteType, 550, 300, false);
-	makeRandomBot(game, botSpriteType, 600, 170, false);
-	makeRandomBot(game, botSpriteType, 650, 260, false);
-	makeRandomBot(game, botSpriteType, 700, 340, false);
-	makeRandomBot(game, botSpriteType, 700, 340, true);
-	makeRandomBot(game, botSpriteType, 400, 320, false);
-	makeRandomBot(game, botSpriteType, 500, 440, true);
-	makeRandomBot(game, botSpriteType, 500, 440, false);
-	makeRandomBot(game, botSpriteType, 500, 440, true);
-	makeRandomBot(game, botSpriteType, 500, 440, true);
-	makeRandomBot(game, botSpriteType, 500, 440, false);
-	makeRandomBot(game, botSpriteType, 500, 440, false);
-	makeRandomBot(game, botSpriteType, 500, 440, false);
-	makeRandomBot(game, botSpriteType, 500, 440, false);
-	makeRandomBot(game, botSpriteType, 550, 300, true);
-	makeRandomBot(game, botSpriteType, 550, 300, false);
-	makeRandomBot(game, botSpriteType, 600, 170, false);
-	makeRandomBot(game, botSpriteType, 650, 260, false);
-	makeRandomBot(game, botSpriteType, 700, 340, false);
-	makeRandomBot(game, botSpriteType, 700, 340, true);
-	makeRandomBot(game, botSpriteType, 400, 320, false);
-	makeRandomBot(game, botSpriteType, 500, 440, true);
-	makeRandomBot(game, botSpriteType, 500, 440, false);
-	makeRandomBot(game, botSpriteType, 500, 440, true);
-	makeRandomBot(game, botSpriteType, 500, 440, true);
-	makeRandomBot(game, botSpriteType, 500, 440, false);
-	makeRandomBot(game, botSpriteType, 500, 440, false);
-	makeRandomBot(game, botSpriteType, 500, 440, false);
-	makeRandomBot(game, botSpriteType, 500, 440, false);
-	*/
 	FireEffect* effect = spriteManager->getFireEffect();
 	AnimatedSpriteType *fireSpriteType = spriteManager->getSpriteType(6);
 	effect->setSpriteType(fireSpriteType);
@@ -359,30 +333,30 @@ void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType
 	//bot->affixTightAABBBoundingVolume();
 
 	b2BodyDef bodyDef;
-		bodyDef.type = b2_dynamicBody;
-		bodyDef.position.Set(initX/5.0f, -initY/5.0f);
-		b2Body* body = (game->getGSM()->getWorld()->boxWorld)->CreateBody(&bodyDef);
+	bodyDef.type = b2_dynamicBody;
+	bodyDef.position.Set(initX/5.0f, -initY/5.0f);
+	b2Body* body = (game->getGSM()->getWorld()->boxWorld)->CreateBody(&bodyDef);
 
-		// Define another box shape for our dynamic body.
-		b2PolygonShape dynamicBox;
-		dynamicBox.SetAsBox(randomBotType->getTextureWidth()/10.0f, randomBotType->getTextureHeight()/10.0f);
+	// Define another box shape for our dynamic body.
+	b2PolygonShape dynamicBox;
+	dynamicBox.SetAsBox(randomBotType->getTextureWidth()/10.0f, randomBotType->getTextureHeight()/10.0f);
 
-		// Define the dynamic body fixture.
-		b2FixtureDef fixtureDef;
-		fixtureDef.shape = &dynamicBox;
+	// Define the dynamic body fixture.
+	b2FixtureDef fixtureDef;
+	fixtureDef.shape = &dynamicBox;
 
-		// Set the box density to be non-zero, so it will be dynamic.
-		fixtureDef.density = 1.0f;
+	// Set the box density to be non-zero, so it will be dynamic.
+	fixtureDef.density = 1.0f;
 
-		// Override the default friction.
-		fixtureDef.friction = 0.3f;
-		fixtureDef.filter.categoryBits = BUG;
-		fixtureDef.filter.maskBits = WALL|BULLET|TANK;
-		// Add the shape to the body.
-		body->SetLinearVelocity(b2Vec2(0.0f,0.0f));
-		body->CreateFixture(&fixtureDef);
-		bot->setB2Body(body);
-		body->SetUserData(bot);
+	// Override the default friction.
+	fixtureDef.friction = 0.3f;
+	fixtureDef.filter.categoryBits = BUG;
+	fixtureDef.filter.maskBits = WALL|BULLET|TANK;
+	// Add the shape to the body.
+	body->SetLinearVelocity(b2Vec2(0.0f,0.0f));
+	body->CreateFixture(&fixtureDef);
+	bot->setB2Body(body);
+	body->SetUserData(bot);
 }
 
 /*

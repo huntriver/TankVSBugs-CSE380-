@@ -31,6 +31,8 @@ private:
 	// THESE ARE THE BOTS IN THE GAME, LIKE ENEMIES, ROCKETS, OR ANYTHING
 	// THAT MOVES AROUND AND IS NOT THE PLAYER
 	list<Bot*> bots;
+	list<Bot*> dummyBots;
+	list<Bot*>::iterator dummyBotsIterator;
 	list<TopDownSprite*> bullets;
 	list<Effect*>  effects;
 	list<Effect*>  dyingEffects;
@@ -45,11 +47,11 @@ private:
 	// THIS GUY HELPS SPRITES FIND THEIR WAY. NOTE THAT IT IS CUSTOMIZABLE, SINCE
 	// WE MAY BE RENDERING AN ORTHOGRAPHIC MAP OR AN ISOMETRIC ONE
 	GridPathfinder *pathfinder;
-
+	int timeLeft;
 public:
 	// NOTHING TO INIT OR DESTROY
 	bool healthDisplay;
-	SpriteManager()		{healthDisplay=true;}
+	SpriteManager()		{healthDisplay=true;timeLeft=100;}
 	~SpriteManager()	{}
 
 	// INLINED ACCESSOR 
@@ -73,9 +75,11 @@ public:
 	void				addSpriteToRenderList(AnimatedSprite *sprite, RenderList *renderList, Viewport *viewport);
 	void				addSpriteHealthToRenderList(AnimatedSprite *sprite, RenderList *renderList, Viewport *viewport);
 	void				clearSprites();
+	void                initDummyBotIterator(){ dummyBotsIterator = dummyBots.begin();}
 	AnimatedSpriteType* getSpriteType(unsigned int typeIndex);
 	Bot*				removeBot(Bot *botToRemove);
 	void				setPathfinder(GridPathfinder *initPathfinder) { pathfinder = initPathfinder; }
 	void				unloadSprites();
 	void				update(Game *game);
+	void				makeRandomBot(Game *game, float initX, float initY);
 };
