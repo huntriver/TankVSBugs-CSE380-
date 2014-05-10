@@ -55,12 +55,12 @@ void Box2DContactListener::BeginContact(b2Contact* contact)
 		   {
 			   beginTankBugContact(t2, t1);
 		   }else if(t1->getSpriteType()->getSpriteTypeID() == TYPE_BULLET &&
-			   t2->getSpriteType()->getSpriteTypeID() == TYPE_ANT)
+			   (t2->getSpriteType()->getSpriteTypeID() == TYPE_ANT || t2->getSpriteType()->getSpriteTypeID() == TYPE_TREE))
 		   {
 			   t1->setHealth(0);
 			   t2->decHP(t1->getAttack());
 			   ((RandomBot*)t2)->setFightBack(true);
-		   }else if(t1->getSpriteType()->getSpriteTypeID() == TYPE_ANT &&
+		   }else if((t1->getSpriteType()->getSpriteTypeID() == TYPE_ANT || t1->getSpriteType()->getSpriteTypeID() == TYPE_TREE)&&
 			   t2->getSpriteType()->getSpriteTypeID() == TYPE_BULLET)
 		   {
 			   t1->decHP(t2->getAttack());

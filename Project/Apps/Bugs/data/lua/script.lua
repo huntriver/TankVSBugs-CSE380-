@@ -2,7 +2,9 @@ player_pos_x = {135}
 player_pos_y = {150}
 num_of_tree = {1,2,3}
 trees_pos_x = {200,  0, 0, 0, 0}
-trees_pos_y = {1750, 0, 0, 0, 0}
+trees_pos_y = {1730, 0, 0, 0, 0}
+trees_pos_x_off = {0 , 0, 0, 0, 0}
+trees_pos_y_off = {-170, 0, 0, 0, 0}
 
 function getNumOfTree(level)
 	return num_of_tree[level]
@@ -14,6 +16,14 @@ end
 
 function getTreeY(index)
 	return trees_pos_y[index]
+end
+
+function getTreeXOff(index)
+	return trees_pos_x_off[index]
+end
+
+function getTreeYOff(index)
+	return trees_pos_y_off[index]
 end
 
 
