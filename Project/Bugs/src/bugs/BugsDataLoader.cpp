@@ -258,10 +258,6 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 	
 	AnimatedSpriteType *botSpriteType = spriteManager->getSpriteType(1);	
 	
-	for(int i = 0; i <= 350; i++)
-		makeRandomBot(game, botSpriteType, 550, 1300, true);
-
-
 	game->getGSM()->getSpriteManager()->initDummyBotIterator();
 	
 	FireEffect* effect = spriteManager->getFireEffect();
@@ -282,7 +278,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 		Tree* tree = new Tree();
 		tree->setSpriteType(spriteManager->getSpriteType(7));
 		tree->setAlpha(255);
-		tree->setHealth(spriteManager->getSpriteType(7)->getTextureWidth()/spriteManager->getSpriteType(4)->getTextureWidth());
+		tree->setHealth(1);
 		tree->setCurrentState(IDLE);
 		tree->setRotationInRadians(0.0f);
 		tree->setAttack(0.0f);
@@ -290,14 +286,23 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 		b2BodyDef treeBodyDef;
 		LuaFunction<int> getTreeX = luaPstate->GetGlobal("getTreeX");
 		LuaFunction<int> getTreeY = luaPstate->GetGlobal("getTreeY");
-		treeBodyDef.position.Set(getTreeX(i + offset)/5.0f, getTreeY(i + offset)/-5.0f);
+		int treeX = getTreeX(i + offset);
+		int treeY = getTreeY(i + offset);
+		treeBodyDef.position.Set(treeX/5.0f, treeY/-5.0f);
+		LuaFunction<int> getTreeXOff = luaPstate->GetGlobal("getTreeXOff");
+		LuaFunction<int> getTreeYOff = luaPstate->GetGlobal("getTreeYOff");
+		int treeOffX = getTreeXOff(i + offset);
+		int treeOffY = getTreeYOff(i + offset);
+		for(int j = 0; j < 150; j++)
+			makeRandomBot(game, spriteManager->getSpriteType(1), treeX + treeOffX, treeY + treeOffY);
+		spriteManager->initDummyBotIterator();
 		b2Body* treeBody = (world->boxWorld)->CreateBody(&treeBodyDef);
 		b2PolygonShape treeBox;
-		treeBox.SetAsBox(spriteManager->getSpriteType(7)->getTextureWidth()/10.0f, spriteManager->getSpriteType(7)->getTextureHeight()/10.0f);
+		treeBox.SetAsBox((spriteManager->getSpriteType(7)->getTextureWidth() - 50.0f)/10.0f, (spriteManager->getSpriteType(7)->getTextureHeight() - 30.0f)/10.0f);
 		treeBody->CreateFixture(&treeBox, 0.0f);
 		tree->setB2Body(treeBody);
+		treeBody->SetUserData(tree);
 	}
-	
 	
 
 // UNCOMMENT THE FOLLOWING CODE BLOCK WHEN YOU ARE READY TO ADD SOME BOTS
@@ -335,7 +340,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 	game->getGUI()->getViewport()->setViewportY(0.0f);
 }
 
-void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType, float initX, float initY, bool initXTerm)
+void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType, float initX, float initY)
 {
 	SpriteManager *spriteManager = game->getGSM()->getSpriteManager();
 //	Physics *physics = game->getGSM()->getPhysics();
@@ -352,11 +357,10 @@ void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType
 	int playerW = game->getGSM()->getSpriteManager()->getPlayer()->getSpriteType()->getTextureWidth()/2;
 	float randNum = rand()% playerW;
 	if(game->getGSM()->getSpriteManager()->getBotSize() % 2 == 0)
-		bot->initBot(30, 300, MAX_TANK_SPEED/1.4f, initXTerm,randNum);
+		bot->initBot(30, 300, MAX_TANK_SPEED/1.4f, true,randNum);
 	else
-		bot->initBot(30, 300, MAX_TANK_SPEED/1.4f, initXTerm,-randNum);
+		bot->initBot(30, 300, MAX_TANK_SPEED/1.4f, false,-randNum);
 	spriteManager->addBot(bot);
-	//bot->affixTightAABBBoundingVolume();
 
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
@@ -376,8 +380,9 @@ void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType
 
 	// Override the default friction.
 	fixtureDef.friction = 0.3f;
-	fixtureDef.filter.categoryBits = BUG;
-	fixtureDef.filter.maskBits = WALL|BULLET|TANK;
+	fixtureDef.filter.categoryBits = DUMMYBUG;
+	fixtureDef.filter.maskBits = WALL;
+
 	// Add the shape to the body.
 	body->SetLinearVelocity(b2Vec2(0.0f,0.0f));
 	body->CreateFixture(&fixtureDef);

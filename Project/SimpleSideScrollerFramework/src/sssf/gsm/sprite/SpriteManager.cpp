@@ -364,82 +364,42 @@ void SpriteManager::update(Game *game)
 {
 	
 	// list<Bot*>::iterator dummyBotIterator;
-	
-	timeLeft--;
-	if(timeLeft <= 0)
+	player.updateSprite();
+
+	int fAttackMinX = player.getB2Body()->GetPosition().x * 5.0f; 
+	list<Tree*>::iterator treeIt;
+	treeIt = trees.begin();
+	while(treeIt != trees.end())
 	{
-		if(dummyBotsIterator != dummyBots.end())
+		Tree* tree = (*treeIt);
+		tree->updateSprite();
+		if(tree->getMarkForRemoval())
 		{
-			Bot* botToAdd = *dummyBotsIterator;
-			bots.push_back(botToAdd);
-			dummyBotsIterator++;
+			game->getGSM()->getWorld()->boxWorld->DestroyBody(tree->getB2Body());
+			// delete tree;
+			treeIt = trees.erase(treeIt);
+		}else{
+			if(tree->getSpawnFrameCounter() <= 0)
+			{
+				// Spawn a new bot
+				Bot* bot = (*dummyBotsIterator);
+				dummyBotsIterator++;
+				b2Filter filter;
+				filter.categoryBits = 0x0004;
+				filter.maskBits = 0x0001|0x0002|0x0008;
+				bot->getB2Body()->GetFixtureList()->SetFilterData(filter);
+				bots.push_back(bot);
+				tree->resetSpawnFrameCounter();
+			}
+			if(fEffect.getCurrentState() != L"IDLE")
+			{
+				int attackDistance = player.getSpriteType()->getTextureWidth()/2.0f + fEffect.getSpriteType()->getTextureHeight()/2.0f + tree->getSpriteType()->getTextureHeight()/2.0f;
+				if(abs(tree->getB2Body()->GetPosition().x*5.0f - player.getB2Body()->GetPosition().x*5.0f) <= attackDistance && abs(tree->getB2Body()->GetPosition().y*-5.0f - player.getB2Body()->GetPosition().y*-5.0f) <= attackDistance)
+					tree->decHP(fEffect.getAttack());
+			}
+			treeIt++;
 		}
-		timeLeft = 100;
 	}
-	
-	/*
-	if (bots.size()<0)
-	{
-		//Physics *physics = game->getGSM()->getPhysics();
-		RandomBot *bot = new RandomBot();
-		//physics->addCollidableObject(bot);
-		//PhysicalProperties *pp = bot->getPhysicalProperties();
-		//pp->setPosition(200, 300);
-		AnimatedSpriteType *botSpriteType = this->getSpriteType(1);
-		bot->setSpriteType(botSpriteType);
-		bot->setCurrentState(L"IDLE");
-		bot->setAlpha(255);
-		this->addBot(bot);
-
-		b2BodyDef bodyDef;
-		bodyDef.type = b2_dynamicBody;
-		bodyDef.position.Set(200.0f/5.0f, -400.0f/5.0f);
-		b2Body* body = (game->getGSM()->getWorld()->boxWorld)->CreateBody(&bodyDef);
-
-		// Define another box shape for our dynamic body.
-		b2PolygonShape dynamicBox;
-		dynamicBox.SetAsBox(32.0f/5.0f, 32.0f/5.0f);
-
-		// Define the dynamic body fixture.
-		b2FixtureDef fixtureDef;
-		fixtureDef.shape = &dynamicBox;
-
-		// Set the box density to be non-zero, so it will be dynamic.
-		fixtureDef.density = 1.0f;
-
-		// Override the default friction.
-		fixtureDef.friction = 0.3f;
-
-		// Add the shape to the body.
-		body->SetLinearVelocity(b2Vec2(0.0f,0.0f));
-		body->CreateFixture(&fixtureDef);
-		bot->setB2Body(body);
-		body->SetUserData(bot);
-
-		//bot->affixTightAABBBoundingVolume();
-	}
-	TT++;
-	*/
-	// FIRST LET'S DO THE NECESSARY PATHFINDING
-	// pathfinder->updatePath(&player);
-
-    /*
-	botIterator = bots.begin();
-	while (botIterator != bots.end())
-	{
-		Bot *bot = (*botIterator);
-		if (bot->dead){
-			botIterator=bots.erase(botIterator);
-			if (botIterator==bots.end()) break;
-			bot = (*botIterator);
-		}
-		if (botIterator==bots.end()) break;
-		//if (bot->hasReachedDestination())
-			//bot->pickRandomDestination(game);
-		// pathfinder->updatePath(bot);
-		botIterator++;
-	}
-	*/
 
 	// THEN UPDATE THE PLAYER SPRITE ANIMATION FRAME/STATE/ROTATION
 	player.updateSprite();

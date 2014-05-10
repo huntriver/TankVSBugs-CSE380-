@@ -10,12 +10,14 @@ private:
 	int offsetY;
 
 public:
-	Tree(){spawnRate=350; spawnFrameCounter=350;}
+	Tree(){spawnRate = 300; spawnFrameCounter = 0;}
 	int getSpawnRate() { return spawnRate; }
 	int getSpawnFrameCounter() { return spawnFrameCounter; }
 	int getOffsetX() { return offsetX; }
 	int getOffsetY() { return offsetY; }
-	void initOffsetX(int initOffsetX) { offsetX = initOffsetX; }
-	void initOffsetY(int initOffsetY) { offsetY = initOffsetY; }
+	void setOffsetX(int initOffsetX) { offsetX = initOffsetX; }
+	void setOffsetY(int initOffsetY) { offsetY = initOffsetY; }
+	void resetSpawnFrameCounter() { spawnFrameCounter = spawnRate; }
 	void updateSprite();
+	void changeFrame();
 };
