@@ -181,6 +181,15 @@ void SpriteManager::addSpriteItemsToRenderList(	Game *game)
 			bulletIterator++;
 		}
 
+		list<Tree*>::iterator treeIterator;
+		treeIterator = trees.begin();
+		while (treeIterator != trees.end())
+		{
+			Tree *tree = (*treeIterator);
+			addSpriteToRenderList(tree, renderList, viewport);
+			treeIterator++;
+		}
+
 		// ADD THE PLAYER SPRITE
 		addSpriteToRenderList(&player, renderList, viewport);
 
@@ -202,6 +211,13 @@ void SpriteManager::addSpriteItemsToRenderList(	Game *game)
 				Bot *bot = (*botIterator);
 				addSpriteHealthToRenderList(bot, renderList, viewport);
 				botIterator++;
+			}
+			treeIterator = trees.begin();
+			while (treeIterator != trees.end())
+			{
+				Tree* tree = (*treeIterator);
+				addSpriteHealthToRenderList(tree, renderList, viewport);
+				treeIterator++;
 			}
 		}
 	}
@@ -305,6 +321,16 @@ void SpriteManager::unloadSprites()
 	}
 	dyingEffects.clear();
 
+	list<Tree*>::iterator treeIt = trees.begin();
+	while (treeIt != trees.end())
+	{
+		list<Tree*>::iterator tempIt = treeIt;
+		treeIt++;
+		Tree *treeToDelete = (*tempIt);
+		delete treeToDelete;
+	}
+
+	trees.clear();
 	vector<AnimatedSpriteType*>::iterator spriteTypesIt = spriteTypes.begin();
 	while (spriteTypesIt != spriteTypes.end())
 	{
@@ -337,7 +363,8 @@ void SpriteManager::update(Game *game)
 {
 	
 	// list<Bot*>::iterator dummyBotIterator;
-	 timeLeft--;
+	
+	timeLeft--;
 	if(timeLeft <= 0)
 	{
 		if(dummyBotsIterator != dummyBots.end())

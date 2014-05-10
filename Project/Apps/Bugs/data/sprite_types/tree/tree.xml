@@ -9,7 +9,7 @@
   <animation_state>
    <state>IDLE</state>
    <animation_sequence>
-    <pose image_id="1" duration="4"/>
+    <pose image_id="1" duration="1000"/>
    </animation_sequence>
   </animation_state>
  </animations_list>  
