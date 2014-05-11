@@ -25,7 +25,9 @@ private:
 	float prevbX;
 	float proxY;
 	float prevbY;
-
+	float prevbX2;
+	float prevbY2;
+	bool firstTimeThink;
 public:
 	RandomBot();
 	~RandomBot();

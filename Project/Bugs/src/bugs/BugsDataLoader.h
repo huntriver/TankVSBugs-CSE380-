@@ -14,6 +14,7 @@
 #include "sssf\game\Game.h"
 #include "sssf\gsm\sprite\AnimatedSpriteType.h"
 #include "sssf\platforms\DirectX\DirectXTextureManager.h"
+#include "sssf\gsm\sprite\Tree.h"
 
 class BugsDataLoader : public GameDataLoader
 {
@@ -46,7 +47,7 @@ public:
 	// SOME HELPER METHODS FOR SETTING UP THE GAME
 	void initColors(GameGraphics *graphics,	map<wstring,wstring> *properties);
 	void initViewport(GameGUI *gui, map<wstring,wstring> *properties);
-	void makeRandomBot(Game *game, AnimatedSpriteType *randomJumpingBotType, float initX, float initY);
+	void makeRandomBot(Game *game, AnimatedSpriteType *randomJumpingBotType, float initX, float initY, Tree* tree);
 
 	// AND SOME HELPER METHODS FOR LOADING THE GUI
 	void initCursor(GameGUI *gui, DirectXTextureManager *guiTextureManager);
@@ -56,4 +57,5 @@ public:
 	void initInGameGUI(GameGUI *gui, DirectXTextureManager *guiTextureManager);
 	void initPauseMenu(GameGUI *gui, DirectXTextureManager *guiTextureManager);
 	void initControlMenu(GameGUI *gui, DirectXTextureManager *guiTextureManager);
+	void initStoryMenu(GameGUI* gui, DirectXTextureManager* guiTextureManager);
 };

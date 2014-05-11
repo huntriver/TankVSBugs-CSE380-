@@ -1,5 +1,17 @@
 #include "sssf\gsm\sprite\Tree.h"
 
+
+Tree::~Tree()
+{
+	while(dummyBotsIterator != dummyBots.end())
+	{
+		list<Bot*>::iterator tempIt = dummyBotsIterator;
+		dummyBotsIterator++;
+		delete (*tempIt);
+	}
+	dummyBots.clear();
+}
+
 void Tree::changeFrame()
 {
 	// RESET THE COUNTER

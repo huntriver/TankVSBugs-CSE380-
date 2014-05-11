@@ -1,5 +1,6 @@
 #pragma once
 #include "sssf\gsm\sprite\TopDownSprite.h"
+#include "sssf\gsm\ai\Bot.h"
 
 class Tree: public TopDownSprite
 {
@@ -11,8 +12,11 @@ private:
 	int interval;
 	int intervalFrameCounter;
 	bool maxSpawnRate;
+	list<Bot*> dummyBots;
+	list<Bot*>::iterator dummyBotsIterator;
 public:
 	Tree(){spawnRate = 300; spawnFrameCounter = 0;intervalFrameCounter = 0;maxSpawnRate=false;}
+	~Tree();
 	int getSpawnRate() { return spawnRate; }
 	int getSpawnFrameCounter() { return spawnFrameCounter; }
 	int getOffsetX() { return offsetX; }
@@ -28,4 +32,8 @@ public:
 	void updateSprite();
 	void changeFrame();
 	void increaseSpawnRate();
+	void addBot(Bot* botToAdd){ dummyBots.push_back(botToAdd); }
+	void resetDummyBotsIterator(){ dummyBotsIterator = dummyBots.begin(); }
+	list<Bot*>::iterator getDumyBotIterator() { return dummyBotsIterator; }
+	void incDummyBotsIterator() { dummyBotsIterator++; }
 };

@@ -19,7 +19,7 @@ RandomBot::RandomBot()
 	fightBack = false;
 	// AND START THE BOT OFF IN A RANDOM DIRECTION AND VELOCITY
 	// AND WITH RANDOM INTERVAL UNTIL IT THINKS AGAIN
-	
+	firstTimeThink = true;
 //	pickRandomCyclesInRange();
 
 
@@ -284,6 +284,7 @@ void RandomBot::think(Game *game)
 			if(approachFailed && attempApproach)
 			{	
 				attempApproach = false;
+				firstTimeThink = true;
 				pickRandomDirection();
 				pickRandomCyclesInRange();
 			}else{
@@ -292,6 +293,11 @@ void RandomBot::think(Game *game)
 					approachFailed = false;
 					pickRandomDirection();
 					pickRandomCyclesInRange();
+					leftEdgeCC = 0;
+					rightEdgeCC = 0;
+					upEdgeCC = 0;
+					downEdgeCC = 0;
+					firstTimeThink = true;
 				}
 			}
 			if((rotationInRadians == -PI/2.0f && leftEdgeCC > 0) ||
@@ -302,8 +308,40 @@ void RandomBot::think(Game *game)
 					setCurrentState(L"IDLE");
 					body->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
 					cyclesRemainingBeforeThinking = 1;
+			}else if(!firstTimeThink){
+				if(rotationInRadians == -PI/2.0f || rotationInRadians == PI/2.0f)
+				{
+					float diff = abs(body->GetPosition().x * 5.0f - prevbX2);
+					if(diff <= 0.3)
+					{
+						// It is stuck
+						if(rotationInRadians == PI/2.0f)
+							rightEdgeCC += 1;
+						else
+							leftEdgeCC += 1;
+						setCurrentState(L"IDLE");
+						body->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
+						cyclesRemainingBeforeThinking = 1;
+					}
+				}else{
+					float diff = abs(body->GetPosition().y * -5.0f - prevbY2);
+					if(diff <= 0.3)
+					{
+						if(rotationInRadians == 0)
+							upEdgeCC += 1;
+						else
+							downEdgeCC += 1 ;
+						setCurrentState(L"IDLE");
+						body->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
+						cyclesRemainingBeforeThinking = 1;
+					}
 				}
+			}
 			cyclesRemainingBeforeThinking--;
 		}
 	}
+
+	prevbX2 = body->GetPosition().x * 5.0f;
+	prevbY2 = body->GetPosition().y * -5.0f;
+	firstTimeThink = false;
 }

@@ -4,8 +4,8 @@ num_of_tree = {1,2,3}
 spawn_rate_change_interval = {200,0,0}
 trees_pos_x = {200,  0, 0, 0, 0}
 trees_pos_y = {1730, 0, 0, 0, 0}
-trees_pos_x_off = {0 , 0, 0, 0, 0}
-trees_pos_y_off = {-170, 0, 0, 0, 0}
+trees_pos_x_off = {170 , 0, 0, 0, 0}
+trees_pos_y_off = {0, 0, 0, 0, 0}
 
 function getSpawnRateInterval(level)
 	return spawn_rate_change_interval[level]
