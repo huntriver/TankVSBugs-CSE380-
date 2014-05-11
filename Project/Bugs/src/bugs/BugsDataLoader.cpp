@@ -278,7 +278,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 		Tree* tree = new Tree();
 		tree->setSpriteType(spriteManager->getSpriteType(7));
 		tree->setAlpha(255);
-		tree->setHealth(1);
+		tree->setHealth((int)(spriteManager->getSpriteType(7)->getTextureWidth()/game->getGSM()->getSpriteManager()->getSpriteType(4)->getTextureWidth()));
 		tree->setCurrentState(IDLE);
 		tree->setRotationInRadians(0.0f);
 		tree->setAttack(0.0f);
@@ -293,6 +293,8 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 		LuaFunction<int> getTreeYOff = luaPstate->GetGlobal("getTreeYOff");
 		int treeOffX = getTreeXOff(i + offset);
 		int treeOffY = getTreeYOff(i + offset);
+		LuaFunction<int> getSpawnRateInterval = luaPstate->GetGlobal("getSpawnRateInterval");
+		tree->setIterval(getSpawnRateInterval(i + 1));
 		for(int j = 0; j < 150; j++)
 			makeRandomBot(game, spriteManager->getSpriteType(1), treeX + treeOffX, treeY + treeOffY);
 		spriteManager->initDummyBotIterator();
@@ -407,7 +409,40 @@ void BugsDataLoader::hardCodedLoadGUIExample(Game *game)
 	initMainMenu(gui, guiTextureManager);
 	// initCreditsMenu(gui, guiTextureManager);
 	initPauseMenu(gui, guiTextureManager);
+	initControlMenu(gui, guiTextureManager);
 	// initInGameGUI(gui, guiTextureManager);
+}
+
+void BugsDataLoader::initControlMenu(GameGUI *gui, DirectXTextureManager *guiTextureManager)
+{
+	ScreenGUI *controlMenuGUI = new ScreenGUI();
+	unsigned int imageID = guiTextureManager->loadTexture(W_CONTROLS_MENU_PATH);
+	OverlayImage *imageToAdd = new OverlayImage();
+	imageToAdd->x = 0;
+	imageToAdd->y = 0;
+	imageToAdd->z = 0;
+	imageToAdd->alpha = 255;
+	imageToAdd->width = 1366;
+	imageToAdd->height = 768;
+	imageToAdd->imageID = imageID;
+	controlMenuGUI->addOverlayImage(imageToAdd);
+	int normalTextureID = guiTextureManager->loadTexture(W_BACK_IMAGE_PATH);
+	int mouseOverTextureID = guiTextureManager->loadTexture(W_BACK_IMAGE_PATH);
+
+	Button *buttonToAdd = new Button();
+	buttonToAdd->initButton(normalTextureID,
+							mouseOverTextureID,
+							16,
+							630,
+							0,
+							255,
+							400,
+							100,
+							false,
+							W_BACK_COMMAND);
+	controlMenuGUI->addButton(buttonToAdd);
+
+	gui->addScreenGUI(GS_MENU_CONTROLS_MENU, controlMenuGUI);
 }
 
 void BugsDataLoader::initCreditsMenu(GameGUI *gui, DirectXTextureManager *guiTextureManager)
@@ -534,7 +569,7 @@ void BugsDataLoader::initMainMenu(GameGUI *gui,	DirectXTextureManager *guiTextur
 	buttonToAdd->initButton(normalTextureID,
 							mouseOverTextureID,
 							72,
-							319,
+							335,
 							0,
 							255,
 							400,
@@ -552,7 +587,7 @@ void BugsDataLoader::initMainMenu(GameGUI *gui,	DirectXTextureManager *guiTextur
 	buttonToAdd->initButton(normalTextureID,
 							mouseOverTextureID,
 							73,
-							540,
+							510,
 							0,
 							255,
 							400,
@@ -562,6 +597,7 @@ void BugsDataLoader::initMainMenu(GameGUI *gui,	DirectXTextureManager *guiTextur
 
 	// AND NOW LOAD IT INTO A ScreenGUI
 	mainMenuGUI->addButton(buttonToAdd);
+
 	// AND LET'S ADD OUR SCREENS
 	gui->addScreenGUI(GS_MAIN_MENU,		mainMenuGUI);
 }
@@ -588,13 +624,31 @@ void BugsDataLoader::initPauseMenu(GameGUI *gui,	DirectXTextureManager *guiTextu
 	buttonToAdd->initButton(normalTextureID,
 							mouseOverTextureID,
 							496,
-							284,
+							262,
 							0,
 							255,
 							400,
 							100,
 							false,
 							W_RESUME_COMMAND);
+
+	// AND NOW LOAD IT INTO A ScreenGUI
+	pauseMenuGUI->addButton(buttonToAdd);
+
+	normalTextureID = guiTextureManager->loadTexture(W_CONTROLS_IMAGE_PATH);
+	mouseOverTextureID = guiTextureManager->loadTexture(W_CONTROLS_IMAGE_PATH);
+
+	buttonToAdd = new Button();
+	buttonToAdd->initButton(normalTextureID,
+							mouseOverTextureID,
+							496,
+							418,
+							0,
+							255,
+							400,
+							100,
+							false,
+							W_CONTROL_COMMAND);
 
 	// AND NOW LOAD IT INTO A ScreenGUI
 	pauseMenuGUI->addButton(buttonToAdd);
@@ -606,7 +660,7 @@ void BugsDataLoader::initPauseMenu(GameGUI *gui,	DirectXTextureManager *guiTextu
 	buttonToAdd->initButton(normalTextureID,
 							mouseOverTextureID,
 							496,
-							504,
+							578,
 							0,
 							255,
 							400,

@@ -580,8 +580,7 @@ void DirectXGraphics::renderWorldRenderList()
 					DEFAULT_ALPHA_COLOR)))
 				{
 					game->getText()->writeDebugOutput("\nspriteHandler->Draw: FAILED");
-				}
-				// RENDER THE ITEMS WITH CUSTOM TRANSPARENCY
+				}// RENDER THE ITEMS WITH CUSTOM TRANSPARENCY
 				else
 				{
 					if (itemToRender.a < 0)
@@ -598,7 +597,22 @@ void DirectXGraphics::renderWorldRenderList()
 						game->getText()->writeDebugOutput("\nspriteHandler->Draw: FAILED");
 					}
 				}
-			}
+			}else
+				{
+					if (itemToRender.a < 0)
+						itemToRender.a = 0;
+					else if (itemToRender.a > 255)
+						itemToRender.a = 255;
+					if (FAILED(spriteHandler->Draw(
+						texture,
+						rect,
+						NULL,
+						NULL,
+						D3DCOLOR_ARGB(itemToRender.a, 255, 255, 255))))
+					{
+						game->getText()->writeDebugOutput("\nspriteHandler->Draw: FAILED");
+					}
+				}
 		}
 	}
 

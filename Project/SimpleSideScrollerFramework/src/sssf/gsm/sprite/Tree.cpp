@@ -38,5 +38,17 @@ void Tree::updateSprite()
 		setCurrentState(L"DYING");
 	
 	spawnFrameCounter--;
+	if(!maxSpawnRate)
+		intervalFrameCounter++;
 }
 
+void Tree::increaseSpawnRate()
+{
+	 if(spawnRate - 100 > 0) 
+	 {
+		 spawnRate -= 100;
+
+		 if(spawnRate <= 100)
+			 maxSpawnRate = true;
+	 }
+}

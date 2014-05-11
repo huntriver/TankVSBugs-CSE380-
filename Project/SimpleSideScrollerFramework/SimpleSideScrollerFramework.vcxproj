@@ -31,6 +31,7 @@
     <ClCompile Include="src\sssf\gsm\sprite\Effect.cpp" />
     <ClCompile Include="src\sssf\gsm\sprite\FireEffect.cpp" />
     <ClCompile Include="src\sssf\gsm\sprite\SpriteManager.cpp" />
+    <ClCompile Include="src\sssf\gsm\sprite\TextEffect.cpp" />
     <ClCompile Include="src\sssf\gsm\sprite\TopDownSprite.cpp" />
     <ClCompile Include="src\sssf\gsm\sprite\Tree.cpp" />
     <ClCompile Include="src\sssf\gsm\state\GameStateManager.cpp" />
@@ -78,6 +79,7 @@
     <ClInclude Include="src\sssf\gsm\sprite\Effect.h" />
     <ClInclude Include="src\sssf\gsm\sprite\FireEffect.h" />
     <ClInclude Include="src\sssf\gsm\sprite\SpriteManager.h" />
+    <ClInclude Include="src\sssf\gsm\sprite\TextEffect.h" />
     <ClInclude Include="src\sssf\gsm\sprite\TopDownSprite.h" />
     <ClInclude Include="src\sssf\gsm\sprite\Tree.h" />
     <ClInclude Include="src\sssf\gsm\state\GameState.h" />

@@ -18,4 +18,6 @@
   <sprite_type>ant_dying</sprite_type>
   <sprite_type>fire</sprite_type>
   <sprite_type>tree</sprite_type>
+  <sprite_type>spawn_rate</sprite_type>
+  <sprite_type>objective</sprite_type>
 </sprite_type_list>
