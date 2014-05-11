@@ -440,8 +440,8 @@ void SpriteManager::update(Game *game)
 			if(tree->getSpawnFrameCounter() <= 0)
 			{
 				// Spawn a new bot
-				Bot* bot = (*dummyBotsIterator);
-				dummyBotsIterator++;
+				Bot* bot = (*tree->getDumyBotIterator());
+				tree->incDummyBotsIterator();
 				b2Filter filter;
 				filter.categoryBits = 0x0004;
 				filter.maskBits = 0x0001|0x0002|0x0008;

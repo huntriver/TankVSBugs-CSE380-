@@ -65,7 +65,10 @@ void GameStateManager::pauseGame()
 {
 	currentGameState = GS_PAUSED;
 }
-
+void GameStateManager::goToStoryMenu()
+{
+	currentGameState = GS_STORY_MENU;
+}
 
 /*
 	goToLoadLevel - This method transitions the game application from main menu
@@ -83,7 +86,7 @@ void GameStateManager::goToLoadLevel()
 void GameStateManager::goToMainMenu()
 {
 	currentGameState = GS_MAIN_MENU;
-	this->unloadCurrentLevel();
+	// this->unloadCurrentLevel();
 }
 
 void GameStateManager::goToCreditMenu()

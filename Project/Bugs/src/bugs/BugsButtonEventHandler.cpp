@@ -60,5 +60,9 @@ void BugsButtonEventHandler::handleButtonEvents(	Game *game,
 	{
 		GameStateManager *gsm = game->getGSM();
 		gsm->pauseGame();
+	}else if(command.compare(W_STORY_COMMAND) == 0)
+	{
+		GameStateManager *gsm = game->getGSM();
+		gsm->goToStoryMenu();
 	}
 }
