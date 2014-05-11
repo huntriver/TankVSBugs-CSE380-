@@ -49,11 +49,11 @@ private:
 	// THIS GUY HELPS SPRITES FIND THEIR WAY. NOTE THAT IT IS CUSTOMIZABLE, SINCE
 	// WE MAY BE RENDERING AN ORTHOGRAPHIC MAP OR AN ISOMETRIC ONE
 	GridPathfinder *pathfinder;
-	int timeLeft;
+	bool firstTime;
 public:
 	// NOTHING TO INIT OR DESTROY
 	bool healthDisplay;
-	SpriteManager()		{healthDisplay=true;timeLeft=100;}
+	SpriteManager()		{healthDisplay=true;firstTime=true;}
 	~SpriteManager()	{}
 
 	// INLINED ACCESSOR 

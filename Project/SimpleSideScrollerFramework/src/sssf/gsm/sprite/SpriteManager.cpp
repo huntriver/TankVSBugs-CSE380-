@@ -19,6 +19,7 @@ See SpriteManager.h for a class description.
 #include "sssf\gsm\sprite\SpriteManager.h"
 #include "sssf\gsm\state\GameStateManager.h"
 #include "sssf\gsm\sprite\FireEffect.h"
+#include "sssf\gsm\sprite\TextEffect.h"
 
 /*
 addSpriteToRenderList - This method checks to see if the sprite
@@ -37,7 +38,9 @@ void SpriteManager::addSpriteToRenderList(AnimatedSprite *sprite,
 
 	if(sprite->getSpriteType()->getSpriteTypeID() == 3 || 
 		sprite->getSpriteType()->getSpriteTypeID() == 5 ||
-		sprite->getSpriteType()->getSpriteTypeID() == 6)
+		sprite->getSpriteType()->getSpriteTypeID() == 6 ||
+		sprite->getSpriteType()->getSpriteTypeID() == 8 ||
+		sprite->getSpriteType()->getSpriteTypeID() == 9)
 	{
 		if(viewport->areWorldCoordinatesInViewport(
 			pp->getX(),pp->getY(),spriteType->getTextureWidth(),
@@ -280,15 +283,26 @@ has been allocated for game sprites.
 void SpriteManager::unloadSprites()
 {
 	// @TODO - WE'LL DO THIS LATER WHEN WE LEARN MORE ABOUT MEMORY MANAGEMENT
+
 	list<Bot*>::iterator botsIt = bots.begin();
+	// list<Bot*>::iterator dummyBotsIt = dummyBots.begin();
 	while (botsIt != bots.end())
 	{
 	list<Bot*>::iterator tempIt = botsIt;
 	botsIt++;
+	// dummyBotsIt++;
 	Bot *botToDelete = (*tempIt);
 	delete botToDelete;
 	}
 	bots.clear();
+
+	while(dummyBotsIterator != dummyBots.end())
+	{
+		list<Bot*>::iterator tempIt = dummyBotsIterator;
+		dummyBotsIterator++;
+		delete (*tempIt);
+	}
+	dummyBots.clear();
 
 	list<TopDownSprite*>::iterator bulletsIt = bullets.begin();
 	while (bulletsIt != bullets.end())
@@ -346,7 +360,8 @@ void SpriteManager::unloadSprites()
 	// DELETE THE PATHFINDER IF THERE IS ONE
 	if (pathfinder != NULL)
 	delete pathfinder;
-	
+
+	firstTime = true;
 }
 
 Bot* SpriteManager::removeBot(Bot *botToRemove)
@@ -362,10 +377,44 @@ update method such that they may update themselves.
 */
 void SpriteManager::update(Game *game)
 {
+	if(firstTime)
+	{
+		int viewX = game->getGUI()->getViewport()->getViewportX();
+		int viewY = game->getGUI()->getViewport()->getViewportY();
+		int width = game->getGUI()->getViewport()->getViewportWidth();
+		int height = game->getGUI()->getViewport()->getViewportHeight();
+
+		AnimatedSpriteType *effectSpriteType = getSpriteType(9);
+		Effect* effect = new Effect();
+		float x = player.getB2Body()->GetPosition().x * 5.0 + 600;
+		float y = player.getB2Body()->GetPosition().y * -5.0 + 100;
+		effect->setSpriteType(effectSpriteType);
+		effect->setCurrentState(L"LEVEL1");
+		effect->setHealth(1000);
+		effect->setAlpha(255);
+		effect->setEffectTimes(1);
+		effect->getPhysicalProperties()->setX(x);
+		effect->getPhysicalProperties()->setY(y);
+		effects.push_back(effect);
+
+		effectSpriteType = getSpriteType(8);
+		effect = new TextEffect();
+		x = viewX + width/2.0f;
+		y = viewY + height/2.0f;
+		effect->setSpriteType(effectSpriteType);
+		effect->setCurrentState(L"LOW");
+		effect->setHealth(1000);
+		effect->setAlpha(255);
+		effect->getPhysicalProperties()->setX(x);
+		effect->getPhysicalProperties()->setY(y);
+		effects.push_back(effect);
+		firstTime = false;
+	}
 	
 	// list<Bot*>::iterator dummyBotIterator;
 	player.updateSprite();
 
+	wstring spawnState = L"";
 	int fAttackMinX = player.getB2Body()->GetPosition().x * 5.0f; 
 	list<Tree*>::iterator treeIt;
 	treeIt = trees.begin();
@@ -379,6 +428,15 @@ void SpriteManager::update(Game *game)
 			// delete tree;
 			treeIt = trees.erase(treeIt);
 		}else{
+			if(!tree->isMaxSpawnRate() && tree->getIntervalFrameCounter() >= tree->getInterval())
+			{
+				tree->increaseSpawnRate();
+				tree->resetIntervalFrameCounter();
+				if(tree->getSpawnRate() == 200)
+					spawnState = L"MEDIUM";
+				else
+					spawnState = L"HIGH";
+			}
 			if(tree->getSpawnFrameCounter() <= 0)
 			{
 				// Spawn a new bot
@@ -399,6 +457,26 @@ void SpriteManager::update(Game *game)
 			}
 			treeIt++;
 		}
+	}
+
+	if(spawnState != L"")
+	{
+		int viewX = game->getGUI()->getViewport()->getViewportX();
+		int viewY = game->getGUI()->getViewport()->getViewportY();
+		int width = game->getGUI()->getViewport()->getViewportWidth();
+		int height = game->getGUI()->getViewport()->getViewportHeight();
+		AnimatedSpriteType *effectSpriteType = getSpriteType(8);
+		TextEffect* effect = new TextEffect();
+		float x = viewX + width/2.0f;
+		float y = viewY + height/2.0f;
+		effect->setSpriteType(effectSpriteType);
+		effect->setCurrentState(spawnState);
+		effect->setHealth(1000);
+		effect->setAlpha(255);
+		effect->setEffectTimes(1);
+		effect->getPhysicalProperties()->setX(x);
+		effect->getPhysicalProperties()->setY(y);
+		effects.push_back(effect);
 	}
 
 	// THEN UPDATE THE PLAYER SPRITE ANIMATION FRAME/STATE/ROTATION
@@ -456,12 +534,6 @@ void SpriteManager::update(Game *game)
 
 		if(bullet->getMarkForRemoval())
 		{
-			/*
-			if(effects.size() >= 5)
-			{
-				list<Effect*>::iterator it = effects.begin();
-				effects.erase(it);
-			}*/
 			addBulletEffect(bullet);
 			game->getGSM()->getWorld()->boxWorld->DestroyBody(bullet->getB2Body());
 			delete bullet;

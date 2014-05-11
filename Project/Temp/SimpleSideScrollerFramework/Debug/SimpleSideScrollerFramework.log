@@ -1,18 +1,8 @@
-﻿Build started 5/10/2014 6:27:47 PM.
+﻿Build started 5/11/2014 1:15:54 AM.
      1>Project "C:\Users\yubshang\Desktop\380 project\Project\SimpleSideScrollerFramework\SimpleSideScrollerFramework.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\gsm\sprite\SpriteManager.cpp
-         SpriteManager.cpp
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(65): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(369): warning C4244: 'initializing' : conversion from 'const float32' to 'int', possible loss of data
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(396): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(398): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(419): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(428): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(548): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(550): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(552): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(554): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\gsm\sprite\TextEffect.cpp
+         TextEffect.cpp
        Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\yubshang\Desktop\380 project\Project\Common\SimpleSideScrollerFramework.lib" Box2D.lib /LIBPATH:../lib /NOLOGO "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\GameDataLoader.obj"
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\Game.obj"
@@ -31,6 +21,7 @@
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\Effect.obj"
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\FireEffect.obj"
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\SpriteManager.obj"
+         "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\TextEffect.obj"
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\TopDownSprite.obj"
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\Tree.obj"
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\GameStateManager.obj"
@@ -57,4 +48,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.12
+Time Elapsed 00:00:02.58
