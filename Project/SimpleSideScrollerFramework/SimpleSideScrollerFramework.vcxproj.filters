@@ -364,5 +364,8 @@
     <ClInclude Include="src\sssf\gsm\sprite\TextEffect.h">
       <Filter>src\sssf\gsm\sprite</Filter>
     </ClInclude>
+    <ClInclude Include="src\sssf\gsm\ai\bots\RandomSpider.h">
+      <Filter>src\sssf\gsm\ai\bots</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

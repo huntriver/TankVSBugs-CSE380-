@@ -12,6 +12,9 @@ function getSpawnRateInterval(level)
 end
 
 function getNumOfTree(level)
+	if level == 0 then
+		return 0
+	end
 	return num_of_tree[level]
 end
 
@@ -45,10 +48,16 @@ function foo()
 end
 
 function loadPlayerX(level)
+	if level == 0 then
+		return 135
+	end
 	return player_pos_x[level]
 end
 
 function loadPlayerY(level)
+	if level == 0 then
+		return 150
+	end
 	return player_pos_y[level]
 end
 

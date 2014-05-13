@@ -46,6 +46,10 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 	// IF THE GAME IS IN PROGRESS
 	if (gsm->isGameInProgress())
 	{
+		if(input->isKeyDown(VK_CONTROL) && input->isKeyDownForFirstTime((unsigned int)'0'))
+		{
+			gsm->goToLevel(game,L"Level 0");
+		}
 		if(input->isKeyDownForFirstTime((unsigned int)'H'))
 		{
 			if(!gsm->getSpriteManager()->healthDisplay)

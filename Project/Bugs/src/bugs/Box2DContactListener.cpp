@@ -46,8 +46,7 @@ void Box2DContactListener::BeginContact(b2Contact* contact)
 		   }
 	   }else if(t1 != NULL && t2 != NULL)
 	   {
-		   if(t1->getSpriteType()->getSpriteTypeID() == TYPE_TANK && 
-			  t2->getSpriteType()->getSpriteTypeID() == TYPE_ANT)
+		   if(t1->getSpriteType()->getSpriteTypeID() == TYPE_TANK && t2->getSpriteType()->getSpriteTypeID() == TYPE_ANT)
 		   {
 			   beginTankBugContact(t1, t2);
 		   }else if(t1->getSpriteType()->getSpriteTypeID() == TYPE_ANT &&
@@ -123,12 +122,12 @@ void Box2DContactListener::beginTankBugContact(TopDownSprite* player, TopDownSpr
 		if(pX > bX){
 			bug->setRotationInRadians(PI/2.0f);
 			bug->setCurrentState(L"ATTACK");
-			// player->setLeftEdgeCC(player->getLeftEdgeCC() + 1);
+			player->setLeftEdgeCC(player->getLeftEdgeCC() + 1);
 			// bug->setRightEdgeCC(bug->getRightEdgeCC() + 1);
 		}else if(pX < bX){
 			bug->setRotationInRadians(-PI/2.0f);
 			bug->setCurrentState(L"ATTACK");
-			// player->setRightEdgeCC(player->getRightEdgeCC() + 1);
+			player->setRightEdgeCC(player->getRightEdgeCC() + 1);
 			// bug->setLeftEdgeCC(bug->getLeftEdgeCC() + 1);
 		}else{
 			// This is an error

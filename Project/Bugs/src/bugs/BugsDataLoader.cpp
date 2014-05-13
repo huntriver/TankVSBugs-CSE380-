@@ -304,6 +304,54 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 		tree->setB2Body(treeBody);
 		treeBody->SetUserData(tree);
 	}
+
+	if(game->getGSM()->getCurrentLevel() == 0)
+	{
+		RandomBot *bot = new RandomBot();
+		//physics->addCollidableObject(bot);
+		//PhysicalProperties *pp = bot->getPhysicalProperties();
+		//pp->setPosition(initX, initY);
+		bot->setSpriteType(spriteManager->getSpriteType(10));
+		bot->setCurrentState(L"IDLE");
+		bot->setDirection(L"UP");
+		bot->setAlpha(255);
+		bot->setHealth((int)(spriteManager->getSpriteType(10)->getTextureWidth()/game->getGSM()->getSpriteManager()->getSpriteType(4)->getTextureWidth()));
+		bot->setAttack(0.2);
+		int playerW = game->getGSM()->getSpriteManager()->getPlayer()->getSpriteType()->getTextureWidth()/2;
+		float randNum = rand()% playerW;
+		if(game->getGSM()->getSpriteManager()->getBotSize() % 2 == 0)
+			bot->initBot(30, 300, MAX_TANK_SPEED/1.4f, true,randNum);
+		else
+			bot->initBot(30, 300, MAX_TANK_SPEED/1.4f, false,-randNum);
+		game->getGSM()->getSpriteManager()->addBot(bot);
+		bot->setLongDistanceAttack(true);
+		b2BodyDef bodyDef;
+		bodyDef.type = b2_dynamicBody;
+		bodyDef.position.Set(200/5.0f, -200/5.0f);
+		b2Body* body = (game->getGSM()->getWorld()->boxWorld)->CreateBody(&bodyDef);
+
+		// Define another box shape for our dynamic body.
+		b2PolygonShape dynamicBox;
+		dynamicBox.SetAsBox(spriteManager->getSpriteType(10)->getTextureWidth()/10.0f, spriteManager->getSpriteType(10)->getTextureHeight()/10.0f);
+
+		// Define the dynamic body fixture.
+		b2FixtureDef fixtureDef;
+		fixtureDef.shape = &dynamicBox;
+
+		// Set the box density to be non-zero, so it will be dynamic.
+		fixtureDef.density = 1.0f;
+
+		// Override the default friction.
+		fixtureDef.friction = 0.3f;
+		fixtureDef.filter.categoryBits = BUG;
+		fixtureDef.filter.maskBits = WALL|BULLET|TANK;
+
+		// Add the shape to the body.
+		body->SetLinearVelocity(b2Vec2(0.0f,0.0f));
+		body->CreateFixture(&fixtureDef);
+		bot->setB2Body(body);
+		body->SetUserData(bot);
+	}
 	
 
 // UNCOMMENT THE FOLLOWING CODE BLOCK WHEN YOU ARE READY TO ADD SOME BOTS

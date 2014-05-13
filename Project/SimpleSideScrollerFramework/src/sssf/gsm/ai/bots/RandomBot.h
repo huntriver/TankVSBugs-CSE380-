@@ -4,7 +4,7 @@
 #include "sssf_VS\stdafx.h"
 #include "sssf\gsm\ai\Bot.h"
 #include "sssf\gsm\physics\Physics.h"
-#include "sssf\game\Game.h"
+#include "sssf\gsm\state\GameStateManager.h"
 
 class RandomBot : public Bot
 {
@@ -28,6 +28,11 @@ private:
 	float prevbX2;
 	float prevbY2;
 	bool firstTimeThink;
+	int attackInterval;
+	// bool preAttack;
+	// bool attack;
+	bool longDistanceAttack;
+	int attackFrameCounter;
 public:
 	RandomBot();
 	~RandomBot();
@@ -46,9 +51,13 @@ public:
 	bool	isAttempApproach(){return attempApproach;}
 	void    setApproachFailed(bool flag){approachFailed = flag;}
 	void    setFightBack(bool flag) {fightBack = flag;}
-
+	void setAttackinterval(int initAttackInterval) { attackInterval = initAttackInterval; }
+	void setLongDistanceAttack(bool initLongDistanceAttack) { longDistanceAttack = initLongDistanceAttack; }
+	virtual void preAttack(Game *game){};
+	virtual void attackPlayer(Game *game){game->getGSM()->getSpriteManager()->getPlayer()->decHP(this->attack);};
 
 	// INLINED METHODS
+	int getAttackInterval() { return attackInterval; }
 	unsigned int getCyclesRemainingBeforeThinking()	{ return cyclesRemainingBeforeThinking; }
 	unsigned int getMinCyclesBeforeThinking()		{ return minCyclesBeforeThinking;		}
 	unsigned int getMaxCyclesBeforeThinking()		{ return maxCyclesBeforeThinking;		}

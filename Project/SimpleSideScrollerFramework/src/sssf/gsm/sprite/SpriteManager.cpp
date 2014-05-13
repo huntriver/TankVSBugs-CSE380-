@@ -233,7 +233,7 @@ scheduled for rendering.
 */
 void SpriteManager::addBot(Bot *botToAdd)
 {
-	dummyBots.push_back(botToAdd);
+	bots.push_back(botToAdd);
 }
 
 void SpriteManager::addBullet(TopDownSprite *bulletToAdd)
@@ -514,10 +514,10 @@ void SpriteManager::update(Game *game)
 			botIterator = bots.erase(botIterator);
 		}else
 		{
-			if(bot->getCurrentState() == L"ATTACK")
-			{
-				player.decHP(bot->getAttack());
-			}
+			//if(bot->getCurrentState() == L"ATTACK")
+			//{
+				//player.decHP(bot->getAttack());
+			//}
 			((RandomBot*)bot)->think(game);
 			botIterator++;
 		}

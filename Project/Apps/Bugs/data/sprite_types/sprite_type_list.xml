@@ -20,4 +20,5 @@
   <sprite_type>tree</sprite_type>
   <sprite_type>spawn_rate</sprite_type>
   <sprite_type>objective</sprite_type>
+  <sprite_type>spider</sprite_type>
 </sprite_type_list>
