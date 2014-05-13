@@ -94,6 +94,7 @@ public:
 	void setHP(float initHP){
 		hp = initHP;
 	}
+
 	//void setFireAttack(FireEffect* effect)
 	//{
 		//fireAttack = effect;

@@ -85,8 +85,9 @@ void GameStateManager::goToLoadLevel()
 */
 void GameStateManager::goToMainMenu()
 {
+	if(currentGameState != GS_STORY_MENU)
+		this->unloadCurrentLevel();
 	currentGameState = GS_MAIN_MENU;
-	// this->unloadCurrentLevel();
 }
 
 void GameStateManager::goToCreditMenu()
@@ -179,15 +180,22 @@ unsigned int GameStateManager::getLevelNum(wstring levelName)
 */
 void GameStateManager::loadLevel(Game *game, unsigned int initLevel)
 {
-	if ((initLevel > NO_LEVEL_LOADED) && (initLevel <= levelNames.size()))
+	if ((initLevel >= NO_LEVEL_LOADED) && (initLevel <= levelNames.size()))
 	{
 		//if (currentLevel != NO_LEVEL_LOADED)
 			//unloadCurrentLevel();
 		currentLevel = initLevel;
-		wstring fileToLoad = levelFileNamesWithRelativePath[currentLevel-1];
+		wstring fileToLoad = levelFileNamesWithRelativePath[currentLevel];
 		GameDataLoader *dataLoader = game->getDataLoader();
 		dataLoader->loadWorld(game, fileToLoad);
 	}
+}
+
+void GameStateManager::goToLevel(Game *game, wstring levelName)
+{
+	game->getGraphics()->clearWorldTextures();
+	unloadCurrentLevel();
+	loadLevel(game, levelName);
 }
 
 /*

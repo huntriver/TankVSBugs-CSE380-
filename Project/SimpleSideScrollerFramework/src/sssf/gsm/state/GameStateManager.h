@@ -97,6 +97,7 @@ public:
 	void			shutdown();
 	void			loadLevel(Game *game, unsigned int levelNum);
 	void			loadLevel(Game *game, wstring levelName);
+	void            goToLevel(Game *game, wstring levelName);
 	void			unloadCurrentLevel();
 	void			update(Game *game);
 };

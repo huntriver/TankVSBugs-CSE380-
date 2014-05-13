@@ -21,7 +21,7 @@ RandomBot::RandomBot()
 	// AND WITH RANDOM INTERVAL UNTIL IT THINKS AGAIN
 	firstTimeThink = true;
 //	pickRandomCyclesInRange();
-
+	attackFrameCounter = 0;
 
 }
 
@@ -76,6 +76,8 @@ void RandomBot::initBot(	unsigned int initMin,
 	}
 	prevbX = -1000.0f;
 	prevbY = -1000.0f;
+	longDistanceAttack = false;
+	attackInterval = 0;
 }
 
 /*
@@ -264,23 +266,37 @@ void RandomBot::think(Game *game)
 {
 	if(currentState == L"ATTACK")
 	{
-		attempApproach = false;
-		approachFailed = false;
-		body->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
-		if(rotationInRadians == 0)
-			game->getInput()->sKeyDisabled = true;
-		else if(rotationInRadians == PI)
-			game->getInput()->wKeyDisabled = true;
-		else if(rotationInRadians == PI/2.0f)
-			game->getInput()->aKeyDisabled = true;
-		else
-			game->getInput()->dKeyDisabled = true;
+		if(!longDistanceAttack)
+		{
+			attempApproach = false;
+			approachFailed = false;
+			body->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
+			if(rotationInRadians == 0)
+				game->getInput()->sKeyDisabled = true;
+			else if(rotationInRadians == PI)
+				game->getInput()->wKeyDisabled = true;
+			else if(rotationInRadians == PI/2.0f)
+				game->getInput()->aKeyDisabled = true;
+			else
+				game->getInput()->dKeyDisabled = true;
+		}
+		///game->getGSM()->getSpriteManager()->getPlayer()->decHP(this->attack);
+		attackPlayer(game);
+		if(longDistanceAttack && !isPlayerCloseBy(game)){
+			setCurrentState(L"IDLE");
+		}
 	}else
 	{
 		if(isPlayerCloseBy(game) && !approachFailed)
 		{
+			if(longDistanceAttack)
+			{
+				body->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
+				setCurrentState(L"ATTACK");
+			}
 			approachPlayer(game);
 		}else{
+			attackFrameCounter = 0;
 			if(approachFailed && attempApproach)
 			{	
 				attempApproach = false;

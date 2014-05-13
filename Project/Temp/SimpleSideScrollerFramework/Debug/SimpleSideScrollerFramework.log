@@ -1,8 +1,18 @@
-﻿Build started 5/11/2014 7:27:59 PM.
+﻿Build started 5/12/2014 7:59:25 PM.
      1>Project "C:\Users\yubshang\Desktop\380 project\Project\SimpleSideScrollerFramework\SimpleSideScrollerFramework.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\gsm\state\GameStateManager.cpp
-         GameStateManager.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\gsm\ai\bots\RandomBot.cpp
+         RandomBot.cpp
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(96): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(97): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(128): warning C4244: 'argument' : conversion from 'unsigned int' to 'float32', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(133): warning C4244: 'argument' : conversion from 'double' to 'float32', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(138): warning C4244: 'argument' : conversion from 'double' to 'float32', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(142): warning C4244: 'argument' : conversion from 'unsigned int' to 'float32', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(188): warning C4244: 'argument' : conversion from 'unsigned int' to 'float32', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(203): warning C4244: 'argument' : conversion from 'unsigned int' to 'float32', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(229): warning C4244: 'argument' : conversion from 'unsigned int' to 'float32', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(250): warning C4244: 'argument' : conversion from 'unsigned int' to 'float32', possible loss of data
        Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\yubshang\Desktop\380 project\Project\Common\SimpleSideScrollerFramework.lib" Box2D.lib /LIBPATH:../lib /NOLOGO "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\GameDataLoader.obj"
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\Game.obj"
@@ -48,4 +58,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.72
+Time Elapsed 00:00:02.97

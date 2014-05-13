@@ -66,6 +66,7 @@
     <ClInclude Include="src\sssf\gsm\ai\Bot.h" />
     <ClInclude Include="src\sssf\gsm\ai\BotRecycler.h" />
     <ClInclude Include="src\sssf\gsm\ai\bots\RandomBot.h" />
+    <ClInclude Include="src\sssf\gsm\ai\bots\RandomSpider.h" />
     <ClInclude Include="src\sssf\gsm\ai\pathfinding\GridPathfinder.h" />
     <ClInclude Include="src\sssf\gsm\ai\pathfinding\OrthographicGridPathfinder.h" />
     <ClInclude Include="src\sssf\gsm\physics\AABB.h" />
