@@ -132,3 +132,7 @@ const unsigned int SPACE_KEY = VK_SPACE;
 
 // THIS IS JUST FOR SHOWING HOW THE CURSOR CAN BE CHANGED
 const unsigned int C_KEY = (unsigned int)'C';
+
+static const LPCWSTR SHOOT	 =	L"data/sound/shooting.wav";
+static const LPCWSTR EXPO	 =	L"data/sound/explosion.wav";
+static const LPCWSTR BURN    = L"data/sound/burning.wav";

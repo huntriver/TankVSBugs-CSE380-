@@ -98,13 +98,17 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 		}
 
 		if(input->isKeyDownForFirstTime((unsigned int)'M')){
+			// PlaySound(BURN, NULL, SND_ASYNC);
+			PlaySound(L"data/sound/burning.wav", NULL, SND_ASYNC);
 			game->getGSM()->getSpriteManager()->getFireEffect()->setStart(true);
 			game->getGSM()->getSpriteManager()->getFireEffect()->setStop(false);
 		}else if(input->isKeyDown((unsigned int)'M')){
+			// PlaySound(BURN, NULL, SND_ASYNC);
 			game->getGSM()->getSpriteManager()->getFireEffect()->setStart(true);
 			game->getGSM()->getSpriteManager()->getFireEffect()->setStop(false);
 		}else if (input->isKeyDownForFirstTime(SPACE_KEY) && game->getGSM()->getSpriteManager()->getPlayerBulletCounter() <= 5)
 		{
+			PlaySound(SHOOT, NULL, SND_ASYNC);
 			if(game->getGSM()->getSpriteManager()->getFireEffect()->isStart())
 				game->getGSM()->getSpriteManager()->getFireEffect()->setStop(true);
 			Bullet *bullet = new Bullet();

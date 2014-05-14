@@ -67,6 +67,9 @@
     <Filter Include="src\sssf\timer">
       <UniqueIdentifier>{dd6f163b-d409-4610-a7de-a84e723083a9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\sssf\sound">
+      <UniqueIdentifier>{60c495cc-b916-4490-a685-57682f11354b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\sssf_VS\ReadMe.txt">
@@ -196,6 +199,9 @@
     </ClCompile>
     <ClCompile Include="src\sssf\gsm\ai\bots\HealthSupply.cpp">
       <Filter>src\sssf\gsm\ai\bots</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sssf\sound\SDKwavefile.cpp">
+      <Filter>src\sssf\sound</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -378,6 +384,9 @@
     </ClInclude>
     <ClInclude Include="src\sssf\gsm\ai\bots\HealthSupply.h">
       <Filter>src\sssf\gsm\ai\bots</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sssf\sound\SDKwavefile.h">
+      <Filter>src\sssf\sound</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
