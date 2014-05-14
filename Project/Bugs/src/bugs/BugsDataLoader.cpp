@@ -214,6 +214,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 	if(game->getGSM()->getCurrentLevel() == 3)
 		player->setDirection(L"UP");
 	player->setHealth(playerSpriteType->getTextureWidth()/spriteManager->getSpriteType(4)->getTextureWidth());
+	// player->setHealth(1);
 	player->setHP(100.0f);
 	player->setAttack(50.0f);
 	
@@ -253,7 +254,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 	float viewportY=game->getGSM()->getSpriteManager()->getPlayer()->getB2Body()->GetPosition().y*-5.0f;
 	float screenX = game->getGUI()->getViewport()->getViewportWidth()/2.0f;
 	float screenY = game->getGUI()->getViewport()->getViewportHeight()/2.0f;
-	game->getGUI()->getViewport()->moveViewport((int)floor(viewportX-screenX), (int)floor(viewportY-screenY), game->getGSM()->getWorld()->getWorldWidth(), game->getGSM()->getWorld()->getWorldHeight());
+	game->getGUI()->getViewport()->movePlayerViewport((int)floor(viewportX-screenX), (int)floor(viewportY-screenY), game->getGSM()->getWorld()->getWorldWidth(), game->getGSM()->getWorld()->getWorldHeight());
 
 	// AND LET'S ADD A BUNCH OF RANDOM JUMPING BOTS, FIRST ALONG
 	// A LINE NEAR THE TOP
@@ -551,6 +552,9 @@ void BugsDataLoader::hardCodedLoadGUIExample(Game *game)
 	initPauseMenu(gui, guiTextureManager);
 	initControlMenu(gui, guiTextureManager);
 	initStoryMenu(gui, guiTextureManager);
+	initLoseMenu(gui, guiTextureManager);
+	initWinMenu(gui, guiTextureManager);
+	initClearMenu(gui, guiTextureManager);
 	// initInGameGUI(gui, guiTextureManager);
 }
 
@@ -979,4 +983,186 @@ void BugsDataLoader::initViewport(GameGUI *gui, map<wstring,wstring> *properties
 	viewport->setViewportOffsetX(viewportOffsetX);
 	viewport->setViewportOffsetY(viewportOffsetY);
 	viewport->setToggleOffsetY(toggleOffsetY);
+}
+
+void BugsDataLoader::initLoseMenu(GameGUI *gui, DirectXTextureManager* guiTextureManager)
+{
+	ScreenGUI *loseMenuGUI = new ScreenGUI();
+	unsigned int imageID = guiTextureManager->loadTexture(W_LOSE_MENU_PATH);
+	OverlayImage *imageToAdd = new OverlayImage();
+	imageToAdd->x = 450;
+	imageToAdd->y = 30;
+	imageToAdd->z = 0;
+	imageToAdd->alpha = 255;
+	imageToAdd->width = 600;
+	imageToAdd->height = 700;
+	imageToAdd->imageID = imageID;
+	loseMenuGUI->addOverlayImage(imageToAdd);
+
+	// AND CREDIT BUTTON
+	int normalTextureID = guiTextureManager->loadTexture(W_REPLAY_IMAGE_PATH);
+	int mouseOverTextureID = guiTextureManager->loadTexture(W_REPLAY_IMAGE_PATH);
+
+	Button *buttonToAdd = new Button();
+	buttonToAdd->initButton(normalTextureID,
+							mouseOverTextureID,
+							551,
+							331,
+							0,
+							255,
+							400,
+							100,
+							false,
+							W_REPLAY_COMMAND);
+
+	// AND NOW LOAD IT INTO A ScreenGUI
+	loseMenuGUI->addButton(buttonToAdd);
+
+	normalTextureID = guiTextureManager->loadTexture(W_QUIT_IMAGE_PATH);
+	mouseOverTextureID = guiTextureManager->loadTexture(W_QUIT_IMAGE_PATH);
+
+	buttonToAdd = new Button();
+	buttonToAdd->initButton(normalTextureID,
+							mouseOverTextureID,
+							552,
+							516,
+							0,
+							255,
+							400,
+							100,
+							false,
+							W_QUIT_COMMAND);
+
+	// AND NOW LOAD IT INTO A ScreenGUI
+	loseMenuGUI->addButton(buttonToAdd);
+
+	// AND LET'S ADD OUR SCREENS
+	gui->addScreenGUI(GS_LOSE,loseMenuGUI);
+}
+
+void BugsDataLoader::initClearMenu(GameGUI *gui, DirectXTextureManager* guiTextureManager)
+{
+	ScreenGUI *clearMenuGUI = new ScreenGUI();
+	unsigned int imageID = guiTextureManager->loadTexture(W_CLEAR_MENU_PATH);
+	OverlayImage *imageToAdd = new OverlayImage();
+	imageToAdd->x = 450;
+	imageToAdd->y = 30;
+	imageToAdd->z = 0;
+	imageToAdd->alpha = 255;
+	imageToAdd->width = 600;
+	imageToAdd->height = 700;
+	imageToAdd->imageID = imageID;
+	clearMenuGUI->addOverlayImage(imageToAdd);
+
+	// AND CREDIT BUTTON
+	int normalTextureID = guiTextureManager->loadTexture(W_REPLAY_IMAGE_PATH);
+	int mouseOverTextureID = guiTextureManager->loadTexture(W_REPLAY_IMAGE_PATH);
+
+	Button *buttonToAdd = new Button();
+	buttonToAdd->initButton(normalTextureID,
+							mouseOverTextureID,
+							551,
+							359,
+							0,
+							255,
+							400,
+							100,
+							false,
+							W_REPLAY_COMMAND);
+
+	// AND NOW LOAD IT INTO A ScreenGUI
+	clearMenuGUI->addButton(buttonToAdd);
+
+	normalTextureID = guiTextureManager->loadTexture(W_QUIT_IMAGE_PATH);
+	mouseOverTextureID = guiTextureManager->loadTexture(W_QUIT_IMAGE_PATH);
+
+	buttonToAdd = new Button();
+	buttonToAdd->initButton(normalTextureID,
+							mouseOverTextureID,
+							552,
+							503,
+							0,
+							255,
+							400,
+							100,
+							false,
+							W_QUIT_COMMAND);
+
+	// AND NOW LOAD IT INTO A ScreenGUI
+	clearMenuGUI->addButton(buttonToAdd);
+
+	// AND LET'S ADD OUR SCREENS
+	gui->addScreenGUI(GS_CLEAR,clearMenuGUI);
+}
+
+void BugsDataLoader::initWinMenu(GameGUI *gui, DirectXTextureManager* guiTextureManager)
+{
+	ScreenGUI *winMenuGUI = new ScreenGUI();
+	unsigned int imageID = guiTextureManager->loadTexture(W_WIN_MENU_PATH);
+	OverlayImage *imageToAdd = new OverlayImage();
+	imageToAdd->x = 450;
+	imageToAdd->y = 30;
+	imageToAdd->z = 0;
+	imageToAdd->alpha = 255;
+	imageToAdd->width = 600;
+	imageToAdd->height = 700;
+	imageToAdd->imageID = imageID;
+	winMenuGUI->addOverlayImage(imageToAdd);
+
+	int normalTextureID = guiTextureManager->loadTexture(W_NEXT_IMAGE_PATH);
+	int mouseOverTextureID = guiTextureManager->loadTexture(W_NEXT_IMAGE_PATH);
+
+	Button *buttonToAdd = new Button();
+	buttonToAdd->initButton(normalTextureID,
+							mouseOverTextureID,
+							551,
+							280,
+							0,
+							255,
+							400,
+							100,
+							false,
+							W_NEXT_COMMAND);
+
+	// AND NOW LOAD IT INTO A ScreenGUI
+	winMenuGUI->addButton(buttonToAdd);
+	// AND CREDIT BUTTON
+	normalTextureID = guiTextureManager->loadTexture(W_REPLAY_IMAGE_PATH);
+	mouseOverTextureID = guiTextureManager->loadTexture(W_REPLAY_IMAGE_PATH);
+
+   buttonToAdd = new Button();
+	buttonToAdd->initButton(normalTextureID,
+							mouseOverTextureID,
+							551,
+							424,
+							0,
+							255,
+							400,
+							100,
+							false,
+							W_REPLAY_COMMAND);
+
+	// AND NOW LOAD IT INTO A ScreenGUI
+	winMenuGUI->addButton(buttonToAdd);
+
+	normalTextureID = guiTextureManager->loadTexture(W_QUIT_IMAGE_PATH);
+	mouseOverTextureID = guiTextureManager->loadTexture(W_QUIT_IMAGE_PATH);
+
+	buttonToAdd = new Button();
+	buttonToAdd->initButton(normalTextureID,
+							mouseOverTextureID,
+							552,
+							575,
+							0,
+							255,
+							400,
+							100,
+							false,
+							W_QUIT_COMMAND);
+
+	// AND NOW LOAD IT INTO A ScreenGUI
+	winMenuGUI->addButton(buttonToAdd);
+
+	// AND LET'S ADD OUR SCREENS
+	gui->addScreenGUI(GS_WIN,winMenuGUI);
 }

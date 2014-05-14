@@ -286,12 +286,24 @@ has been allocated for game sprites.
 */
 void SpriteManager::unloadSprites()
 {
-	// @TODO - WE'LL DO THIS LATER WHEN WE LEARN MORE ABOUT MEMORY MANAGEMENT
-	for(int i = 0; i < dummyHealth.size(); i++)
+
+	vector<HealthSupply*>::iterator hsIt = dummyHealth.begin();
+	while (hsIt != dummyHealth.end())
 	{
-		if(dummyHealth[i] != NULL)
-			delete dummyHealth[i];
+	vector<HealthSupply*>::iterator  tempIt = hsIt;
+	hsIt++;
+	HealthSupply* astToDelete = (*tempIt);
+	if(astToDelete != NULL)
+		delete astToDelete;
 	}
+	dummyHealth.clear();
+	// @TODO - WE'LL DO THIS LATER WHEN WE LEARN MORE ABOUT MEMORY MANAGEMENT
+//	for(int i = 0; i < dummyHealth.size(); i++)
+//	{
+//		dummyHealth.erase(dummyHealth.begin() + i);
+//		if(dummyHealth[i] != NULL)
+//			delete dummyHealth[i];
+//	}
 
 	list<Bot*>::iterator botsIt = bots.begin();
 	// list<Bot*>::iterator dummyBotsIt = dummyBots.begin();
@@ -652,6 +664,18 @@ void SpriteManager::update(Game *game)
 			effectIterator = dyingEffects.erase(effectIterator);
 		}else
 			effectIterator++;
+	}
+
+	if(player.getHealth() <= 0)
+	{
+		game->getGSM()->goToLoseMenu();
+	}else if(trees.size() <= 0)
+	{
+		if(game->getGSM()->getCurrentLevel() == 3)
+		{
+			game->getGSM()->goToClearMenu();
+		}else
+			game->getGSM()->goToWinMenu();
 	}
 }
 
