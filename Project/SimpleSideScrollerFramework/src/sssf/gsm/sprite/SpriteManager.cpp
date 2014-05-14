@@ -21,6 +21,7 @@ See SpriteManager.h for a class description.
 #include "sssf\gsm\sprite\FireEffect.h"
 #include "sssf\gsm\sprite\TextEffect.h"
 
+
 /*
 addSpriteToRenderList - This method checks to see if the sprite
 parameter is inside the viewport. If it is, a RenderItem is generated
@@ -610,7 +611,10 @@ void SpriteManager::update(Game *game)
 		if(bullet->getMarkForRemoval())
 		{
 			if(bullet->getCurrentState() == L"MOVE")
+			{
+				PlaySound(L"data/sound/explosion.wav", NULL, SND_ASYNC);
 				addBulletEffect(bullet);
+			}
 			if(bullet->getCurrentState() == L"NET CAP")
 			{
 				addBulletEffect(&player);
@@ -666,6 +670,39 @@ void SpriteManager::update(Game *game)
 			effectIterator++;
 	}
 
+	/*
+	if(fEffect.getCurrentState() != L"IDLE")
+	{
+		playBurningSound = true;
+	}else
+	{
+		playBurningSound = false;
+	}
+	
+	 if(playBurningSound)
+	{
+
+		if(playBurningSound)
+		{
+			HRESULT hr = burningSrcVoice->Start( 0, XAUDIO2_COMMIT_NOW );
+			
+			XAUDIO2_VOICE_STATE state;
+			burningSrcVoice->GetState( &state );
+            isRunning = ( state.BuffersQueued > 0 ) != 0;
+		
+		}
+		
+		bool isRunning = true;
+
+        while( SUCCEEDED( hr ) && playBurningSound )
+        {
+			XAUDIO2_VOICE_STATE state;
+			burningSrcVoice->GetState( &state );
+            isRunning = ( state.BuffersQueued > 0 ) != 0;
+        }
+		
+	}
+	*/
 	if(player.getHealth() <= 0)
 	{
 		game->getGSM()->goToLoseMenu();
@@ -765,3 +802,67 @@ void SpriteManager::makeRandomBot(Game *game, float initX, float initY)
 	bot->setB2Body(body);
 	body->SetUserData(bot);
 }
+
+
+/*
+int SpriteManager::initSoundEngine()
+{
+	if( FAILED( CoInitializeEx( 0, COINIT_MULTITHREADED ) ) )
+        return 0;
+	xAudio2Engine = 0;
+	if( SUCCEEDED( XAudio2Create( &xAudio2Engine ) ) )
+    {
+		return 1;
+	}
+	return 0;
+}
+int SpriteManager::initBurningSoundEffect(LPWSTR fileName)
+{
+        IXAudio2MasteringVoice* masterVoice = 0;
+
+        if( SUCCEEDED( xAudio2Engine->CreateMasteringVoice( &masterVoice,
+            XAUDIO2_DEFAULT_CHANNELS, XAUDIO2_DEFAULT_SAMPLERATE, 0, 0, 0 ) ) )
+        {
+            CWaveFile wav;
+		
+            if( SUCCEEDED( wav.Open( fileName, 0, WAVEFILE_READ ) ) )
+            {
+                WAVEFORMATEX *format = wav.GetFormat( );
+                unsigned long wavSize = wav.GetSize( );
+                unsigned char *wavData = new unsigned char[wavSize];
+
+                if( SUCCEEDED( wav.Read( wavData, wavSize, &wavSize ) ) )
+                {
+
+                    if( SUCCEEDED( xAudio2Engine->CreateSourceVoice( &burningSrcVoice, format,
+                        0, XAUDIO2_DEFAULT_FREQ_RATIO, 0, 0, 0 ) ) )
+                    {
+                        XAUDIO2_BUFFER buffer = { 0 };
+                        buffer.pAudioData = wavData;
+                        buffer.Flags = XAUDIO2_END_OF_STREAM;
+                        buffer.AudioBytes = wavSize;
+
+                        if( SUCCEEDED( burningSrcVoice->SubmitSourceBuffer( &buffer ) ) )
+                        {
+							return 1;
+							
+                            HRESULT hr = srcVoice->Start( 0, XAUDIO2_COMMIT_NOW );
+
+                            bool isRunning = true;
+
+                            while( SUCCEEDED( hr ) && isRunning )
+                            {
+                                XAUDIO2_VOICE_STATE state;
+
+                                srcVoice->GetState( &state );
+                                isRunning = ( state.BuffersQueued > 0 ) != 0;
+                            }
+							
+                        }
+                    }
+                }
+            }
+        }
+		return 0;
+};
+*/

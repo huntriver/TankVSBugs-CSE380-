@@ -51,6 +51,7 @@
     <ClCompile Include="src\sssf\platforms\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\sssf\platforms\Windows\WindowsOS.cpp" />
     <ClCompile Include="src\sssf\platforms\Windows\WindowsTimer.cpp" />
+    <ClCompile Include="src\sssf\sound\SDKwavefile.cpp" />
     <ClCompile Include="src\sssf\text\BufferedTextFileReader.cpp" />
     <ClCompile Include="src\sssf\text\GameText.cpp" />
     <ClCompile Include="src\sssf\text\TextFileWriter.cpp" />
@@ -110,6 +111,7 @@
     <ClInclude Include="src\sssf\platforms\Windows\WindowsInput.h" />
     <ClInclude Include="src\sssf\platforms\Windows\WindowsOS.h" />
     <ClInclude Include="src\sssf\platforms\Windows\WindowsTimer.h" />
+    <ClInclude Include="src\sssf\sound\SDKwavefile.h" />
     <ClInclude Include="src\sssf\text\BufferedTextFileReader.h" />
     <ClInclude Include="src\sssf\text\GameText.h" />
     <ClInclude Include="src\sssf\text\TextFileWriter.h" />

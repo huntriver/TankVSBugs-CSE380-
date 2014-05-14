@@ -23,10 +23,19 @@
 #include "sssf\gsm\sprite\Tree.h"
 #include "sssf\gsm\sprite\Bullet.h"
 #include "sssf\gsm\ai\bots\HealthSupply.h"
+#include"sssf\sound\SDKwavefile.h"
+#include<windows.h>
+#include<iostream>
+#include<xaudio2.h>
+
+
 
 class SpriteManager
 {
 private:
+	// IXAudio2* xAudio2Engine;
+	// IXAudio2SourceVoice* burningSrcVoice;
+	// bool playBurningSound;
 	// NOTE THAT MULTIPLE SPRITES MAY SHARE ARTWORK, SO SPRITE TYPES
 	// SPECIFIES A TYPE OF SPRITE, OF WHICH THERE MAY BE MANY INSTANCES
 	vector<AnimatedSpriteType*> spriteTypes;
@@ -55,7 +64,7 @@ private:
 public:
 	// NOTHING TO INIT OR DESTROY
 	bool healthDisplay;
-	SpriteManager()		{healthDisplay=true;firstTime=true;}
+	SpriteManager()		{healthDisplay=true;firstTime=true;/*initSoundEngine();initBurningSoundEffect(L"data/sound/burning.wav");playBurningSound=false;*/}
 	~SpriteManager()	{}
 
 	// INLINED ACCESSOR 
@@ -88,5 +97,8 @@ public:
 	void				unloadSprites();
 	void				update(Game *game);
 	void				makeRandomBot(Game *game, float initX, float initY);
+	// int                 soundPlay(LPWSTR fileName);
 	short               getPlayerBulletCounter(){return playerBulletCounter;};
+//	int                initSoundEngine();
+//	int                initBurningSoundEffect(LPWSTR fileName);
 };
