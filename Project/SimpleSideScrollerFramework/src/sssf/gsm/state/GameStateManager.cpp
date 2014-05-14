@@ -100,6 +100,19 @@ void GameStateManager::goToControlMenu()
 	currentGameState = GS_MENU_CONTROLS_MENU;
 }
 
+void GameStateManager::goToLoseMenu()
+{
+	currentGameState = GS_LOSE;
+}
+
+void GameStateManager::goToWinMenu()
+{
+	currentGameState = GS_WIN;
+}
+void GameStateManager::goToClearMenu()
+{
+	currentGameState = GS_CLEAR;
+}
 /*
 	isAtSplashScreen - Used to test if this application is currently
 	at the splash screen. This will dictate what to render, but also
@@ -148,7 +161,11 @@ bool GameStateManager::isWorldRenderable()
 {
 	return (	(currentGameState == GS_GAME_IN_PROGRESS)
 		||		(currentGameState == GS_PAUSED)
-		||		(currentGameState == GS_GAME_OVER));
+		||		(currentGameState == GS_GAME_OVER)
+		||      (currentGameState == GS_LOSE)
+		||      (currentGameState == GS_WIN)
+		||      (currentGameState == GS_CLEAR)
+		);
 }
 
 /*

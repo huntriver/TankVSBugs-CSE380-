@@ -86,6 +86,9 @@ public:
 	void            goToCreditMenu();
 	void            pauseGame();
 	void            goToControlMenu();
+	void            goToLoseMenu();
+	void            goToWinMenu();
+	void           goToClearMenu();
 	void goToStoryMenu();
 
 	// METHODS DEFINED in GameStateManager.cpp

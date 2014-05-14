@@ -64,5 +64,20 @@ void BugsButtonEventHandler::handleButtonEvents(	Game *game,
 	{
 		GameStateManager *gsm = game->getGSM();
 		gsm->goToStoryMenu();
+	}else if(command.compare(W_REPLAY_COMMAND) == 0)
+	{
+		game->getGSM()->goToLevel(game, game->getGSM()->getCurrentLevelName());
+		game->startGame();
+	}else if(command.compare(W_NEXT_COMMAND) == 0)
+	{
+		int nextLevel = game->getGSM()->getCurrentLevel() + 1;
+		wstring levelNameToLoad;
+		if(nextLevel == 2)
+		{
+			levelNameToLoad = L"Level 2";
+		}else
+			levelNameToLoad = L"Level 3";
+		game->getGSM()->goToLevel(game, levelNameToLoad);
+		game->startGame();
 	}
 }

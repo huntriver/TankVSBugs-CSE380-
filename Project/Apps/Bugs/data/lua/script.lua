@@ -1,6 +1,6 @@
-player_pos_x = {135,0,1955}
-player_pos_y = {150,0,1772}
-num_of_tree = {1,2,2}
+player_pos_x = {135,135,1955}
+player_pos_y = {150,150,1772}
+num_of_tree = {1,0,2}
 tree_init_spawn_rate = {300, 0, 600}
 tree_spawn_rate_diff = {100, 0, 200}
 spawn_rate_change_interval = {200,0,1000}
