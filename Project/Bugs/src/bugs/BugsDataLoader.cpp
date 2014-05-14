@@ -8,7 +8,7 @@
 #include "bugs\BugsTextGenerator.h"
 #include "bugs\Box2DContactListener.h"
 #include "bugs\_entityCategory.h"
-
+#include "sssf\gsm\ai\bots\RandomSpider.h"
 // GAME OBJECT INCLUDES
 #include "sssf\gsm\sprite\FireEffect.h"
 #include "sssf\game\Game.h"
@@ -41,6 +41,7 @@
 #include "psti\PoseurSpriteTypesImporter.h"
 #include "LuaPlusFramework\LuaPlus.h"
 #include "Box2D\Box2D.h"
+#include "bugs\BugsSpriteType.h"
 
 using namespace LuaPlus;
 
@@ -210,6 +211,8 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 	player->setAlpha(255);
 	player->setCurrentState(IDLE);
 	player->setDirection(L"RIGHT");
+	if(game->getGSM()->getCurrentLevel() == 3)
+		player->setDirection(L"UP");
 	player->setHealth(playerSpriteType->getTextureWidth()/spriteManager->getSpriteType(4)->getTextureWidth());
 	player->setHP(100.0f);
 	player->setAttack(50.0f);
@@ -236,7 +239,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 	// Override the default friction.
 	 fixtureDef.friction = 0.3f;
 	 fixtureDef.filter.categoryBits = TANK;
-	 fixtureDef.filter.maskBits = WALL|BUG;
+	 fixtureDef.filter.maskBits = WALL|BUG|SUPPLY;
 
 	// Add the shape to the body.
 	body->SetLinearVelocity(b2Vec2(0.0f,0.0f));
@@ -245,7 +248,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 	player->setOnTileThisFrame(false);
 	player->setOnTileLastFrame(false);
 	player->affixTightAABBBoundingVolume();
-
+	player->setUnDead(false);
 	float viewportX=game->getGSM()->getSpriteManager()->getPlayer()->getB2Body()->GetPosition().x*5.0f;
 	float viewportY=game->getGSM()->getSpriteManager()->getPlayer()->getB2Body()->GetPosition().y*-5.0f;
 	float screenX = game->getGUI()->getViewport()->getViewportWidth()/2.0f;
@@ -265,37 +268,63 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 	effect->setAlpha(255);
 	effect->setHealth(1000);
 	effect->setCurrentState(IDLE);
-	effect->setAttack(5.0f);
+	effect->setAttack(7.0f);
 	effect->setPlayer(player);
 	game->getGSM()->getSpriteManager()->addFireEffect(effect);
 	
 	LuaFunction<int> getNumOfTree = luaPstate->GetGlobal("getNumOfTree");
 	int numOfTree = getNumOfTree(gsm->getCurrentLevel());
 	int offset = 1 + (gsm->getCurrentLevel() - 1) * 5;
+	int randNum = 0;
+	int randNum2 = 0;
+	if(gsm->getCurrentLevel() == 3)
+	{
+		randNum = rand()%4;
+		randNum2 = rand()%4;
+		while(randNum2 == randNum)
+			randNum2 = rand()%4;
+	}
 	for(int i = 0; i < numOfTree; i++)
 	{
+		int index;
+		if(game->getGSM()->getCurrentLevel() == 3 && i == 0)
+		{
+			index = randNum;
+		}else if(game->getGSM()->getCurrentLevel() == 3 && i == 1)
+		{
+			index = randNum2;
+		}else{
+			index = i;
+		}
 		Tree* tree = new Tree();
 		tree->setSpriteType(spriteManager->getSpriteType(7));
 		tree->setAlpha(255);
 		tree->setHealth((int)(spriteManager->getSpriteType(7)->getTextureWidth()/game->getGSM()->getSpriteManager()->getSpriteType(4)->getTextureWidth()));
-		tree->setCurrentState(IDLE);
+		tree->setCurrentState(L"LOW");
 		tree->setRotationInRadians(0.0f);
 		tree->setAttack(0.0f);
 		spriteManager->addTree(tree);
 		b2BodyDef treeBodyDef;
 		LuaFunction<int> getTreeX = luaPstate->GetGlobal("getTreeX");
 		LuaFunction<int> getTreeY = luaPstate->GetGlobal("getTreeY");
-		int treeX = getTreeX(i + offset);
-		int treeY = getTreeY(i + offset);
+		int treeX = getTreeX(index + offset);
+		int treeY = getTreeY(index + offset);
+
 		treeBodyDef.position.Set(treeX/5.0f, treeY/-5.0f);
 		LuaFunction<int> getTreeXOff = luaPstate->GetGlobal("getTreeXOff");
 		LuaFunction<int> getTreeYOff = luaPstate->GetGlobal("getTreeYOff");
-		int treeOffX = getTreeXOff(i + offset);
-		int treeOffY = getTreeYOff(i + offset);
+		int treeOffX = getTreeXOff(index + offset);
+		int treeOffY = getTreeYOff(index + offset);
 		LuaFunction<int> getSpawnRateInterval = luaPstate->GetGlobal("getSpawnRateInterval");
-		tree->setIterval(getSpawnRateInterval(i + 1));
+		tree->setIterval(getSpawnRateInterval(gsm->getCurrentLevel()));
+		LuaFunction<int> getInitSpawnRate = luaPstate->GetGlobal("getInitSpawnRate");
+		tree->initSpawnRate(getInitSpawnRate(gsm->getCurrentLevel()));
+		LuaFunction<int> getInitSpawnRateDiff = luaPstate->GetGlobal("getInitSpawnRateDiff");
+		tree->initSpanRateDec(getInitSpawnRateDiff(gsm->getCurrentLevel()));
 		for(int j = 0; j < 150; j++)
-			makeRandomBot(game, spriteManager->getSpriteType(1), treeX + treeOffX, treeY + treeOffY, tree);
+		{
+			makeRandomBot(game, spriteManager->getSpriteType(1), treeX + treeOffX, treeY + treeOffY, tree, j);
+		}
 		tree->resetDummyBotsIterator();
 		b2Body* treeBody = (world->boxWorld)->CreateBody(&treeBodyDef);
 		b2PolygonShape treeBox;
@@ -304,10 +333,9 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 		tree->setB2Body(treeBody);
 		treeBody->SetUserData(tree);
 	}
-
 	if(game->getGSM()->getCurrentLevel() == 0)
 	{
-		RandomBot *bot = new RandomBot();
+		RandomSpider *bot = new RandomSpider();
 		//physics->addCollidableObject(bot);
 		//PhysicalProperties *pp = bot->getPhysicalProperties();
 		//pp->setPosition(initX, initY);
@@ -316,7 +344,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 		bot->setDirection(L"UP");
 		bot->setAlpha(255);
 		bot->setHealth((int)(spriteManager->getSpriteType(10)->getTextureWidth()/game->getGSM()->getSpriteManager()->getSpriteType(4)->getTextureWidth()));
-		bot->setAttack(0.2);
+		bot->setAttack(10);
 		int playerW = game->getGSM()->getSpriteManager()->getPlayer()->getSpriteType()->getTextureWidth()/2;
 		float randNum = rand()% playerW;
 		if(game->getGSM()->getSpriteManager()->getBotSize() % 2 == 0)
@@ -325,6 +353,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 			bot->initBot(30, 300, MAX_TANK_SPEED/1.4f, false,-randNum);
 		game->getGSM()->getSpriteManager()->addBot(bot);
 		bot->setLongDistanceAttack(true);
+		bot->setAttackInterval(50);
 		b2BodyDef bodyDef;
 		bodyDef.type = b2_dynamicBody;
 		bodyDef.position.Set(200/5.0f, -200/5.0f);
@@ -351,8 +380,8 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 		body->CreateFixture(&fixtureDef);
 		bot->setB2Body(body);
 		body->SetUserData(bot);
+		makeHealthSupplyBot(game, spriteManager->getSpriteType(14), bot);
 	}
-	
 
 // UNCOMMENT THE FOLLOWING CODE BLOCK WHEN YOU ARE READY TO ADD SOME BOTS
 /*	for (int i = 2; i <= 26; i++)
@@ -385,30 +414,89 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 	game->getInput()->dKeyDisabled = false;
 	game->getInput()->aKeyDisabled = false;
 	game->getGSM()->goToGame();
-	game->getGUI()->getViewport()->setViewportX(0.0f);
-	game->getGUI()->getViewport()->setViewportY(0.0f);
 }
 
-void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType, float initX, float initY, Tree* tree)
+void BugsDataLoader::makeHealthSupplyBot(Game *game, AnimatedSpriteType *healthSupplyType, Bot* bot)
 {
+		HealthSupply* supply = new HealthSupply();
+		//physics->addCollidableObject(bot);
+		//PhysicalProperties *pp = bot->getPhysicalProperties();
+		//pp->setPosition(initX, initY);
+		supply->setSpriteType(healthSupplyType);
+		supply->setCurrentState(L"DYING");
+		supply->setDirection(L"UP");
+		supply->setAlpha(255);
+		supply->setHealth(400);
+		supply->setAttack(0);
+		int id = game->getGSM()->getSpriteManager()->addHealth(supply);
+		((RandomBot*)bot)->setHealthSupply(true);
+		((RandomBot*)bot)->setHealthId(id);
+		/*
+		supply->setHost((RandomBot*)bot);
+		((RandomBot*)bot)->setHS(supply);
+		((RandomBot*)bot)->setHealthSupply(true);
+		*/
+		b2BodyDef bodyDef;
+		bodyDef.type = b2_dynamicBody;
+		bodyDef.position.Set(bot->getB2Body()->GetPosition().x, bot->getB2Body()->GetPosition().y);
+		b2Body* body = (game->getGSM()->getWorld()->boxWorld)->CreateBody(&bodyDef);
+		// Define another box shape for our dynamic body.
+		b2PolygonShape dynamicBox;
+		dynamicBox.SetAsBox(healthSupplyType->getTextureWidth()/10.0f, healthSupplyType->getTextureHeight()/10.0f);
+
+		// Define the dynamic body fixture.
+		b2FixtureDef fixtureDef;
+		fixtureDef.shape = &dynamicBox;
+
+		// Set the box density to be non-zero, so it will be dynamic.
+		fixtureDef.density = 1.0f;
+
+		// Override the default friction.
+		fixtureDef.friction = 0.0f;
+		fixtureDef.filter.categoryBits = DUMMYBUG;
+		fixtureDef.filter.maskBits = WALL;
+
+		// Add the shape to the body.
+		body->SetLinearVelocity(b2Vec2(0.0f,0.0f));
+		body->CreateFixture(&fixtureDef);
+		supply->setB2Body(body);
+		body->SetUserData(supply);
+}
+
+void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType, float initX, float initY, Tree* tree, int j)
+{
+	if(game->getGSM()->getCurrentLevel() == 3)
+		randomBotType = game->getGSM()->getSpriteManager()->getSpriteType(TYPE_SPIDER);
 	SpriteManager *spriteManager = game->getGSM()->getSpriteManager();
 //	Physics *physics = game->getGSM()->getPhysics();
-	RandomBot *bot = new RandomBot();
+	RandomBot *bot;
+	if(game->getGSM()->getCurrentLevel() == 3)
+		bot = new RandomSpider();
+	else
+		bot = new RandomBot();
 	//physics->addCollidableObject(bot);
 	//PhysicalProperties *pp = bot->getPhysicalProperties();
 	//pp->setPosition(initX, initY);
 	bot->setSpriteType(randomBotType);
-	bot->setCurrentState(L"IDLE");
+	bot->setCurrentState(IDLE);
 	bot->setDirection(L"UP");
 	bot->setAlpha(255);
 	bot->setHealth((int)(randomBotType->getTextureWidth()/game->getGSM()->getSpriteManager()->getSpriteType(4)->getTextureWidth()));
-	bot->setAttack(0.2);
+	if(game->getGSM()->getCurrentLevel() == 3)
+		bot->setAttack(10);
+	else
+		bot->setAttack(0.4f);
 	int playerW = game->getGSM()->getSpriteManager()->getPlayer()->getSpriteType()->getTextureWidth()/2;
 	float randNum = rand()% playerW;
 	if(game->getGSM()->getSpriteManager()->getBotSize() % 2 == 0)
 		bot->initBot(30, 300, MAX_TANK_SPEED/1.4f, true,randNum);
 	else
 		bot->initBot(30, 300, MAX_TANK_SPEED/1.4f, false,-randNum);
+	if(game->getGSM()->getCurrentLevel() == 3)
+	{
+		bot->setLongDistanceAttack(true);
+		bot->setAttackInterval(50);
+	}
 	tree->addBot(bot);
 
 	b2BodyDef bodyDef;
@@ -437,6 +525,11 @@ void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType
 	body->CreateFixture(&fixtureDef);
 	bot->setB2Body(body);
 	body->SetUserData(bot);
+
+	if(j%10 == 0)
+	{
+		makeHealthSupplyBot(game, game->getGSM()->getSpriteManager()->getSpriteType(TYPE_HEALTH_SUPPLY), bot);
+	}
 }
 
 /*

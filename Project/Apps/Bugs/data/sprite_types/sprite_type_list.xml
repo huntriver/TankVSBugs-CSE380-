@@ -5,6 +5,8 @@
  explosion 3
  health 4
  ant_dying 5 
+ spider 10
+ supply 14
  -->
 
 
@@ -21,4 +23,8 @@
   <sprite_type>spawn_rate</sprite_type>
   <sprite_type>objective</sprite_type>
   <sprite_type>spider</sprite_type>
+  <sprite_type>acid</sprite_type>
+  <sprite_type>spider_dying</sprite_type>
+  <sprite_type>net_effect</sprite_type>
+  <sprite_type>supply</sprite_type>
 </sprite_type_list>

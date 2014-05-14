@@ -21,7 +21,9 @@
     <ClCompile Include="src\sssf\graphics\RenderList.cpp" />
     <ClCompile Include="src\sssf\graphics\TextureManager.cpp" />
     <ClCompile Include="src\sssf\gsm\ai\BotRecycler.cpp" />
+    <ClCompile Include="src\sssf\gsm\ai\bots\HealthSupply.cpp" />
     <ClCompile Include="src\sssf\gsm\ai\bots\RandomBot.cpp" />
+    <ClCompile Include="src\sssf\gsm\ai\bots\RandomSpider.cpp" />
     <ClCompile Include="src\sssf\gsm\ai\pathfinding\OrthographicGridPathfinder.cpp" />
     <ClCompile Include="src\sssf\gsm\physics\AABB.cpp" />
     <ClCompile Include="src\sssf\gsm\physics\CollidableObject.cpp" />
@@ -65,6 +67,7 @@
     <ClInclude Include="src\sssf\graphics\TextureManager.h" />
     <ClInclude Include="src\sssf\gsm\ai\Bot.h" />
     <ClInclude Include="src\sssf\gsm\ai\BotRecycler.h" />
+    <ClInclude Include="src\sssf\gsm\ai\bots\HealthSupply.h" />
     <ClInclude Include="src\sssf\gsm\ai\bots\RandomBot.h" />
     <ClInclude Include="src\sssf\gsm\ai\bots\RandomSpider.h" />
     <ClInclude Include="src\sssf\gsm\ai\pathfinding\GridPathfinder.h" />
@@ -77,6 +80,7 @@
     <ClInclude Include="src\sssf\gsm\physics\Physics.h" />
     <ClInclude Include="src\sssf\gsm\sprite\AnimatedSprite.h" />
     <ClInclude Include="src\sssf\gsm\sprite\AnimatedSpriteType.h" />
+    <ClInclude Include="src\sssf\gsm\sprite\Bullet.h" />
     <ClInclude Include="src\sssf\gsm\sprite\Effect.h" />
     <ClInclude Include="src\sssf\gsm\sprite\FireEffect.h" />
     <ClInclude Include="src\sssf\gsm\sprite\SpriteManager.h" />

@@ -191,6 +191,12 @@
     <ClCompile Include="src\sssf\gsm\sprite\TextEffect.cpp">
       <Filter>src\sssf\gsm\sprite</Filter>
     </ClCompile>
+    <ClCompile Include="src\sssf\gsm\ai\bots\RandomSpider.cpp">
+      <Filter>src\sssf\gsm\ai\bots</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sssf\gsm\ai\bots\HealthSupply.cpp">
+      <Filter>src\sssf\gsm\ai\bots</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\sssf_VS\stdafx.h">
@@ -365,6 +371,12 @@
       <Filter>src\sssf\gsm\sprite</Filter>
     </ClInclude>
     <ClInclude Include="src\sssf\gsm\ai\bots\RandomSpider.h">
+      <Filter>src\sssf\gsm\ai\bots</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sssf\gsm\sprite\Bullet.h">
+      <Filter>src\sssf\gsm\sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sssf\gsm\ai\bots\HealthSupply.h">
       <Filter>src\sssf\gsm\ai\bots</Filter>
     </ClInclude>
   </ItemGroup>

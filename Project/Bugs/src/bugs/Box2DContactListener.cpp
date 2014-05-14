@@ -2,6 +2,7 @@
 #include "bugs\BugsSpriteType.h"
 #include "sssf\gsm\state\GameStateManager.h"
 #include "sssf\gsm\ai\bots\RandomBot.h"
+#include "sssf\gsm\sprite\Bullet.h"
 
 void Box2DContactListener::BeginContact(b2Contact* contact)
 {
@@ -12,7 +13,12 @@ void Box2DContactListener::BeginContact(b2Contact* contact)
 	   {
 		   if(t2->getSpriteType()->getSpriteTypeID() == TYPE_BULLET)
 				t2->setHealth(0);
-		   else if(t2->getSpriteType()->getSpriteTypeID() == TYPE_ANT)
+		   else if(t2->getSpriteType()->getSpriteTypeID() == TYPE_BUG_BULLET)
+		   {
+			   t2->setHealth(0);
+			   ((RandomBot*)((Bullet*)t2)->getOwner())->setApproachFailed(true);
+		   }
+		   else if(t2->getSpriteType()->getSpriteTypeID() == TYPE_ANT || t2->getSpriteType()->getSpriteTypeID() == TYPE_HEALTH_SUPPLY)
 		   {
 			   RandomBot* b2 = (RandomBot*)t2;
 			   if(b2->isAttempApproach())
@@ -28,9 +34,14 @@ void Box2DContactListener::BeginContact(b2Contact* contact)
 		   }
 	   }else if(t2 == NULL && t1 != NULL)
 	   {
-		   if(t1->getSpriteType()->getSpriteTypeID() == TYPE_BULLET)
+		   if(t1->getSpriteType()->getSpriteTypeID() == TYPE_BULLET) 
 			   t1->setHealth(0);
-		   else if(t1->getSpriteType()->getSpriteTypeID() == TYPE_ANT)
+		   else if(t1->getSpriteType()->getSpriteTypeID() == TYPE_BUG_BULLET)
+		   {
+			   t1->setHealth(0);
+			   ((RandomBot*)((Bullet*)t1)->getOwner())->setApproachFailed(true);
+		   }
+		   else if(t1->getSpriteType()->getSpriteTypeID() == TYPE_ANT || t1->getSpriteType()->getSpriteTypeID() == TYPE_HEALTH_SUPPLY)
 		   {
 			   RandomBot* b1 = (RandomBot*)t1;
 			   if(b1->isAttempApproach())
@@ -46,24 +57,56 @@ void Box2DContactListener::BeginContact(b2Contact* contact)
 		   }
 	   }else if(t1 != NULL && t2 != NULL)
 	   {
-		   if(t1->getSpriteType()->getSpriteTypeID() == TYPE_TANK && t2->getSpriteType()->getSpriteTypeID() == TYPE_ANT)
+		   if((t1->getSpriteType()->getSpriteTypeID() == TYPE_TANK && t2->getSpriteType()->getSpriteTypeID() == TYPE_ANT) ||
+			   (t1->getSpriteType()->getSpriteTypeID() == TYPE_TANK && t2->getSpriteType()->getSpriteTypeID() == TYPE_SPIDER))
 		   {
 			   beginTankBugContact(t1, t2);
-		   }else if(t1->getSpriteType()->getSpriteTypeID() == TYPE_ANT &&
-			   t2->getSpriteType()->getSpriteTypeID() == TYPE_TANK)
+		   }else if((t1->getSpriteType()->getSpriteTypeID() == TYPE_ANT && t2->getSpriteType()->getSpriteTypeID() == TYPE_TANK) ||
+			   (t1->getSpriteType()->getSpriteTypeID() == TYPE_SPIDER && t2->getSpriteType()->getSpriteTypeID() == TYPE_TANK))
 		   {
 			   beginTankBugContact(t2, t1);
 		   }else if(t1->getSpriteType()->getSpriteTypeID() == TYPE_BULLET &&
-			   (t2->getSpriteType()->getSpriteTypeID() == TYPE_ANT || t2->getSpriteType()->getSpriteTypeID() == TYPE_TREE))
+			   (t2->getSpriteType()->getSpriteTypeID() == TYPE_ANT || t2->getSpriteType()->getSpriteTypeID() == TYPE_TREE ||
+			   t2->getSpriteType()->getSpriteTypeID() == TYPE_SPIDER))
 		   {
 			   t1->setHealth(0);
 			   t2->decHP(t1->getAttack());
 			   ((RandomBot*)t2)->setFightBack(true);
-		   }else if((t1->getSpriteType()->getSpriteTypeID() == TYPE_ANT || t1->getSpriteType()->getSpriteTypeID() == TYPE_TREE)&&
-			   t2->getSpriteType()->getSpriteTypeID() == TYPE_BULLET)
+		   }else if((t1->getSpriteType()->getSpriteTypeID() == TYPE_ANT || t1->getSpriteType()->getSpriteTypeID() == TYPE_TREE ||
+			   t1->getSpriteType()->getSpriteTypeID() == TYPE_SPIDER)&& t2->getSpriteType()->getSpriteTypeID() == TYPE_BULLET)
 		   {
 			   t1->decHP(t2->getAttack());
 			    ((RandomBot*)t1)->setFightBack(true);
+			   t2->setHealth(0);
+		   }else if(t1->getSpriteType()->getSpriteTypeID() == TYPE_BUG_BULLET && t2->getSpriteType()->getSpriteTypeID() == TYPE_TANK)
+		   {
+			   t1->setHealth(0);
+			   if(t1->getCurrentState() == L"ACID")
+			   {
+				   if(!t2->getUnDead())
+						t2->decHP(t1->getAttack());
+			   }else
+				   t1->setCurrentState(L"NET CAP");
+		   }else if(t1->getSpriteType()->getSpriteTypeID() == TYPE_TANK && t2->getSpriteType()->getSpriteTypeID() == TYPE_BUG_BULLET)
+		   {
+			   t2->setHealth(0);
+			   if(t2->getCurrentState() == L"ACID")
+			   {
+				   if(!t1->getUnDead())
+						t1->decHP(t2->getAttack());
+			   }else
+				   t2->setCurrentState(L"NET CAP");
+		   }else if(t1->getSpriteType()->getSpriteTypeID() == TYPE_TREE && t2->getSpriteType()->getSpriteTypeID() == TYPE_BUG_BULLET)
+		   {
+			   t2->setHealth(0);
+			   ((RandomBot*)((Bullet*)t2)->getOwner())->setApproachFailed(true);
+		   }else if(t1->getSpriteType()->getSpriteTypeID() == TYPE_BUG_BULLET && t2->getSpriteType()->getSpriteTypeID() == TYPE_TREE)
+		   {
+			   t1->setHealth(0);
+			   ((RandomBot*)((Bullet*)t1)->getOwner())->setApproachFailed(true);
+		   }else if(t1->getSpriteType()->getSpriteTypeID() == TYPE_TANK && t2->getSpriteType()->getSpriteTypeID() == TYPE_HEALTH_SUPPLY)
+		   {
+			   ((HealthSupply*)t2)->setAddHealth(true);
 			   t2->setHealth(0);
 		   }
 	   }
@@ -76,7 +119,7 @@ void Box2DContactListener::EndContact(b2Contact* contact)
 
 	 if(t1 == NULL && t2 != NULL)
 	 {
-		 if(t2->getSpriteType()->getSpriteTypeID() == TYPE_ANT)
+		 if(t2->getSpriteType()->getSpriteTypeID() == TYPE_ANT || t2->getSpriteType()->getSpriteTypeID() == TYPE_HEALTH_SUPPLY)
 		 {
 			 ((RandomBot*)t2)->setUpEdgeCC(0);
 			 ((RandomBot*)t2)->setDownEdgeCC(0);
@@ -85,7 +128,7 @@ void Box2DContactListener::EndContact(b2Contact* contact)
 		 }
 	 }else if(t1 != NULL && t2 == NULL)
 	 {
-		 if(t1->getSpriteType()->getSpriteTypeID() == TYPE_ANT)
+		 if(t1->getSpriteType()->getSpriteTypeID() == TYPE_ANT || t1->getSpriteType()->getSpriteTypeID() == TYPE_HEALTH_SUPPLY)
 		 {
 			 ((RandomBot*)t1)->setUpEdgeCC(0);
 			 ((RandomBot*)t1)->setDownEdgeCC(0);
@@ -94,14 +137,24 @@ void Box2DContactListener::EndContact(b2Contact* contact)
 		 }
 	 }else if(t1 != NULL && t2 != NULL)
 	 {
-		   if(t1->getSpriteType()->getSpriteTypeID() == TYPE_TANK && 
-			  t2->getSpriteType()->getSpriteTypeID() == TYPE_ANT)
+		   if((t1->getSpriteType()->getSpriteTypeID() == TYPE_TANK && t2->getSpriteType()->getSpriteTypeID() == TYPE_ANT) ||
+			  (t1->getSpriteType()->getSpriteTypeID() == TYPE_TANK && t2->getSpriteType()->getSpriteTypeID() == TYPE_SPIDER))
 		   {
-			   t2->setCurrentState(L"IDLE");
-		   }else if(t1->getSpriteType()->getSpriteTypeID() == TYPE_ANT &&
-			   t2->getSpriteType()->getSpriteTypeID() == TYPE_TANK)
+			   t1->setUpEdgeCC(0);
+			   t1->setDownEdgeCC(0);
+			   t1->setLeftEdgeCC(0);
+			   t1->setRightEdgeCC(0);
+			   if(t2->getSpriteType()->getSpriteTypeID() == TYPE_ANT)
+					t2->setCurrentState(L"IDLE");
+		   }else if((t1->getSpriteType()->getSpriteTypeID() == TYPE_ANT && t2->getSpriteType()->getSpriteTypeID() == TYPE_TANK) ||
+			   (t1->getSpriteType()->getSpriteTypeID() == TYPE_SPIDER && t2->getSpriteType()->getSpriteTypeID() == TYPE_TANK))
 		   {
-			   t1->setCurrentState(L"IDLE");
+			   t2->setUpEdgeCC(0);
+			   t2->setDownEdgeCC(0);
+			   t2->setLeftEdgeCC(0);
+			   t2->setRightEdgeCC(0);
+			   if(t1->getSpriteType()->getSpriteTypeID() == TYPE_ANT)
+					t1->setCurrentState(L"IDLE");
 		   }
 	}
 }
@@ -137,9 +190,11 @@ void Box2DContactListener::beginTankBugContact(TopDownSprite* player, TopDownSpr
 		if(pY < bY){
 			bug->setRotationInRadians(0);
 			bug->setCurrentState(L"ATTACK");
+			player->setDownEdgeCC(player->getDownEdgeCC() + 1);
 		}else if(pY > bY){
 			bug->setRotationInRadians(PI);
 			bug->setCurrentState(L"ATTACK");
+			player->setUpEdgeCC(player->getUpEdgeCC() + 1);
 		}
 	}else{
 		// They collide in corner.

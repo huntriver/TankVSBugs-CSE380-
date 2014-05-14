@@ -47,8 +47,8 @@ public:
 	// SOME HELPER METHODS FOR SETTING UP THE GAME
 	void initColors(GameGraphics *graphics,	map<wstring,wstring> *properties);
 	void initViewport(GameGUI *gui, map<wstring,wstring> *properties);
-	void makeRandomBot(Game *game, AnimatedSpriteType *randomJumpingBotType, float initX, float initY, Tree* tree);
-
+	void makeRandomBot(Game *game, AnimatedSpriteType *randomJumpingBotType, float initX, float initY, Tree* tree,int j);
+	void makeHealthSupplyBot(Game *game, AnimatedSpriteType *healthSupplyType, Bot* bot);
 	// AND SOME HELPER METHODS FOR LOADING THE GUI
 	void initCursor(GameGUI *gui, DirectXTextureManager *guiTextureManager);
 	void initSplashScreen(Game *game, GameGUI *gui,	DirectXTextureManager *guiTextureManager);

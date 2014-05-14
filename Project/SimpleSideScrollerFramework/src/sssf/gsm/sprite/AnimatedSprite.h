@@ -48,6 +48,7 @@ protected:
 	list<PathNode> currentPathToFollow;
 	list<PathNode>::iterator currentPathNode;
 	bool markForRemoval;
+	bool undead;
 	// FireEffect* fireAttack;
 public:
 	// INLINED ACCESSOR METHODS
@@ -94,7 +95,14 @@ public:
 	void setHP(float initHP){
 		hp = initHP;
 	}
-
+	void setUnDead(bool initUnDead)
+	{
+		undead = initUnDead;
+	}
+	bool getUnDead()
+	{
+		return undead;
+	}
 	//void setFireAttack(FireEffect* effect)
 	//{
 		//fireAttack = effect;

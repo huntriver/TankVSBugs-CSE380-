@@ -56,11 +56,8 @@ void Tree::updateSprite()
 
 void Tree::increaseSpawnRate()
 {
-	 if(spawnRate - 100 > 0) 
+	if(spawnRate - spawnRateDec > 0) 
 	 {
-		 spawnRate -= 100;
-
-		 if(spawnRate <= 100)
-			 maxSpawnRate = true;
+		 spawnRate -= spawnRateDec;
 	 }
 }

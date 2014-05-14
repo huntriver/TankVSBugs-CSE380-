@@ -40,7 +40,9 @@ void SpriteManager::addSpriteToRenderList(AnimatedSprite *sprite,
 		sprite->getSpriteType()->getSpriteTypeID() == 5 ||
 		sprite->getSpriteType()->getSpriteTypeID() == 6 ||
 		sprite->getSpriteType()->getSpriteTypeID() == 8 ||
-		sprite->getSpriteType()->getSpriteTypeID() == 9)
+		sprite->getSpriteType()->getSpriteTypeID() == 9 ||
+		sprite->getSpriteType()->getSpriteTypeID() == 12 ||
+		sprite->getSpriteType()->getSpriteTypeID() == 13)
 	{
 		if(viewport->areWorldCoordinatesInViewport(
 			pp->getX(),pp->getY(),spriteType->getTextureWidth(),
@@ -175,11 +177,11 @@ void SpriteManager::addSpriteItemsToRenderList(	Game *game)
 			addSpriteToRenderList(bot, renderList, viewport);
 			botIterator++;
 		}
-		list<TopDownSprite*>::iterator bulletIterator;
+		list<Bullet*>::iterator bulletIterator;
 		bulletIterator = bullets.begin();
 		while (bulletIterator != bullets.end())
 		{			
-			TopDownSprite *bullet = (*bulletIterator);
+			Bullet *bullet = (*bulletIterator);
 			addSpriteToRenderList(bullet, renderList, viewport);
 			bulletIterator++;
 		}
@@ -212,7 +214,9 @@ void SpriteManager::addSpriteItemsToRenderList(	Game *game)
 			while (botIterator != bots.end())
 			{			
 				Bot *bot = (*botIterator);
-				addSpriteHealthToRenderList(bot, renderList, viewport);
+				/*************************----------------------------------------------------********************/
+				if(bot->getSpriteType()->getSpriteTypeID() !=  14)
+					addSpriteHealthToRenderList(bot, renderList, viewport);
 				botIterator++;
 			}
 			treeIterator = trees.begin();
@@ -236,7 +240,7 @@ void SpriteManager::addBot(Bot *botToAdd)
 	bots.push_back(botToAdd);
 }
 
-void SpriteManager::addBullet(TopDownSprite *bulletToAdd)
+void SpriteManager::addBullet(Bullet *bulletToAdd)
 {
 	bullets.push_back(bulletToAdd);
 }
@@ -283,6 +287,11 @@ has been allocated for game sprites.
 void SpriteManager::unloadSprites()
 {
 	// @TODO - WE'LL DO THIS LATER WHEN WE LEARN MORE ABOUT MEMORY MANAGEMENT
+	for(int i = 0; i < dummyHealth.size(); i++)
+	{
+		if(dummyHealth[i] != NULL)
+			delete dummyHealth[i];
+	}
 
 	list<Bot*>::iterator botsIt = bots.begin();
 	// list<Bot*>::iterator dummyBotsIt = dummyBots.begin();
@@ -304,12 +313,12 @@ void SpriteManager::unloadSprites()
 	}
 	dummyBots.clear();
 
-	list<TopDownSprite*>::iterator bulletsIt = bullets.begin();
+	list<Bullet*>::iterator bulletsIt = bullets.begin();
 	while (bulletsIt != bullets.end())
 	{
-	list<TopDownSprite*>::iterator tempIt = bulletsIt;
+	list<Bullet*>::iterator tempIt = bulletsIt;
 	bulletsIt++;
-	TopDownSprite *bulletToDelete = (*tempIt);
+	Bullet *bulletToDelete = (*tempIt);
 	delete bulletToDelete;
 	}
 	bullets.clear();
@@ -432,10 +441,16 @@ void SpriteManager::update(Game *game)
 			{
 				tree->increaseSpawnRate();
 				tree->resetIntervalFrameCounter();
-				if(tree->getSpawnRate() == 200)
+				if(tree->getCurrentState() == L"LOW")
+				{
 					spawnState = L"MEDIUM";
-				else
+					tree->setCurrentState(L"MEDIUM");
+				}else
+				{
 					spawnState = L"HIGH";
+					tree->setCurrentState(L"HIGH");
+					tree->setMaxSpawnRate(true);
+				}
 			}
 			if(tree->getSpawnFrameCounter() <= 0)
 			{
@@ -505,10 +520,51 @@ void SpriteManager::update(Game *game)
 			abs(player.getB2Body()->GetPosition().y*-5.0f- bot->getB2Body()->GetPosition().y*-5.0f) <= attackDistance))){
 					bot->decHP(fEffect.getAttack());
 			}
+			/*
+			if(abs(player.getB2Body()->GetPosition().y*-5.0f- bot->getB2Body()->GetPosition().y*-5.0f) <= attackDistance &&
+				abs(player.getB2Body()->GetPosition().x*5.0f - bot->getB2Body()->GetPosition().x*5.0f) <= attackDistance){
+					bot->decHP(fEffect.getAttack());
+			}
+			*/
 		}
 		bot->updateSprite();
+		/******------------------------------------------------------------------------------------------*****/
+		if((bot->getSpriteType()->getSpriteTypeID()== 1 || bot->getSpriteType()->getSpriteTypeID() == 10) && ((RandomBot*)bot)->hasHealthSupply())
+		{
+			dummyHealth[((RandomBot*)bot)->getHealthId()]->getB2Body()->SetLinearVelocity(bot->getB2Body()->GetLinearVelocity());
+		}
+		/******------------------------------------------------------------------------------------------*****/
 		if(bot->getMarkForRemoval()){
-			addDyingEffect(bot);
+			/******------------------------------------------------------------------------------------------*****/
+			if((bot->getSpriteType()->getSpriteTypeID()== 1 || bot->getSpriteType()->getSpriteTypeID() == 10)&&((RandomBot*)bot)->hasHealthSupply())
+			{
+  			    HealthSupply* hs = dummyHealth[((RandomBot*)bot)->getHealthId()];
+				hs->setHostAlive(false);
+				dummyHealth[((RandomBot*)bot)->getHealthId()] = NULL;
+				b2Filter filter;
+				filter.categoryBits = 0x00012;
+				filter.maskBits = 0x0001|0x0002;
+				hs->getB2Body()->GetFixtureList()->SetFilterData(filter);
+				bots.push_back(hs);
+			}
+			/******------------------------------------------------------------------------------------------*****/
+			if(bot->getSpriteType()->getSpriteTypeID() != 14)
+				addDyingEffect(bot);
+			else{
+				/***********--------------------------------------------------------------------------------------**********/
+				if(((HealthSupply*)bot)->isAddHealth())
+				{
+					if(player.getHealth() + 2 >= (player.getSpriteType()->getTextureWidth()/getSpriteType(4)->getTextureWidth()))
+					{
+						player.setHealth(player.getSpriteType()->getTextureWidth()/getSpriteType(4)->getTextureWidth());
+						player.setHP(100);
+					}else{
+						player.setHealth(player.getHealth() + 2);
+						player.setHP(100);
+					}
+				}
+				/***********--------------------------------------------------------------------------------------**********/
+			}
 			game->getGSM()->getWorld()->boxWorld->DestroyBody(bot->getB2Body());
 			delete bot;
 			botIterator = bots.erase(botIterator);
@@ -518,23 +574,35 @@ void SpriteManager::update(Game *game)
 			//{
 				//player.decHP(bot->getAttack());
 			//}
-			((RandomBot*)bot)->think(game);
+			if(bot->getSpriteType()->getSpriteTypeID() != 14)
+				((RandomBot*)bot)->think(game);
+			else
+				((HealthSupply*)bot)->think(game);
 			botIterator++;
 		}
 	}
 
-	list<TopDownSprite*>::iterator bulletIterator;
+	list<Bullet*>::iterator bulletIterator;
 	bulletIterator = bullets.begin();
 	
 	while(bulletIterator != bullets.end())
 	{
-		TopDownSprite *bullet = (*bulletIterator);
+		playerBulletCounter = 0;
+		Bullet *bullet = (*bulletIterator);
 		bullet->setHealth(bullet->getHealth() - 1);
 		bullet->updateSprite();
+		
+		if(bullet->getOwner() == &player)
+			playerBulletCounter++;
 
 		if(bullet->getMarkForRemoval())
 		{
-			addBulletEffect(bullet);
+			if(bullet->getCurrentState() == L"MOVE")
+				addBulletEffect(bullet);
+			if(bullet->getCurrentState() == L"NET CAP")
+			{
+				addBulletEffect(&player);
+			}
 			game->getGSM()->getWorld()->boxWorld->DestroyBody(bullet->getB2Body());
 			delete bullet;
 			bulletIterator = bullets.erase(bulletIterator);
@@ -551,10 +619,25 @@ void SpriteManager::update(Game *game)
 		
 		if(effect->getMarkForRemoval())
 		{
+			if(effect->getSpriteType()->getSpriteTypeID() == 13)
+			{
+				game->getInput()->wKeyDisabled = false;
+				game->getInput()->sKeyDisabled = false;
+				game->getInput()->aKeyDisabled = false;
+				game->getInput()->dKeyDisabled = false;
+			}
 			delete effect;
 			effectIterator = effects.erase(effectIterator);
-		}else
+		}else{
+			if(effect->getSpriteType()->getSpriteTypeID() == 13)
+			{
+				game->getInput()->wKeyDisabled = true;
+				game->getInput()->sKeyDisabled = true;
+				game->getInput()->aKeyDisabled = true;
+				game->getInput()->dKeyDisabled = true;
+			}
 			effectIterator++;
+		}
 	}
 
 	effectIterator = dyingEffects.begin();
@@ -575,6 +658,8 @@ void SpriteManager::update(Game *game)
 void SpriteManager::addBulletEffect(TopDownSprite* bullet)
 {
 	AnimatedSpriteType *effectSpriteType = getSpriteType(3);
+	if(bullet->getSpriteType()->getSpriteTypeID() == 0)
+		effectSpriteType = getSpriteType(13);
 	Effect* effect = new Effect();
 	float x = bullet->getB2Body()->GetPosition().x * BOX2D_SCALE;
 	float y = bullet->getB2Body()->GetPosition().y * -BOX2D_SCALE;
@@ -591,6 +676,8 @@ void SpriteManager::addBulletEffect(TopDownSprite* bullet)
 void SpriteManager::addDyingEffect(TopDownSprite* sprite)
 {
 	AnimatedSpriteType *dyingEffectSpriteType = getSpriteType(5);
+	if(sprite->getSpriteType()->getSpriteTypeID() == 10)
+		dyingEffectSpriteType = getSpriteType(12);
 	Effect* dyingEffect = new Effect();
 	float x = sprite->getB2Body()->GetPosition().x * BOX2D_SCALE;
 	float y = sprite->getB2Body()->GetPosition().y * -BOX2D_SCALE;
@@ -601,6 +688,7 @@ void SpriteManager::addDyingEffect(TopDownSprite* sprite)
 	dyingEffect->setEffectTimes(1);
 	dyingEffect->getPhysicalProperties()->setX(x);
 	dyingEffect->getPhysicalProperties()->setY(y);
+	dyingEffect->setRotationInRadians(sprite->getRotationInRadians());
 	dyingEffects.push_back(dyingEffect);
 }
 
