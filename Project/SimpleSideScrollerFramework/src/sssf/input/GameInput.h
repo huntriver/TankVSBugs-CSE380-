@@ -57,6 +57,10 @@ public:
 	bool sKeyDisabled;
 	bool aKeyDisabled;
 	bool dKeyDisabled;
+	bool upKeyDisabled;
+	bool downKeyDisabled;
+	bool leftKeyDisabled;
+	bool rightKeyDisabled;
 
 	// CHECKS TO SEE IF A KEY IS CURRENTLY PRESSED
 	bool	isKeyDown(int key)					

@@ -1,20 +1,72 @@
-﻿Build started 5/14/2014 1:05:04 PM.
+﻿Build started 5/14/2014 1:28:58 PM.
      1>Project "C:\Users\yubshang\Desktop\380 project\Project\SimpleSideScrollerFramework\SimpleSideScrollerFramework.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\gsm\sprite\SpriteManager.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\sssf\game\Game.cpp src\sssf\graphics\GameGraphics.cpp src\sssf\gsm\ai\bots\HealthSupply.cpp src\sssf\gsm\ai\bots\RandomBot.cpp src\sssf\gsm\ai\bots\RandomSpider.cpp src\sssf\gsm\ai\pathfinding\OrthographicGridPathfinder.cpp src\sssf\gsm\physics\Physics.cpp src\sssf\gsm\sprite\SpriteManager.cpp src\sssf\gsm\state\GameStateManager.cpp src\sssf\gsm\world\TiledLayer.cpp src\sssf\gsm\world\World.cpp src\sssf\gui\Button.cpp src\sssf\gui\Cursor.cpp src\sssf\gui\GameGUI.cpp src\sssf\gui\ScreenGUI.cpp src\sssf\input\GameInput.cpp src\sssf\platforms\DirectX\DirectXGraphics.cpp src\sssf\platforms\DirectX\DirectXTextureManager.cpp src\sssf\platforms\Windows\WindowsInput.cpp src\sssf\platforms\Windows\WindowsOS.cpp src\sssf\text\GameText.cpp
+         GameInput.cpp
+         Generating Code...
+         Compiling...
+         GameText.cpp
+         WindowsOS.cpp
+         WindowsInput.cpp
+         DirectXTextureManager.cpp
+         DirectXGraphics.cpp
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(537): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(538): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(470): warning C4101: 'translationX' : unreferenced local variable
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(471): warning C4101: 'translationY' : unreferenced local variable
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(711): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(712): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(743): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(744): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(745): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\platforms\directx\directxgraphics.cpp(746): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+         ScreenGUI.cpp
+         GameGUI.cpp
+         Cursor.cpp
+         Button.cpp
+         World.cpp
+         TiledLayer.cpp
+         GameStateManager.cpp
          SpriteManager.cpp
      1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(71): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
      1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(411): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
      1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(412): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(440): warning C4244: 'initializing' : conversion from 'const float32' to 'int', possible loss of data
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(482): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(484): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(525): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(534): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(769): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(771): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(773): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
-     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(775): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(443): warning C4244: 'initializing' : conversion from 'const float32' to 'int', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(485): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(487): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(528): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(537): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(772): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(774): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(776): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\sprite\spritemanager.cpp(778): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
+         Physics.cpp
+         OrthographicGridPathfinder.cpp
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(25): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(26): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(138): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\pathfinding\orthographicgridpathfinder.cpp(139): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         RandomSpider.cpp
+         RandomBot.cpp
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(97): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(98): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(129): warning C4244: 'argument' : conversion from 'unsigned int' to 'float32', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(134): warning C4244: 'argument' : conversion from 'double' to 'float32', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(139): warning C4244: 'argument' : conversion from 'double' to 'float32', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(143): warning C4244: 'argument' : conversion from 'unsigned int' to 'float32', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(189): warning C4244: 'argument' : conversion from 'unsigned int' to 'float32', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(204): warning C4244: 'argument' : conversion from 'unsigned int' to 'float32', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(230): warning C4244: 'argument' : conversion from 'unsigned int' to 'float32', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\randombot.cpp(251): warning C4244: 'argument' : conversion from 'unsigned int' to 'float32', possible loss of data
+         HealthSupply.cpp
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\healthsupply.cpp(12): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\healthsupply.cpp(13): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\healthsupply.cpp(48): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\healthsupply.cpp(49): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+         GameGraphics.cpp
+         Game.cpp
+         Generating Code...
+     1>c:\users\yubshang\desktop\380 project\project\simplesidescrollerframework\src\sssf\gsm\ai\bots\randomspider.cpp(124): warning C4715: 'RandomSpider::calcBulletRotation' : not all control paths return a value
        Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\yubshang\Desktop\380 project\Project\Common\SimpleSideScrollerFramework.lib" Box2D.lib /LIBPATH:../lib /NOLOGO "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\GameDataLoader.obj"
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\SimpleSideScrollerFramework\Debug\Game.obj"
@@ -63,4 +115,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.90
+Time Elapsed 00:00:40.09

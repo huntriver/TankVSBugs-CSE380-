@@ -414,6 +414,10 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 	game->getInput()->sKeyDisabled = false;
 	game->getInput()->dKeyDisabled = false;
 	game->getInput()->aKeyDisabled = false;
+	game->getInput()->upKeyDisabled = true;
+	game->getInput()->downKeyDisabled = true;
+	game->getInput()->leftKeyDisabled = true;
+	game->getInput()->rightKeyDisabled = true;
 	game->getGSM()->goToGame();
 }
 
@@ -824,7 +828,7 @@ void BugsDataLoader::initPauseMenu(GameGUI *gui,	DirectXTextureManager *guiTextu
 	buttonToAdd->initButton(normalTextureID,
 							mouseOverTextureID,
 							496,
-							262,
+							260,
 							0,
 							255,
 							400,
@@ -835,6 +839,22 @@ void BugsDataLoader::initPauseMenu(GameGUI *gui,	DirectXTextureManager *guiTextu
 	// AND NOW LOAD IT INTO A ScreenGUI
 	pauseMenuGUI->addButton(buttonToAdd);
 
+	normalTextureID = guiTextureManager->loadTexture(W_REPLAY_IMAGE_PATH);
+	mouseOverTextureID = guiTextureManager->loadTexture(W_REPLAY_IMAGE_PATH);
+
+	buttonToAdd = new Button();
+	buttonToAdd->initButton(normalTextureID,
+							mouseOverTextureID,
+							496,
+							384,
+							0,
+							255,
+							400,
+							100,
+							false,
+							W_REPLAY_COMMAND);
+	pauseMenuGUI->addButton(buttonToAdd);
+
 	normalTextureID = guiTextureManager->loadTexture(W_CONTROLS_IMAGE_PATH);
 	mouseOverTextureID = guiTextureManager->loadTexture(W_CONTROLS_IMAGE_PATH);
 
@@ -842,7 +862,7 @@ void BugsDataLoader::initPauseMenu(GameGUI *gui,	DirectXTextureManager *guiTextu
 	buttonToAdd->initButton(normalTextureID,
 							mouseOverTextureID,
 							496,
-							418,
+							510,
 							0,
 							255,
 							400,
@@ -860,7 +880,7 @@ void BugsDataLoader::initPauseMenu(GameGUI *gui,	DirectXTextureManager *guiTextu
 	buttonToAdd->initButton(normalTextureID,
 							mouseOverTextureID,
 							496,
-							578,
+							638,
 							0,
 							255,
 							400,

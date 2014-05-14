@@ -50,4 +50,8 @@ void GameInput::initInputState()
 	sKeyDisabled = false;
 	aKeyDisabled = false;
 	dKeyDisabled = false;
+	upKeyDisabled = true;
+	downKeyDisabled = true;
+	leftKeyDisabled = true;
+	rightKeyDisabled = true;
 }
