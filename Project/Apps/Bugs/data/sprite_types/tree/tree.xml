@@ -19,7 +19,19 @@
  </images_list>
  <animations_list>
   <animation_state>
-   <state>IDLE</state>
+   <state>LOW</state>
+   <animation_sequence>
+    <pose image_id="1" duration="1000"/>
+   </animation_sequence>
+  </animation_state>
+  <animation_state>
+   <state>MEDIUM</state>
+   <animation_sequence>
+    <pose image_id="1" duration="1000"/>
+   </animation_sequence>
+  </animation_state>
+  <animation_state>
+   <state>HIGH</state>
    <animation_sequence>
     <pose image_id="1" duration="1000"/>
    </animation_sequence>

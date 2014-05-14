@@ -7,6 +7,7 @@ class Tree: public TopDownSprite
 private:
 	int spawnRate;
 	int spawnFrameCounter;
+	int spawnRateDec;
 	int offsetX;
 	int offsetY;
 	int interval;
@@ -28,11 +29,14 @@ public:
 	void setOffsetY(int initOffsetY) { offsetY = initOffsetY; }
 	void resetSpawnFrameCounter() { spawnFrameCounter = spawnRate; }
 	void setIterval(int initInterval){ interval = initInterval; }
+	void setMaxSpawnRate(bool flag) { maxSpawnRate = flag; }
 	void resetIntervalFrameCounter() { intervalFrameCounter = 0; }
 	void updateSprite();
 	void changeFrame();
 	void increaseSpawnRate();
 	void addBot(Bot* botToAdd){ dummyBots.push_back(botToAdd); }
+	void initSpawnRate(int initSpawnRate){ spawnRate = initSpawnRate; }
+	void initSpanRateDec(int initSpawnRateDec) { spawnRateDec = initSpawnRateDec; }
 	void resetDummyBotsIterator(){ dummyBotsIterator = dummyBots.begin(); }
 	list<Bot*>::iterator getDumyBotIterator() { return dummyBotsIterator; }
 	void incDummyBotsIterator() { dummyBotsIterator++; }

@@ -21,6 +21,8 @@
 #include "sssf\gsm\sprite\Effect.h"
 #include "sssf\gsm\sprite\FireEffect.h"
 #include "sssf\gsm\sprite\Tree.h"
+#include "sssf\gsm\sprite\Bullet.h"
+#include "sssf\gsm\ai\bots\HealthSupply.h"
 
 class SpriteManager
 {
@@ -28,20 +30,20 @@ private:
 	// NOTE THAT MULTIPLE SPRITES MAY SHARE ARTWORK, SO SPRITE TYPES
 	// SPECIFIES A TYPE OF SPRITE, OF WHICH THERE MAY BE MANY INSTANCES
 	vector<AnimatedSpriteType*> spriteTypes;
-
+	vector<HealthSupply*> dummyHealth;
 	// THESE ARE THE BOTS IN THE GAME, LIKE ENEMIES, ROCKETS, OR ANYTHING
 	// THAT MOVES AROUND AND IS NOT THE PLAYER
 	list<Tree*> trees;
 	list<Bot*> bots;
 	list<Bot*> dummyBots;
 	list<Bot*>::iterator dummyBotsIterator;
-	list<TopDownSprite*> bullets;
+	list<Bullet*> bullets;
 	list<Effect*>  effects;
 	list<Effect*>  dyingEffects;
 	FireEffect fEffect;
 	// AND THIS IS THE PLAYER. AS-IS, WE ONLY ALLOW FOR ONE PLAYER AT A TIME
 	TopDownSprite player;
-
+	short playerBulletCounter;
 	// THE BotRecycler MAKES SURE WE DON'T HAVE TO CONSTRUCT BOTS WHENEVER
 	// WE NEED TO SPAWN THEM, INSTEAD IT WILL RECYCLE THEM FOR US
 	BotRecycler recyclableBots;
@@ -67,12 +69,13 @@ public:
 	GridPathfinder*			getPathfinder()			{ return pathfinder;		}
 
 	// METHODS DEFINED IN SpriteManager.cpp
+	int addHealth(HealthSupply* hs) {dummyHealth.push_back(hs); return dummyHealth.size()-1;}
 	void                addDyingEffect(TopDownSprite* sprite);
 	void                addBulletEffect(TopDownSprite* bullet);
 	void                addFireEffect(FireEffect* initFireEffect){effects.push_back(initFireEffect);}
 	void				addBot(Bot *botToAdd);
 	void                addTree(Tree *treeToAdd) {trees.push_back(treeToAdd);};
-	void                addBullet(TopDownSprite *bullet);
+	void                addBullet(Bullet *bullet);
 	void				addSpriteItemsToRenderList(Game *game);
 	unsigned int		addSpriteType(AnimatedSpriteType *spriteTypeToAdd);
 	void				addSpriteToRenderList(AnimatedSprite *sprite, RenderList *renderList, Viewport *viewport);
@@ -85,4 +88,5 @@ public:
 	void				unloadSprites();
 	void				update(Game *game);
 	void				makeRandomBot(Game *game, float initX, float initY);
+	short               getPlayerBulletCounter(){return playerBulletCounter;};
 };

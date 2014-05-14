@@ -28,6 +28,7 @@ AnimatedSprite::AnimatedSprite()
 	dead=false;
 	markForRemoval = false;
 	hp = 100.0f; 
+	undead = false;
 }
 
 /*

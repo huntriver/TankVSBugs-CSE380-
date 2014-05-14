@@ -17,6 +17,7 @@
 #include "sssf\gsm\physics\Physics.h"
 #include "sssf\gsm\physics\PhysicalProperties.h"
 #include "sssf\gsm\sprite\AnimatedSprite.h"
+#include "sssf\gsm\sprite\Bullet.h"
 #include "sssf\gsm\state\GameState.h"
 #include "sssf\gsm\state\GameStateManager.h"
 #include "sssf\gui\Cursor.h"
@@ -39,16 +40,27 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 
 	// LET'S GET THE PLAYER'S PHYSICAL PROPERTIES, IN CASE WE WANT TO CHANGE THEM
 	GameStateManager *gsm = game->getGSM();
-	AnimatedSprite *player = gsm->getSpriteManager()->getPlayer();
+	TopDownSprite *player = gsm->getSpriteManager()->getPlayer();
 	PhysicalProperties *pp = player->getPhysicalProperties();
 	Viewport *viewport = game->getGUI()->getViewport();
 	
 	// IF THE GAME IS IN PROGRESS
 	if (gsm->isGameInProgress())
 	{
+		if(input->isKeyDown(VK_CONTROL) && input->isKeyDownForFirstTime((unsigned int)'I'))
+		{
+			if(player->getUnDead())
+				player->setUnDead(false);
+			else
+				player->setUnDead(true);
+		}
 		if(input->isKeyDown(VK_CONTROL) && input->isKeyDownForFirstTime((unsigned int)'0'))
 		{
 			gsm->goToLevel(game,L"Level 0");
+		}
+		if(input->isKeyDown(VK_CONTROL) && input->isKeyDownForFirstTime((unsigned int)'3'))
+		{
+			gsm->goToLevel(game,L"Level 3");
 		}
 		if(input->isKeyDownForFirstTime((unsigned int)'H'))
 		{
@@ -91,11 +103,11 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 		}else if(input->isKeyDown((unsigned int)'M')){
 			game->getGSM()->getSpriteManager()->getFireEffect()->setStart(true);
 			game->getGSM()->getSpriteManager()->getFireEffect()->setStop(false);
-		}else if (input->isKeyDownForFirstTime(SPACE_KEY) && game->getGSM()->getSpriteManager()->getBulletsSize() <= 5)
+		}else if (input->isKeyDownForFirstTime(SPACE_KEY) && game->getGSM()->getSpriteManager()->getPlayerBulletCounter() <= 5)
 		{
 			if(game->getGSM()->getSpriteManager()->getFireEffect()->isStart())
 				game->getGSM()->getSpriteManager()->getFireEffect()->setStop(true);
-			TopDownSprite *bullet = new TopDownSprite();
+			Bullet *bullet = new Bullet();
 			//physics->addCollidableObject(bot);
 			//PhysicalProperties *pp = bot->getPhysicalProperties();
 			//pp->setPosition(200, 300);
@@ -105,6 +117,7 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 			bullet->setAlpha(255);
 			bullet->setHealth(30);
 			bullet->setAttack(player->getAttack());
+			bullet->setOwner(player);
 			gsm->getSpriteManager()->addBullet(bullet);
 			b2BodyDef bodyDef;
 			bodyDef.type = b2_dynamicBody;
