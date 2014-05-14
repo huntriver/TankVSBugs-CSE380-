@@ -47,6 +47,13 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 	// IF THE GAME IS IN PROGRESS
 	if (gsm->isGameInProgress())
 	{
+		if(input->isKeyDown(VK_CONTROL) && input->isKeyDown((unsigned int)'U'))
+		{
+			input->upKeyDisabled = false;
+			input->downKeyDisabled = false;
+			input->leftKeyDisabled = false;
+			input->rightKeyDisabled = false;
+		}
 		if(input->isKeyDown(VK_CONTROL) && input->isKeyDownForFirstTime((unsigned int)'I'))
 		{
 			if(player->getUnDead())
@@ -57,6 +64,14 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 		if(input->isKeyDown(VK_CONTROL) && input->isKeyDownForFirstTime((unsigned int)'0'))
 		{
 			gsm->goToLevel(game,L"Level 0");
+		}
+		if(input->isKeyDown(VK_CONTROL) && input->isKeyDownForFirstTime((unsigned int)'3'))
+		{
+			gsm->goToLevel(game,L"Level 1");
+		}
+		if(input->isKeyDown(VK_CONTROL) && input->isKeyDownForFirstTime((unsigned int)'3'))
+		{
+			gsm->goToLevel(game,L"Level 2");
 		}
 		if(input->isKeyDown(VK_CONTROL) && input->isKeyDownForFirstTime((unsigned int)'3'))
 		{
@@ -88,6 +103,7 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 			game->getGraphics()->toggleDebugTextShouldBeRendered();
 		}
 		*/
+		/*
 		if (input->isKeyDownForFirstTime(L_KEY))
 		{
 			game->getGraphics()->togglePathfindingGridShouldBeRendered();
@@ -95,7 +111,7 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 		if (input->isKeyDownForFirstTime(F_KEY))
 		{
 			game->getGraphics()->togglePathfindingPathShouldBeRendered();
-		}
+		}*/
 
 		if(input->isKeyDownForFirstTime((unsigned int)'M')){
 			// PlaySound(BURN, NULL, SND_ASYNC);
@@ -221,22 +237,22 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 		bool viewportMoved = false;
 		float viewportVx = 0.0f;
 		float viewportVy = 0.0f;
-		if (input->isKeyDown(UP_KEY))
+		if (input->isKeyDown(UP_KEY) && !input->upKeyDisabled)
 		{
 			viewportVy -= MAX_VIEWPORT_AXIS_VELOCITY;
 			viewportMoved = true;
 		}
-		if (input->isKeyDown(DOWN_KEY))
+		if (input->isKeyDown(DOWN_KEY) && !input->downKeyDisabled)
 		{
 			viewportVy += MAX_VIEWPORT_AXIS_VELOCITY;
 			viewportMoved = true;
 		}
-		if (input->isKeyDown(LEFT_KEY))
+		if (input->isKeyDown(LEFT_KEY) && !input->leftKeyDisabled)
 		{
 			viewportVx -= MAX_VIEWPORT_AXIS_VELOCITY;
 			viewportMoved = true;
 		}
-		if (input->isKeyDown(RIGHT_KEY))
+		if (input->isKeyDown(RIGHT_KEY) && !input->rightKeyDisabled)
 		{
 			viewportVx += MAX_VIEWPORT_AXIS_VELOCITY;
 			viewportMoved = true;

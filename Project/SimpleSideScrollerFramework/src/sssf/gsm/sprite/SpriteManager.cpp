@@ -408,10 +408,13 @@ void SpriteManager::update(Game *game)
 
 		AnimatedSpriteType *effectSpriteType = getSpriteType(9);
 		Effect* effect = new Effect();
-		float x = player.getB2Body()->GetPosition().x * 5.0 + 600;
-		float y = player.getB2Body()->GetPosition().y * -5.0 + 100;
+		float x = player.getB2Body()->GetPosition().x * 5.0 + 500;
+		float y = player.getB2Body()->GetPosition().y * -5.0 + 50;
 		effect->setSpriteType(effectSpriteType);
-		effect->setCurrentState(L"LEVEL1");
+		if(game->getGSM()->getCurrentLevel() == 3)
+			effect->setCurrentState(L"LEVEL3");
+		else
+			effect->setCurrentState(L"LEVEL1");
 		effect->setHealth(1000);
 		effect->setAlpha(255);
 		effect->setEffectTimes(1);

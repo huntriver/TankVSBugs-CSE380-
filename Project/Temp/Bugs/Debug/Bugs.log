@@ -1,8 +1,16 @@
-﻿Build started 5/14/2014 1:06:31 PM.
+﻿Build started 5/14/2014 1:43:03 PM.
      1>Project "C:\Users\yubshang\Desktop\380 project\Project\Bugs\Bugs.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project\Project\Temp\Bugs\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project\Project\Temp\Bugs\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\bugs\BugsKeyEventHandler.cpp
-         BugsKeyEventHandler.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\yubshang\Desktop\380 project\Project\Temp\Bugs\Debug\\" /Fd"C:\Users\yubshang\Desktop\380 project\Project\Temp\Bugs\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt src\bugs\BugsDataLoader.cpp
+         BugsDataLoader.cpp
+     1>c:\users\yubshang\desktop\380 project\project\bugs\src\bugs\bugsdataloader.cpp(272): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\bugs\src\bugs\bugsdataloader.cpp(327): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\bugs\src\bugs\bugsdataloader.cpp(350): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\bugs\src\bugs\bugsdataloader.cpp(352): warning C4244: 'argument' : conversion from 'const float' to 'unsigned int', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\bugs\src\bugs\bugsdataloader.cpp(354): warning C4244: 'argument' : conversion from 'const float' to 'unsigned int', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\bugs\src\bugs\bugsdataloader.cpp(495): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\bugs\src\bugs\bugsdataloader.cpp(497): warning C4244: 'argument' : conversion from 'const float' to 'unsigned int', possible loss of data
+     1>c:\users\yubshang\desktop\380 project\project\bugs\src\bugs\bugsdataloader.cpp(499): warning C4244: 'argument' : conversion from 'const float' to 'unsigned int', possible loss of data
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\yubshang\Desktop\380 project\Project\Apps\Bugs\Bugs.exe" /INCREMENTAL /NOLOGO /LIBPATH:../lib LuaPlus.lib LuaPlusFramework.lib Box2D.lib d3d9.lib d3dx9.lib winmm.lib PoseurSpriteTypesImporter.lib SimpleSideScrollerFramework.lib tinyxml.lib TMXMapImporter.lib XMLFileImporter.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\yubshang\Desktop\380 project\Project\Apps\Bugs\Bugs.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\yubshang\Desktop\380 project\Project\Apps\Bugs\Bugs.lib" /MACHINE:X86 "C:\Users\yubshang\Desktop\380 project\Project\Temp\Bugs\Debug\Box2DContactListener.obj"
          "C:\Users\yubshang\Desktop\380 project\Project\Temp\Bugs\Debug\BugsButtonEventHandler.obj"
@@ -21,4 +29,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.46
+Time Elapsed 00:00:06.34

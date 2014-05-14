@@ -4,12 +4,19 @@
  <height>240</height>
  <images_list>
   <image_file id="1"  file_name="objective_IDLE_1.png"/>
+  <image_file id="2"  file_name="objective_IDLE_2.png"/>
  </images_list>
  <animations_list>
   <animation_state>
    <state>LEVEL1</state>
    <animation_sequence>
     <pose image_id="1" duration="400"/>
+   </animation_sequence>
+  </animation_state>
+  <animation_state>
+   <state>LEVEL3</state>
+   <animation_sequence>
+    <pose image_id="2" duration="400"/>
    </animation_sequence>
   </animation_state>
  </animations_list>  
