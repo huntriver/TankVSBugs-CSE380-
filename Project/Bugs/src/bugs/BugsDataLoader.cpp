@@ -211,6 +211,8 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 	player->setAlpha(255);
 	player->setCurrentState(IDLE);
 	player->setDirection(L"RIGHT");
+	if(game->getGSM()->getCurrentLevel() == 2)
+		player->setDirection(L"LEFT");
 	if(game->getGSM()->getCurrentLevel() == 3)
 		player->setDirection(L"UP");
 	player->setHealth(playerSpriteType->getTextureWidth()/spriteManager->getSpriteType(4)->getTextureWidth());
@@ -336,16 +338,17 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 	}
 	if(game->getGSM()->getCurrentLevel() == 0)
 	{
-		RandomSpider *bot = new RandomSpider();
+		//RandomSpider *bot = new RandomSpider();
+		RandomBot* bot = new RandomBot();
 		//physics->addCollidableObject(bot);
 		//PhysicalProperties *pp = bot->getPhysicalProperties();
 		//pp->setPosition(initX, initY);
-		bot->setSpriteType(spriteManager->getSpriteType(10));
+		bot->setSpriteType(spriteManager->getSpriteType(15));
 		bot->setCurrentState(L"IDLE");
 		bot->setDirection(L"UP");
 		bot->setAlpha(255);
 		bot->setHealth((int)(spriteManager->getSpriteType(10)->getTextureWidth()/game->getGSM()->getSpriteManager()->getSpriteType(4)->getTextureWidth()));
-		bot->setAttack(10);
+		bot->setAttack(0.7);
 		int playerW = game->getGSM()->getSpriteManager()->getPlayer()->getSpriteType()->getTextureWidth()/2;
 		float randNum = rand()% playerW;
 		if(game->getGSM()->getSpriteManager()->getBotSize() % 2 == 0)
@@ -353,11 +356,11 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 		else
 			bot->initBot(30, 300, MAX_TANK_SPEED/1.4f, false,-randNum);
 		game->getGSM()->getSpriteManager()->addBot(bot);
-		bot->setLongDistanceAttack(true);
-		bot->setAttackInterval(50);
+		//bot->setLongDistanceAttack(true);
+		//bot->setAttackInterval(50);
 		b2BodyDef bodyDef;
 		bodyDef.type = b2_dynamicBody;
-		bodyDef.position.Set(200/5.0f, -200/5.0f);
+		bodyDef.position.Set(500/5.0f, -400/5.0f);
 		b2Body* body = (game->getGSM()->getWorld()->boxWorld)->CreateBody(&bodyDef);
 
 		// Define another box shape for our dynamic body.
@@ -381,7 +384,7 @@ void BugsDataLoader::loadWorld(Game *game, wstring currentLevel)
 		body->CreateFixture(&fixtureDef);
 		bot->setB2Body(body);
 		body->SetUserData(bot);
-		makeHealthSupplyBot(game, spriteManager->getSpriteType(14), bot);
+		// makeHealthSupplyBot(game, spriteManager->getSpriteType(14), bot);
 	}
 
 // UNCOMMENT THE FOLLOWING CODE BLOCK WHEN YOU ARE READY TO ADD SOME BOTS
@@ -472,6 +475,8 @@ void BugsDataLoader::makeRandomBot(Game *game, AnimatedSpriteType *randomBotType
 {
 	if(game->getGSM()->getCurrentLevel() == 3)
 		randomBotType = game->getGSM()->getSpriteManager()->getSpriteType(TYPE_SPIDER);
+	// if(game->getGSM()->getCurrentLevel() == 2)
+		// randomBotType = game->getGSM()->getSpriteManager()->getSpriteType(TYPE_CATER);
 	SpriteManager *spriteManager = game->getGSM()->getSpriteManager();
 //	Physics *physics = game->getGSM()->getPhysics();
 	RandomBot *bot;

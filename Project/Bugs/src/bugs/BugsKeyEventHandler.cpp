@@ -65,11 +65,11 @@ void BugsKeyEventHandler::handleKeyEvents(Game *game)
 		{
 			gsm->goToLevel(game,L"Level 0");
 		}
-		if(input->isKeyDown(VK_CONTROL) && input->isKeyDownForFirstTime((unsigned int)'3'))
+		if(input->isKeyDown(VK_CONTROL) && input->isKeyDownForFirstTime((unsigned int)'1'))
 		{
 			gsm->goToLevel(game,L"Level 1");
 		}
-		if(input->isKeyDown(VK_CONTROL) && input->isKeyDownForFirstTime((unsigned int)'3'))
+		if(input->isKeyDown(VK_CONTROL) && input->isKeyDownForFirstTime((unsigned int)'2'))
 		{
 			gsm->goToLevel(game,L"Level 2");
 		}

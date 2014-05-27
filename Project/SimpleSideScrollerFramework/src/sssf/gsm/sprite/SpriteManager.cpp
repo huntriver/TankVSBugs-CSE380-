@@ -77,7 +77,7 @@ void SpriteManager::addSpriteToRenderList(AnimatedSprite *sprite,
 			int y = pp->round((-1)*(body->GetPosition().y)*5.0f-spriteType->getTextureHeight()/2.0f-viewport->getViewportY());
 			RenderItem itemToAdd;
 			itemToAdd.id = sprite->getFrameIndex();
-
+			
 			renderList->addRenderItem(sprite->getCurrentImageID(), x, y,0, sprite->getAlpha(), width, height,rotation);
 			/*
 			if(healthDisplay && (spriteType->getSpriteTypeID() == 0 || spriteType->getSpriteTypeID() == 1))
@@ -410,8 +410,12 @@ void SpriteManager::update(Game *game)
 		Effect* effect = new Effect();
 		float x = player.getB2Body()->GetPosition().x * 5.0 + 500;
 		float y = player.getB2Body()->GetPosition().y * -5.0 + 50;
+		if(game->getGSM()->getCurrentLevel() == 2)
+			x -= 1000;
 		effect->setSpriteType(effectSpriteType);
 		if(game->getGSM()->getCurrentLevel() == 3)
+			effect->setCurrentState(L"LEVEL3");
+		else if(game->getGSM()->getCurrentLevel() == 2)
 			effect->setCurrentState(L"LEVEL3");
 		else
 			effect->setCurrentState(L"LEVEL1");
@@ -715,7 +719,9 @@ void SpriteManager::update(Game *game)
 		{
 			game->getGSM()->goToClearMenu();
 		}else
+		{
 			game->getGSM()->goToWinMenu();
+		}
 	}
 }
 

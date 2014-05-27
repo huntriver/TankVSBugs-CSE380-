@@ -7,6 +7,8 @@
  ant_dying 5 
  spider 10
  supply 14
+ cater 15
+ cater_dying 16
  -->
 
 
@@ -27,4 +29,6 @@
   <sprite_type>spider_dying</sprite_type>
   <sprite_type>net_effect</sprite_type>
   <sprite_type>supply</sprite_type>
+  <sprite_type>cater</sprite_type>
+  <sprite_type>cater_dying</sprite_type>
 </sprite_type_list>

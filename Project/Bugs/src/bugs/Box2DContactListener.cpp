@@ -58,11 +58,13 @@ void Box2DContactListener::BeginContact(b2Contact* contact)
 	   }else if(t1 != NULL && t2 != NULL)
 	   {
 		   if((t1->getSpriteType()->getSpriteTypeID() == TYPE_TANK && t2->getSpriteType()->getSpriteTypeID() == TYPE_ANT) ||
-			   (t1->getSpriteType()->getSpriteTypeID() == TYPE_TANK && t2->getSpriteType()->getSpriteTypeID() == TYPE_SPIDER))
+			   (t1->getSpriteType()->getSpriteTypeID() == TYPE_TANK && t2->getSpriteType()->getSpriteTypeID() == TYPE_SPIDER) ||
+			   (t1->getSpriteType()->getSpriteTypeID() == TYPE_TANK && t2->getSpriteType()->getSpriteTypeID() == TYPE_CATER))
 		   {
 			   beginTankBugContact(t1, t2);
 		   }else if((t1->getSpriteType()->getSpriteTypeID() == TYPE_ANT && t2->getSpriteType()->getSpriteTypeID() == TYPE_TANK) ||
-			   (t1->getSpriteType()->getSpriteTypeID() == TYPE_SPIDER && t2->getSpriteType()->getSpriteTypeID() == TYPE_TANK))
+			   (t1->getSpriteType()->getSpriteTypeID() == TYPE_SPIDER && t2->getSpriteType()->getSpriteTypeID() == TYPE_TANK) || 
+			   (t1->getSpriteType()->getSpriteTypeID() == TYPE_CATER && t2->getSpriteType()->getSpriteTypeID() == TYPE_TANK))
 		   {
 			   beginTankBugContact(t2, t1);
 		   }else if(t1->getSpriteType()->getSpriteTypeID() == TYPE_BULLET &&
